@@ -3,6 +3,8 @@ import { createServerClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import ArticleDetailClient from "@/components/kenniscentrum/ArticleDetailClient";
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const supabase = createServerClient();
   const { data: article } = await supabase
@@ -27,16 +29,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     },
     alternates: { canonical: `https://aigeletterdheid.academy/kenniscentrum/${params.slug}` },
   };
-}
-
-export async function generateStaticParams() {
-  const supabase = createServerClient();
-  const { data } = await supabase
-    .from("articles")
-    .select("slug")
-    .eq("published", true)
-    .not("slug", "is", null);
-  return (data || []).filter((a) => a.slug).map((a) => ({ slug: a.slug! }));
 }
 
 export default async function ArticlePage({ params }: { params: { slug: string } }) {

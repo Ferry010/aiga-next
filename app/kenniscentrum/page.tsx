@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { createServerClient } from "@/lib/supabase/server";
 import KenniscentrumClient from "@/components/kenniscentrum/KenniscentrumClient";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Kenniscentrum AI-Geletterdheid & AI Act | Artikelen | AIGA",
   description: "Artikelen, uitleg en achtergronden over AI-geletterdheid, de EU AI Act en verantwoord AI-gebruik. Geschreven door AI-expert Ferry Hoes.",

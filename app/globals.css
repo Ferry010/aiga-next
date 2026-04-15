@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 20% 14%;
+
+    --card: 210 20% 98%;
+    --card-foreground: 220 20% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 14%;
+
+    --primary: 189 35% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 20% 14%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 189 25% 94%;
+    --accent-foreground: 220 20% 14%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 189 35% 42%;
+
+    --radius: 0.75rem;
+
+    --warning: 38 92% 50%;
+    --success: 160 84% 39%;
+
+    --surface: 210 20% 98%;
+    --surface-2: 220 14% 96%;
+    --brand-dim: 189 30% 95%;
+    --text-faint: 215 16% 75%;
+
+    --neon-purple: 263 70% 58%;
+    --neon-pink: 330 81% 60%;
+    --neon-glow: 0 0 20px hsl(263 70% 58% / 0.15), 0 0 40px hsl(330 81% 60% / 0.1);
+
+    --sidebar-background: 210 20% 98%;
+    --sidebar-foreground: 220 20% 14%;
+    --sidebar-primary: 189 35% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 96%;
+    --sidebar-accent-foreground: 220 20% 14%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 189 35% 42%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+  }
+}
+
+.font-mono-display {
+  font-family: 'DM Mono', monospace;
+}
+
+/* Neon gradient border wrapper — use on a parent div, put content inside with bg-background */
+.neon-border {
+  background: linear-gradient(135deg, hsl(var(--neon-purple)), hsl(var(--neon-pink)));
+  padding: 2px;
+  border-radius: var(--radius);
+}
+
+.neon-border-lg {
+  background: linear-gradient(135deg, hsl(var(--neon-purple)), hsl(var(--neon-pink)));
+  padding: 2px;
+  border-radius: 1rem;
+}
+
+.neon-border > .neon-inner,
+.neon-border-lg > .neon-inner {
+  background: hsl(var(--background));
+  border-radius: inherit;
+}
+
+/* Neon glow on hover */
+.neon-glow {
+  transition: box-shadow 0.3s ease;
+}
+.neon-glow:hover {
+  box-shadow: 0 0 20px hsl(263 70% 58% / 0.15), 0 0 40px hsl(330 81% 60% / 0.1);
+}
+
+/* Neon gradient button — solid gradient bg */
+.btn-neon {
+  background: linear-gradient(135deg, hsl(var(--neon-purple)), hsl(var(--neon-pink)));
+  color: white;
+  font-weight: 600;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px hsl(263 70% 58% / 0.25);
+}
+.btn-neon:hover {
+  box-shadow: 0 6px 25px hsl(263 70% 58% / 0.35), 0 0 40px hsl(330 81% 60% / 0.15);
+  transform: translateY(-1px);
+}
+
+/* Neon outline button — gradient border, transparent fill */
+.btn-neon-outline {
+  position: relative;
+  background: linear-gradient(135deg, hsl(var(--neon-purple)), hsl(var(--neon-pink)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  border: 2px solid transparent;
+  border-image: linear-gradient(135deg, hsl(var(--neon-purple)), hsl(var(--neon-pink))) 1;
+  border-radius: 0;
+  transition: all 0.3s ease;
+}
+
+/* Neon text gradient */
+.neon-text {
+  background: linear-gradient(135deg, hsl(var(--neon-purple)), hsl(var(--neon-pink)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card with gradient top border accent */
+.neon-card-top {
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(90deg, hsl(var(--neon-purple)), hsl(var(--neon-pink))) 1;
+  border-image-slice: 1;
+}
+
+/* Accessibility overrides */
+html.a11y-contrast {
+  filter: contrast(1.5);
+  background: #000 !important;
+  color: #fff !important;
+}
+html.a11y-large-text {
+  font-size: 120% !important;
+}
+html.a11y-colorblind {
+  --warning: 30 100% 50%;
+  --success: 200 100% 37%;
+  --destructive: 330 80% 50%;
+  --neon-purple: 200 70% 50%;
+  --neon-pink: 45 90% 55%;
+}
+html.a11y-reduce-motion * {
+  transition: none !important;
+  animation: none !important;
+}
+
+/* Print stylesheet — EU AI Act A4 one-pager */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 1cm;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  nav,
+  footer,
+  .print\\:hidden,
+  [class*="breadcrumb"],
+  [class*="CookieBanner"],
+  [class*="AccessibilityWidget"] {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+  }
+
+  #a4-document {
+    border: none !important;
+    box-shadow: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    aspect-ratio: auto !important;
+  }
+
+  .neon-text {
+    -webkit-text-fill-color: black !important;
+    color: black !important;
+    background: none !important;
+  }
+}

@@ -1,0 +1,50 @@
+'use client';
+
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { useReduceMotion } from "@/hooks/use-reduce-motion";
+
+const aigaLogo = "/assets/AIGA_transparent.png";
+
+export default function NotFound() {
+  const reduced = useReduceMotion();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    console.error("404 Error: User attempted to access non-existent route:", pathname);
+  }, [pathname]);
+
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6">
+      <motion.div
+        initial={reduced ? false : { opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: reduced ? 0 : 0.6 }}
+        className="text-center"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={aigaLogo} alt="AIGA logo" className="mx-auto mb-8 h-10" />
+
+        <h1 className="neon-text font-display text-[8rem] font-bold leading-none md:text-[12rem]">
+          404
+        </h1>
+
+        <p className="mt-4 font-display text-2xl font-semibold text-foreground">
+          Pagina niet gevonden
+        </p>
+        <p className="mt-2 max-w-md text-muted-foreground">
+          De pagina die je zoekt bestaat niet of is verplaatst.
+        </p>
+
+        <Link
+          href="/"
+          className="btn-neon mt-8 inline-block rounded-lg px-8 py-3 text-sm font-semibold"
+        >
+          Terug naar home
+        </Link>
+      </motion.div>
+    </div>
+  );
+}

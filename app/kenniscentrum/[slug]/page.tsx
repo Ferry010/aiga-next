@@ -5,12 +5,13 @@ import ArticleDetailClient from "@/components/kenniscentrum/ArticleDetailClient"
 
 export const dynamic = 'force-dynamic';
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
   const supabase = createServerClient();
   const { data: article } = await supabase
     .from("articles")
     .select("title, meta_description, seo_keywords, image_url, published_date, updated_at")
-    .eq("slug", params.slug)
+    .eq("slug", slug)
     .single();
 
   if (!article) return { title: "Artikel niet gevonden" };
@@ -27,15 +28,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       publishedTime: article.published_date || undefined,
       modifiedTime: article.updated_at || undefined,
     },
-    alternates: { canonical: `https://aigeletterdheid.academy/kenniscentrum/${params.slug}` },
+    alternates: { canonical: `https://aigeletterdheid.academy/kenniscentrum/${slug}` },
   };
 }
 
-export default async function ArticlePage({ params }: { params: { slug: string } }) {
+export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const supabase = createServerClient();
 
   const [{ data: article }, { data: allArticles }] = await Promise.all([
-    supabase.from("articles").select("*").eq("slug", params.slug).single(),
+    supabase.from("articles").select("*").eq("slug", slug).single(),
     supabase
       .from("articles")
       .select("id, title, slug, category, image_url, sort_order")
@@ -46,7 +48,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
 
   if (!article) notFound();
 
-  const currentIndex = (allArticles || []).findIndex((a) => a.slug === params.slug);
+  const currentIndex = (allArticles || []).findIndex((a) => a.slug === slug);
   const prevArticle = currentIndex > 0 ? (allArticles![currentIndex - 1] as { title: string; slug: string | null; category: string; image_url: string }) : null;
   const nextArticle =
     currentIndex < (allArticles?.length || 0) - 1
@@ -63,7 +65,7 @@ export default async function ArticlePage({ params }: { params: { slug: string }
     dateModified: article.updated_at,
     author: { "@type": "Person", name: "Ferry Hoes", url: "https://ferryhoes.com" },
     publisher: { "@type": "Organization", name: "AIGA", url: "https://aigeletterdheid.academy" },
-    url: `https://aigeletterdheid.academy/kenniscentrum/${params.slug}`,
+    url: `https://aigeletterdheid.academy/kenniscentrum/${slug}`,
     inLanguage: "nl",
   };
 

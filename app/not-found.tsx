@@ -17,30 +17,50 @@ export default function NotFound() {
   }, [pathname]);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-6">
+    <div
+      className="flex min-h-screen flex-col items-center justify-center px-6"
+      style={{ background: '#09090b' }}
+    >
       <motion.div
-        initial={reduced ? false : { opacity: 0, y: 24 }}
+        initial={reduced ? false : { opacity: 0, y: 32 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: reduced ? 0 : 0.6 }}
+        transition={{ duration: reduced ? 0 : 0.7, ease: [0.22, 1, 0.36, 1] }}
         className="text-center"
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={aigaLogo} alt="AIGA logo" className="mx-auto mb-8 h-10" />
+        <img src={aigaLogo} alt="AIGA" className="mx-auto mb-12 h-10 opacity-90" />
 
-        <h1 className="neon-text font-display text-[8rem] font-bold leading-none md:text-[12rem]">
+        <h1
+          className="font-display font-bold leading-none tracking-tight select-none"
+          style={{
+            fontSize: 'clamp(7rem, 22vw, 18rem)',
+            background: 'linear-gradient(135deg, #9B3FF5 0%, #E040C8 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}
+        >
           404
         </h1>
 
-        <p className="mt-4 font-display text-2xl font-semibold text-foreground">
-          Pagina niet gevonden
+        <p className="mt-8 font-display text-2xl font-bold text-white md:text-3xl">
+          Deze pagina bestaat niet.
         </p>
-        <p className="mt-2 max-w-md text-muted-foreground">
-          De pagina die je zoekt bestaat niet of is verplaatst.
+        <p
+          className="font-display text-2xl font-bold md:text-3xl"
+          style={{
+            background: 'linear-gradient(135deg, #9B3FF5 0%, #E040C8 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}
+        >
+          Wel jij.
         </p>
 
         <Link
           href="/"
-          className="btn-neon mt-8 inline-block rounded-lg px-8 py-3 text-sm font-semibold"
+          className="btn-neon mt-10 inline-block rounded-lg px-8 py-3 text-sm font-semibold"
         >
           Terug naar home
         </Link>

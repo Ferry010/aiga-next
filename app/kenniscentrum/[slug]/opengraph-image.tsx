@@ -5,7 +5,8 @@ export const alt = "AIGA Kenniscentrum artikel";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default async function Image({ params }: { params: { slug: string } }) {
+export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   let title = "Kenniscentrum";
   let category = "Artikel";
 
@@ -17,7 +18,7 @@ export default async function Image({ params }: { params: { slug: string } }) {
     const { data: article } = await supabase
       .from("articles")
       .select("title, category")
-      .eq("slug", params.slug)
+      .eq("slug", slug)
       .single();
 
     if (article) {

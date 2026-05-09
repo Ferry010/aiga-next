@@ -8,7 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Pencil, Plus, X, LogOut, ChevronDown, ChevronUp, Mail, Phone, Search, Upload } from "lucide-react";
+import { Pencil, Plus, X, LogOut, ChevronDown, ChevronUp, Mail, Phone, Search, Upload, Trash2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import AdminUsers from "@/components/AdminUsers";
 import AdminAccount from "@/components/AdminAccount";
@@ -141,6 +141,7 @@ export default function AdminClient() {
   const [importing, setImporting] = useState<Record<string, boolean>>({});
   const [uploading, setUploading] = useState(false);
   const [labelInput, setLabelInput] = useState("");
+  const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
 
   const [inboxFilter, setInboxFilter] = useState<"alle" | "contact" | "masterclass" | "risicoscan">("alle");
   const [showOpgevolgd, setShowOpgevolgd] = useState(false);
@@ -316,10 +317,8 @@ export default function AdminClient() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       await supabase.from("articles").update(payload as any).eq("id", editingId);
     } else {
-      for (const a of articles) {
-        await supabase.from("articles").update({ sort_order: a.sort_order + 1 }).eq("id", a.id);
-      }
-      await supabase.from("articles").insert([{ ...payload, sort_order: 1 }]);
+      const maxOrder = articles.length > 0 ? Math.max(...articles.map((a) => a.sort_order)) : 0;
+      await supabase.from("articles").insert([{ ...payload, sort_order: maxOrder + 1 }]);
     }
     await fetchArticles();
     closeForm();
@@ -345,6 +344,12 @@ export default function AdminClient() {
       supabase.from("articles").update({ sort_order: other.sort_order, updated_at: new Date().toISOString() }).eq("id", article.id),
       supabase.from("articles").update({ sort_order: article.sort_order, updated_at: new Date().toISOString() }).eq("id", other.id),
     ]);
+  };
+
+  const deleteArticle = async (id: string) => {
+    await supabase.from("articles").delete().eq("id", id);
+    setArticles((prev) => prev.filter((a) => a.id !== id));
+    setConfirmDeleteId(null);
   };
 
   const importArticle = async (a: Article) => {
@@ -652,10 +657,6 @@ export default function AdminClient() {
                   <Input value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })} placeholder="bijv. ai-act-samenvatting" />
                 </div>
                 <div className="space-y-2">
-                  <Label>Volgorde</Label>
-                  <Input type="number" value={form.sort_order} onChange={(e) => setForm({ ...form, sort_order: parseInt(e.target.value) || 0 })} />
-                </div>
-                <div className="space-y-2">
                   <Label>Publicatiedatum</Label>
                   <Input type="date" value={form.published_date} onChange={(e) => setForm({ ...form, published_date: e.target.value })} />
                 </div>
@@ -752,7 +753,17 @@ export default function AdminClient() {
                     </td>
                     <td className="py-3 px-2"><Switch checked={a.published} onCheckedChange={() => togglePublished(a)} /></td>
                     <td className="py-3 px-2">
-                      <button onClick={() => openEditForm(a)} className="text-muted-foreground hover:text-primary"><Pencil size={16} /></button>
+                      <div className="flex items-center gap-2">
+                        <button onClick={() => openEditForm(a)} className="text-muted-foreground hover:text-primary"><Pencil size={16} /></button>
+                        {confirmDeleteId === a.id ? (
+                          <span className="flex items-center gap-2 text-xs">
+                            <button onClick={() => deleteArticle(a.id)} className="text-destructive font-medium hover:underline">Verwijder</button>
+                            <button onClick={() => setConfirmDeleteId(null)} className="text-muted-foreground hover:underline">Annuleer</button>
+                          </span>
+                        ) : (
+                          <button onClick={() => setConfirmDeleteId(a.id)} className="text-muted-foreground hover:text-destructive"><Trash2 size={16} /></button>
+                        )}
+                      </div>
                     </td>
                   </tr>
                 ))}

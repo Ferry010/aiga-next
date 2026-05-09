@@ -26,7 +26,7 @@ export default function BlogJsonImport({ onImport }: BlogJsonImportProps) {
         category: json.category || "",
         url: json.url || "",
         meta_description: json.meta_description || "",
-        seo_keywords: json.seo_keywords || "",
+        seo_keywords: json.seo_keywords || json.keywords || json.zoekwoorden || "",
         labels: Array.isArray(json.labels) ? json.labels : (json.labels || "").split(",").map((l: string) => l.trim()).filter(Boolean),
         content: json.content || "",
       };

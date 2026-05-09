@@ -317,8 +317,10 @@ export default function AdminClient() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       await supabase.from("articles").update(payload as any).eq("id", editingId);
     } else {
-      const maxOrder = articles.length > 0 ? Math.max(...articles.map((a) => a.sort_order)) : 0;
-      await supabase.from("articles").insert([{ ...payload, sort_order: maxOrder + 1 }]);
+      await Promise.all(articles.map((a) =>
+        supabase.from("articles").update({ sort_order: a.sort_order + 1 }).eq("id", a.id)
+      ));
+      await supabase.from("articles").insert([{ ...payload, sort_order: 1 }]);
     }
     await fetchArticles();
     closeForm();
@@ -350,6 +352,18 @@ export default function AdminClient() {
     await supabase.from("articles").delete().eq("id", id);
     setArticles((prev) => prev.filter((a) => a.id !== id));
     setConfirmDeleteId(null);
+  };
+
+  const reorderByDate = async () => {
+    const sorted = [...articles].sort((a, b) => {
+      const dateA = new Date(a.published_date || a.created_at).getTime();
+      const dateB = new Date(b.published_date || b.created_at).getTime();
+      return dateB - dateA;
+    });
+    await Promise.all(sorted.map((a, idx) =>
+      supabase.from("articles").update({ sort_order: idx + 1 }).eq("id", a.id)
+    ));
+    await fetchArticles();
   };
 
   const importArticle = async (a: Article) => {
@@ -596,6 +610,9 @@ export default function AdminClient() {
           <div className="flex items-center justify-between mb-6">
             <p className="text-sm text-muted-foreground">{articles.length} artikelen · {articles.filter(a => a.content).length} geïmporteerd</p>
             <div className="flex gap-2">
+              <button onClick={reorderByDate} className="flex items-center gap-2 bg-card border border-border text-foreground rounded-lg px-4 py-2 text-sm font-medium hover:border-primary/40 transition-colors">
+                Herorden op datum
+              </button>
               <button onClick={importAll} disabled={Object.values(importing).some(Boolean)} className="flex items-center gap-2 bg-card border border-border text-foreground rounded-lg px-4 py-2 text-sm font-medium hover:border-primary/40 transition-colors disabled:opacity-50">
                 {Object.values(importing).some(Boolean) ? "Bezig met importeren..." : "Importeer alles"}
               </button>

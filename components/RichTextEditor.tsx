@@ -134,7 +134,7 @@ const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
   // Sync external content changes (e.g. when opening a different article)
   useEffect(() => {
     if (editor && content !== editor.getHTML()) {
-      editor.commands.setContent(content, false, { preserveWhitespace: 'full' });
+      editor.commands.setContent(content, false);
     }
   }, [content, editor]);
 

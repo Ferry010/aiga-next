@@ -5,7 +5,53 @@ import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import LinkExtension from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
+import { Extension, Node } from "@tiptap/core";
 import { useEffect, useCallback } from "react";
+
+const AllowStyles = Extension.create({
+  name: 'allowStyles',
+  addGlobalAttributes() {
+    return [
+      {
+        types: ['paragraph', 'heading', 'bulletList', 'orderedList', 'listItem', 'blockquote'],
+        attributes: {
+          style: {
+            default: null,
+            parseHTML: el => el.getAttribute('style'),
+            renderHTML: attrs => attrs.style ? { style: attrs.style } : {},
+          },
+          class: {
+            default: null,
+            parseHTML: el => el.getAttribute('class'),
+            renderHTML: attrs => attrs.class ? { class: attrs.class } : {},
+          },
+        },
+      },
+    ]
+  },
+})
+
+const Div = Node.create({
+  name: 'div',
+  group: 'block',
+  content: 'block+',
+  parseHTML() { return [{ tag: 'div' }] },
+  renderHTML({ HTMLAttributes }) { return ['div', HTMLAttributes, 0] },
+  addAttributes() {
+    return {
+      style: {
+        default: null,
+        parseHTML: el => el.getAttribute('style'),
+        renderHTML: attrs => ({ style: attrs.style }),
+      },
+      class: {
+        default: null,
+        parseHTML: el => el.getAttribute('class'),
+        renderHTML: attrs => ({ class: attrs.class }),
+      },
+    }
+  },
+})
 import {
   Bold,
   Italic,
@@ -70,6 +116,8 @@ const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
       Image.configure({
         HTMLAttributes: { class: "rounded-xl my-4 max-w-full" },
       }),
+      AllowStyles,
+      Div,
     ],
     content,
     onUpdate: ({ editor }) => {

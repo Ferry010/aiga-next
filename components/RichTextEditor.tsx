@@ -126,7 +126,7 @@ const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
     editorProps: {
       attributes: {
         class:
-          "prose prose-lg max-w-none min-h-[500px] p-6 focus:outline-none prose-headings:font-semibold prose-headings:text-foreground prose-p:text-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-foreground prose-blockquote:text-muted-foreground prose-blockquote:border-primary/30",
+          "not-prose min-h-[500px] p-6 focus:outline-none",
       },
     },
   });
@@ -134,7 +134,7 @@ const RichTextEditor = ({ content, onChange }: RichTextEditorProps) => {
   // Sync external content changes (e.g. when opening a different article)
   useEffect(() => {
     if (editor && content !== editor.getHTML()) {
-      editor.commands.setContent(content);
+      editor.commands.setContent(content, false, { preserveWhitespace: 'full' });
     }
   }, [content, editor]);
 

@@ -19,9 +19,9 @@ export default async function KenniscentrumPage() {
   const supabase = createServerClient();
   const { data: articles } = await supabase
     .from("articles")
-    .select("id, title, category, url, image_url, content, slug, labels, published_date, read_time_minutes")
+    .select("id, title, category, url, image_url, content, slug, labels, published_date, read_time_minutes, updated_at")
     .eq("published", true)
-    .order("sort_order", { ascending: true });
+    .order("updated_at", { ascending: false, nullsFirst: false });
 
   const articleList = articles || [];
 

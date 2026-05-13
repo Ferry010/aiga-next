@@ -71,6 +71,7 @@ interface Article {
   labels: string[];
   published_date: string | null;
   read_time_minutes: number | null;
+  updated_at: string | null;
 }
 
 interface Props {

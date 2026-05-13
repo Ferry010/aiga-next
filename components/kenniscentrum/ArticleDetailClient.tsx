@@ -148,6 +148,12 @@ export default function ArticleDetailClient({ article, prevArticle, nextArticle 
               <p className="text-sm font-semibold text-foreground">Ferry Hoes</p>
               <p className="text-xs text-muted-foreground">
                 {formatDate(publishedDate)}
+                {(() => {
+                  if (!article.updated_at) return null;
+                  const diff = (new Date(article.updated_at).getTime() - new Date(publishedDate).getTime()) / 86400000;
+                  if (diff <= 7) return null;
+                  return <> · Bijgewerkt: {formatDate(article.updated_at)}</>;
+                })()}
               </p>
             </div>
           </div>

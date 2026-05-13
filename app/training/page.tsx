@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import TrainingClient from "@/components/TrainingClient";
+import CourseSchema from "@/components/seo/CourseSchema";
 
 export const metadata: Metadata = {
   title: "AI-Geletterdheid Training voor Teams in Nederland | Certificaat | AIGA",
@@ -7,32 +8,17 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://aigeletterdheid.academy/training" },
 };
 
-const courseJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Course",
-  name: "AI-Geletterdheid voor Teams",
-  description: "Online AI-geletterdheid training voor teams. Voldoe aan de EU AI Act met een audit-proof AI Literacy Practitioner certificaat.",
-  provider: { "@type": "Organization", name: "AIGA | AI Geletterdheid Academy", url: "https://aigeletterdheid.academy" },
-  instructor: { "@type": "Person", name: "Ferry Hoes" },
-  educationalLevel: "Beginner tot Intermediate",
-  teaches: ["AI-geletterdheid", "EU AI Act compliance", "Verantwoord AI-gebruik", "AI-risicobeheer"],
-  courseMode: "online",
-  duration: "PT2H30M",
-  inLanguage: "nl",
-  offers: {
-    "@type": "Offer",
-    price: "249",
-    priceCurrency: "EUR",
-    availability: "https://schema.org/InStock",
-  },
-  hasCourseInstance: { "@type": "CourseInstance", courseMode: "online", courseWorkload: "PT2H30M" },
-  award: "AI Literacy Practitioner certificaat",
-};
-
 export default function TrainingPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }} />
+      <CourseSchema
+        name="AI-Geletterdheid voor Teams"
+        description="Online AI-geletterdheid training voor Nederlandse organisaties. Voldoe aan EU AI Act Artikel 4 met een audit-proof certificaat."
+        courseMode="Online"
+        courseWorkload="PT3H"
+        price="249"
+        offerUrl="https://aigeletterdheid.academy/contact"
+      />
       <TrainingClient />
     </>
   );

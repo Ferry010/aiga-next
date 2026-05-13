@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import MasterclassClient from "@/components/MasterclassClient";
+import CourseSchema from "@/components/seo/CourseSchema";
 
 export const metadata: Metadata = {
   title: "AI Act Masterclass voor Leidinggevenden | In-company | AIGA",
@@ -8,5 +9,17 @@ export const metadata: Metadata = {
 };
 
 export default function MasterclassPage() {
-  return <MasterclassClient />;
+  return (
+    <>
+      <CourseSchema
+        name="AI Geletterdheid Masterclass voor Leidinggevenden"
+        description="Besloten in-company masterclass over AI Act compliance en verantwoord AI-leiderschap voor directie en management in Nederlandse organisaties."
+        courseMode="Onsite"
+        courseWorkload="PT2H"
+        price="495"
+        offerUrl="https://aigeletterdheid.academy/contact"
+      />
+      <MasterclassClient />
+    </>
+  );
 }

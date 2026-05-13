@@ -36,6 +36,44 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
+const sitewideSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://aigeletterdheid.academy/#org",
+      name: "AI Geletterdheid Academy",
+      alternateName: ["AIGA", "AI Geletterdheid Academy Nederland"],
+      url: "https://aigeletterdheid.academy",
+      logo: "https://aigeletterdheid.academy/assets/AIGA_transparent-CxHDVoMM.png",
+      founder: { "@id": "https://aigeletterdheid.academy/#ferry" },
+      parentOrganization: {
+        "@type": "Organization",
+        name: "Brand Humanizing Institute",
+        url: "https://brandhumanizing.com",
+      },
+      sameAs: [
+        "https://brandhumanizing.com",
+        "https://www.speakersacademy.nl",
+        "https://www.linkedin.com/company/aiga-nl",
+      ],
+    },
+    {
+      "@type": "Person",
+      "@id": "https://aigeletterdheid.academy/#ferry",
+      name: "Ferry Hoes",
+      jobTitle: "AI-expert, keynote spreker, mede-oprichter AIGA",
+      award: "Winnaar Anti-Discriminatie AI-Hackathon Nederlandse Overheid 2020",
+      sameAs: [
+        "https://ferryhoes.com",
+        "https://brandhumanizing.com",
+        "https://www.linkedin.com/in/ferryhoes/",
+        "https://www.speakersacademy.com/nl/spreker/ferry-hoes/",
+      ],
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -46,6 +84,12 @@ export default function RootLayout({
       lang="nl"
       className={`${spaceGrotesk.variable} ${dmSans.variable} ${dmMono.variable}`}
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(sitewideSchema) }}
+        />
+      </head>
       <body>
         <Providers>
           <TooltipProvider>

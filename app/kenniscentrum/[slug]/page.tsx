@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: article.title,
       description: article.meta_description || undefined,
-      images: article.image_url ? [{ url: article.image_url, width: 1200, height: 630 }] : undefined,
+      images: article.image_url ? [{ url: article.image_url, width: 1200, height: 630, alt: article.title }] : undefined,
       type: "article",
       publishedTime: article.published_date || undefined,
       modifiedTime: article.updated_at || undefined,

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description:
       "AIGA helpt Nederlandse organisaties voldoen aan de EU AI Act. Gecertificeerde online AI-geletterdheid training voor teams.",
     url: "https://aigeletterdheid.academy",
-    images: [{ url: "/og/home.jpg", width: 1200, height: 630 }],
+    images: [{ url: "/og/home.jpg", width: 1200, height: 630, alt: "AI Geletterdheid Academy — gecertificeerde AI-training voor Nederlandse organisaties" }],
   },
 };
 

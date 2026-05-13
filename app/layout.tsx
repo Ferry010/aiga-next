@@ -23,9 +23,7 @@ const dmMono = DM_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aigeletterdheid.academy"),
-  title: {
-    default: "AI Geletterdheid Academy | EU AI Act Training voor Organisaties",
-  },
+  title: "AI Geletterdheid Academy | EU AI Act Training voor Organisaties",
   description:
     "Bereid je organisatie voor op de EU AI Act. Praktische AI-trainingen en certificering voor teams, managers en bestuurders.",
   openGraph: {

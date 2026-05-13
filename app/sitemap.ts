@@ -27,8 +27,10 @@ const staticRoutes: Array<{ url: string; changeFrequency: MetadataRoute.Sitemap[
   { url: `${BASE_URL}/tools/downloads/ai-act-compliance-checklist`,       changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/tools/downloads/ai-beleid-opstellen`,               changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/tools/downloads/ai-beleid-template`,               changeFrequency: "monthly", priority: 0.6 },
-  { url: `${BASE_URL}/kenniscentrum/ai-begrippen`,                        changeFrequency: "monthly", priority: 0.6 },
-  { url: `${BASE_URL}/kenniscentrum/eu-ai-act-in-1-a4`,                  changeFrequency: "monthly", priority: 0.6 },
+  { url: `${BASE_URL}/kenniscentrum/ai-begrippen`,                                         changeFrequency: "monthly", priority: 0.6 },
+  { url: `${BASE_URL}/kenniscentrum/eu-ai-act-in-1-a4`,                                 changeFrequency: "monthly", priority: 0.6 },
+  { url: `${BASE_URL}/kenniscentrum/ai-geletterdheid-training-kiezen-checklist-2026`,    changeFrequency: "monthly", priority: 0.8 },
+  { url: `${BASE_URL}/kenniscentrum/ai-geletterdheid-training-landschap-nederland`,      changeFrequency: "monthly", priority: 0.8 },
 { url: `${BASE_URL}/privacyverklaring`,                                  changeFrequency: "yearly",  priority: 0.3 },
   { url: `${BASE_URL}/licentie`,                                           changeFrequency: "yearly",  priority: 0.3 },
 ];

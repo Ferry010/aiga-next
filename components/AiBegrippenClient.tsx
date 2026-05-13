@@ -42,14 +42,16 @@ const THEME_META: Record<Theme, { label: string; className: string }> = {
   },
 };
 
+const SLUG_DIACRITICS: [RegExp, string][] = [
+  [/[àáâãäå]/g, "a"], [/æ/g, "ae"], [/[èéêë]/g, "e"],
+  [/[ìíîï]/g, "i"], [/[òóôõöø]/g, "o"], [/[ùúûü]/g, "u"],
+  [/[ýÿ]/g, "y"], [/ñ/g, "n"], [/ç/g, "c"], [/ß/g, "ss"],
+];
+
 function toSlug(term: string): string {
-  return term
-    .toLowerCase()
-    .replace(/[()]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/[^a-z0-9-]/g, "")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "");
+  let s = term.toLowerCase().replace(/[''`]/g, "");
+  for (const [pattern, replacement] of SLUG_DIACRITICS) s = s.replace(pattern, replacement);
+  return s.replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
 const BEGRIPPEN: Begrip[] = [

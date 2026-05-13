@@ -121,8 +121,20 @@ const formatDate = (dateStr: string) => {
   return `${String(date.getDate()).padStart(2, "0")}-${String(date.getMonth() + 1).padStart(2, "0")}-${date.getFullYear()}`;
 };
 
-const generateSlug = (title: string) =>
-  title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const SLUG_DIACRITICS: [RegExp, string][] = [
+  [/[àáâãäå]/g, "a"], [/æ/g, "ae"], [/[èéêë]/g, "e"],
+  [/[ìíîï]/g, "i"], [/[òóôõöø]/g, "o"], [/[ùúûü]/g, "u"],
+  [/[ýÿ]/g, "y"], [/ñ/g, "n"], [/ç/g, "c"], [/ß/g, "ss"],
+];
+
+const generateSlug = (title: string): string => {
+  let s = title
+    .toLowerCase()
+    .replace(/\s*\|\s*aiga\b.*/i, "")  // strip "| AIGA …" import artefact
+    .replace(/[''`]/g, "");            // collega's → collegas, not collega-s
+  for (const [pattern, replacement] of SLUG_DIACRITICS) s = s.replace(pattern, replacement);
+  return s.replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+};
 
 export default function AdminClient() {
   const router = useRouter();

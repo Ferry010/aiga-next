@@ -1,6 +1,6 @@
 'use client';
 import Link from "next/link";
-import { AlertTriangle, FileX, Clock, HelpCircle, Play, Award, Users, Check } from "lucide-react";
+import { AlertTriangle, ChevronDown, FileX, Clock, HelpCircle, Play, Award, Users, Check } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import { motion } from "framer-motion";
@@ -8,7 +8,6 @@ import { useReduceMotion } from "@/hooks/use-reduce-motion";
 import TrainerSection from "@/components/TrainerSection";
 import SocialProof from "@/components/SocialProof";
 import DefinitionBlock from "@/components/DefinitionBlock";
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { useState, useRef, useEffect } from "react";
 
 const faqItems = [
@@ -360,18 +359,17 @@ export default function HomePageClient() {
             </h2>
           </AnimatedSection>
           <AnimatedSection delay={0.1} className="mt-10">
-            <Accordion type="single" collapsible className="w-full">
+            <div className="w-full">
               {faqItems.map((item, i) => (
-                <AccordionItem key={i} value={`faq-${i}`} className="border-border">
-                  <AccordionTrigger className="text-left text-foreground font-semibold text-[15px] hover:no-underline">
-                    {item.q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed">
-                    {item.a}
-                  </AccordionContent>
-                </AccordionItem>
+                <details key={i} className="group border-b border-border">
+                  <summary className="flex items-center justify-between py-4 text-foreground font-semibold text-[15px] cursor-pointer list-none">
+                    <span>{item.q}</span>
+                    <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180" />
+                  </summary>
+                  <p className="text-muted-foreground leading-relaxed pb-4">{item.a}</p>
+                </details>
               ))}
-            </Accordion>
+            </div>
           </AnimatedSection>
         </div>
       </section>

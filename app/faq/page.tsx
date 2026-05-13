@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import { ChevronDown } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
   title: "Veelgestelde Vragen over AI-Geletterdheid & AI Act | AIGA",
@@ -55,14 +55,17 @@ export default function FaqPage() {
         <section className="pb-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <AnimatedSection delay={0.1}>
-              <Accordion type="single" collapsible className="space-y-3">
+              <div className="space-y-3">
                 {faqItems.map((item, i) => (
-                  <AccordionItem key={i} value={`faq-${i}`} className="bg-card border border-border rounded-xl px-6 data-[state=open]:neon-card-top">
-                    <AccordionTrigger className="text-foreground hover:no-underline text-left font-semibold py-5">{item.q}</AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">{item.a}</AccordionContent>
-                  </AccordionItem>
+                  <details key={i} className="group bg-card border border-border rounded-xl px-6 open:neon-card-top">
+                    <summary className="flex items-center justify-between py-5 font-semibold text-foreground cursor-pointer list-none">
+                      <span>{item.q}</span>
+                      <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180" />
+                    </summary>
+                    <p className="text-muted-foreground pb-5 leading-relaxed">{item.a}</p>
+                  </details>
                 ))}
-              </Accordion>
+              </div>
             </AnimatedSection>
           </div>
         </section>

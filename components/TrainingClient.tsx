@@ -172,6 +172,12 @@ export default function TrainingClient() {
               </AccordionItem>
             ))}
           </Accordion>
+          <p className="mt-6 text-sm text-muted-foreground">
+            Oriënteer je nog?{" "}
+            <Link href="/vergelijken/aiga-vs-pwc-academy" className="text-primary font-medium hover:underline">
+              Vergelijken met PwC Academy →
+            </Link>
+          </p>
         </div>
       </section>
 

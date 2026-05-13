@@ -29,6 +29,8 @@ const staticRoutes: Array<{ url: string; changeFrequency: MetadataRoute.Sitemap[
   { url: `${BASE_URL}/tools/downloads/ai-beleid-template`,               changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/kenniscentrum/ai-begrippen`,                        changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/kenniscentrum/eu-ai-act-in-1-a4`,                  changeFrequency: "monthly", priority: 0.6 },
+  { url: `${BASE_URL}/vergelijken`,                                        changeFrequency: "monthly", priority: 0.7 },
+  { url: `${BASE_URL}/vergelijken/aiga-vs-pwc-academy`,                   changeFrequency: "monthly", priority: 0.8 },
   { url: `${BASE_URL}/privacyverklaring`,                                  changeFrequency: "yearly",  priority: 0.3 },
   { url: `${BASE_URL}/licentie`,                                           changeFrequency: "yearly",  priority: 0.3 },
 ];

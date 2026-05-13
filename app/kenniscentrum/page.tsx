@@ -15,6 +15,35 @@ export const metadata: Metadata = {
   },
 };
 
+const staticArticles = [
+  {
+    id: "static-checklist-2026",
+    title: "Hoe kies je de juiste AI-geletterdheid training? Een checklist voor 2026.",
+    category: "AI-geletterdheid uitgelegd",
+    url: "/kenniscentrum/ai-geletterdheid-training-kiezen-checklist-2026",
+    image_url: "/assets/artikel-checklist-header.svg",
+    content: null,
+    slug: "ai-geletterdheid-training-kiezen-checklist-2026",
+    labels: ["Checklist", "Buyer's guide", "EU AI Act", "Training kiezen"],
+    published_date: "2026-05-13",
+    read_time_minutes: 8,
+    updated_at: "2026-05-13T00:00:00Z",
+  },
+  {
+    id: "static-landschap-nl",
+    title: "Het Nederlandse AI-geletterdheid training landschap: 6 categorieën, en wat ze waard zijn",
+    category: "AI-geletterdheid uitgelegd",
+    url: "/kenniscentrum/ai-geletterdheid-training-landschap-nederland",
+    image_url: "/assets/artikel-landschap-header.svg",
+    content: null,
+    slug: "ai-geletterdheid-training-landschap-nederland",
+    labels: ["Landschap", "Marktoverzicht", "Vergelijking", "Categorieën"],
+    published_date: "2026-05-13",
+    read_time_minutes: 7,
+    updated_at: "2026-05-13T00:00:00Z",
+  },
+];
+
 export default async function KenniscentrumPage() {
   const supabase = createServerClient();
   const { data: articles } = await supabase
@@ -23,7 +52,12 @@ export default async function KenniscentrumPage() {
     .eq("published", true)
     .order("updated_at", { ascending: false, nullsFirst: false });
 
-  const articleList = articles || [];
+  const articleList = [
+    ...staticArticles,
+    ...(articles || []).filter(
+      (a) => !staticArticles.some((s) => s.slug === a.slug)
+    ),
+  ];
 
   const jsonLd = {
     "@context": "https://schema.org",

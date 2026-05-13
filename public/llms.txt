@@ -1,0 +1,47 @@
+# AI Geletterdheid Academy (AIGA)
+
+> AIGA helpt Nederlandse organisaties voldoen aan de EU AI Act via gecertificeerde online AI-geletterdheid training voor teams en in-company masterclasses voor directie en management.
+
+Opgericht door Ferry Hoes (AI-expert, keynote spreker, winnaar Anti-Discriminatie AI-Hackathon Nederlandse Overheid 2020), onderdeel van Brand Humanizing Institute.
+
+## Training & Certificering
+
+- [AI-Geletterdheid Training voor Teams](https://aigeletterdheid.academy/training): Online selfpaced training van 2–3 uur. Leidt tot het AI Literacy Practitioner certificaat (audit-proof, deelbaar via LinkedIn). Voldoet aan EU AI Act Artikel 4. Vanaf €249 per deelnemer.
+- [AI Masterclass voor Leidinggevenden](https://aigeletterdheid.academy/masterclass): Besloten in-company masterclass voor directie en management. Gegeven door Ferry Hoes. Op locatie of online. Gratis bij 50+ seats. Vanaf €495 per deelnemer.
+- [AI Gereedheidscan](https://aigeletterdheid.academy/gereedheidscan): Gratis online scan (3 minuten) om de AI-readiness van jouw organisatie te meten op vijf dimensies. Inclusief gepersonaliseerd actieplan.
+
+## Kenniscentrum
+
+- [Kenniscentrum overzicht](https://aigeletterdheid.academy/kenniscentrum): Alle artikelen over AI-geletterdheid, EU AI Act en verantwoord AI-gebruik.
+- [AI Begrippen Glossarium](https://aigeletterdheid.academy/kenniscentrum/ai-begrippen): Uitleg van de belangrijkste AI- en EU AI Act-begrippen.
+- [EU AI Act in 1 A4](https://aigeletterdheid.academy/kenniscentrum/eu-ai-act-in-1-a4): Beknopte samenvatting van de EU AI Act.
+- [Meer artikelen](https://aigeletterdheid.academy/llms-full.txt): Zie llms-full.txt voor alle kenniscentrum-artikelen met volledige inhoud.
+
+## Tools
+
+- [AI Boetecalculator](https://aigeletterdheid.academy/tools/boetecalculator): Bereken de mogelijke boete bij niet-naleving van de EU AI Act (tot €35 miljoen of 7% wereldwijde omzet).
+- [AI Risicoscan](https://aigeletterdheid.academy/tools/ai-risicoscan): Scan een AI-systeem op risico's conform de risicocategorieën van de EU AI Act.
+- [AI Use Case Checker](https://aigeletterdheid.academy/ai-use-case-checker): Controleer of een specifieke AI-toepassing onder de AI Act valt en welke verplichtingen gelden.
+
+## Downloads
+
+- [EU AI Act Compliance Checklist](https://aigeletterdheid.academy/tools/downloads/ai-act-compliance-checklist): Gratis downloadbare checklist voor AI Act compliance.
+- [AI Beleid Opstellen](https://aigeletterdheid.academy/tools/downloads/ai-beleid-opstellen): Gratis template voor het opstellen van organisatorisch AI-beleid.
+- [AI Beleid Template](https://aigeletterdheid.academy/tools/downloads/ai-beleid-template): Kant-en-klaar AI-beleidsdocument.
+
+## SEO-landingspagina's
+
+- [AI-Geletterdheid Nederland](https://aigeletterdheid.academy/ai-geletterdheid-nederland)
+- [AI Training voor Bedrijven](https://aigeletterdheid.academy/ai-training-voor-bedrijven)
+- [AI Act Compliance Nederland](https://aigeletterdheid.academy/ai-act-compliance-nederland)
+- [AI Cursus Medewerkers](https://aigeletterdheid.academy/ai-cursus-medewerkers)
+- [AI Tools onder de AI Act](https://aigeletterdheid.academy/ai-tools-onder-de-ai-act)
+- [AI Act Deadlines](https://aigeletterdheid.academy/ai-act-deadlines)
+
+## Over AIGA
+
+- [Over AIGA](https://aigeletterdheid.academy/over-aiga): Achtergrond, missie en het team achter AI Geletterdheid Academy.
+- [FAQ](https://aigeletterdheid.academy/faq): Veelgestelde vragen over AI-geletterdheid, de EU AI Act en onze training.
+- [Contact](https://aigeletterdheid.academy/contact): Offerte aanvragen of meer informatie opvragen.
+- [Privacyverklaring](https://aigeletterdheid.academy/privacyverklaring)
+- [Licentie & Gebruiksvoorwaarden](https://aigeletterdheid.academy/licentie)

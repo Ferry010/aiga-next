@@ -14,10 +14,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     .eq("slug", slug)
     .single();
 
-  if (!article) return { title: "Artikel niet gevonden" };
+  if (!article) return { title: "Artikel niet gevonden | AIGA" };
 
   return {
-    title: article.title,
+    title: `${article.title} | AIGA`,
     description: article.meta_description || undefined,
     keywords: article.seo_keywords || undefined,
     openGraph: {

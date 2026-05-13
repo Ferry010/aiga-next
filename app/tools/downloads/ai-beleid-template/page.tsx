@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function AiBeleidTemplateRedirect() {
-  redirect("/tools/downloads/ai-beleid-opstellen");
+  permanentRedirect("/tools/downloads/ai-beleid-opstellen");
 }

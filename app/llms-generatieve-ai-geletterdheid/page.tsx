@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function LlmsGeneratieveAiGeletterdheidRedirect() {
-  redirect("/kenniscentrum/llms-generatieve-ai-geletterdheid");
+  permanentRedirect("/kenniscentrum/llms-generatieve-ai-geletterdheid");
 }

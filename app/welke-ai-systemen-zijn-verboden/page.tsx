@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function WelkeAiSystemenZijnVerbodenRedirect() {
-  redirect("/kenniscentrum/welke-ai-systemen-zijn-verboden");
+  permanentRedirect("/kenniscentrum/welke-ai-systemen-zijn-verboden");
 }

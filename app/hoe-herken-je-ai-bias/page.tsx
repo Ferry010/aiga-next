@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function HoeHerkenJeAiBiasRedirect() {
-  redirect("/kenniscentrum/hoe-herken-je-ai-bias");
+  permanentRedirect("/kenniscentrum/hoe-herken-je-ai-bias");
 }

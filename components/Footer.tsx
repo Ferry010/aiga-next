@@ -17,7 +17,6 @@ const seoLinks = [
   { to: "/ai-act-compliance-nederland", label: "AI Act Compliance" },
   { to: "/ai-cursus-medewerkers", label: "AI Cursus Medewerkers" },
   { to: "/ai-act-deadlines", label: "AI Act Deadlines" },
-  { to: "/vergelijken", label: "Vergelijken" },
 ];
 
 const Footer = () => (

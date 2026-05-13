@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import BreadcrumbNav from "@/components/BreadcrumbNav";
 
 export const metadata: Metadata = {
   title: "Licentie & Gebruiksvoorwaarden | AI Geletterdheid Academy",
@@ -10,7 +11,9 @@ export const metadata: Metadata = {
 
 export default function LicentiePage() {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <>
+      <BreadcrumbNav items={[{ label: "Home", href: "/" }, { label: "Licentie & Gebruiksvoorwaarden" }]} />
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <article className="prose prose-neutral max-w-none dark:prose-invert">
         <h1>Licentie &amp; Gebruiksvoorwaarden</h1>
         <p className="text-muted-foreground">
@@ -118,5 +121,6 @@ export default function LicentiePage() {
         </p>
       </article>
     </div>
+    </>
   );
 }

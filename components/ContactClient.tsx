@@ -1,6 +1,7 @@
 'use client';
 import { useState } from "react";
 import { Phone, Mail } from "lucide-react";
+import BreadcrumbNav from "@/components/BreadcrumbNav";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -59,7 +60,8 @@ export default function ContactClient() {
 
   return (
     <div className="min-h-screen">
-      <section className="pt-32 pb-24">
+      <BreadcrumbNav items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
+      <section className="pt-12 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="CONTACT" />

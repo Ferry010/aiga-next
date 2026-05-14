@@ -91,8 +91,10 @@ export default function ContactClient() {
                     { name: "telefoon", label: "Telefoonnummer", required: false, type: "tel" },
                   ].map((f) => (
                     <div key={f.name}>
-                      <label className="text-sm text-muted-foreground mb-1 block">{f.label} {f.required && <span className="text-neon-purple">*</span>}</label>
+                      <label htmlFor={`contact-${f.name}`} className="text-sm text-muted-foreground mb-1 block">{f.label} {f.required && <span className="text-neon-purple">*</span>}</label>
                       <input
+                        id={`contact-${f.name}`}
+                        name={f.name}
                         type={f.type || "text"}
                         required={f.required}
                         value={form[f.name as keyof typeof form]}
@@ -102,8 +104,8 @@ export default function ContactClient() {
                     </div>
                   ))}
                   <div>
-                    <label className="text-sm text-muted-foreground mb-1 block">Waarmee kan ik je helpen? <span className="text-neon-purple">*</span></label>
-                    <select required value={form.hulp} onChange={(e) => setForm({ ...form, hulp: e.target.value })} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300">
+                    <label htmlFor="contact-hulp" className="text-sm text-muted-foreground mb-1 block">Waarmee kan ik je helpen? <span className="text-neon-purple">*</span></label>
+                    <select id="contact-hulp" name="hulp" required value={form.hulp} onChange={(e) => setForm({ ...form, hulp: e.target.value })} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300">
                       <option value="">Selecteer...</option>
                       <option value="training">Online Training</option>
                       <option value="masterclass">Masterclass</option>
@@ -112,8 +114,8 @@ export default function ContactClient() {
                     </select>
                   </div>
                   <div>
-                    <label className="text-sm text-muted-foreground mb-1 block">Aantal seats</label>
-                    <select value={form.aantal} onChange={(e) => setForm({ ...form, aantal: e.target.value })} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300">
+                    <label htmlFor="contact-aantal" className="text-sm text-muted-foreground mb-1 block">Aantal seats</label>
+                    <select id="contact-aantal" name="aantal" value={form.aantal} onChange={(e) => setForm({ ...form, aantal: e.target.value })} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300">
                       <option value="">Selecteer...</option>
                       <option value="1">1</option>
                       <option value="2-49">2-49</option>
@@ -122,8 +124,8 @@ export default function ContactClient() {
                     </select>
                   </div>
                   <div>
-                    <label className="text-sm text-muted-foreground mb-1 block">Vragen of opmerkingen</label>
-                    <textarea value={form.opmerkingen} onChange={(e) => setForm({ ...form, opmerkingen: e.target.value })} rows={4} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300 resize-none" />
+                    <label htmlFor="contact-opmerkingen" className="text-sm text-muted-foreground mb-1 block">Vragen of opmerkingen</label>
+                    <textarea id="contact-opmerkingen" name="opmerkingen" value={form.opmerkingen} onChange={(e) => setForm({ ...form, opmerkingen: e.target.value })} rows={4} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300 resize-none" />
                   </div>
                   <button type="submit" disabled={submitting} className="btn-neon w-full py-3 rounded-lg disabled:opacity-50">
                     {submitting ? "Bezig met versturen..." : "Verstuur bericht"}

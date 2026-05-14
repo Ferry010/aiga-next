@@ -26,6 +26,13 @@ export const metadata: Metadata = {
   title: "AI Geletterdheid Academy | EU AI Act Training voor Organisaties",
   description:
     "Bereid je organisatie voor op de EU AI Act. Praktische AI-trainingen en certificering voor teams, managers en bestuurders.",
+  icons: {
+    icon: [
+      { url: "/assets/AIGA_transparent.png", type: "image/png" },
+    ],
+    apple: "/assets/AIGA_transparent.png",
+    shortcut: "/assets/AIGA_transparent.png",
+  },
   openGraph: {
     siteName: "AI Geletterdheid Academy",
     locale: "nl_NL",

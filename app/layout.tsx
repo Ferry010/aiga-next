@@ -28,10 +28,10 @@ export const metadata: Metadata = {
     "Bereid je organisatie voor op de EU AI Act. Praktische AI-trainingen en certificering voor teams, managers en bestuurders.",
   icons: {
     icon: [
-      { url: "/assets/AIGA_transparent.png", type: "image/png" },
+      { url: "/favicon.jpg", type: "image/jpeg" },
     ],
-    apple: "/assets/AIGA_transparent.png",
-    shortcut: "/assets/AIGA_transparent.png",
+    apple: "/favicon.jpg",
+    shortcut: "/favicon.jpg",
   },
   openGraph: {
     siteName: "AI Geletterdheid Academy",

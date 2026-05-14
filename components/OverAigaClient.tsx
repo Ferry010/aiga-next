@@ -92,6 +92,9 @@ export default function OverAigaClient() {
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
               AIGA is opgericht met een duidelijk doel: organisaties helpen om serieus, verantwoord en strategisch met AI om te gaan.
             </p>
+            <a href="#contact" className="btn-neon inline-block mt-8 px-7 py-3 rounded-lg text-sm font-semibold">
+              Neem contact op
+            </a>
           </AnimatedSection>
         </div>
       </section>
@@ -111,95 +114,8 @@ export default function OverAigaClient() {
         </div>
       </section>
 
-      {/* Oprichter */}
-      <section className="py-24 bg-card">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="OPRICHTER & TRAINER" />
-            <div className="flex flex-col sm:flex-row gap-8 mt-8">
-              <div className="shrink-0">
-                <img
-                  src="/assets/ferry-hoes.gif"
-                  alt="Ferry Hoes, AI-expert en keynote spreker"
-                  className="w-48 h-48 rounded-2xl object-cover"
-                  loading="lazy"
-                  width={192}
-                  height={192}
-                />
-              </div>
-              <div>
-                <h2 className="text-2xl font-display font-bold text-foreground">Ferry Hoes</h2>
-                <p className="text-sm text-primary font-medium mt-1">AI-expert, Keynote Spreker & Mede-oprichter AIGA</p>
-                <a href="https://www.linkedin.com/in/ferryhoes" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline inline-block mt-2">
-                  Bekijk LinkedIn-profiel →
-                </a>
-              </div>
-            </div>
-            <div className="mt-8 space-y-4 text-muted-foreground leading-relaxed">
-              <p>Ferry Hoes is een van de meest gevraagde sprekers en trainers op het gebied van kunstmatige intelligentie in Nederland. Als AI-expert en mede-oprichter van Brand Humanizing combineert hij diepgaande technische kennis met een uniek vermogen om complexe onderwerpen begrijpelijk te maken voor elk publiek.</p>
-              <p>Ferry staat meermaals per maand op het podium voor toonaangevende organisaties in heel Nederland. Zijn klanten omvatten a.s.r. Verzekeringen, VodafoneZiggo, meerdere Nederlandse ministeries, zorginstellingen, onderwijsorganisaties en MKB-bedrijven.</p>
-              <p>In 2020 won Ferry de prestigieuze Anti-Discriminatie AI-Hackathon, georganiseerd door de Nederlandse overheid.</p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Drie principes */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="WAT ONS ONDERSCHEIDT" />
-            <h2 className="text-3xl font-display font-semibold text-foreground mt-2">
-              Drie principes.<br /><span className="text-primary">Een richting.</span>
-            </h2>
-          </AnimatedSection>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            {[
-              { title: "Praktisch boven theoretisch", body: "Elke les is gekoppeld aan situaties die medewerkers echt tegenkomen op de werkvloer." },
-              { title: "Menselijk boven technisch", body: "AI-geletterdheid gaat niet over code. Het gaat over begrip, verantwoordelijkheid en vertrouwen." },
-              { title: "Toepasbaar boven compliant", body: "We helpen organisaties niet alleen aan een certificaat. We helpen ze een cultuur bouwen waarin AI slim en verantwoord wordt ingezet." },
-            ].map((c) => (
-              <StaggerItem key={c.title}>
-                <div className="bg-background border border-border rounded-2xl p-10 hover:border-neon-purple/40 neon-glow transition-all duration-300 h-full neon-card-top">
-                  <h3 className="text-lg font-semibold text-foreground mb-3">{c.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{c.body}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* Kenniscentrum articles */}
-      {allArticles.length > 0 && (
-        <section className="py-24 bg-card">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <AnimatedSection>
-              <SectionLabel text="GEPUBLICEERD DOOR FERRY HOES" />
-              <h2 className="text-2xl font-display font-semibold text-foreground mt-2 mb-6">
-                Artikelen in het Kenniscentrum
-              </h2>
-              <ul className="space-y-3">
-                {allArticles.filter(a => a.slug).map((a) => (
-                  <li key={a.slug} className="border-b border-border pb-3 last:border-0 last:pb-0">
-                    <Link href={`/kenniscentrum/${a.slug}`} className="text-sm text-primary hover:underline leading-snug" rel="author">
-                      {a.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-8">
-                <Link href="/kenniscentrum" className="text-sm font-semibold text-primary hover:underline">
-                  Bekijk alle artikelen in het Kenniscentrum →
-                </Link>
-              </div>
-            </AnimatedSection>
-          </div>
-        </section>
-      )}
-
       {/* Contact */}
-      <section className="py-24">
+      <section id="contact" className="py-24 bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="CONTACT" />
@@ -215,7 +131,7 @@ export default function OverAigaClient() {
           <div className="mt-12 max-w-2xl">
             <AnimatedSection delay={0.1}>
               {submitted ? (
-                <div className="bg-card border border-neon-purple/30 rounded-2xl p-10 text-center">
+                <div className="bg-background border border-neon-purple/30 rounded-2xl p-10 text-center">
                   <h3 className="text-xl font-semibold text-foreground mb-2">Bedankt voor je bericht!</h3>
                   <p className="text-muted-foreground">We nemen zo snel mogelijk contact met je op.</p>
                 </div>
@@ -298,6 +214,96 @@ export default function OverAigaClient() {
           </div>
         </div>
       </section>
+
+      {/* Oprichter */}
+      <section className="py-24">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection>
+            <SectionLabel text="OPRICHTER & TRAINER" />
+            <div className="flex flex-col sm:flex-row gap-8 mt-8">
+              <div className="shrink-0">
+                <img
+                  src="/assets/ferry-hoes.gif"
+                  alt="Ferry Hoes, AI-expert en keynote spreker"
+                  className="w-48 h-48 rounded-2xl object-cover"
+                  loading="lazy"
+                  width={192}
+                  height={192}
+                />
+              </div>
+              <div>
+                <h2 className="text-2xl font-display font-bold text-foreground">Ferry Hoes</h2>
+                <p className="text-sm text-primary font-medium mt-1">AI-expert, Keynote Spreker & Mede-oprichter AIGA</p>
+                <a href="https://www.linkedin.com/in/ferryhoes" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline inline-block mt-2">
+                  Bekijk LinkedIn-profiel →
+                </a>
+              </div>
+            </div>
+            <div className="mt-8 space-y-4 text-muted-foreground leading-relaxed">
+              <p>Ferry Hoes is een van de meest gevraagde sprekers en trainers op het gebied van kunstmatige intelligentie in Nederland. Als AI-expert en mede-oprichter van Brand Humanizing combineert hij diepgaande technische kennis met een uniek vermogen om complexe onderwerpen begrijpelijk te maken voor elk publiek.</p>
+              <p>Ferry staat meermaals per maand op het podium voor toonaangevende organisaties in heel Nederland. Zijn klanten omvatten a.s.r. Verzekeringen, VodafoneZiggo, meerdere Nederlandse ministeries, zorginstellingen, onderwijsorganisaties en MKB-bedrijven.</p>
+              <p>In 2020 won Ferry de prestigieuze Anti-Discriminatie AI-Hackathon, georganiseerd door de Nederlandse overheid.</p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Drie principes */}
+      <section className="py-24 bg-card">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection>
+            <SectionLabel text="WAT ONS ONDERSCHEIDT" />
+            <h2 className="text-3xl font-display font-semibold text-foreground mt-2">
+              Drie principes.<br /><span className="text-primary">Een richting.</span>
+            </h2>
+          </AnimatedSection>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            {[
+              { title: "Praktisch boven theoretisch", body: "Elke les is gekoppeld aan situaties die medewerkers echt tegenkomen op de werkvloer." },
+              { title: "Menselijk boven technisch", body: "AI-geletterdheid gaat niet over code. Het gaat over begrip, verantwoordelijkheid en vertrouwen." },
+              { title: "Toepasbaar boven compliant", body: "We helpen organisaties niet alleen aan een certificaat. We helpen ze een cultuur bouwen waarin AI slim en verantwoord wordt ingezet." },
+            ].map((c) => (
+              <StaggerItem key={c.title}>
+                <div className="bg-background border border-border rounded-2xl p-10 hover:border-neon-purple/40 neon-glow transition-all duration-300 h-full neon-card-top">
+                  <p className="text-lg font-semibold text-foreground mb-3">{c.title}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{c.body}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Kenniscentrum articles */}
+      {allArticles.length > 0 && (
+        <section className="py-24">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedSection>
+              <SectionLabel text="GEPUBLICEERD DOOR FERRY HOES" />
+              <h2 className="text-2xl font-display font-semibold text-foreground mt-2 mb-6">
+                Artikelen in het Kenniscentrum
+              </h2>
+              <ul className="space-y-3">
+                {allArticles.filter(a => a.slug).map((a) => (
+                  <li key={a.slug} className="border-b border-border pb-3 last:border-0 last:pb-0">
+                    <Link href={`/kenniscentrum/${a.slug}`} className="text-sm text-primary hover:underline leading-snug" rel="author">
+                      {a.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <Link href="/kenniscentrum" className="text-sm font-semibold text-primary hover:underline">
+                  Bekijk alle artikelen →
+                </Link>
+                <a href="#contact" className="btn-neon-outline px-6 py-2.5 rounded-lg text-sm font-semibold">
+                  Neem contact op ↑
+                </a>
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
+      )}
     </div>
   );
 }

@@ -116,19 +116,19 @@ export default function OverAigaClient() {
 
       {/* Contact */}
       <section id="contact" className="py-24 bg-card">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="CONTACT" />
             <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground leading-tight mt-4">
               Klaar om jouw team te certificeren?<br />
               <span className="neon-text">Laten we praten.</span>
             </h2>
-            <p className="mt-4 text-muted-foreground max-w-xl">
+            <p className="mt-4 text-muted-foreground">
               Vul het formulier in en we nemen contact met je op met een offerte op maat. Geen verplichtingen.
             </p>
           </AnimatedSection>
 
-          <div className="mt-12 max-w-2xl">
+          <div className="mt-12">
             <AnimatedSection delay={0.1}>
               {submitted ? (
                 <div className="bg-background border border-neon-purple/30 rounded-2xl p-10 text-center">

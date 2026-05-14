@@ -3,17 +3,25 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
-import TrainerSection from "@/components/TrainerSection";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import { createClient } from "@/lib/supabase/client";
+import { toast } from "sonner";
 
 interface ArticleLink {
   title: string;
   slug: string | null;
 }
 
+const STATIC_ARTICLES: ArticleLink[] = [
+  { title: "Hoe kies je de juiste AI-geletterdheid training? Een checklist voor 2026.", slug: "ai-geletterdheid-training-kiezen-checklist-2026" },
+  { title: "Het Nederlandse AI-geletterdheid training landschap: 6 categorieën, en wat ze waard zijn", slug: "ai-geletterdheid-training-landschap-nederland" },
+];
+
 export default function OverAigaClient() {
   const [articles, setArticles] = useState<ArticleLink[]>([]);
+  const [form, setForm] = useState({ naam: "", organisatie: "", functie: "", email: "", telefoon: "", hulp: "", aantal: "", opmerkingen: "" });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     const supabase = createClient();
@@ -21,14 +29,58 @@ export default function OverAigaClient() {
       .from("articles")
       .select("title, slug")
       .eq("published", true)
-      .order("sort_order", { ascending: true })
+      .order("updated_at", { ascending: false })
       .then(({ data }) => setArticles((data as ArticleLink[]) || []));
   }, []);
+
+  const allArticles = [
+    ...STATIC_ARTICLES,
+    ...(articles.filter(a => a.slug && !STATIC_ARTICLES.some(s => s.slug === a.slug))),
+  ];
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitting(true);
+    const supabase = createClient();
+
+    const { error } = await supabase.from("contact_submissions").insert({
+      naam: form.naam,
+      organisatie: form.organisatie,
+      functie: form.functie || null,
+      email: form.email,
+      telefoon: form.telefoon || null,
+      hulp: form.hulp,
+      aantal: form.aantal || null,
+      opmerkingen: form.opmerkingen || null,
+    });
+
+    if (error) {
+      setSubmitting(false);
+      toast.error("Er ging iets mis bij het versturen. Probeer het opnieuw.");
+      return;
+    }
+
+    supabase.functions.invoke("notify-new-submission", {
+      body: {
+        type: "contact",
+        naam: form.naam,
+        organisatie: form.organisatie,
+        email: form.email,
+        telefoon: form.telefoon || null,
+        extra: `Hulp: ${form.hulp}${form.aantal ? ` · Aantal: ${form.aantal}` : ""}`,
+      },
+    }).catch(console.error);
+
+    setSubmitting(false);
+    setSubmitted(true);
+    toast.success("Bericht verstuurd! We nemen snel contact met je op.");
+  };
 
   return (
     <div className="min-h-screen">
       <BreadcrumbNav items={[{ label: "Home", href: "/" }, { label: "Over AIGA" }]} />
 
+      {/* Hero */}
       <section className="pt-12 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
@@ -44,6 +96,7 @@ export default function OverAigaClient() {
         </div>
       </section>
 
+      {/* Ons verhaal */}
       <section className="py-24">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
@@ -58,6 +111,7 @@ export default function OverAigaClient() {
         </div>
       </section>
 
+      {/* Oprichter */}
       <section className="py-24 bg-card">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
@@ -90,29 +144,8 @@ export default function OverAigaClient() {
         </div>
       </section>
 
-      {articles.length > 0 && (
-        <section className="py-24 bg-card">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <AnimatedSection>
-              <SectionLabel text="GEPUBLICEERD DOOR FERRY HOES" />
-              <h2 className="text-2xl font-display font-semibold text-foreground mt-2 mb-6">
-                Artikelen in het Kenniscentrum
-              </h2>
-              <ul className="space-y-2">
-                {articles.filter(a => a.slug).map((a) => (
-                  <li key={a.slug}>
-                    <Link href={`/kenniscentrum/${a.slug}`} className="text-sm text-primary hover:underline" rel="author">
-                      {a.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </AnimatedSection>
-          </div>
-        </section>
-      )}
-
-      <section className="py-24 bg-card">
+      {/* Drie principes */}
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="WAT ONS ONDERSCHEIDT" />
@@ -134,6 +167,135 @@ export default function OverAigaClient() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* Kenniscentrum articles */}
+      {allArticles.length > 0 && (
+        <section className="py-24 bg-card">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedSection>
+              <SectionLabel text="GEPUBLICEERD DOOR FERRY HOES" />
+              <h2 className="text-2xl font-display font-semibold text-foreground mt-2 mb-6">
+                Artikelen in het Kenniscentrum
+              </h2>
+              <ul className="space-y-3">
+                {allArticles.filter(a => a.slug).map((a) => (
+                  <li key={a.slug} className="border-b border-border pb-3 last:border-0 last:pb-0">
+                    <Link href={`/kenniscentrum/${a.slug}`} className="text-sm text-primary hover:underline leading-snug" rel="author">
+                      {a.title}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8">
+                <Link href="/kenniscentrum" className="text-sm font-semibold text-primary hover:underline">
+                  Bekijk alle artikelen in het Kenniscentrum →
+                </Link>
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
+      )}
+
+      {/* Contact */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection>
+            <SectionLabel text="CONTACT" />
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground leading-tight mt-4">
+              Klaar om jouw team te certificeren?<br />
+              <span className="neon-text">Laten we praten.</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground max-w-xl">
+              Vul het formulier in en we nemen contact met je op met een offerte op maat. Geen verplichtingen.
+            </p>
+          </AnimatedSection>
+
+          <div className="mt-12 max-w-2xl">
+            <AnimatedSection delay={0.1}>
+              {submitted ? (
+                <div className="bg-card border border-neon-purple/30 rounded-2xl p-10 text-center">
+                  <h3 className="text-xl font-semibold text-foreground mb-2">Bedankt voor je bericht!</h3>
+                  <p className="text-muted-foreground">We nemen zo snel mogelijk contact met je op.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {[
+                    { name: "naam", label: "Naam", required: true },
+                    { name: "organisatie", label: "Organisatie", required: true },
+                    { name: "functie", label: "Functie", required: false },
+                    { name: "email", label: "E-mailadres", required: true, type: "email" },
+                    { name: "telefoon", label: "Telefoonnummer", required: false, type: "tel" },
+                  ].map((f) => (
+                    <div key={f.name}>
+                      <label htmlFor={`over-${f.name}`} className="text-sm text-muted-foreground mb-1 block">
+                        {f.label} {f.required && <span className="text-neon-purple">*</span>}
+                      </label>
+                      <input
+                        id={`over-${f.name}`}
+                        name={f.name}
+                        type={f.type || "text"}
+                        required={f.required}
+                        value={form[f.name as keyof typeof form]}
+                        onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
+                        className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300"
+                      />
+                    </div>
+                  ))}
+                  <div>
+                    <label htmlFor="over-hulp" className="text-sm text-muted-foreground mb-1 block">
+                      Waarmee kan ik je helpen? <span className="text-neon-purple">*</span>
+                    </label>
+                    <select
+                      id="over-hulp"
+                      name="hulp"
+                      required
+                      value={form.hulp}
+                      onChange={(e) => setForm({ ...form, hulp: e.target.value })}
+                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300"
+                    >
+                      <option value="">Selecteer...</option>
+                      <option value="training">Online Training</option>
+                      <option value="masterclass">Masterclass</option>
+                      <option value="beide">Beide</option>
+                      <option value="anders">Anders</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="over-aantal" className="text-sm text-muted-foreground mb-1 block">Aantal seats</label>
+                    <select
+                      id="over-aantal"
+                      name="aantal"
+                      value={form.aantal}
+                      onChange={(e) => setForm({ ...form, aantal: e.target.value })}
+                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300"
+                    >
+                      <option value="">Selecteer...</option>
+                      <option value="1">1</option>
+                      <option value="2-49">2-49</option>
+                      <option value="50-99">50-99</option>
+                      <option value="100+">100+</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="over-opmerkingen" className="text-sm text-muted-foreground mb-1 block">Vragen of opmerkingen</label>
+                    <textarea
+                      id="over-opmerkingen"
+                      name="opmerkingen"
+                      value={form.opmerkingen}
+                      onChange={(e) => setForm({ ...form, opmerkingen: e.target.value })}
+                      rows={4}
+                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300 resize-none"
+                    />
+                  </div>
+                  <button type="submit" disabled={submitting} className="btn-neon w-full py-3 rounded-lg disabled:opacity-50">
+                    {submitting ? "Bezig met versturen..." : "Verstuur bericht"}
+                  </button>
+                </form>
+              )}
+            </AnimatedSection>
+          </div>
         </div>
       </section>
     </div>

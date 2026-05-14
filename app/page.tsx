@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import HomePageClient from "@/components/HomePageClient";
 
 export const metadata: Metadata = {
-  title: "AI Geletterdheid Training Nederland | AIGA Academy | AI Act Compliant",
+  title: "AI Geletterdheid Training voor Teams | AIGA Academy",
   description:
-    "AIGA helpt Nederlandse organisaties voldoen aan de EU AI Act. Gecertificeerde online AI-geletterdheid training voor teams. Audit-proof certificaat. Vanaf 249,- per deelnemer.",
+    "Online AI-geletterdheid training voor Nederlandse organisaties. Voldoe aan de EU AI Act. Audit-proof certificaat. Vanaf 249,- per deelnemer.",
   alternates: { canonical: "https://aigeletterdheid.academy" },
   openGraph: {
-    title: "AI Geletterdheid Training Nederland | AIGA Academy",
+    title: "AI Geletterdheid Training voor Teams | AIGA Academy",
     description:
-      "AIGA helpt Nederlandse organisaties voldoen aan de EU AI Act. Gecertificeerde online AI-geletterdheid training voor teams.",
+      "Online AI-geletterdheid training voor Nederlandse organisaties. Voldoe aan de EU AI Act. Audit-proof certificaat.",
     url: "https://aigeletterdheid.academy",
     images: [{ url: "/og/home.jpg", width: 1200, height: 630, alt: "AI Geletterdheid Academy — gecertificeerde AI-training voor Nederlandse organisaties" }],
   },

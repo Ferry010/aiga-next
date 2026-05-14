@@ -5,8 +5,9 @@ import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/Ani
 import SectionLabel from "@/components/SectionLabel";
 import { motion } from "framer-motion";
 import { useReduceMotion } from "@/hooks/use-reduce-motion";
-import TrainerSection from "@/components/TrainerSection";
-import SocialProof from "@/components/SocialProof";
+import dynamic from "next/dynamic";
+const TrainerSection = dynamic(() => import("@/components/TrainerSection"));
+const SocialProof = dynamic(() => import("@/components/SocialProof"));
 import DefinitionBlock from "@/components/DefinitionBlock";
 import { useState, useRef, useEffect } from "react";
 
@@ -64,12 +65,12 @@ export default function HomePageClient() {
           <div>
             <SectionLabel text="AI GELETTERDHEID VOOR TEAMS" />
             <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-display font-bold text-foreground leading-tight mt-4">
-              AI-geletterdheid voor jouw team.<br />
-              <span className="neon-text">Weet iedereen wat dat betekent?</span>
+              AI-geletterdheid training voor jouw team.<br />
+              <span className="neon-text">Voldoe aan de EU AI Act.</span>
             </h1>
-            <h2 className="text-xl sm:text-2xl font-display font-semibold text-primary mt-4">
+            <p className="text-xl sm:text-2xl font-display font-semibold text-primary mt-4">
               De #1 AI Geletterdheid Training voor Nederlandse Organisaties
-            </h2>
+            </p>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
               Sinds februari 2025 is AI-geletterdheid wettelijk verplicht voor organisaties in de EU. Wij helpen je team voldoen aan de AI Act, met een praktische online training en een digitaal certificaat dat telt bij een audit.
             </p>
@@ -160,7 +161,7 @@ export default function HomePageClient() {
               <StaggerItem key={c.title}>
                 <div className="bg-card border border-border rounded-2xl p-10 hover:border-neon-purple/40 neon-glow transition-all duration-300 group">
                   <c.icon size={24} className="text-neon-purple mb-4" />
-                  <h3 className="text-lg font-semibold text-foreground mb-2">{c.title}</h3>
+                  <p className="text-lg font-semibold text-foreground mb-2">{c.title}</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">{c.body}</p>
                 </div>
               </StaggerItem>
@@ -209,7 +210,7 @@ export default function HomePageClient() {
             ].map((c) => (
               <StaggerItem key={c.title}>
                 <c.icon size={24} className="text-primary mb-4" />
-                <h3 className="text-lg font-semibold text-foreground mb-2">{c.title}</h3>
+                <p className="text-lg font-semibold text-foreground mb-2">{c.title}</p>
                 <p className="text-sm text-muted-foreground leading-relaxed">{c.body}</p>
               </StaggerItem>
             ))}
@@ -236,7 +237,7 @@ export default function HomePageClient() {
               <StaggerItem key={s.step}>
                 <div className="relative">
                   <span className="text-5xl font-mono neon-text font-bold">{s.step}</span>
-                  <h3 className="text-lg font-semibold text-foreground mt-2 mb-2">{s.title}</h3>
+                  <p className="text-lg font-semibold text-foreground mt-2 mb-2">{s.title}</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">{s.body}</p>
                 </div>
               </StaggerItem>

@@ -52,6 +52,17 @@ export default function MasterclassClient() {
       return;
     }
 
+    supabase.functions.invoke("notify-new-submission", {
+      body: {
+        type: "masterclass",
+        naam: form.naam,
+        organisatie: form.organisatie,
+        email: form.email,
+        telefoon: form.telefoon || null,
+        extra: `Type: ${form.sessieType}`,
+      },
+    }).catch(console.error);
+
     setSubmitted(true);
     toast.success("Aanvraag verstuurd! We nemen snel contact met je op.");
   };

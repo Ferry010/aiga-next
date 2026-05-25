@@ -76,6 +76,7 @@ const DownloadLeadDialog = ({ open, onOpenChange, document, onSuccess }: Downloa
   };
 
   const handleGoToDoc = () => {
+    sessionStorage.setItem("doc-access", document);
     setSubmitted(false);
     onOpenChange(false);
     onSuccess();

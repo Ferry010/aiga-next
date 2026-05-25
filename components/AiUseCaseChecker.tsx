@@ -45,8 +45,8 @@ const AiUseCaseChecker = () => {
   const outcome: Outcome = useMemo(() => {
     if (!selectedTool || !selectedUseCase) return null;
     if (outOfScopeTools.includes(selectedTool)) return "out-of-scope";
+    if (alwaysHighRiskTools.includes(selectedTool)) return "high";
     if (highRiskUseCases.has(selectedUseCase)) return "high";
-    if (alwaysHighRiskTools.includes(selectedTool) && highRiskUseCases.has(selectedUseCase)) return "high";
     return "limited";
   }, [selectedTool, selectedUseCase]);
 

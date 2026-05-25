@@ -1,8 +1,12 @@
 'use client';
 
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
+import SendCopyForm from "@/components/SendCopyForm";
+import ShareDocumentButton from "@/components/ShareDocumentButton";
 
 const Placeholder = ({ children }: { children: React.ReactNode }) => (
   <span className="bg-primary/10 px-1 rounded font-mono text-sm text-primary">{children}</span>
@@ -21,6 +25,13 @@ const SectionTitle = ({ number, title }: { number: number; title: string }) => (
 );
 
 export default function AiBeleidstemplateClient() {
+  const router = useRouter();
+  useEffect(() => {
+    if (sessionStorage.getItem("doc-access") !== "template") {
+      router.replace("/tools/downloads/ai-beleid-opstellen");
+    }
+  }, [router]);
+
   return (
     <div className="min-h-screen">
       <div className="print:hidden">
@@ -36,11 +47,15 @@ export default function AiBeleidstemplateClient() {
 
       {/* A4 document */}
       <div className="max-w-[210mm] mx-auto bg-white px-8 sm:px-12 py-10 print:px-[20mm] print:py-[15mm] print:shadow-none shadow-lg my-8 print:my-0">
-        {/* Print button */}
-        <div className="flex justify-end gap-2 mb-6 print:hidden">
-          <Button variant="outline" size="sm" onClick={() => window.print()}>
-            <Printer size={16} /> Print / PDF
-          </Button>
+        {/* Toolbar */}
+        <div className="flex flex-wrap justify-between items-end gap-4 mb-6 print:hidden">
+          <SendCopyForm document="template" />
+          <div className="flex gap-2">
+            <ShareDocumentButton document="template" documentUrl="/tools/downloads/ai-beleid-opstellen/document" />
+            <Button variant="outline" size="sm" onClick={() => window.print()}>
+              <Printer size={16} /> Print / PDF
+            </Button>
+          </div>
         </div>
 
         {/* Header */}

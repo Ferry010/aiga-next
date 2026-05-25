@@ -45,7 +45,7 @@ const tiers: TierData[] = [
     badge: "NIET GEREED", color: "hsl(0, 84%, 60%)",
     heading: "Jullie organisatie is nog niet gereed",
     body: "Jullie gebruiken waarschijnlijk al AI-tools, maar zonder gedeelde kennis of spelregels. Dat maakt jullie kwetsbaar bij een audit.",
-    buttonLabel: "Neem contact met mij op →",
+    buttonLabel: "Stuur mij het rapport →",
     textLink: { label: "Of bekijk direct onze trainingen voor teams →", to: "/training" },
   },
   {
@@ -53,7 +53,7 @@ const tiers: TierData[] = [
     badge: "GEDEELTELIJK GEREED", color: "hsl(38, 92%, 50%)",
     heading: "Jullie zijn op de goede weg, maar er zijn blinde vlekken",
     body: "Een deel van je team begrijpt AI goed. Maar zonder gedeelde basis werkt niet iedereen vanuit dezelfde kennis.",
-    buttonLabel: "Neem contact met mij op →",
+    buttonLabel: "Stuur mij het rapport →",
     textLink: { label: "Bekijk onze e-learning met EU AI Act-certificering →", to: "/training" },
   },
   {
@@ -61,7 +61,7 @@ const tiers: TierData[] = [
     badge: "VOORLOPER", color: "hsl(160, 84%, 39%)",
     heading: "Jullie lopen voor op de meeste organisaties",
     body: "Je team heeft een solide basis, en dat is zeldzamer dan je denkt. Dit is precies het moment om dat te formaliseren.",
-    buttonLabel: "Neem contact met mij op →",
+    buttonLabel: "Stuur mij het rapport →",
     textLink: { label: "Bekijk onze e-learning met EU AI Act-certificering →", to: "/training" },
   },
 ];
@@ -107,7 +107,7 @@ export default function QuizClient() {
       dimensieScores[d.label] = Math.round((dim / 6) * 100);
     });
 
-    await supabase.from("risk_scan_submissions").insert({
+    const { error } = await supabase.from("risk_scan_submissions").insert({
       naam: formData.naam,
       email: formData.email,
       bedrijfsnaam: formData.bedrijf,
@@ -115,6 +115,40 @@ export default function QuizClient() {
       tier: tier.badge,
       dimensie_scores: dimensieScores,
     });
+
+    if (error) {
+      setSubmitting(false);
+      return;
+    }
+
+    supabase.functions.invoke("notify-new-submission", {
+      body: {
+        type: "gereedheidscan",
+        naam: formData.naam,
+        organisatie: formData.bedrijf,
+        email: formData.email,
+        extra: `Score: ${pct}% · Tier: ${tier.badge}`,
+      },
+    }).catch(console.error);
+
+    supabase.functions.invoke("send-transactional-email", {
+      body: {
+        templateName: "risk-scan-results",
+        recipientEmail: formData.email,
+        idempotencyKey: crypto.randomUUID(),
+        templateData: {
+          naam: formData.naam,
+          score: pct,
+          tier: tier.badge,
+          tierHeading: tier.heading,
+          tierBody: tier.body,
+          dimensies: dimensions.map((d) => ({
+            label: d.label,
+            score: Math.round((d.indices.reduce((sum, i) => sum + (answers[i] || 0), 0) / 6) * 100),
+          })),
+        },
+      },
+    }).catch(console.error);
 
     setSubmitting(false);
     setSubmitted(true);

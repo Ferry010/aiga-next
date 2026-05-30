@@ -5,6 +5,7 @@ const BASE_URL = "https://aigeletterdheid.academy";
 
 const staticRoutes: Array<{ url: string; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]; priority: number }> = [
   { url: BASE_URL,                                                         changeFrequency: "weekly",  priority: 1.0 },
+  { url: `${BASE_URL}/ai-geletterdheid-training`,                           changeFrequency: "monthly", priority: 0.95 },
   { url: `${BASE_URL}/training`,                                           changeFrequency: "monthly", priority: 0.9 },
   { url: `${BASE_URL}/masterclass`,                                        changeFrequency: "monthly", priority: 0.9 },
   { url: `${BASE_URL}/kenniscentrum`,                                      changeFrequency: "weekly",  priority: 0.8 },

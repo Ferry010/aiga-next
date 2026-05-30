@@ -318,8 +318,8 @@ export default function HomePageClient() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="/training" className="btn-neon text-center py-3 rounded-lg text-sm">
-                    Naar de training
+                  <Link href="/ai-geletterdheid-training" className="btn-neon text-center py-3 rounded-lg text-sm">
+                    AI-geletterdheid training
                   </Link>
                 </div>
               </div>

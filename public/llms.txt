@@ -6,6 +6,7 @@ Opgericht door Ferry Hoes (AI-expert, keynote spreker, winnaar Anti-Discriminati
 
 ## Training & Certificering
 
+- [AI-geletterdheid training (Artikel 4 EU AI Act)](https://aigeletterdheid.academy/ai-geletterdheid-training): Canonieke commerciële landingspagina voor AI-geletterdheid training. Online selfpaced training, erkend certificaat, in lijn met Artikel 4 EU AI Act. Handhaving start 2 augustus 2026. €249 per deelnemer.
 - [AI-Geletterdheid Training voor Teams](https://aigeletterdheid.academy/training): Online selfpaced training van 2–3 uur. Leidt tot het AI Literacy Practitioner certificaat (audit-proof, deelbaar via LinkedIn). Voldoet aan EU AI Act Artikel 4. Vanaf €249 per deelnemer.
 - [AI Masterclass voor Leidinggevenden](https://aigeletterdheid.academy/masterclass): Besloten in-company masterclass voor directie en management. Gegeven door Ferry Hoes. Op locatie of online. Gratis bij 50+ seats. Vanaf €495 per deelnemer.
 - [AI Gereedheidscan](https://aigeletterdheid.academy/gereedheidscan): Gratis online scan (3 minuten) om de AI-readiness van jouw organisatie te meten op vijf dimensies. Inclusief gepersonaliseerd actieplan.

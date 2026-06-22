@@ -161,7 +161,7 @@ export default function QuizClient() {
         {/* ── Hero ── */}
         <div className="max-w-3xl mx-auto px-4 pt-28 pb-16">
           <AnimatedSection>
-            <div className="mb-6">
+            <div className="mb-8">
               <span className="inline-flex items-center gap-2 bg-destructive/10 text-destructive text-xs font-semibold px-3 py-1.5 rounded-full">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75" />
@@ -171,15 +171,13 @@ export default function QuizClient() {
               </span>
             </div>
 
-            <SectionLabel text="GRATIS AI GEREEDHEIDSCAN" />
-
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
-              Weet in 3 minuten<br />
-              <span className="neon-text">hoe groot jouw compliance-risico is</span>
+            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight">
+              Jouw team gebruikt AI.<br />
+              <span className="neon-text">Voldoe je ook aan de wet?</span>
             </h1>
 
             <p className="mt-6 text-xl text-muted-foreground leading-relaxed max-w-2xl">
-              Jouw medewerkers gebruiken al AI. Maar kun jij aantonen dat jouw organisatie voldoet aan de wet — als het er morgen op aankomt?
+              Doe de gratis scan en ontdek in 3 minuten hoe jouw organisatie scoort op AI-compliance — met een persoonlijk actieplan in je inbox.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -207,15 +205,15 @@ export default function QuizClient() {
           <div className="max-w-3xl mx-auto px-4">
             <AnimatedSection>
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-2">
-                Na de scan weet jij precies:
+                Dit weet je na de scan
               </h2>
-              <p className="text-muted-foreground mb-8">Geen vage rapporten. Concrete inzichten over jóuw organisatie.</p>
+              <p className="text-muted-foreground mb-8">Geen vage rapporten. Concrete inzichten voor jóuw organisatie.</p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
                   {
                     icon: "📊",
-                    title: "Jouw score op 5 dimensies",
-                    body: "AI-gebruik, wetgeving, risicobeheer, leiderschap en audit-readiness — elk apart in kaart gebracht.",
+                    title: "Score op 5 dimensies",
+                    body: "AI-gebruik, wetgeving, risicobeheer, leiderschap en audit-readiness — elk apart inzichtelijk.",
                   },
                   {
                     icon: "⚠️",
@@ -224,13 +222,13 @@ export default function QuizClient() {
                   },
                   {
                     icon: "🎯",
-                    title: "Wat je als eerste moet aanpakken",
-                    body: "Een heldere prioriteitenlijst zodat je vandaag nog kunt beginnen — zonder te gokken.",
+                    title: "Wat je als eerste aanpakt",
+                    body: "Een heldere prioriteitenlijst zodat je vandaag kunt beginnen — zonder te gokken.",
                   },
                   {
                     icon: "📋",
                     title: "Of je een audit zou doorstaan",
-                    body: "Een eerlijk antwoord op de vraag die elke manager en directeur wakker houdt.",
+                    body: "Een eerlijk antwoord op de vraag die elke manager en bestuurder wakker houdt.",
                   },
                 ].map((item) => (
                   <div key={item.title} className="neon-card-top bg-background border border-border rounded-xl p-5">
@@ -248,7 +246,6 @@ export default function QuizClient() {
         <div className="max-w-3xl mx-auto px-4 py-16">
           <AnimatedSection>
             <div className="rounded-2xl border border-neon-purple/30 bg-gradient-to-br from-neon-purple/5 to-neon-pink/5 p-8 sm:p-10 text-center">
-              <p className="text-xs font-semibold text-primary uppercase tracking-[0.1em] mb-3">Gratis · Geen verplichtingen</p>
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4">
                 De meeste organisaties denken dat het wel meevalt.
               </h2>
@@ -270,9 +267,8 @@ export default function QuizClient() {
         <div className="bg-card border-t border-border py-16">
           <div className="max-w-3xl mx-auto px-4">
             <AnimatedSection>
-              <SectionLabel text="ZO WERKT HET" />
-              <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-4 mb-10">
-                Van nul naar inzicht in 3 stappen
+              <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-10">
+                Drie minuten. Eén helder antwoord.
               </h2>
               <div className="grid sm:grid-cols-3 gap-8">
                 {[
@@ -289,7 +285,7 @@ export default function QuizClient() {
                   {
                     step: "03",
                     title: "Ontvang je actieplan",
-                    body: "Vul je e-mailadres in en ontvang een persoonlijk rapport met concrete aanbevelingen voor jouw organisatie.",
+                    body: "Vul je e-mailadres in en ontvang een persoonlijk rapport met concrete aanbevelingen voor jouw situatie.",
                   },
                 ].map((s) => (
                   <div key={s.step} className="flex flex-col gap-3">
@@ -303,16 +299,64 @@ export default function QuizClient() {
           </div>
         </div>
 
+        {/* ── FAQ ── */}
+        <div className="max-w-3xl mx-auto px-4 py-16">
+          <AnimatedSection>
+            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-8">
+              Veelgestelde vragen
+            </h2>
+            <div className="divide-y divide-border">
+              {[
+                {
+                  q: "Voor wie is deze scan bedoeld?",
+                  a: "Voor iedereen die verantwoordelijkheid draagt voor mensen, beleid of compliance binnen een organisatie. Denk aan managers, HR-directeuren, compliance officers, bestuurders en ondernemers die willen weten hoe ze er echt voor staan.",
+                },
+                {
+                  q: "Hoe lang duurt de scan?",
+                  a: "Minder dan 3 minuten. Je beantwoordt 10 vragen en ziet daarna direct je resultaat — zonder wachten of aanmelden.",
+                },
+                {
+                  q: "Is de scan echt gratis?",
+                  a: "Ja. Geen creditcard, geen proefperiode, geen verborgen kosten. De scan is een service van AIGA om organisaties te helpen begrijpen waar ze staan.",
+                },
+                {
+                  q: "Wat ontvang ik na de scan?",
+                  a: "Direct na de laatste vraag zie je jouw score op 5 dimensies en de bijbehorende tier. Als je je naam en e-mailadres achterlaat, ontvang je een persoonlijk rapport met uitleg en concrete aanbevelingen per e-mail.",
+                },
+                {
+                  q: "Wat is de EU AI Act en wat verandert er voor mij?",
+                  a: "De EU AI Act is de Europese wetgeving die regelt hoe organisaties AI mogen gebruiken. Sinds februari 2025 geldt de verplichting dat alle medewerkers die met AI werken, AI-geletterd moeten zijn. Organisaties die dat niet kunnen aantonen riskeren boetes tot €35 miljoen of 7% van hun wereldwijde jaaromzet.",
+                },
+                {
+                  q: "Wat als ik laag scoor?",
+                  a: "Dan ben je in goed gezelschap — de meeste organisaties staan er niet zo goed voor als ze denken. Wat je wél hebt na de scan: inzicht. En inzicht is het begin van actie. In je rapport staat precies wat je als eerste moet doen.",
+                },
+                {
+                  q: "Worden mijn gegevens gedeeld met derden?",
+                  a: "Nee. Je gegevens worden alleen gebruikt om je rapport te sturen en om de kwaliteit van de scan te verbeteren. We delen niets met derden.",
+                },
+              ].map((faq) => (
+                <details key={faq.q} className="group py-5">
+                  <summary className="flex items-center justify-between cursor-pointer gap-4 list-none font-semibold text-foreground">
+                    {faq.q}
+                    <span className="shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180">↓</span>
+                  </summary>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{faq.a}</p>
+                </details>
+              ))}
+            </div>
+          </AnimatedSection>
+        </div>
+
         {/* ── Bottom CTA ── */}
         <div className="max-w-3xl mx-auto px-4 py-20 text-center">
           <AnimatedSection>
-            <SectionLabel text="START NU" />
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground mt-4 mb-4">
-              Jouw organisatie verdient<br />
-              <span className="neon-text">duidelijkheid, geen verrassing</span>
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-4">
+              Vandaag weten is beter dan<br />
+              <span className="neon-text">morgen verrast worden</span>
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
-              De EU AI Act wacht niet. Elk dag zonder inzicht is een dag meer risico. De scan is gratis en geeft je direct actiegericht resultaat.
+              De EU AI Act wacht niet. Elk dag zonder inzicht is een dag meer risico. De scan is gratis en duurt 3 minuten.
             </p>
             <button
               onClick={() => setPhase("quiz")}

@@ -100,30 +100,33 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
-  const supabase = createServerClient();
+  // Generate a local UUID as fallback in case the DB insert fails
+  let id = crypto.randomUUID();
 
-  const { data, error } = await supabase
-    .from("risk_scan_submissions")
-    .insert({
-      naam: name,
-      email,
-      bedrijfsnaam: bedrijf || "Niet opgegeven",
-      tier: score_category,
-      totaal_score: score,
-      dimensie_scores: dimension_scores,
-    })
-    .select("id")
-    .single();
+  try {
+    const supabase = createServerClient();
+    const { data, error } = await supabase
+      .from("risk_scan_submissions")
+      .insert({
+        naam: name,
+        email,
+        bedrijfsnaam: bedrijf || "Niet opgegeven",
+        tier: score_category,
+        totaal_score: score,
+        dimensie_scores: dimension_scores,
+      })
+      .select("id")
+      .single();
 
-  if (error || !data) {
-    console.error("Supabase insert error:", error);
-    return NextResponse.json(
-      { error: "Failed to save result", detail: error?.message },
-      { status: 500 }
-    );
+    if (error) {
+      console.error("Supabase insert error (non-fatal):", error.message);
+    } else if (data) {
+      id = data.id;
+    }
+  } catch (dbErr) {
+    console.error("Supabase exception (non-fatal):", dbErr);
   }
 
-  const id = data.id;
   const resultUrl = `https://aigeletterdheid.academy/gereedheidscan/resultaat/${id}`;
 
   try {

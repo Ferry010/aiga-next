@@ -126,7 +126,7 @@ export async function POST(req: NextRequest) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
-      from: "AIGA <scan@aigeletterdheid.academy>",
+      from: "AIGA <ferry@brandhumanizing.com>",
       to: email,
       subject: `Jouw AI Gereedheidsresultaat: ${score}% — ${score_category}`,
       html: buildEmail({ name, score, score_category, resultUrl }),

@@ -1,11 +1,11 @@
 'use client';
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import { motion } from "framer-motion";
 import { useReduceMotion } from "@/hooks/use-reduce-motion";
-import { createClient } from "@/lib/supabase/client";
 
 const questions = [
   { q: "Hoeveel medewerkers in jouw organisatie gebruiken AI-tools zoals ChatGPT, Copilot of vergelijkbare software?", options: ["Niemand, voor zover ik weet", "Een handvol early adopters", "Een significant deel van de teams", "De meeste medewerkers, dagelijks"] },
@@ -70,13 +70,14 @@ type Phase = "intro" | "quiz" | "result";
 
 export default function QuizClient() {
   const reduced = useReduceMotion();
+  const router = useRouter();
   const [phase, setPhase] = useState<Phase>("intro");
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [selected, setSelected] = useState<number | null>(null);
   const [formData, setFormData] = useState({ naam: "", email: "", bedrijf: "" });
-  const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const handleAnswer = (idx: number) => {
     setSelected(idx);
@@ -99,7 +100,7 @@ export default function QuizClient() {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    const supabase = createClient();
+    setSubmitError(false);
 
     const dimensieScores: Record<string, number> = {};
     dimensions.forEach((d) => {
@@ -107,51 +108,28 @@ export default function QuizClient() {
       dimensieScores[d.label] = Math.round((dim / 6) * 100);
     });
 
-    const { error } = await supabase.from("risk_scan_submissions").insert({
-      naam: formData.naam,
-      email: formData.email,
-      bedrijfsnaam: formData.bedrijf,
-      totaal_score: pct,
-      tier: tier.badge,
-      dimensie_scores: dimensieScores,
-    });
-
-    if (error) {
-      setSubmitting(false);
-      return;
-    }
-
-    supabase.functions.invoke("notify-new-submission", {
-      body: {
-        type: "gereedheidscan",
-        naam: formData.naam,
-        organisatie: formData.bedrijf,
-        email: formData.email,
-        extra: `Score: ${pct}% · Tier: ${tier.badge}`,
-      },
-    }).catch(console.error);
-
-    supabase.functions.invoke("send-transactional-email", {
-      body: {
-        templateName: "risk-scan-results",
-        recipientEmail: formData.email,
-        idempotencyKey: crypto.randomUUID(),
-        templateData: {
-          naam: formData.naam,
+    try {
+      const res = await fetch("/api/scan", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.naam,
+          email: formData.email,
+          answers,
           score: pct,
-          tier: tier.badge,
-          tierHeading: tier.heading,
-          tierBody: tier.body,
-          dimensies: dimensions.map((d) => ({
-            label: d.label,
-            score: Math.round((d.indices.reduce((sum, i) => sum + (answers[i] || 0), 0) / 6) * 100),
-          })),
-        },
-      },
-    }).catch(console.error);
+          score_category: tier.badge,
+          dimension_scores: dimensieScores,
+        }),
+      });
 
-    setSubmitting(false);
-    setSubmitted(true);
+      if (!res.ok) throw new Error("submission failed");
+
+      const { id } = await res.json();
+      router.push(`/gereedheidscan/resultaat/${id}`);
+    } catch {
+      setSubmitError(true);
+      setSubmitting(false);
+    }
   };
 
   if (phase === "intro") {
@@ -441,46 +419,41 @@ export default function QuizClient() {
             </div>
           </div>
 
-          {!submitted ? (
-            <div className="bg-card border border-border rounded-2xl p-8">
-              <h3 className="text-lg font-semibold text-foreground mb-2">Ontvang een persoonlijk actieplan</h3>
-              <p className="text-sm text-muted-foreground mb-6">Vul je gegevens in en we nemen contact op.</p>
-              <form onSubmit={handleFormSubmit} className="space-y-4">
-                {[
-                  { name: "naam", label: "Naam", required: true },
-                  { name: "email", label: "E-mailadres", required: true, type: "email" },
-                  { name: "bedrijf", label: "Bedrijfsnaam", required: true },
-                ].map((f) => (
-                  <div key={f.name}>
-                    <label className="text-sm text-muted-foreground mb-1 block">{f.label}</label>
-                    <input
-                      type={f.type || "text"}
-                      required={f.required}
-                      value={formData[f.name as keyof typeof formData]}
-                      onChange={(e) => setFormData({ ...formData, [f.name]: e.target.value })}
-                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple transition-all"
-                    />
-                  </div>
-                ))}
-                <button type="submit" disabled={submitting} className="btn-neon w-full py-3 rounded-lg">
-                  {submitting ? "Bezig..." : tier.buttonLabel}
-                </button>
-              </form>
-              <p className="text-center mt-4">
-                <Link href={tier.textLink.to} className="text-sm text-primary hover:underline">
-                  {tier.textLink.label}
-                </Link>
-              </p>
-            </div>
-          ) : (
-            <div className="bg-card border border-neon-purple/30 rounded-2xl p-10 text-center">
-              <h3 className="text-xl font-semibold text-foreground mb-2">Bedankt!</h3>
-              <p className="text-muted-foreground">We nemen snel contact met je op.</p>
-              <Link href="/training" className="btn-neon inline-block mt-6 px-8 py-3 rounded-lg">
-                Bekijk de training
+          <div className="bg-card border border-border rounded-2xl p-8">
+            <h3 className="text-lg font-semibold text-foreground mb-2">Ontvang je persoonlijke resultaatpagina</h3>
+            <p className="text-sm text-muted-foreground mb-6">
+              Vul je gegevens in — je ontvangt direct een rapport per e-mail met een link naar jouw persoonlijke resultaatpagina.
+            </p>
+            <form onSubmit={handleFormSubmit} className="space-y-4">
+              {[
+                { name: "naam", label: "Naam", required: true },
+                { name: "email", label: "E-mailadres", required: true, type: "email" },
+                { name: "bedrijf", label: "Bedrijfsnaam", required: false },
+              ].map((f) => (
+                <div key={f.name}>
+                  <label className="text-sm text-muted-foreground mb-1 block">{f.label}</label>
+                  <input
+                    type={f.type || "text"}
+                    required={f.required}
+                    value={formData[f.name as keyof typeof formData]}
+                    onChange={(e) => setFormData({ ...formData, [f.name]: e.target.value })}
+                    className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple transition-all"
+                  />
+                </div>
+              ))}
+              {submitError && (
+                <p className="text-sm text-destructive">Er ging iets mis. Probeer het opnieuw.</p>
+              )}
+              <button type="submit" disabled={submitting} className="btn-neon w-full py-3 rounded-lg">
+                {submitting ? "Bezig..." : "Stuur mij het rapport →"}
+              </button>
+            </form>
+            <p className="text-center mt-4">
+              <Link href={tier.textLink.to} className="text-sm text-primary hover:underline">
+                {tier.textLink.label}
               </Link>
-            </div>
-          )}
+            </p>
+          </div>
         </AnimatedSection>
       </div>
     </div>

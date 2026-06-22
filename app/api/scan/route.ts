@@ -1,13 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { createServerClient } from "@/lib/supabase/server";
 import { Resend } from "resend";
-
-function getSupabase() {
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  );
-}
 
 function buildEmail({
   name,
@@ -101,29 +94,36 @@ function buildEmail({
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const { name, email, answers, score, score_category, dimension_scores } = body;
+  const { name, email, bedrijf, score, score_category, dimension_scores } = body;
 
-  if (!name || !email || !answers || score === undefined || !score_category) {
+  if (!name || !email || score === undefined || !score_category) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
-  const supabase = getSupabase();
+  const supabase = createServerClient();
 
   const { data, error } = await supabase
-    .from("scan_results")
-    .insert({ name, email, answers, score, score_category, dimension_scores })
+    .from("risk_scan_submissions")
+    .insert({
+      naam: name,
+      email,
+      bedrijfsnaam: bedrijf || "Niet opgegeven",
+      tier: score_category,
+      totaal_score: score,
+      dimensie_scores: dimension_scores,
+    })
     .select("id")
     .single();
 
   if (error || !data) {
     console.error("Supabase insert error:", error);
     return NextResponse.json(
-      { error: "Failed to save result", detail: error?.message, code: error?.code },
+      { error: "Failed to save result", detail: error?.message },
       { status: 500 }
     );
   }
 
-  const id = (data as { id: string }).id;
+  const id = data.id;
   const resultUrl = `https://aigeletterdheid.academy/gereedheidscan/resultaat/${id}`;
 
   try {
@@ -138,5 +138,5 @@ export async function POST(req: NextRequest) {
     console.error("Resend error:", emailErr);
   }
 
-  return NextResponse.json({ id });
+  return NextResponse.json({ id, score, score_category, dimension_scores });
 }

@@ -115,7 +115,7 @@ export default function QuizClient() {
         body: JSON.stringify({
           name: formData.naam,
           email: formData.email,
-          answers,
+          bedrijf: formData.bedrijf,
           score: pct,
           score_category: tier.badge,
           dimension_scores: dimensieScores,
@@ -124,8 +124,14 @@ export default function QuizClient() {
 
       if (!res.ok) throw new Error("submission failed");
 
-      const { id } = await res.json();
-      router.push(`/gereedheidscan/resultaat/${id}`);
+      const { id, score, score_category, dimension_scores } = await res.json();
+      const params = new URLSearchParams({
+        n: formData.naam,
+        s: String(score),
+        c: score_category,
+        d: btoa(JSON.stringify(dimension_scores)),
+      });
+      router.push(`/gereedheidscan/resultaat/${id}?${params.toString()}`);
     } catch {
       setSubmitError(true);
       setSubmitting(false);

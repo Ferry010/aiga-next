@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, DM_Sans, DM_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import LayoutShell from "@/components/LayoutShell";
 import { Toaster } from "@/components/ui/toaster";
@@ -95,6 +96,18 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(sitewideSchema) }}
         />
       </head>
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-HDFX7HK13F"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-HDFX7HK13F');
+        `}
+      </Script>
       <body>
         <Providers>
           <TooltipProvider>

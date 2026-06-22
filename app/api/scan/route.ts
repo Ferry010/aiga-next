@@ -117,7 +117,10 @@ export async function POST(req: NextRequest) {
 
   if (error || !data) {
     console.error("Supabase insert error:", error);
-    return NextResponse.json({ error: "Failed to save result" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to save result", detail: error?.message, code: error?.code },
+      { status: 500 }
+    );
   }
 
   const id = (data as { id: string }).id;

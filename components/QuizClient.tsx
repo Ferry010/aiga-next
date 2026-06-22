@@ -157,42 +157,173 @@ export default function QuizClient() {
   if (phase === "intro") {
     return (
       <div className="min-h-screen">
-        <div className="max-w-3xl mx-auto px-4 pt-32 pb-24">
-          <AnimatedSection>
-            <SectionLabel text="GRATIS AI GEREEDHEIDSCAN" />
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
-              Gratis AI Gereedheidscan voor<br />
-              <span className="text-primary">Nederlandse Organisaties</span>
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Sinds februari 2025 is AI-geletterdheid wettelijk verplicht onder de EU AI Act. Maar hoe gereed is jouw organisatie? De AIGA AI Gereedheidscan geeft je in drie minuten een helder beeld van waar je staat op het gebied van AI-gebruik, wetgeving, risicobeheer, leiderschap en audit-readiness.
-            </p>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
-              De scan meet vijf dimensies: AI-gebruik, bewustzijn van wetgeving, risicobeheer, leiderschap en audit-readiness. Na afloop ontvang je direct je score, inclusief een uitsplitsing per dimensie en persoonlijk advies.
-            </p>
 
-            <div className="mt-8 bg-card border border-border rounded-2xl p-6">
-              <h2 className="text-lg font-display font-semibold text-foreground mb-4">Voorbeeldvragen uit de scan</h2>
-              <ul className="space-y-3 text-sm text-muted-foreground">
-                <li className="flex items-start gap-2"><span className="text-primary font-bold shrink-0">1.</span> Hoeveel medewerkers in jouw organisatie gebruiken AI-tools?</li>
-                <li className="flex items-start gap-2"><span className="text-primary font-bold shrink-0">2.</span> Heeft jouw organisatie een beleid voor verantwoord AI-gebruik?</li>
-                <li className="flex items-start gap-2"><span className="text-primary font-bold shrink-0">3.</span> Weten jouw medewerkers wat de EU AI Act van hen vraagt?</li>
-                <li className="flex items-start gap-2"><span className="text-primary font-bold shrink-0">4.</span> Heeft jouw organisatie een AI-verantwoordelijke?</li>
-                <li className="flex items-start gap-2"><span className="text-primary font-bold shrink-0">5.</span> Hoe sta je ervoor als er morgen een audit is?</li>
-              </ul>
+        {/* ── Hero ── */}
+        <div className="max-w-3xl mx-auto px-4 pt-28 pb-16">
+          <AnimatedSection>
+            <div className="mb-6">
+              <span className="inline-flex items-center gap-2 bg-destructive/10 text-destructive text-xs font-semibold px-3 py-1.5 rounded-full">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-destructive" />
+                </span>
+                EU AI Act is van kracht · Boetes tot €35 miljoen
+              </span>
             </div>
 
-            <div className="mt-8 text-center">
+            <SectionLabel text="GRATIS AI GEREEDHEIDSCAN" />
+
+            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
+              Weet in 3 minuten<br />
+              <span className="neon-text">hoe groot jouw compliance-risico is</span>
+            </h1>
+
+            <p className="mt-6 text-xl text-muted-foreground leading-relaxed max-w-2xl">
+              Jouw medewerkers gebruiken al AI. Maar kun jij aantonen dat jouw organisatie voldoet aan de wet — als het er morgen op aankomt?
+            </p>
+
+            <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <button
+                onClick={() => setPhase("quiz")}
+                className="btn-neon px-8 py-4 rounded-lg text-[15px] font-semibold"
+              >
+                Start de gratis scan →
+              </button>
+              <p className="text-sm text-muted-foreground">10 vragen · 3 minuten · direct resultaat</p>
+            </div>
+
+            <div className="mt-8 flex flex-wrap gap-6 border-t border-border pt-8">
+              {["Gratis, altijd", "Geen account nodig", "Persoonlijk rapport per e-mail"].map((t) => (
+                <span key={t} className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                  <span className="text-primary font-bold">✓</span> {t}
+                </span>
+              ))}
+            </div>
+          </AnimatedSection>
+        </div>
+
+        {/* ── Outcomes ── */}
+        <div className="bg-card border-y border-border py-16">
+          <div className="max-w-3xl mx-auto px-4">
+            <AnimatedSection>
+              <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-2">
+                Na de scan weet jij precies:
+              </h2>
+              <p className="text-muted-foreground mb-8">Geen vage rapporten. Concrete inzichten over jóuw organisatie.</p>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {[
+                  {
+                    icon: "📊",
+                    title: "Jouw score op 5 dimensies",
+                    body: "AI-gebruik, wetgeving, risicobeheer, leiderschap en audit-readiness — elk apart in kaart gebracht.",
+                  },
+                  {
+                    icon: "⚠️",
+                    title: "Waar de grootste risico's zitten",
+                    body: "Exact welke onderdelen van jouw organisatie blootgesteld zijn aan boetes of reputatieschade.",
+                  },
+                  {
+                    icon: "🎯",
+                    title: "Wat je als eerste moet aanpakken",
+                    body: "Een heldere prioriteitenlijst zodat je vandaag nog kunt beginnen — zonder te gokken.",
+                  },
+                  {
+                    icon: "📋",
+                    title: "Of je een audit zou doorstaan",
+                    body: "Een eerlijk antwoord op de vraag die elke manager en directeur wakker houdt.",
+                  },
+                ].map((item) => (
+                  <div key={item.title} className="neon-card-top bg-background border border-border rounded-xl p-5">
+                    <span className="text-2xl mb-3 block">{item.icon}</span>
+                    <h3 className="font-display font-semibold text-foreground mb-1">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.body}</p>
+                  </div>
+                ))}
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+
+        {/* ── Mid CTA ── */}
+        <div className="max-w-3xl mx-auto px-4 py-16">
+          <AnimatedSection>
+            <div className="rounded-2xl border border-neon-purple/30 bg-gradient-to-br from-neon-purple/5 to-neon-pink/5 p-8 sm:p-10 text-center">
+              <p className="text-xs font-semibold text-primary uppercase tracking-[0.1em] mb-3">Gratis · Geen verplichtingen</p>
+              <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4">
+                De meeste organisaties denken dat het wel meevalt.
+              </h2>
+              <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
+                Tot ze de scan doen. Ontdek in 3 minuten waar jij staat — en wat je moet doen om jezelf te beschermen.
+              </p>
               <button
                 onClick={() => setPhase("quiz")}
                 className="btn-neon px-8 py-4 rounded-lg text-[15px]"
               >
-                Start de scan · 3 minuten
+                Doe de scan nu — gratis →
               </button>
-              <p className="mt-3 text-xs text-muted-foreground">10 vragen. Direct resultaat. Geen account nodig.</p>
+              <p className="mt-3 text-xs text-muted-foreground">Geen creditcard. Geen account. Wel direct inzicht.</p>
             </div>
           </AnimatedSection>
         </div>
+
+        {/* ── How it works ── */}
+        <div className="bg-card border-t border-border py-16">
+          <div className="max-w-3xl mx-auto px-4">
+            <AnimatedSection>
+              <SectionLabel text="ZO WERKT HET" />
+              <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-4 mb-10">
+                Van nul naar inzicht in 3 stappen
+              </h2>
+              <div className="grid sm:grid-cols-3 gap-8">
+                {[
+                  {
+                    step: "01",
+                    title: "Beantwoord 10 vragen",
+                    body: "Eerlijke vragen over hoe jouw organisatie omgaat met AI, beleid en risico's. Duurt minder dan 3 minuten.",
+                  },
+                  {
+                    step: "02",
+                    title: "Zie direct je score",
+                    body: "Direct na de laatste vraag zie je jouw resultaat: een score op 5 dimensies en je tier — van Niet Gereed tot Voorloper.",
+                  },
+                  {
+                    step: "03",
+                    title: "Ontvang je actieplan",
+                    body: "Vul je e-mailadres in en ontvang een persoonlijk rapport met concrete aanbevelingen voor jouw organisatie.",
+                  },
+                ].map((s) => (
+                  <div key={s.step} className="flex flex-col gap-3">
+                    <span className="neon-text text-4xl font-display font-bold leading-none">{s.step}</span>
+                    <h3 className="font-display font-semibold text-foreground">{s.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{s.body}</p>
+                  </div>
+                ))}
+              </div>
+            </AnimatedSection>
+          </div>
+        </div>
+
+        {/* ── Bottom CTA ── */}
+        <div className="max-w-3xl mx-auto px-4 py-20 text-center">
+          <AnimatedSection>
+            <SectionLabel text="START NU" />
+            <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground mt-4 mb-4">
+              Jouw organisatie verdient<br />
+              <span className="neon-text">duidelijkheid, geen verrassing</span>
+            </h2>
+            <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
+              De EU AI Act wacht niet. Elk dag zonder inzicht is een dag meer risico. De scan is gratis en geeft je direct actiegericht resultaat.
+            </p>
+            <button
+              onClick={() => setPhase("quiz")}
+              className="btn-neon px-10 py-4 rounded-lg text-base font-semibold"
+            >
+              Start de gratis scan →
+            </button>
+            <p className="mt-4 text-sm text-muted-foreground">10 vragen · 3 minuten · 0 euro</p>
+          </AnimatedSection>
+        </div>
+
       </div>
     );
   }

@@ -1,6 +1,5 @@
 'use client';
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
@@ -35,7 +34,6 @@ interface TierData {
   color: string;
   heading: string;
   body: string;
-  buttonLabel: string;
   textLink: { label: string; to: string };
 }
 
@@ -45,7 +43,6 @@ const tiers: TierData[] = [
     badge: "NIET GEREED", color: "hsl(0, 84%, 60%)",
     heading: "Jullie organisatie is nog niet gereed",
     body: "Jullie gebruiken waarschijnlijk al AI-tools, maar zonder gedeelde kennis of spelregels. Dat maakt jullie kwetsbaar bij een audit.",
-    buttonLabel: "Stuur mij het rapport →",
     textLink: { label: "Of bekijk direct onze trainingen voor teams →", to: "/training" },
   },
   {
@@ -53,7 +50,6 @@ const tiers: TierData[] = [
     badge: "GEDEELTELIJK GEREED", color: "hsl(38, 92%, 50%)",
     heading: "Jullie zijn op de goede weg, maar er zijn blinde vlekken",
     body: "Een deel van je team begrijpt AI goed. Maar zonder gedeelde basis werkt niet iedereen vanuit dezelfde kennis.",
-    buttonLabel: "Stuur mij het rapport →",
     textLink: { label: "Bekijk onze e-learning met EU AI Act-certificering →", to: "/training" },
   },
   {
@@ -61,7 +57,6 @@ const tiers: TierData[] = [
     badge: "VOORLOPER", color: "hsl(160, 84%, 39%)",
     heading: "Jullie lopen voor op de meeste organisaties",
     body: "Je team heeft een solide basis, en dat is zeldzamer dan je denkt. Dit is precies het moment om dat te formaliseren.",
-    buttonLabel: "Stuur mij het rapport →",
     textLink: { label: "Bekijk onze e-learning met EU AI Act-certificering →", to: "/training" },
   },
 ];
@@ -70,7 +65,6 @@ type Phase = "intro" | "quiz" | "result";
 
 export default function QuizClient() {
   const reduced = useReduceMotion();
-  const router = useRouter();
   const [phase, setPhase] = useState<Phase>("intro");
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
@@ -78,6 +72,8 @@ export default function QuizClient() {
   const [formData, setFormData] = useState({ naam: "", email: "", bedrijf: "" });
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(false);
+  const [shareUrl, setShareUrl] = useState("");
+  const [copied, setCopied] = useState(false);
 
   const handleAnswer = (idx: number) => {
     setSelected(idx);
@@ -125,15 +121,15 @@ export default function QuizClient() {
       if (!res.ok) throw new Error("submission failed");
 
       const result = await res.json();
-      console.log("[AIGA scan]", JSON.stringify(result));
-      const { id, score, score_category, dimension_scores } = result;
+      const { id, score: s, score_category, dimension_scores } = result;
       const params = new URLSearchParams({
         n: formData.naam,
-        s: String(score),
+        s: String(s),
         c: score_category,
         d: btoa(JSON.stringify(dimension_scores)),
       });
-      router.push(`/gereedheidscan/resultaat/${id}?${params.toString()}`);
+      const url = `${window.location.origin}/gereedheidscan/resultaat/${id}?${params.toString()}`;
+      setShareUrl(url);
     } catch {
       setSubmitError(true);
       setSubmitting(false);
@@ -397,71 +393,142 @@ export default function QuizClient() {
     score: Math.round((d.indices.reduce((sum, i) => sum + (answers[i] || 0), 0) / 6) * 100),
   }));
 
+  const shareText = `Ik deed de AI Gereedheidscan van AIGA en scoorde ${pct}% — ${tier.badge}. Hoe scoort jouw organisatie?`;
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(shareUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div className="min-h-screen py-20 px-4">
       <div className="max-w-2xl mx-auto">
         <AnimatedSection>
-          <div className="text-center mb-10">
-            <span className="inline-block px-4 py-2 rounded-full text-sm font-bold text-white mb-4" style={{ backgroundColor: tier.color }}>
-              {tier.badge}
-            </span>
-            <div className="text-7xl font-display font-bold text-foreground">{pct}%</div>
-            <h2 className="text-2xl font-display font-semibold text-foreground mt-4">{tier.heading}</h2>
-            <p className="text-muted-foreground mt-3 leading-relaxed">{tier.body}</p>
-          </div>
 
-          <div className="bg-card border border-border rounded-2xl p-6 mb-8">
-            <h3 className="text-sm font-semibold text-foreground mb-4">Score per dimensie</h3>
-            <div className="space-y-3">
-              {dimScores.map((d) => (
-                <div key={d.label}>
-                  <div className="flex justify-between text-sm mb-1">
-                    <span className="text-foreground">{d.label}</span>
-                    <span className="text-muted-foreground">{d.score}%</span>
+          {/* Form — shown until submitted */}
+          {!shareUrl && (
+            <div className="bg-card border border-border rounded-2xl p-8 mb-8">
+              <h3 className="text-lg font-semibold text-foreground mb-2">Je scan is klaar</h3>
+              <p className="text-sm text-muted-foreground mb-6">
+                Laat je gegevens achter om je uitslag te bekijken en te bewaren.
+              </p>
+              <form onSubmit={handleFormSubmit} className="space-y-4">
+                {[
+                  { name: "naam", label: "Naam", required: true },
+                  { name: "email", label: "E-mailadres", required: true, type: "email" },
+                  { name: "bedrijf", label: "Bedrijfsnaam", required: false },
+                ].map((f) => (
+                  <div key={f.name}>
+                    <label className="text-sm text-muted-foreground mb-1 block">{f.label}</label>
+                    <input
+                      type={f.type || "text"}
+                      required={f.required}
+                      value={formData[f.name as keyof typeof formData]}
+                      onChange={(e) => setFormData({ ...formData, [f.name]: e.target.value })}
+                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple transition-all"
+                    />
                   </div>
-                  <div className="h-2 bg-border rounded-full overflow-hidden">
-                    <div className="h-full bg-primary rounded-full" style={{ width: `${d.score}%` }} />
-                  </div>
-                </div>
-              ))}
+                ))}
+                {submitError && (
+                  <p className="text-sm text-destructive">Er ging iets mis. Probeer het opnieuw.</p>
+                )}
+                <button type="submit" disabled={submitting} className="btn-neon w-full py-3 rounded-lg">
+                  {submitting ? "Bezig..." : "Bekijk uitslag →"}
+                </button>
+              </form>
             </div>
-          </div>
+          )}
 
-          <div className="bg-card border border-border rounded-2xl p-8">
-            <h3 className="text-lg font-semibold text-foreground mb-2">Ontvang je persoonlijke resultaatpagina</h3>
-            <p className="text-sm text-muted-foreground mb-6">
-              Vul je gegevens in — je ontvangt direct een rapport per e-mail met een link naar jouw persoonlijke resultaatpagina.
-            </p>
-            <form onSubmit={handleFormSubmit} className="space-y-4">
-              {[
-                { name: "naam", label: "Naam", required: true },
-                { name: "email", label: "E-mailadres", required: true, type: "email" },
-                { name: "bedrijf", label: "Bedrijfsnaam", required: false },
-              ].map((f) => (
-                <div key={f.name}>
-                  <label className="text-sm text-muted-foreground mb-1 block">{f.label}</label>
-                  <input
-                    type={f.type || "text"}
-                    required={f.required}
-                    value={formData[f.name as keyof typeof formData]}
-                    onChange={(e) => setFormData({ ...formData, [f.name]: e.target.value })}
-                    className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple transition-all"
-                  />
+          {/* Results — revealed after submit */}
+          {shareUrl && (
+            <motion.div
+              initial={reduced ? false : { opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              <div className="text-center mb-10">
+                <span className="inline-block px-4 py-2 rounded-full text-sm font-bold text-white mb-4" style={{ backgroundColor: tier.color }}>
+                  {tier.badge}
+                </span>
+                <div className="text-7xl font-display font-bold text-foreground">{pct}%</div>
+                <h2 className="text-2xl font-display font-semibold text-foreground mt-4">{tier.heading}</h2>
+                <p className="text-muted-foreground mt-3 leading-relaxed">{tier.body}</p>
+              </div>
+
+              <div className="bg-card border border-border rounded-2xl p-6 mb-6">
+                <h3 className="text-sm font-semibold text-foreground mb-4">Score per dimensie</h3>
+                <div className="space-y-3">
+                  {dimScores.map((d) => (
+                    <div key={d.label}>
+                      <div className="flex justify-between text-sm mb-1">
+                        <span className="text-foreground">{d.label}</span>
+                        <span className="text-muted-foreground">{d.score}%</span>
+                      </div>
+                      <div className="h-2 bg-border rounded-full overflow-hidden">
+                        <div
+                          className="h-full rounded-full"
+                          style={{ width: `${d.score}%`, background: "linear-gradient(90deg,#9B3FF5,#E040C8)" }}
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-              {submitError && (
-                <p className="text-sm text-destructive">Er ging iets mis. Probeer het opnieuw.</p>
-              )}
-              <button type="submit" disabled={submitting} className="btn-neon w-full py-3 rounded-lg">
-                {submitting ? "Bezig..." : "Stuur mij het rapport →"}
-              </button>
-            </form>
-            <p className="text-center mt-4">
-              <Link href={tier.textLink.to} className="text-sm text-primary hover:underline">
-                {tier.textLink.label}
-              </Link>
-            </p>
-          </div>
+              </div>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3 mb-8">
+                <Link href="/contact" className="btn-neon flex-1 text-center py-4 rounded-lg font-semibold text-sm">
+                  Offerte aanvragen
+                </Link>
+                <Link href="/training" className="btn-neon-outline flex-1 text-center py-4 rounded-lg font-semibold text-sm">
+                  Bekijk de training
+                </Link>
+              </div>
+
+              {/* Sharing */}
+              <div className="border-t border-border pt-6">
+                <p className="text-sm font-semibold text-foreground mb-4">Deel jouw resultaat</p>
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    onClick={handleCopy}
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-card text-sm text-foreground hover:border-primary/40 transition-colors"
+                  >
+                    {copied ? <><span className="text-primary">✓</span> Link gekopieerd</> : <><span>🔗</span> Kopieer link</>}
+                  </button>
+                  <a
+                    href={`https://wa.me/?text=${encodeURIComponent(shareText + "\n" + shareUrl)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-card text-sm text-foreground hover:border-primary/40 transition-colors"
+                  >
+                    <span>💬</span> WhatsApp
+                  </a>
+                  <a
+                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-card text-sm text-foreground hover:border-primary/40 transition-colors"
+                  >
+                    <span>💼</span> LinkedIn
+                  </a>
+                  <button
+                    onClick={() => window.print()}
+                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-card text-sm text-foreground hover:border-primary/40 transition-colors"
+                  >
+                    <span>🖨️</span> Opslaan als PDF
+                  </button>
+                </div>
+              </div>
+
+              <p className="mt-4 text-center text-xs text-muted-foreground">
+                <Link href={tier.textLink.to} className="text-primary hover:underline">
+                  {tier.textLink.label}
+                </Link>
+              </p>
+            </motion.div>
+          )}
+
         </AnimatedSection>
       </div>
     </div>

@@ -368,51 +368,26 @@ export default function AiActTrainingPage() {
         {/* ── 8. GESPREK FORM ──────────────────────────────────────────── */}
         <section id="gesprek" className="py-20 px-4 bg-card border-t border-border">
           <div className="max-w-3xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12">
-
-              {/* Left: context */}
-              <div>
-                <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4">
-                  Laten we praten.
-                </h2>
-                <p className="text-muted-foreground leading-relaxed mb-6">
-                  Vul het formulier in. We nemen snel contact met je op om je
-                  situatie door te nemen en te kijken wat de snelste route naar
-                  compliant is voor jouw team.
-                </p>
-                <div className="space-y-2">
-                  <p className="text-sm text-foreground font-semibold">Direct contact</p>
-                  <p className="text-sm text-muted-foreground">Robbert &amp; Tom | Speakers Academy</p>
-                  <a
-                    href="tel:+31103167827"
-                    className="block text-sm text-primary hover:underline"
-                  >
-                    +31 (0)10 316 7827
-                  </a>
-                  <a
-                    href="mailto:robbert@speakersacademy.nl"
-                    className="block text-sm text-primary hover:underline"
-                  >
-                    robbert@speakersacademy.nl
-                  </a>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-border">
-                  <p className="text-xs text-muted-foreground mb-3">Nog niet zeker?</p>
-                  <Link
-                    href="/gereedheidscan"
-                    className="text-sm font-semibold text-primary hover:underline"
-                  >
-                    Doe eerst de gratis Team AI Audit →
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right: form */}
-              <div>
-                <LeadFormClient />
-              </div>
+            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-3">
+              Laten we praten.
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-2">
+              Vul het formulier in. We nemen snel contact met je op.
+            </p>
+            <div className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground mb-8">
+              <span>Robbert &amp; Tom | Speakers Academy</span>
+              <a href="tel:+31103167827" className="text-primary hover:underline">+31 (0)10 316 7827</a>
+              <a href="mailto:robbert@speakersacademy.nl" className="text-primary hover:underline">robbert@speakersacademy.nl</a>
             </div>
+
+            <LeadFormClient />
+
+            <p className="mt-6 text-xs text-muted-foreground">
+              Nog niet zeker?{" "}
+              <Link href="/gereedheidscan" className="text-primary hover:underline">
+                Doe eerst de gratis Team AI Audit →
+              </Link>
+            </p>
           </div>
         </section>
 

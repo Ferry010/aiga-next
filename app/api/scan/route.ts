@@ -133,6 +133,12 @@ export async function POST(req: NextRequest) {
   let emailError: string | null = null;
   const keyPresent = !!process.env.RESEND_API_KEY;
   const keyLength = process.env.RESEND_API_KEY?.length ?? 0;
+  const keyDebug = {
+    RESEND_API_KEY: !!process.env.RESEND_API_KEY,
+    RESEND_TOKEN: !!process.env.RESEND_TOKEN,
+    RESEND_KEY: !!process.env.RESEND_KEY,
+    NODE_ENV: process.env.NODE_ENV,
+  };
 
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
@@ -154,5 +160,5 @@ export async function POST(req: NextRequest) {
     console.error("Resend exception:", err);
   }
 
-  return NextResponse.json({ id, score, score_category, dimension_scores, emailSent, emailError, keyPresent, keyLength });
+  return NextResponse.json({ id, score, score_category, dimension_scores, emailSent, emailError, keyPresent, keyLength, keyDebug });
 }

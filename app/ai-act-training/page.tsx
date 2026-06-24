@@ -149,18 +149,15 @@ export default function AiActTrainingPage() {
               <CountdownClient />
             </div>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
               <Link
                 href="/gereedheidscan"
                 className="btn-neon px-7 py-3.5 rounded-lg text-sm font-semibold"
               >
                 Doe de gratis Team AI Audit
               </Link>
-              <a
-                href="#gesprek"
-                className="btn-neon-outline px-7 py-3.5 rounded-lg text-sm font-semibold border-2"
-              >
-                Plan een gesprek
+              <a href="#gesprek" className="text-sm font-medium text-primary hover:underline">
+                Of plan een gesprek →
               </a>
             </div>
             <p className="mt-3 text-xs text-muted-foreground">
@@ -305,17 +302,11 @@ export default function AiActTrainingPage() {
               ))}
             </ol>
 
-            {/* Mid-page CTA — third occurrence, primary only */}
-            <div className="mt-12 pt-10 border-t border-border">
-              <Link
-                href="/gereedheidscan"
-                className="btn-neon inline-block px-7 py-3.5 rounded-lg text-sm font-semibold"
-              >
-                Doe de gratis Team AI Audit
+            <div className="mt-10 pt-8 border-t border-border">
+              <Link href="/gereedheidscan" className="text-sm font-semibold text-primary hover:underline">
+                Start met de gratis Team AI Audit →
               </Link>
-              <p className="mt-2 text-xs text-muted-foreground">
-                Gratis · 2 minuten · geen account nodig
-              </p>
+              <p className="mt-1 text-xs text-muted-foreground">Gratis · 2 minuten · geen account nodig</p>
             </div>
           </div>
         </section>

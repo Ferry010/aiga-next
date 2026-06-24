@@ -1,10 +1,7 @@
 'use client';
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-
-// TODO: Replace with real Google Ads conversion ID + label (format AW-XXXXXXXXX/zzzzzzzzzzz)
-// IMPORTANT: page cannot ship without this — conversion tracking will be silent
-const GOOGLE_ADS_CONVERSION = "AW-XXXXXXXXX/zzzzzzzzzzz";
+import { createClient } from "@/lib/supabase/client";
 
 function readUtmsFromUrl() {
   const p = new URLSearchParams(window.location.search);
@@ -27,262 +24,175 @@ function getStoredUtms(): Record<string, string | undefined> {
   }
 }
 
+// TODO: Remove GOOGLE_ADS_CONVERSION placeholder before shipping ads traffic
+// const GOOGLE_ADS_CONVERSION = "AW-XXXXXXXXX/zzzzzzzzzzz";
+
 function fireTracking() {
   if (typeof window === "undefined") return;
-
   if (typeof (window as any).gtag === "function") {
-    (window as any).gtag("event", "generate_lead", {
-      currency: "EUR",
-      value: 249,
-    });
-
-    // TODO: Remove the comment below and fill GOOGLE_ADS_CONVERSION once the real ID is known
-    // (window as any).gtag("event", "conversion", {
-    //   send_to: GOOGLE_ADS_CONVERSION,
-    //   currency: "EUR",
-    //   value: 249,
-    // });
+    (window as any).gtag("event", "generate_lead", { currency: "EUR", value: 249 });
+    // TODO: Uncomment and fill once Google Ads conversion ID is known:
+    // (window as any).gtag("event", "conversion", { send_to: "AW-XXXXXXXXX/zzzzzzzzzzz", currency: "EUR", value: 249 });
   }
-
-  // Meta Pixel fires only after cookie consent
-  // TODO: Set META_PIXEL_ID and initialise fbq() after consent (see CookieBanner.tsx)
+  // TODO: Meta Pixel — load after consent, then: fbq("track", "Lead")
   try {
     const consent = localStorage.getItem("aiga_cookie_consent");
     if (consent === "accepted" && typeof (window as any).fbq === "function") {
       (window as any).fbq("track", "Lead");
     }
-  } catch {
-    // localStorage unavailable
-  }
+  } catch { /* localStorage unavailable */ }
 }
 
-interface Props {
-  source?: "gesprek" | "scan";
-}
-
-export default function LeadFormClient({ source = "gesprek" }: Props) {
+export default function LeadFormClient() {
+  const [form, setForm] = useState({ naam: "", bedrijf: "", email: "", telefoon: "", teamgrootte: "" });
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
-  const formRef = useRef<HTMLFormElement>(null);
 
-  // Capture and persist UTMs on mount
   useEffect(() => {
     try {
       const utms = readUtmsFromUrl();
-      const hasUtm = Object.values(utms).some(Boolean);
-      if (hasUtm) sessionStorage.setItem("aiga_utm", JSON.stringify(utms));
-    } catch {
-      // sessionStorage unavailable
-    }
+      if (Object.values(utms).some(Boolean)) {
+        sessionStorage.setItem("aiga_utm", JSON.stringify(utms));
+      }
+    } catch { /* sessionStorage unavailable */ }
   }, []);
 
-  const validate = (fd: FormData) => {
-    const errs: Record<string, string> = {};
-    if (!fd.get("naam")) errs.naam = "Vul je naam in.";
-    if (!fd.get("bedrijf")) errs.bedrijf = "Vul je bedrijfsnaam in.";
-    const email = String(fd.get("email") ?? "");
-    if (!email) {
-      errs.email = "Vul je e-mailadres in.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      errs.email = "Voer een geldig e-mailadres in.";
-    }
-    if (!fd.get("teamgrootte")) errs.teamgrootte = "Selecteer een teamgrootte.";
-    if (!fd.get("consent")) errs.consent = "Je moet akkoord gaan om verder te gaan.";
-    return errs;
-  };
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    const fd = new FormData(e.currentTarget);
-    const errs = validate(fd);
-    if (Object.keys(errs).length > 0) {
-      setFieldErrors(errs);
-      return;
-    }
-    setFieldErrors({});
-    setLoading(true);
+    setSubmitting(true);
 
     const utms = getStoredUtms();
-    const payload = {
-      naam: fd.get("naam"),
-      bedrijf: fd.get("bedrijf"),
-      email: fd.get("email"),
-      teamgrootte: fd.get("teamgrootte"),
-      source,
-      page_path: window.location.pathname,
-      ...utms,
-    };
+    const utmNote = [
+      utms.utm_source && `utm_source: ${utms.utm_source}`,
+      utms.utm_campaign && `utm_campaign: ${utms.utm_campaign}`,
+      utms.gclid && `gclid: ${utms.gclid}`,
+    ].filter(Boolean).join(" · ");
 
-    try {
-      const res = await fetch("/api/campaign-lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error ?? "Er ging iets mis. Probeer het opnieuw.");
-        setLoading(false);
-        return;
-      }
-      fireTracking();
-      setSubmitted(true);
-    } catch {
-      setError("Er ging iets mis. Probeer het opnieuw.");
-    } finally {
-      setLoading(false);
+    const supabase = createClient();
+    const { error: dbError } = await supabase.from("contact_submissions").insert({
+      naam: form.naam,
+      organisatie: form.bedrijf,
+      functie: null,
+      email: form.email,
+      telefoon: form.telefoon || null,
+      hulp: "training",
+      aantal: form.teamgrootte || null,
+      opmerkingen: [
+        "Bron: AI Act Training campagnepagina",
+        form.teamgrootte && `Teamgrootte: ${form.teamgrootte}`,
+        utmNote,
+      ].filter(Boolean).join(" · ") || null,
+    });
+
+    if (dbError) {
+      setError("Er ging iets mis. Probeer het opnieuw of mail naar info@aigeletterdheid.academy");
+      setSubmitting(false);
+      return;
     }
+
+    supabase.functions.invoke("notify-new-submission", {
+      body: {
+        type: "contact",
+        naam: form.naam,
+        organisatie: form.bedrijf,
+        email: form.email,
+        telefoon: form.telefoon || null,
+        extra: `AI Act campagnepagina · Teamgrootte: ${form.teamgrootte || "onbekend"}${utmNote ? ` · ${utmNote}` : ""}`,
+      },
+    }).catch(console.error);
+
+    fireTracking();
+    setSubmitting(false);
+    setSubmitted(true);
   };
 
   if (submitted) {
     return (
-      <div className="bg-card border border-border rounded-2xl p-8 text-center">
-        <span className="text-3xl" aria-hidden>✓</span>
-        <h3 className="text-xl font-display font-bold text-foreground mt-3 mb-2">
-          Bedankt, we bellen je terug.
-        </h3>
-        <p className="text-muted-foreground leading-relaxed">
-          Een van onze mensen belt je binnen 1 werkdag om je situatie door te nemen.
-          Je kunt alvast de gratis Team AI Audit doen om te zien waar je team staat.
-        </p>
-        <Link
-          href="/gereedheidscan"
-          className="btn-neon inline-block mt-6 px-8 py-3 rounded-lg font-semibold text-sm"
-        >
-          Doe de gratis Team AI Audit
-        </Link>
+      <div className="bg-card border border-neon-purple/30 rounded-2xl p-10 text-center">
+        <h3 className="text-xl font-semibold text-foreground mb-2">Bedankt voor je bericht!</h3>
+        <p className="text-muted-foreground">We nemen snel contact met je op.</p>
       </div>
     );
   }
 
+  const inputClass = "w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300";
+
   return (
-    <form
-      ref={formRef}
-      onSubmit={handleSubmit}
-      noValidate
-      className="bg-card border border-border rounded-2xl p-6 sm:p-8"
-      aria-label="Formulier: plan een gesprek"
-    >
+    <form onSubmit={handleSubmit} className="space-y-4" aria-label="Contactformulier">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="naam" className="block text-sm font-medium text-foreground mb-1.5">
-            Naam <span aria-hidden="true" className="text-destructive">*</span>
+          <label htmlFor="cl-naam" className="text-sm text-muted-foreground mb-1 block">
+            Naam <span className="text-neon-purple" aria-hidden>*</span>
           </label>
           <input
-            id="naam"
-            name="naam"
-            type="text"
-            autoComplete="name"
-            required
-            aria-describedby={fieldErrors.naam ? "err-naam" : undefined}
-            className="w-full rounded-lg border border-border bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/60"
+            id="cl-naam" name="naam" type="text" required autoComplete="name"
+            value={form.naam} onChange={(e) => setForm({ ...form, naam: e.target.value })}
+            className={inputClass}
           />
-          {fieldErrors.naam && (
-            <p id="err-naam" role="alert" className="mt-1 text-xs text-destructive">{fieldErrors.naam}</p>
-          )}
         </div>
-
         <div>
-          <label htmlFor="bedrijf" className="block text-sm font-medium text-foreground mb-1.5">
-            Bedrijf <span aria-hidden="true" className="text-destructive">*</span>
+          <label htmlFor="cl-bedrijf" className="text-sm text-muted-foreground mb-1 block">
+            Bedrijf <span className="text-neon-purple" aria-hidden>*</span>
           </label>
           <input
-            id="bedrijf"
-            name="bedrijf"
-            type="text"
-            autoComplete="organization"
-            required
-            aria-describedby={fieldErrors.bedrijf ? "err-bedrijf" : undefined}
-            className="w-full rounded-lg border border-border bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/60"
+            id="cl-bedrijf" name="bedrijf" type="text" required autoComplete="organization"
+            value={form.bedrijf} onChange={(e) => setForm({ ...form, bedrijf: e.target.value })}
+            className={inputClass}
           />
-          {fieldErrors.bedrijf && (
-            <p id="err-bedrijf" role="alert" className="mt-1 text-xs text-destructive">{fieldErrors.bedrijf}</p>
-          )}
         </div>
-
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1.5">
-            Werk e-mail <span aria-hidden="true" className="text-destructive">*</span>
+          <label htmlFor="cl-email" className="text-sm text-muted-foreground mb-1 block">
+            Werk e-mail <span className="text-neon-purple" aria-hidden>*</span>
           </label>
           <input
-            id="email"
-            name="email"
-            type="email"
-            autoComplete="email"
-            required
-            aria-describedby={fieldErrors.email ? "err-email" : undefined}
-            className="w-full rounded-lg border border-border bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/60"
+            id="cl-email" name="email" type="email" required autoComplete="email"
+            value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
+            className={inputClass}
           />
-          {fieldErrors.email && (
-            <p id="err-email" role="alert" className="mt-1 text-xs text-destructive">{fieldErrors.email}</p>
-          )}
         </div>
-
         <div>
-          <label htmlFor="teamgrootte" className="block text-sm font-medium text-foreground mb-1.5">
-            Teamgrootte <span aria-hidden="true" className="text-destructive">*</span>
+          <label htmlFor="cl-telefoon" className="text-sm text-muted-foreground mb-1 block">
+            Telefoonnummer <span className="text-xs text-muted-foreground/60">(optioneel)</span>
           </label>
-          <select
-            id="teamgrootte"
-            name="teamgrootte"
-            required
-            aria-describedby={fieldErrors.teamgrootte ? "err-teamgrootte" : undefined}
-            className="w-full rounded-lg border border-border bg-background px-3.5 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/60"
-            defaultValue=""
-          >
-            <option value="" disabled>Kies een optie</option>
-            <option value="1-10">1-10 medewerkers</option>
-            <option value="11-50">11-50 medewerkers</option>
-            <option value="50+">50+ medewerkers</option>
-          </select>
-          {fieldErrors.teamgrootte && (
-            <p id="err-teamgrootte" role="alert" className="mt-1 text-xs text-destructive">{fieldErrors.teamgrootte}</p>
-          )}
+          <input
+            id="cl-telefoon" name="telefoon" type="tel" autoComplete="tel"
+            value={form.telefoon} onChange={(e) => setForm({ ...form, telefoon: e.target.value })}
+            className={inputClass}
+          />
         </div>
       </div>
-
-      {/* GDPR opt-in — unticked by default, required */}
-      <div className="mt-5">
-        <label className="flex items-start gap-3 cursor-pointer group">
-          <input
-            type="checkbox"
-            name="consent"
-            required
-            aria-describedby={fieldErrors.consent ? "err-consent" : "consent-help"}
-            className="mt-0.5 h-4 w-4 shrink-0 rounded border-border accent-primary focus:ring-2 focus:ring-primary/60"
-          />
-          <span className="text-sm text-muted-foreground leading-relaxed" id="consent-help">
-            Ja, ik wil mijn scanresultaat en vrijblijvend advies over AI Act-training ontvangen. Ik ga akkoord met de{" "}
-            <Link
-              href="/privacyverklaring"
-              className="underline text-foreground hover:text-primary transition-colors"
-              target="_blank"
-              rel="noopener"
-            >
-              privacyverklaring
-            </Link>
-            .
-          </span>
+      <div>
+        <label htmlFor="cl-teamgrootte" className="text-sm text-muted-foreground mb-1 block">
+          Teamgrootte <span className="text-neon-purple" aria-hidden>*</span>
         </label>
-        {fieldErrors.consent && (
-          <p id="err-consent" role="alert" className="mt-1.5 text-xs text-destructive pl-7">{fieldErrors.consent}</p>
-        )}
+        <select
+          id="cl-teamgrootte" name="teamgrootte" required
+          value={form.teamgrootte} onChange={(e) => setForm({ ...form, teamgrootte: e.target.value })}
+          className={inputClass}
+          defaultValue=""
+        >
+          <option value="" disabled>Kies een optie</option>
+          <option value="1-10">1-10 medewerkers</option>
+          <option value="11-50">11-50 medewerkers</option>
+          <option value="50+">50+ medewerkers</option>
+        </select>
       </div>
 
-      {error && (
-        <p role="alert" className="mt-4 text-sm text-destructive">{error}</p>
-      )}
+      {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
 
-      <button
-        type="submit"
-        disabled={loading}
-        className="btn-neon mt-6 w-full py-3.5 rounded-lg font-semibold text-sm disabled:opacity-60 disabled:cursor-not-allowed"
-      >
-        {loading ? "Versturen..." : "Plan een vrijblijvend gesprek"}
+      <button type="submit" disabled={submitting} className="btn-neon w-full py-3.5 rounded-lg disabled:opacity-50">
+        {submitting ? "Bezig met versturen..." : "Stuur bericht"}
       </button>
+
+      <p className="text-xs text-muted-foreground text-center">
+        Door te versturen ga je akkoord met de{" "}
+        <Link href="/privacyverklaring" className="underline hover:text-foreground transition-colors" target="_blank" rel="noopener">
+          privacyverklaring
+        </Link>
+        .
+      </p>
     </form>
   );
 }

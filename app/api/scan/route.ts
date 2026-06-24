@@ -129,17 +129,28 @@ export async function POST(req: NextRequest) {
 
   const resultUrl = `https://aigeletterdheid.academy/gereedheidscan/resultaat/${id}`;
 
+  let emailSent = false;
+  let emailError: string | null = null;
+
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: "AIGA <ferry@brandhumanizing.com>",
       to: email,
       subject: `Jouw AI Gereedheidsresultaat: ${score}% — ${score_category}`,
       html: buildEmail({ name, score, score_category, resultUrl }),
     });
-  } catch (emailErr) {
-    console.error("Resend error:", emailErr);
+    if (error) {
+      emailError = JSON.stringify(error);
+      console.error("Resend send error:", error);
+    } else {
+      emailSent = true;
+      console.log("Email sent:", data?.id);
+    }
+  } catch (err) {
+    emailError = String(err);
+    console.error("Resend exception:", err);
   }
 
-  return NextResponse.json({ id, score, score_category, dimension_scores });
+  return NextResponse.json({ id, score, score_category, dimension_scores, emailSent, emailError });
 }

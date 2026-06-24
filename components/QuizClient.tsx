@@ -125,7 +125,7 @@ export default function QuizClient() {
       if (!res.ok) throw new Error("submission failed");
 
       const result = await res.json();
-      console.log("[AIGA scan]", result);
+      console.log("[AIGA scan]", JSON.stringify(result));
       const { id, score, score_category, dimension_scores } = result;
       const params = new URLSearchParams({
         n: formData.naam,

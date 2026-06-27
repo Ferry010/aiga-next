@@ -1,7 +1,5 @@
 'use client';
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
@@ -25,13 +23,6 @@ const SectionTitle = ({ number, title }: { number: number; title: string }) => (
 );
 
 export default function AiBeleidstemplateClient() {
-  const router = useRouter();
-  useEffect(() => {
-    if (sessionStorage.getItem("doc-access") !== "template") {
-      router.replace("/tools/downloads/ai-beleid-opstellen");
-    }
-  }, [router]);
-
   return (
     <div className="min-h-screen">
       <div className="print:hidden">

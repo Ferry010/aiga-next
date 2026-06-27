@@ -1,13 +1,10 @@
 'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight, CheckCircle, ClipboardCheck, Calculator, ShieldCheck, Search } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import { Button } from "@/components/ui/button";
-import DownloadLeadDialog from "@/components/DownloadLeadDialog";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
@@ -62,9 +59,6 @@ const relatedTools = [
 ];
 
 export default function BeleidstemplateLandingClient() {
-  const [showLeadDialog, setShowLeadDialog] = useState(false);
-  const router = useRouter();
-
   return (
     <div className="min-h-screen">
       <script
@@ -96,12 +90,10 @@ export default function BeleidstemplateLandingClient() {
             <p className="mt-4 text-base text-muted-foreground max-w-2xl leading-relaxed">
               Geschikt voor HR-managers, compliance officers, directieleden en IT-leads die AI-governance willen formaliseren voordat de handhaving start in augustus 2025.
             </p>
-            <Button
-              size="lg"
-              onClick={() => setShowLeadDialog(true)}
-              className="mt-8 btn-neon"
-            >
-              Download gratis <ArrowRight size={16} />
+            <Button size="lg" asChild className="mt-8 btn-neon">
+              <Link href="/tools/downloads/ai-beleid-opstellen/document">
+                Download gratis <ArrowRight size={16} />
+              </Link>
             </Button>
           </AnimatedSection>
         </div>
@@ -186,12 +178,6 @@ export default function BeleidstemplateLandingClient() {
         </div>
       </section>
 
-      <DownloadLeadDialog
-        open={showLeadDialog}
-        onOpenChange={setShowLeadDialog}
-        document="template"
-        onSuccess={() => router.push("/tools/downloads/ai-beleid-opstellen/document")}
-      />
     </div>
   );
 }

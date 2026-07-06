@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Award, Play, Users, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -11,48 +11,56 @@ import LeadFormClient from "./LeadFormClient";
 import CountdownClient from "./CountdownClient";
 
 export const metadata: Metadata = {
-  title: "EU AI Act training — Team compliant voor 2 augustus 2026 | AIGA",
+  title: "AI Act training voor je team | Online, met certificaat | AIGA",
   description:
-    "Maak je team aantoonbaar AI-geletterd voor de EU AI Act deadline van 2 augustus 2026. Online training met examen en certificaat. Gratis Team AI Audit. EUR 249 per medewerker.",
+    "Maak je team aantoonbaar AI-geletterd voor 2 augustus 2026. Online, in eigen tempo, met examen en certificaat. Vanaf 249 euro per medewerker. Vraag een offerte aan.",
   alternates: {
     canonical: "https://aigeletterdheid.academy/ai-act-training",
   },
   openGraph: {
-    title: "EU AI Act training — Team compliant voor 2 augustus 2026 | AIGA",
+    title: "AI Act training voor je team | Online, met certificaat | AIGA",
     description:
-      "Gratis Team AI Audit + online training met examen en certificaat. EUR 249 per medewerker. Deadline 2 augustus 2026.",
+      "Maak je team aantoonbaar AI-geletterd voor 2 augustus 2026. Online, in eigen tempo, met examen en certificaat. Vanaf 249 euro per medewerker.",
     url: "https://aigeletterdheid.academy/ai-act-training",
     type: "website",
     locale: "nl_NL",
   },
   twitter: {
     card: "summary_large_image",
-    title: "EU AI Act training — Team compliant voor 2 augustus 2026 | AIGA",
+    title: "AI Act training voor je team | Online, met certificaat | AIGA",
     description:
-      "Gratis Team AI Audit + online training met examen en certificaat. EUR 249 per medewerker.",
+      "Maak je team aantoonbaar AI-geletterd voor 2 augustus 2026. Vanaf 249 euro per medewerker.",
   },
 };
 
 const faqs = [
   {
-    q: "Voor wie geldt de AI Act-verplichting?",
-    a: "Voor elke organisatie waarvan medewerkers met AI werken. Niet alleen de techniek, de hele organisatie. Ook als je alleen ChatGPT of Microsoft Copilot gebruikt.",
+    q: "We hebben geen tijd voor een training.",
+    a: "Daarom is alles online en in eigen tempo. 2 tot 3 uur, wanneer het je mensen uitkomt. Geen klassikale sessies, geen planning.",
   },
   {
-    q: "Wat houdt de training in?",
-    a: "Een online cursus over de EU AI Act en AI-geletterdheid, met een adaptief examen en een AI Literacy Practitioner-certificaat op naam. Volledig online, in eigen tempo.",
+    q: "We zijn maar een klein team.",
+    a: "Geen probleem. Je boekt per seat, ook voor een handvol mensen.",
+  },
+  {
+    q: "We zijn juist een groot team.",
+    a: "Ook goed. Van 1 tot meer dan 1000 seats, met een dashboard om de voortgang te volgen. Bij 50+ krijg je de leadership masterclass er gratis bij.",
+  },
+  {
+    q: "Telt dit echt bij een audit?",
+    a: "Ja. Elke deelnemer krijgt een certificaat op naam, digitaal ondertekend en audit-proof.",
   },
   {
     q: "Wat kost het?",
-    a: "EUR 249 per medewerker. Bij 50+ zetels krijg je een gratis leadership masterclass erbij.",
+    a: "Vanaf 249 euro per medewerker, ex btw. Vraag een offerte aan voor je team.",
   },
   {
-    q: "Hoe snel kan mijn team starten?",
-    a: "Direct na boeking. De cursus is online en in eigen tempo te volgen. Gemiddeld 2,5 uur per deelnemer.",
+    q: "Kunnen we eerst even sparren?",
+    a: "Zeker. Vraag een offerte aan of plan een gesprek, dan bellen we je binnen 1 werkdag.",
   },
   {
-    q: "Wat is het verschil tussen de scan en de training?",
-    a: "De gratis Team AI Audit laat zien waar je team nu staat. De training zorgt dat medewerkers gecertificeerd zijn en dat je dat bij een audit kunt aantonen.",
+    q: "Hoe snel kan het team starten?",
+    a: "Direct na aanmelding. Alles staat online klaar.",
   },
 ];
 
@@ -111,62 +119,59 @@ export default function AiActTrainingPage() {
       <div className="min-h-screen">
 
         {/* ── 1. HERO ─────────────────────────────────────────────────── */}
-        <section className="pt-16 pb-20 px-4">
+        <section className="pt-16 pb-16 px-4">
           <div className="max-w-3xl mx-auto">
 
             <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-6">
-              EU AI Act · Artikel 4 · Deadline 2 augustus 2026
+              EU AI Act · Artikel 4 · Handhaving vanaf 2 augustus 2026
             </p>
 
-            {/* Pull quote from the actual regulation */}
-            <blockquote className="border-l-2 border-neon-purple/60 pl-5 mb-8">
-              <p className="text-muted-foreground text-base italic leading-relaxed">
-                "Deployers of AI systems shall take measures to ensure, to their best
-                extent, a sufficient level of AI literacy of their staff."
-              </p>
-              <footer className="mt-2 text-xs text-muted-foreground/60 not-italic">
-                EU AI Act, Artikel 4 &mdash; van kracht
-              </footer>
-            </blockquote>
-
             <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight">
-              Je team compliant.{" "}
-              <span className="neon-text">En een stap voor.</span>
+              Je hele team AI-geletterd.{" "}
+              <span className="neon-text">Zonder je agenda om te gooien.</span>
             </h1>
 
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              Vanaf 2 augustus 2026 moet je aantonen dat je mensen AI-geletterd
-              zijn. Met bewijs. De organisaties die dit nu regelen, werken straks
-              sneller met AI, lopen minder risico, en staan sterk bij een audit.
-              Wij regelen de training: online, met examen en certificaat, zonder
-              maandenlange consultant.
+              De EU AI Act verplicht aantoonbare AI-geletterdheid voor iedereen die met AI werkt.
+              Onze online training regelt dat. Zelfstandig te volgen in 2 tot 3 uur, met examen en
+              certificaat op naam. Vanaf 249 euro per medewerker. Bij 50+ zetels een gratis
+              leadership masterclass.
             </p>
 
-            <div className="mt-8">
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-3">
-                De klok tikt:
+            <div className="mt-8 flex flex-col gap-3">
+              <a
+                href="#gesprek"
+                className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-sm font-semibold w-full sm:w-auto sm:self-start"
+              >
+                Vraag vrijblijvend een offerte aan
+              </a>
+              <p className="text-xs text-muted-foreground">
+                We bellen je binnen 1 werkdag. Geen verplichting.
               </p>
-              <CountdownClient />
-            </div>
-
-            <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
               <Link
                 href="/gereedheidscan"
-                className="btn-neon px-7 py-3.5 rounded-lg text-sm font-semibold"
+                className="text-sm font-medium text-primary hover:underline"
               >
-                Doe de gratis Team AI Audit
+                Nog niet zeker? Doe de gratis AI Act-check. 10 vragen, 2 minuten.
               </Link>
-              <a href="#gesprek" className="text-sm font-medium text-primary hover:underline">
-                Of plan een gesprek →
-              </a>
             </div>
-            <p className="mt-3 text-xs text-muted-foreground">
-              Audit: gratis · 2 minuten · direct resultaat
+
+            <div className="mt-10">
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-3">
+                Nog
+              </p>
+              <CountdownClient />
+              <p className="mt-2 text-xs text-muted-foreground">tot de handhaving start op 2 augustus 2026</p>
+            </div>
+
+            <p className="mt-8 text-sm text-muted-foreground leading-relaxed max-w-xl">
+              Ontwikkeld door het Brand Humanizing Institute met Speakers Academy. Training uit de
+              praktijk, voor organisaties als a.s.r., VodafoneZiggo en meerdere ministeries.
             </p>
           </div>
         </section>
 
-        {/* ── 2. PARTNER TRUST BAR ───────────────────────────────────── */}
+        {/* ── PARTNER LOGO BAR ────────────────────────────────────────── */}
         <section className="py-6 px-4 border-y border-border bg-muted/40">
           <div className="max-w-3xl mx-auto">
             <p className="text-center text-xs font-medium uppercase tracking-[0.08em] text-muted-foreground mb-4">
@@ -186,65 +191,25 @@ export default function AiActTrainingPage() {
                 style={{ height: "50px" }}
               />
             </div>
-            {/* TODO: Add real client/partner logos here when supplied */}
           </div>
         </section>
 
-        {/* ── 3. OUTCOME CARDS ────────────────────────────────────────── */}
+        {/* ── 2. WAAROM NU ────────────────────────────────────────────── */}
         <section className="py-20 px-4">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-2">
-              Wat je ermee wint
-            </h2>
-            <p className="text-muted-foreground mb-10 leading-relaxed">
-              Compliance is het minimum. Wat je er echt uithaalt, is meer.
-            </p>
-            <div className="grid sm:grid-cols-3 gap-5">
-              {[
-                {
-                  Icon: Award,
-                  title: "Audit-proof",
-                  body: "Elk certificaat is digitaal ondertekend. Als de Autoriteit Persoonsgegevens klopt, heb je het bewijs klaarliggen.",
-                },
-                {
-                  Icon: Users,
-                  title: "Concurrentievoordeel",
-                  body: "Teams die nu handelen, werken straks vrijuiter met AI. Geen rem op gebruik, geen twijfel over risico's.",
-                },
-                {
-                  Icon: Play,
-                  title: "Snel geregeld",
-                  body: "Online, in eigen tempo, gemiddeld 2,5 uur per medewerker. Geen roosterproblemen, geen dagenlange offsite.",
-                },
-              ].map(({ Icon, title, body }) => (
-                <div
-                  key={title}
-                  className="neon-card-top bg-card border border-border rounded-xl p-6"
-                >
-                  <Icon size={22} className="text-primary mb-4" aria-hidden />
-                  <h3 className="font-semibold text-foreground mb-2">{title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{body}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── 4. STAKES ───────────────────────────────────────────────── */}
-        <section className="py-20 px-4 bg-card border-y border-border">
-          <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4">
-              Wat de AI Act van je vraagt
+              De deadline is dichterbij dan je denkt
             </h2>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              De wet is helder. De verplichting geldt voor iedereen die AI
-              gebruikt, niet alleen voor technici.
+              AI-geletterdheid is geen 2026-probleem. Artikel 4 van de AI Act geldt al since
+              2 februari 2025. Vanaf 2 augustus 2026 start de actieve handhaving. De vraag is
+              niet of je het regelt, maar of je het kunt aantonen als er iemand naar vraagt.
             </p>
-            <ul className="space-y-4 mb-10">
+            <ul className="space-y-4">
               {[
-                "Je hele organisatie valt onder de verplichting, niet alleen de IT-afdeling.",
-                "Je moet kunnen aantonen dat medewerkers getraind zijn. Een certificaat is dat bewijs.",
-                "De deadline is hard: 2 augustus 2026. Daarna start handhaving.",
+                "Het geldt voor je hele organisatie, niet alleen de techniek. Werkt iemand met ChatGPT, Copilot of AI in software? Dan valt het eronder.",
+                "Aantoonbaar is het sleutelwoord. Een certificaat op naam is je bewijs bij een audit.",
+                "De teams die het nu regelen, lopen straks voor. De teams die wachten, staan eind juli in de rij.",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <Check size={18} className="mt-0.5 shrink-0 text-primary" aria-hidden />
@@ -252,39 +217,72 @@ export default function AiActTrainingPage() {
                 </li>
               ))}
             </ul>
-            <p>
-              <Link
-                href="/kenniscentrum"
-                className="text-sm font-medium text-primary underline hover:no-underline"
-              >
-                Lees de details in het Kenniscentrum
-              </Link>
-            </p>
           </div>
         </section>
 
-        {/* ── 5. HOE HET WERKT ────────────────────────────────────────── */}
+        {/* ── 3. BENEFITS ─────────────────────────────────────────────── */}
+        <section className="py-20 px-4 bg-card border-y border-border">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-10">
+              Gemaakt voor teams die geen tijd hebben om stil te staan
+            </h2>
+            <div className="space-y-8">
+              {[
+                {
+                  title: "Geen agendadruk",
+                  body: "Online en in eigen tempo. Geen klassikale sessies, geen roostergedoe. Je mensen volgen de training wanneer het uitkomt, in 2 tot 3 uur. Weinig tot geen druk op de agenda.",
+                },
+                {
+                  title: "Voor kleine en grote teams",
+                  body: "Per seat te boeken, van 1 tot meer dan 1000 medewerkers. Een voortgangsdashboard laat zien wie klaar is en wie nog niet.",
+                },
+                {
+                  title: "Direct contact met de trainer",
+                  body: "Geen anonieme e-learning waar je vragen in een leegte verdwijnen. Je hebt een echte expert aan de lijn, geen helpdesk.",
+                },
+                {
+                  title: "Getraind door een van de meest geboekte AI-sprekers van Nederland",
+                  body: "De training komt uit de praktijk van Ferry Hoes, die maandelijks op het podium staat voor organisaties als a.s.r., VodafoneZiggo en ministeries. Geen theorie uit een boekje, maar wat werkt op de werkvloer.",
+                },
+                {
+                  title: "Examen en audit-proof certificaat",
+                  body: "Elke deelnemer sluit af met een adaptief examen en ontvangt het AI Literacy Practitioner certificaat. Digitaal ondertekend, deelbaar via LinkedIn, geldig als bewijs bij een audit.",
+                },
+              ].map(({ title, body }) => (
+                <div key={title} className="flex gap-4">
+                  <Check size={20} className="mt-0.5 shrink-0 text-primary" aria-hidden />
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">{title}</h3>
+                    <p className="text-muted-foreground leading-relaxed text-sm">{body}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── 4. HOE HET WERKT ────────────────────────────────────────── */}
         <section className="py-20 px-4">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-10">
-              Van nulmeting naar certificaat
+              In drie stappen aantoonbaar compliant
             </h2>
-            <ol className="space-y-8">
+            <ol className="space-y-8 mb-10">
               {[
                 {
                   n: "01",
-                  title: "Doe de gratis Team AI Audit",
-                  body: "2 minuten. Je ziet direct waar je team staat en wat de grootste gaps zijn.",
+                  title: "Vraag een offerte aan",
+                  body: "We bellen je binnen 1 werkdag en stemmen af op je team en je sector.",
                 },
                 {
                   n: "02",
-                  title: "Bespreek de uitslag met ons",
-                  body: "We kijken samen naar je resultaat en de snelste route naar compliant. Vrijblijvend.",
+                  title: "Je team volgt de online training",
+                  body: "In eigen tempo, 2 tot 3 uur, met praktijkcases en een afsluitend examen.",
                 },
                 {
                   n: "03",
-                  title: "Team gecertificeerd, bewijs op zak",
-                  body: "Medewerkers volgen de online training in eigen tempo. Na het examen krijgen ze het AI Literacy Practitioner-certificaat. Audit-proof.",
+                  title: "Iedereen is aantoonbaar compliant",
+                  body: "Elke deelnemer ontvangt het certificaat. Jij hebt je bewijs op zak.",
                 },
               ].map(({ n, title, body }) => (
                 <li key={n} className="flex gap-5">
@@ -301,29 +299,28 @@ export default function AiActTrainingPage() {
                 </li>
               ))}
             </ol>
-
-            <div className="mt-10 pt-8 border-t border-border">
-              <Link href="/gereedheidscan" className="text-sm font-semibold text-primary hover:underline">
-                Start met de gratis Team AI Audit →
-              </Link>
-              <p className="mt-1 text-xs text-muted-foreground">Gratis · 2 minuten · geen account nodig</p>
-            </div>
+            <a
+              href="#gesprek"
+              className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-sm font-semibold"
+            >
+              Vraag vrijblijvend een offerte aan
+            </a>
           </div>
         </section>
 
-        {/* ── 6. TRAINING + PRICING ───────────────────────────────────── */}
+        {/* ── 5. WAT JE KRIJGT ────────────────────────────────────────── */}
         <section className="py-20 px-4 bg-card border-y border-border">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-6">
-              Wat je team krijgt
+              Wat er in de training zit
             </h2>
-            <ul className="space-y-3 mb-6">
+            <ul className="space-y-3 mb-8">
               {[
-                "Online cursus: EU AI Act basis en AI-geletterdheid",
-                "Adaptief examen op naam",
-                "AI Literacy Practitioner-certificaat, digitaal ondertekend",
-                "Voortgangsdashboard voor leidinggevenden",
-                "Bij 50+ zetels: gratis leadership masterclass",
+                "Online cursus met videolessen en praktijkcases",
+                "EU AI Act in gewone taal, plus praktische AI-geletterdheid",
+                "Adaptief afsluitend examen",
+                "AI Literacy Practitioner certificaat op naam",
+                "Voortgangsdashboard voor de hele organisatie",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <Check size={18} className="mt-0.5 shrink-0 text-primary" aria-hidden />
@@ -332,16 +329,34 @@ export default function AiActTrainingPage() {
               ))}
             </ul>
             <p className="text-2xl font-display font-bold text-foreground">
-              EUR 249 per medewerker.
+              Vanaf 249 euro per medewerker (ex btw).
             </p>
             <p className="mt-2 text-muted-foreground">
-              Geen abonnement. Geen verborgen kosten. Per seat.
+              Bij 50+ zetels krijg je een gratis leadership masterclass voor je directie en managers.
             </p>
           </div>
         </section>
 
-        {/* ── 7. FAQ ───────────────────────────────────────────────────── */}
+        {/* ── 6. DE TRAINER ───────────────────────────────────────────── */}
         <section className="py-20 px-4">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4">
+              Je traint met een expert, niet met een cursus
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-8">
+              Achter de training staat Ferry Hoes. Hij werkt since 2017 op het snijvlak van AI en
+              menselijk gedrag, won in 2020 de Anti-Discriminatie AI-Hackathon van de Nederlandse
+              overheid, en staat meermaals per maand op het podium voor organisaties als a.s.r.,
+              VodafoneZiggo en verschillende ministeries. Via Speakers Academy is hij een van de
+              meest gevraagde AI-sprekers van Nederland. Bij AIGA train je niet met een anonieme
+              cursus, maar met iemand die je ook echt kunt spreken.
+            </p>
+            {/* Testimonial slot — echt citaat van een echte klant invoegen als beschikbaar */}
+          </div>
+        </section>
+
+        {/* ── 7. FAQ ───────────────────────────────────────────────────── */}
+        <section className="py-20 px-4 bg-card border-y border-border">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-8">
               Veelgestelde vragen
@@ -351,7 +366,7 @@ export default function AiActTrainingPage() {
                 <AccordionItem
                   key={i}
                   value={`faq-${i}`}
-                  className="bg-card border border-border rounded-xl px-5"
+                  className="bg-background border border-border rounded-xl px-5"
                 >
                   <AccordionTrigger className="text-left font-semibold text-foreground py-4 hover:no-underline">
                     {q}
@@ -365,45 +380,61 @@ export default function AiActTrainingPage() {
           </div>
         </section>
 
-        {/* ── 8. GESPREK FORM ──────────────────────────────────────────── */}
-        <section id="gesprek" className="py-20 px-4 bg-card border-t border-border">
+        {/* ── 8. LAATSTE CTA + FORM ────────────────────────────────────── */}
+        <section id="gesprek" className="py-20 px-4">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-3">
-              Laten we praten.
+              De handhaving start op 2 augustus 2026
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-2">
-              Vul het formulier in. We nemen snel contact met je op.
+            <p className="text-muted-foreground leading-relaxed mb-8">
+              Zorg dat je team op tijd, en aantoonbaar, compliant is.
             </p>
-            <div className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground mb-8">
-              <span>Robbert &amp; Tom | Speakers Academy</span>
-              <a href="tel:+31103167827" className="text-primary hover:underline">+31 (0)10 316 7827</a>
-              <a href="mailto:robbert@speakersacademy.nl" className="text-primary hover:underline">robbert@speakersacademy.nl</a>
-            </div>
 
             <LeadFormClient />
 
-            <p className="mt-6 text-xs text-muted-foreground">
-              Nog niet zeker?{" "}
-              <Link href="/gereedheidscan" className="text-primary hover:underline">
-                Doe eerst de gratis Team AI Audit →
-              </Link>
-            </p>
+            <div className="mt-6 space-y-3">
+              <p className="text-xs text-muted-foreground">
+                We bellen je binnen 1 werkdag. Geen verplichting.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Of doe eerst de gratis AI Act-check.{" "}
+                <Link href="/gereedheidscan" className="text-primary hover:underline font-medium">
+                  10 vragen, 2 minuten.
+                </Link>
+              </p>
+              <div className="pt-4">
+                <CountdownClient />
+              </div>
+            </div>
+
+            <div className="mt-10 pt-8 border-t border-border flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted-foreground">
+              <span>Robbert &amp; Tom | Speakers Academy</span>
+              <a href="tel:+31103167827" className="text-primary hover:underline">+31 (0)10 316 7827</a>
+              <a href="mailto:robbert@speakersacademy.nl" className="text-primary hover:underline">robbert@speakersacademy.nl</a>
+              <a href="mailto:tom@speakersacademy.nl" className="text-primary hover:underline">tom@speakersacademy.nl</a>
+            </div>
           </div>
         </section>
 
-        {/* ── FOOTER LINKS ─────────────────────────────────────────────── */}
+        {/* ── FOOTER ───────────────────────────────────────────────────── */}
         <footer className="border-t border-border py-8 px-4">
           <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
+            <span>Brand Humanizing Institute &amp; Speakers Academy</span>
             <Link href="/privacyverklaring" className="hover:text-foreground transition-colors">
               Privacyverklaring
             </Link>
             <Link href="/kenniscentrum" className="hover:text-foreground transition-colors">
               Kenniscentrum
             </Link>
-            <Link href="/contact" className="hover:text-foreground transition-colors">
-              Contact
-            </Link>
-            <span>Training door Brand Humanizing Institute &amp; Speakers Academy</span>
+            <a href="mailto:robbert@speakersacademy.nl" className="hover:text-foreground transition-colors">
+              robbert@speakersacademy.nl
+            </a>
+            <a href="mailto:tom@speakersacademy.nl" className="hover:text-foreground transition-colors">
+              tom@speakersacademy.nl
+            </a>
+            <a href="tel:+31103167827" className="hover:text-foreground transition-colors">
+              +31 (0)10 316 7827
+            </a>
           </div>
         </footer>
 

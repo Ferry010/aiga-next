@@ -24,17 +24,13 @@ function getStoredUtms(): Record<string, string | undefined> {
   }
 }
 
-// TODO: Remove GOOGLE_ADS_CONVERSION placeholder before shipping ads traffic
-// const GOOGLE_ADS_CONVERSION = "AW-XXXXXXXXX/zzzzzzzzzzz";
-
 function fireTracking() {
   if (typeof window === "undefined") return;
   if (typeof (window as any).gtag === "function") {
-    (window as any).gtag("event", "generate_lead", { currency: "EUR", value: 249 });
-    // TODO: Uncomment and fill once Google Ads conversion ID is known:
-    // (window as any).gtag("event", "conversion", { send_to: "AW-XXXXXXXXX/zzzzzzzzzzz", currency: "EUR", value: 249 });
+    (window as any).gtag("event", "lead_offerte", { currency: "EUR", value: 249 });
+    // TODO: Uncomment and fill once Google Ads conversion label is known:
+    // (window as any).gtag("event", "conversion", { send_to: "AW-11161273960/zzzzzzzzzzz", currency: "EUR", value: 249 });
   }
-  // TODO: Meta Pixel — load after consent, then: fbq("track", "Lead")
   try {
     const consent = localStorage.getItem("aiga_cookie_consent");
     if (consent === "accepted" && typeof (window as any).fbq === "function") {
@@ -44,7 +40,8 @@ function fireTracking() {
 }
 
 export default function LeadFormClient() {
-  const [form, setForm] = useState({ naam: "", bedrijf: "", email: "", telefoon: "", teamgrootte: "" });
+  const [form, setForm] = useState({ naam: "", bedrijf: "", email: "", teamgrootte: "" });
+  const [gdpr, setGdpr] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -76,11 +73,11 @@ export default function LeadFormClient() {
       organisatie: form.bedrijf,
       functie: null,
       email: form.email,
-      telefoon: form.telefoon || null,
+      telefoon: null,
       hulp: "training",
       aantal: form.teamgrootte || null,
       opmerkingen: [
-        "Bron: AI Act Training campagnepagina",
+        "Bron: AI Act Training campagnepagina — offerte aanvraag",
         form.teamgrootte && `Teamgrootte: ${form.teamgrootte}`,
         utmNote,
       ].filter(Boolean).join(" · ") || null,
@@ -98,8 +95,8 @@ export default function LeadFormClient() {
         naam: form.naam,
         organisatie: form.bedrijf,
         email: form.email,
-        telefoon: form.telefoon || null,
-        extra: `AI Act campagnepagina · Teamgrootte: ${form.teamgrootte || "onbekend"}${utmNote ? ` · ${utmNote}` : ""}`,
+        telefoon: null,
+        extra: `AI Act campagnepagina — offerte aanvraag · Teamgrootte: ${form.teamgrootte || "onbekend"}${utmNote ? ` · ${utmNote}` : ""}`,
       },
     }).catch(console.error);
 
@@ -111,8 +108,10 @@ export default function LeadFormClient() {
   if (submitted) {
     return (
       <div className="bg-card border border-neon-purple/30 rounded-2xl p-10 text-center">
-        <h3 className="text-xl font-semibold text-foreground mb-2">Bedankt voor je bericht!</h3>
-        <p className="text-muted-foreground">We nemen snel contact met je op.</p>
+        <h3 className="text-xl font-semibold text-foreground mb-2">Bedankt.</h3>
+        <p className="text-muted-foreground leading-relaxed">
+          We bellen je binnen 1 werkdag om je team en de snelste route naar compliant door te nemen.
+        </p>
       </div>
     );
   }
@@ -120,7 +119,7 @@ export default function LeadFormClient() {
   const inputClass = "w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4" aria-label="Contactformulier">
+    <form onSubmit={handleSubmit} className="space-y-4" aria-label="Offerte aanvraag">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="cl-naam" className="text-sm text-muted-foreground mb-1 block">
@@ -142,26 +141,16 @@ export default function LeadFormClient() {
             className={inputClass}
           />
         </div>
-        <div>
-          <label htmlFor="cl-email" className="text-sm text-muted-foreground mb-1 block">
-            Werk e-mail <span className="text-neon-purple" aria-hidden>*</span>
-          </label>
-          <input
-            id="cl-email" name="email" type="email" required autoComplete="email"
-            value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className={inputClass}
-          />
-        </div>
-        <div>
-          <label htmlFor="cl-telefoon" className="text-sm text-muted-foreground mb-1 block">
-            Telefoonnummer <span className="text-xs text-muted-foreground/60">(optioneel)</span>
-          </label>
-          <input
-            id="cl-telefoon" name="telefoon" type="tel" autoComplete="tel"
-            value={form.telefoon} onChange={(e) => setForm({ ...form, telefoon: e.target.value })}
-            className={inputClass}
-          />
-        </div>
+      </div>
+      <div>
+        <label htmlFor="cl-email" className="text-sm text-muted-foreground mb-1 block">
+          Werk e-mail <span className="text-neon-purple" aria-hidden>*</span>
+        </label>
+        <input
+          id="cl-email" name="email" type="email" required autoComplete="email"
+          value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
+          className={inputClass}
+        />
       </div>
       <div>
         <label htmlFor="cl-teamgrootte" className="text-sm text-muted-foreground mb-1 block">
@@ -171,7 +160,6 @@ export default function LeadFormClient() {
           id="cl-teamgrootte" name="teamgrootte" required
           value={form.teamgrootte} onChange={(e) => setForm({ ...form, teamgrootte: e.target.value })}
           className={inputClass}
-          defaultValue=""
         >
           <option value="" disabled>Kies een optie</option>
           <option value="1-10">1-10 medewerkers</option>
@@ -180,19 +168,29 @@ export default function LeadFormClient() {
         </select>
       </div>
 
+      <label className="flex items-start gap-3 cursor-pointer">
+        <input
+          type="checkbox"
+          required
+          checked={gdpr}
+          onChange={(e) => setGdpr(e.target.checked)}
+          className="mt-1 shrink-0 accent-neon-purple"
+        />
+        <span className="text-sm text-muted-foreground leading-relaxed">
+          Ja, ik wil vrijblijvend advies en een offerte over AI Act-training ontvangen. Ik ga akkoord met de{" "}
+          <Link href="/privacyverklaring" className="underline hover:text-foreground transition-colors" target="_blank" rel="noopener">
+            privacyverklaring
+          </Link>
+          .{" "}
+          <span className="text-neon-purple" aria-hidden>*</span>
+        </span>
+      </label>
+
       {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
 
       <button type="submit" disabled={submitting} className="btn-neon w-full py-3.5 rounded-lg disabled:opacity-50">
-        {submitting ? "Bezig met versturen..." : "Stuur bericht"}
+        {submitting ? "Bezig met versturen..." : "Vraag vrijblijvend een offerte aan"}
       </button>
-
-      <p className="text-xs text-muted-foreground text-center">
-        Door te versturen ga je akkoord met de{" "}
-        <Link href="/privacyverklaring" className="underline hover:text-foreground transition-colors" target="_blank" rel="noopener">
-          privacyverklaring
-        </Link>
-        .
-      </p>
     </form>
   );
 }

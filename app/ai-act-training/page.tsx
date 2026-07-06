@@ -145,9 +145,6 @@ export default function AiActTrainingPage() {
               >
                 Vraag vrijblijvend een offerte aan
               </a>
-              <p className="text-xs text-muted-foreground">
-                We bellen je binnen 1 werkdag. Geen verplichting.
-              </p>
               <Link
                 href="/gereedheidscan"
                 className="text-sm font-medium text-primary hover:underline"
@@ -351,7 +348,17 @@ export default function AiActTrainingPage() {
               meest gevraagde AI-sprekers van Nederland. Bij AIGA train je niet met een anonieme
               cursus, maar met iemand die je ook echt kunt spreken.
             </p>
-            {/* Testimonial slot — echt citaat van een echte klant invoegen als beschikbaar */}
+            <figure className="mt-8 border-l-2 border-neon-purple/60 pl-5">
+              <blockquote className="text-muted-foreground italic leading-relaxed text-base">
+                "Ferry heeft de gave om ingewikkelde theorie op een toegankelijke manier aan het
+                publiek uit te leggen. De ervaring met AI onder de deelnemers liep sterk uiteen;
+                van helemaal geen ervaring tot medewerkers die er al dagelijks mee werken. Zelfs
+                degenen zonder enige ervaring kwamen verrast en zeer enthousiast de sessie uit."
+              </blockquote>
+              <figcaption className="mt-3 text-sm text-muted-foreground/70 not-italic">
+                Maud, Chubb Fire &amp; Security
+              </figcaption>
+            </figure>
           </div>
         </section>
 
@@ -393,9 +400,6 @@ export default function AiActTrainingPage() {
             <LeadFormClient />
 
             <div className="mt-6 space-y-3">
-              <p className="text-xs text-muted-foreground">
-                We bellen je binnen 1 werkdag. Geen verplichting.
-              </p>
               <p className="text-sm text-muted-foreground">
                 Of doe eerst de gratis AI Act-check.{" "}
                 <Link href="/gereedheidscan" className="text-primary hover:underline font-medium">

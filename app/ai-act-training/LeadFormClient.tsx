@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 
 function readUtmsFromUrl() {
@@ -172,17 +171,8 @@ export default function LeadFormClient() {
       {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
 
       <button type="submit" disabled={submitting} className="btn-neon w-full py-3.5 rounded-lg disabled:opacity-50">
-        {submitting ? "Bezig met versturen..." : "Vraag de mogelijkheden aan"}
+        {submitting ? "Bezig met versturen..." : "Stuur mijn aanvraag"}
       </button>
-
-      <p className="text-xs text-muted-foreground leading-relaxed">
-        Geen verplichtingen. We nemen contact op om af te stemmen op jou of je team. Je gegevens
-        gebruiken we daar alleen voor. Zie de{" "}
-        <Link href="/privacyverklaring" className="underline hover:text-foreground transition-colors" target="_blank" rel="noopener">
-          privacyverklaring
-        </Link>
-        .
-      </p>
     </form>
   );
 }

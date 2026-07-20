@@ -41,7 +41,6 @@ function fireTracking() {
 
 export default function LeadFormClient() {
   const [form, setForm] = useState({ naam: "", bedrijf: "", email: "", teamgrootte: "" });
-  const [gdpr, setGdpr] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -108,9 +107,10 @@ export default function LeadFormClient() {
   if (submitted) {
     return (
       <div className="bg-card border border-neon-purple/30 rounded-2xl p-10 text-center">
-        <h3 className="text-xl font-semibold text-foreground mb-2">Bedankt.</h3>
+        <h3 className="text-xl font-semibold text-foreground mb-2">Top, we hebben je aanvraag.</h3>
         <p className="text-muted-foreground leading-relaxed">
-          We bellen je binnen 1 werkdag om je team en de snelste route naar compliant door te nemen.
+          We nemen snel contact op om de snelste route naar een AI-vaardig team met je door te nemen.
+          Voor jezelf of voor je hele organisatie.
         </p>
       </div>
     );
@@ -154,7 +154,7 @@ export default function LeadFormClient() {
       </div>
       <div>
         <label htmlFor="cl-teamgrootte" className="text-sm text-muted-foreground mb-1 block">
-          Teamgrootte <span className="text-neon-purple" aria-hidden>*</span>
+          Voor hoeveel mensen? <span className="text-neon-purple" aria-hidden>*</span>
         </label>
         <select
           id="cl-teamgrootte" name="teamgrootte" required
@@ -162,35 +162,27 @@ export default function LeadFormClient() {
           className={inputClass}
         >
           <option value="" disabled>Kies een optie</option>
+          <option value="Alleen ikzelf">Alleen ikzelf</option>
           <option value="1-10">1-10 medewerkers</option>
           <option value="11-50">11-50 medewerkers</option>
           <option value="50+">50+ medewerkers</option>
         </select>
       </div>
 
-      <label className="flex items-start gap-3 cursor-pointer">
-        <input
-          type="checkbox"
-          required
-          checked={gdpr}
-          onChange={(e) => setGdpr(e.target.checked)}
-          className="mt-1 shrink-0 accent-neon-purple"
-        />
-        <span className="text-sm text-muted-foreground leading-relaxed">
-          Ja, ik wil vrijblijvend advies en een offerte over AI Act-training ontvangen. Ik ga akkoord met de{" "}
-          <Link href="/privacyverklaring" className="underline hover:text-foreground transition-colors" target="_blank" rel="noopener">
-            privacyverklaring
-          </Link>
-          .{" "}
-          <span className="text-neon-purple" aria-hidden>*</span>
-        </span>
-      </label>
-
       {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
 
       <button type="submit" disabled={submitting} className="btn-neon w-full py-3.5 rounded-lg disabled:opacity-50">
-        {submitting ? "Bezig met versturen..." : "Vraag vrijblijvend een offerte aan"}
+        {submitting ? "Bezig met versturen..." : "Vraag de mogelijkheden aan"}
       </button>
+
+      <p className="text-xs text-muted-foreground leading-relaxed">
+        Geen verplichtingen. We nemen contact op om af te stemmen op jou of je team. Je gegevens
+        gebruiken we daar alleen voor. Zie de{" "}
+        <Link href="/privacyverklaring" className="underline hover:text-foreground transition-colors" target="_blank" rel="noopener">
+          privacyverklaring
+        </Link>
+        .
+      </p>
     </form>
   );
 }

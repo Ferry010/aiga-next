@@ -13,7 +13,7 @@ import CountdownClient from "./CountdownClient";
 export const metadata: Metadata = {
   title: "AI Act training voor je team | Online, met certificaat | AIGA",
   description:
-    "Maak je team aantoonbaar AI-geletterd voor 2 augustus 2026. Online, in eigen tempo, met examen en certificaat. Vanaf 249 euro per medewerker. Vraag een offerte aan.",
+    "Word met je team echt goed in AI. Online, in eigen tempo, met examen en certificaat. Meteen AI Act-proof voor 2 augustus 2026. Vanaf 249 euro per persoon.",
   alternates: {
     canonical: "https://aigeletterdheid.academy/ai-act-training",
   },
@@ -52,11 +52,11 @@ const faqs = [
   },
   {
     q: "Wat kost het?",
-    a: "Vanaf 249 euro per medewerker, ex btw. Vraag een offerte aan voor je team.",
+    a: "Vanaf 249 euro per persoon, ex btw. Vraag de mogelijkheden aan voor jezelf of je team.",
   },
   {
     q: "Kunnen we eerst even sparren?",
-    a: "Zeker. Vraag een offerte aan of plan een gesprek, dan bellen we je binnen 1 werkdag.",
+    a: "Zeker. Laat je gegevens achter, dan nemen we snel contact op om te kijken wat past voor jou of je team.",
   },
   {
     q: "Hoe snel kan het team starten?",
@@ -122,20 +122,21 @@ export default function AiActTrainingPage() {
         <section className="pt-16 pb-16 px-4">
           <div className="max-w-3xl mx-auto">
 
-            <p className="text-xs font-semibold tracking-widest uppercase text-muted-foreground mb-6">
-              EU AI Act · Artikel 4 · Handhaving vanaf 2 augustus 2026
-            </p>
-
             <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight">
-              Je hele team AI-geletterd.{" "}
-              <span className="neon-text">Zonder je agenda om te gooien.</span>
+              Word het team dat met AI vooroploopt.{" "}
+              <span className="neon-text">In één middag.</span>
             </h1>
 
             <p className="mt-5 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              De EU AI Act verplicht aantoonbare AI-geletterdheid voor iedereen die met AI werkt.
-              Onze online training regelt dat. Zelfstandig te volgen in 2 tot 3 uur, met examen en
-              certificaat op naam. Vanaf 249 euro per medewerker. Bij 50+ zetels een gratis
-              leadership masterclass.
+              Straks werkt bijna iedereen met AI. Het verschil zit in wie het écht goed doet. In 2 tot
+              3 uur worden jij en je team AI-vaardig: slim prompten, veilig omgaan met bedrijfsdata en
+              weten welke tools er nu toe doen. Met een examen en certificaat op naam als bewijs.
+              Vanaf 249 euro per persoon.
+            </p>
+
+            <p className="mt-4 text-base text-muted-foreground leading-relaxed max-w-2xl">
+              Mooi meegenomen: de EU AI Act verplicht aantoonbare AI-geletterdheid. Deze training dekt
+              dat in één keer af.
             </p>
 
             <div className="mt-8 flex flex-col gap-3">
@@ -143,13 +144,13 @@ export default function AiActTrainingPage() {
                 href="#gesprek"
                 className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-sm font-semibold w-full sm:w-auto sm:self-start"
               >
-                Vraag vrijblijvend een offerte aan
+                Vraag de mogelijkheden aan
               </a>
               <Link
                 href="/gereedheidscan"
                 className="text-sm font-medium text-primary hover:underline"
               >
-                Nog niet zeker? Doe de gratis AI Act-check. 10 vragen, 2 minuten.
+                Nog niet zeker? Doe de gratis AI-check. 10 vragen, 2 minuten.
               </Link>
             </div>
 
@@ -195,18 +196,20 @@ export default function AiActTrainingPage() {
         <section className="py-20 px-4">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4">
-              De deadline is dichterbij dan je denkt
+              Het echte risico is niet de boete. Het is achterlopen.
             </h2>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              AI-geletterdheid is geen 2026-probleem. Artikel 4 van de AI Act geldt al since
-              2 februari 2025. Vanaf 2 augustus 2026 start de actieve handhaving. De vraag is
-              niet of je het regelt, maar of je het kunt aantonen als er iemand naar vraagt.
+              AI verandert nu hoe werk wordt gedaan. Wie het slim inzet, werkt sneller en levert beter
+              werk. Wie blijft aanmodderen met half werkende prompts, valt langzaam achterop. En ja,
+              er is ook een deadline: Artikel 4 van de EU AI Act geldt al sinds 2 februari 2025, en
+              vanaf 2 augustus 2026 wordt er actief gehandhaafd. Twee goede redenen om het nu te
+              regelen in plaats van straks.
             </p>
             <ul className="space-y-4">
               {[
-                "Het geldt voor je hele organisatie, niet alleen de techniek. Werkt iemand met ChatGPT, Copilot of AI in software? Dan valt het eronder.",
-                "Aantoonbaar is het sleutelwoord. Een certificaat op naam is je bewijs bij een audit.",
-                "De teams die het nu regelen, lopen straks voor. De teams die wachten, staan eind juli in de rij.",
+                "Het raakt bijna iedereen. Werkt iemand met ChatGPT, Copilot of AI in jullie software? Dan heeft die persoon dit nodig.",
+                "Vaardigheid is het verschil. Een team dat AI slim gebruikt, haalt er echt tijd en kwaliteit uit. De rest blijft ermee worstelen.",
+                "Aantoonbaar telt dubbel. Een certificaat op naam laat intern én bij een audit zien dat het geregeld is.",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <Check size={18} className="mt-0.5 shrink-0 text-primary" aria-hidden />
@@ -221,7 +224,7 @@ export default function AiActTrainingPage() {
         <section className="py-20 px-4 bg-card border-y border-border">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-10">
-              Gemaakt voor teams die geen tijd hebben om stil te staan
+              Geen weken cursus. Wel een team dat AI echt onder de knie heeft.
             </h2>
             <div className="space-y-8">
               {[
@@ -262,24 +265,24 @@ export default function AiActTrainingPage() {
         <section className="py-20 px-4">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-10">
-              In drie stappen aantoonbaar compliant
+              Van aanmelding tot AI-vaardig team in drie stappen
             </h2>
             <ol className="space-y-8 mb-10">
               {[
                 {
                   n: "01",
-                  title: "Vraag een offerte aan",
-                  body: "We bellen je binnen 1 werkdag en stemmen af op je team en je sector.",
+                  title: "Vraag de mogelijkheden aan",
+                  body: "We nemen contact op en stemmen af op jou of je team en je sector.",
                 },
                 {
                   n: "02",
-                  title: "Je team volgt de online training",
+                  title: "Volg de online training",
                   body: "In eigen tempo, 2 tot 3 uur, met praktijkcases en een afsluitend examen.",
                 },
                 {
                   n: "03",
-                  title: "Iedereen is aantoonbaar compliant",
-                  body: "Elke deelnemer ontvangt het certificaat. Jij hebt je bewijs op zak.",
+                  title: "AI-vaardig én aantoonbaar compliant",
+                  body: "Iedereen kan meer met AI en ontvangt het certificaat. Jij hebt je bewijs op zak.",
                 },
               ].map(({ n, title, body }) => (
                 <li key={n} className="flex gap-5">
@@ -300,7 +303,7 @@ export default function AiActTrainingPage() {
               href="#gesprek"
               className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-sm font-semibold"
             >
-              Vraag vrijblijvend een offerte aan
+              Vraag de mogelijkheden aan
             </a>
           </div>
         </section>
@@ -313,8 +316,9 @@ export default function AiActTrainingPage() {
             </h2>
             <ul className="space-y-3 mb-8">
               {[
-                "Online cursus met videolessen en praktijkcases",
-                "EU AI Act in gewone taal, plus praktische AI-geletterdheid",
+                "Praktische AI-vaardigheid: slim prompten, veilig werken met bedrijfsdata en de juiste tools kiezen",
+                "Online cursus met videolessen en herkenbare praktijkcases",
+                "De EU AI Act in gewone taal, zodat je precies weet wat er van je gevraagd wordt",
                 "Adaptief afsluitend examen",
                 "AI Literacy Practitioner certificaat op naam",
                 "Voortgangsdashboard voor de hele organisatie",
@@ -326,7 +330,7 @@ export default function AiActTrainingPage() {
               ))}
             </ul>
             <p className="text-2xl font-display font-bold text-foreground">
-              Vanaf 249 euro per medewerker (ex btw).
+              Vanaf 249 euro per persoon (ex btw).
             </p>
             <p className="mt-2 text-muted-foreground">
               Bij 50+ zetels krijg je een gratis leadership masterclass voor je directie en managers.
@@ -341,7 +345,7 @@ export default function AiActTrainingPage() {
               Je traint met een expert, niet met een cursus
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Achter de training staat Ferry Hoes. Hij werkt since 2017 op het snijvlak van AI en
+              Achter de training staat Ferry Hoes. Hij werkt sinds 2017 op het snijvlak van AI en
               menselijk gedrag, won in 2020 de Anti-Discriminatie AI-Hackathon van de Nederlandse
               overheid, en staat meermaals per maand op het podium voor organisaties als a.s.r.,
               VodafoneZiggo en verschillende ministeries. Via Speakers Academy is hij een van de
@@ -391,17 +395,18 @@ export default function AiActTrainingPage() {
         <section id="gesprek" className="py-20 px-4">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-3">
-              De handhaving start op 2 augustus 2026
+              Klaar om echt goed te worden in AI?
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Zorg dat je team op tijd, en aantoonbaar, compliant is.
+              Laat je gegevens achter, dan bespreken we de snelste route. Voor jezelf of voor je hele
+              team. En je bent meteen op tijd voor 2 augustus 2026.
             </p>
 
             <LeadFormClient />
 
             <div className="mt-6 space-y-3">
               <p className="text-sm text-muted-foreground">
-                Of doe eerst de gratis AI Act-check.{" "}
+                Of doe eerst de gratis AI-check.{" "}
                 <Link href="/gereedheidscan" className="text-primary hover:underline font-medium">
                   10 vragen, 2 minuten.
                 </Link>

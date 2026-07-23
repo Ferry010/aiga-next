@@ -31,11 +31,11 @@ const faqItems = [
   },
   {
     q: "Wat zijn de deadlines voor AI Act compliance?",
-    a: "Er zijn vier cruciale data. Op 2 februari 2025 golden al het verbod op verboden AI-toepassingen en de verplichting tot AI-geletterdheid voor medewerkers. Op 2 augustus 2025 gelden aanvullende verplichtingen voor aanbieders van general-purpose AI-modellen zoals grote taalmodellen. Op 2 augustus 2026 treden de zwaarste verplichtingen in werking voor deployers van hoog-risico AI-systemen. Volledige handhaving van alle overige bepalingen volgt op 2 augustus 2027.",
+    a: "Er zijn vijf cruciale data. Op 2 februari 2025: verbod op verboden AI-toepassingen (Artikel 5) en AI-geletterdheidsplicht (Artikel 4). Op 2 augustus 2025: GPAI-verplichtingen. Op 2 augustus 2026: toezichthouders kunnen handhaven op Artikel 4. Na de Digital Omnibus (juni 2026) zijn de hoog-risico verplichtingen voor Bijlage III uitgesteld naar 2 december 2027. Bijlage I (AI in gereguleerde producten) volgt op 2 augustus 2028.",
   },
   {
     q: "Wat gebeurt er als mijn organisatie niet compliant is?",
-    a: "De EU AI Act hanteert een getrapt boetesysteem. Voor de zwaarste overtredingen, zoals het inzetten van verboden AI-toepassingen, lopen boetes op tot 35 miljoen euro of 7% van de wereldwijde jaaromzet. Voor niet-naleving van de hoog-risico verplichtingen geldt een maximum van 15 miljoen euro of 3% van de jaaromzet. Kleinere overtredingen kunnen leiden tot boetes tot 7,5 miljoen euro of 1,5% van de jaaromzet. Handhaving in Nederland ligt bij de Autoriteit Persoonsgegevens als markttoezichthouder.",
+    a: "De AI Act kent drie boetetiers. Verboden AI-praktijken (Artikel 5, zoals social scoring): tot 35 miljoen euro of 7% van de wereldwijde jaaromzet. Hoog-risico overtredingen: tot 15 miljoen euro of 3%. Transparantieverplichtingen (Artikel 52): tot 7,5 miljoen euro of 1,5%. Artikel 4 (AI-geletterdheid) kent geen eigen boete. Toezichthouders kunnen het meewegen als verzwarende omstandigheid bij andere overtredingen. Handhaving in Nederland is verdeeld over de AP en circa tien sectorale toezichthouders.",
   },
   {
     q: "Hoe gebruik ik deze checklist in mijn organisatie?",

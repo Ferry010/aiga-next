@@ -198,9 +198,9 @@ export default function EuAiActA4Client() {
               <SectionLabel>Handhaving</SectionLabel>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-1">
                 {[
-                  { amount: "Tot €35 miljoen", pct: "of 7% wereldwijde omzet", desc: "Verboden AI-praktijken" },
+                  { amount: "Tot €35 miljoen", pct: "of 7% wereldwijde omzet", desc: "Verboden AI-praktijken (Artikel 5)" },
                   { amount: "Tot €15 miljoen", pct: "of 3% wereldwijde omzet", desc: "Overtreding verplichtingen hoog-risico systemen" },
-                  { amount: "Tot €7,5 miljoen", pct: "of 1,5% wereldwijde omzet", desc: "Onjuiste informatie aan toezichthouder" },
+                  { amount: "Tot €7,5 miljoen", pct: "of 1,5% wereldwijde omzet", desc: "Transparantieverplichtingen (Artikel 52)" },
                 ].map((fine) => (
                   <div key={fine.amount} className="border border-border rounded-lg p-3 md:p-2 text-center">
                     <p className="font-bold text-base md:text-[12px] leading-tight neon-text print:text-black">{fine.amount}</p>
@@ -210,7 +210,7 @@ export default function EuAiActA4Client() {
                 ))}
               </div>
               <p className="text-sm md:text-[9px] text-muted-foreground mt-1">
-                De hoogste boete geldt voor de zwaarste overtreding. Voor MKB gelden proportionele maxima.
+                Deze tiers gelden voor Artikel 5, hoog-risico en Artikel 52. Artikel 4 (AI-geletterdheid) heeft geen eigen boete.
               </p>
             </div>
 

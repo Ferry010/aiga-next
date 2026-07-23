@@ -26,11 +26,11 @@ const webAppJsonLd = {
 const faqItems = [
   {
     q: "Wat zijn de boetes onder de EU AI Act?",
-    a: "De EU AI Act kent drie boetetiers. Verboden AI-praktijken (Artikel 5): tot 35 miljoen euro of 7% van de wereldwijde jaaromzet. Hoog-risico AI (Bijlage III): tot 15 miljoen euro of 3% van de omzet. Transparantieverplichtingen en AI-geletterdheid: tot 7,5 miljoen euro of 1,5% van de omzet. Voor MKB-bedrijven geldt het laagste van beide bedragen."
+    a: "De EU AI Act kent drie boetetiers op basis van de ernst van de overtreding. Verboden AI-praktijken (Artikel 5, zoals social scoring): tot 35 miljoen euro of 7% van de wereldwijde jaaromzet. Hoog-risico AI (Bijlage III): tot 15 miljoen euro of 3% van de omzet. Transparantieverplichtingen (Artikel 52): tot 7,5 miljoen euro of 1,5% van de omzet. Belangrijk: Artikel 4 (AI-geletterdheid) valt niet onder een van deze tiers en kent geen eigen boete. Voor MKB-bedrijven geldt het laagste van beide bedragen."
   },
   {
     q: "Wanneer wordt de EU AI Act gehandhaafd in Nederland?",
-    a: "De handhaving van de EU AI Act verloopt gefaseerd. Sinds 2 februari 2025 gelden de verboden AI-praktijken (Artikel 5) en de AI-geletterdheidsplicht (Artikel 4). Vanaf 2 augustus 2025 worden GPAI-verplichtingen en governance-bepalingen gehandhaafd. De volledige toepassing, inclusief alle hoog-risico verplichtingen, gaat in op 2 augustus 2026."
+    a: "De handhaving verloopt gefaseerd. Sinds 2 februari 2025 gelden Artikel 5 (verboden praktijken) en Artikel 4 (AI-geletterdheid). Vanaf 2 augustus 2025 worden GPAI-verplichtingen gehandhaafd. Vanaf 2 augustus 2026 kunnen toezichthouders handhaven op Artikel 4. Na de Digital Omnibus (juni 2026) zijn de hoog-risico verplichtingen voor Bijlage III-systemen uitgesteld naar 2 december 2027."
   },
   {
     q: "Geldt de AI Act ook voor het MKB?",
@@ -38,7 +38,7 @@ const faqItems = [
   },
   {
     q: "Wat is de boete voor het niet trainen van medewerkers in AI-geletterdheid?",
-    a: "Artikel 4 van de EU AI Act verplicht alle organisaties om te zorgen voor AI-geletterdheid van medewerkers die AI-systemen gebruiken. Handhaving hiervan is per 2 februari 2025 van kracht. Lidstaten bepalen de sancties, maar schattingen lopen van 5.000 tot 50.000 euro per audit, afhankelijk van de mate van niet-compliance en de grootte van de organisatie."
+    a: "Artikel 4 van de EU AI Act kent geen eigen boete. De verplichting geldt als inspanningsverplichting: organisaties moeten de ontwikkeling van AI-geletterdheid ondersteunen en dat kunnen onderbouwen. Toezichthouders kunnen het meewegen als verzwarende omstandigheid bij andere overtredingen. Daarnaast bestaat er civiele aansprakelijkheidsrisico als schade ontstaat door AI-gebruik en de organisatie geen aantoonbare training kan tonen."
   },
   {
     q: "Hoe bereken ik mijn AI Act boeterisico?",
@@ -272,7 +272,7 @@ export default function BoetecalculatorClient() {
               Bereken in twee minuten hoeveel boete jouw organisatie riskeert onder de EU AI Act. Gebaseerd op de officiele boetestructuur van Artikel 99.
             </p>
             <p className="mt-4 text-base text-muted-foreground max-w-2xl leading-relaxed">
-              De EU AI Act (Verordening 2024/1689) wordt gefaseerd gehandhaafd. Sinds februari 2025 geldt de AI-geletterdheidsplicht voor alle organisaties die AI inzetten, en vanaf augustus 2025 wordt ook de AI Act handhaving van GPAI-verplichtingen actief. Bij niet-compliance lopen de EU AI Act boetes op tot 35 miljoen euro of 7% van de wereldwijde jaaromzet voor verboden praktijken, tot 15 miljoen euro of 3% voor hoog-risico AI, en tot 7,5 miljoen euro of 1,5% voor overige overtredingen.
+              De EU AI Act (Verordening 2024/1689) wordt gefaseerd gehandhaafd. Artikel 4 (AI-geletterdheid) geldt al sinds 2 februari 2025; vanaf 2 augustus 2026 kunnen toezichthouders hierop handhaven. De boetetiers gelden voor andere overtredingen: verboden AI-praktijken (Artikel 5) tot 35 miljoen euro of 7%, hoog-risico systemen (Bijlage III) tot 15 miljoen euro of 3%, transparantieverplichtingen (Artikel 52) tot 7,5 miljoen euro of 1,5%. Artikel 4 heeft geen eigen boete.
             </p>
           </AnimatedSection>
         </div>

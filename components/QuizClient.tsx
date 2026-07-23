@@ -149,7 +149,7 @@ export default function QuizClient() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-destructive" />
                 </span>
-                EU AI Act is van kracht · Boetes tot €35 miljoen
+                EU AI Act is van kracht · Artikel 4 handhaving vanaf 2 augustus 2026
               </span>
             </div>
 
@@ -307,7 +307,7 @@ export default function QuizClient() {
                 },
                 {
                   q: "Wat is de EU AI Act en wat verandert er voor mij?",
-                  a: "De EU AI Act is de Europese wetgeving die regelt hoe organisaties AI mogen gebruiken. Sinds februari 2025 geldt de verplichting dat alle medewerkers die met AI werken, AI-geletterd moeten zijn. Organisaties die dat niet kunnen aantonen riskeren boetes tot €35 miljoen of 7% van hun wereldwijde jaaromzet.",
+                  a: "De EU AI Act is de Europese wetgeving die regelt hoe organisaties AI mogen gebruiken. Artikel 4 verplicht organisaties om de ontwikkeling van AI-geletterdheid te ondersteunen bij medewerkers die met AI werken. De plicht geldt al sinds 2 februari 2025. Vanaf 2 augustus 2026 kunnen toezichthouders handhaven. Artikel 4 kent geen eigen boete.",
                 },
                 {
                   q: "Wat als ik laag scoor?",

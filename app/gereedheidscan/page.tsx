@@ -64,7 +64,7 @@ const faqSchema = {
       name: "Wat is de EU AI Act en wat verandert er voor mij?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "De EU AI Act is de Europese wetgeving die regelt hoe organisaties AI mogen gebruiken. Sinds februari 2025 geldt de verplichting dat alle medewerkers die met AI werken, AI-geletterd moeten zijn. Organisaties die dat niet kunnen aantonen riskeren boetes tot €35 miljoen of 7% van hun wereldwijde jaaromzet.",
+        text: "De EU AI Act is de Europese wetgeving die regelt hoe organisaties AI mogen gebruiken. Sinds 2 februari 2025 geldt Artikel 4: organisaties die AI inzetten moeten de ontwikkeling van AI-geletterdheid ondersteunen bij medewerkers die met AI werken. Vanaf 2 augustus 2026 kunnen toezichthouders hierop handhaven. Artikel 4 heeft geen eigen boete, maar toezichthouders kunnen het meewegen als verzwarende omstandigheid bij andere overtredingen.",
       },
     },
     {

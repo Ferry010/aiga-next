@@ -10,21 +10,22 @@ import BreadcrumbNav from "@/components/BreadcrumbNav";
 export const metadata: Metadata = {
   title: "AI Act Deadlines Nederland 2025-2027 | Wanneer moet jouw organisatie compliant zijn? | AIGA",
   description:
-    "Overzicht van alle EU AI Act deadlines van 2025 tot 2027. Ontdek wanneer jouw organisatie moet voldoen aan de AI-geletterdheidsplicht, hoog-risico verplichtingen en volledige handhaving.",
+    "Overzicht van alle EU AI Act deadlines van 2025 tot 2028. Ontdek wanneer jouw organisatie moet voldoen aan de AI-geletterdheidsplicht en hoog-risico verplichtingen. Bijgewerkt na de Digital Omnibus (juni 2026).",
   alternates: { canonical: "/ai-act-deadlines" },
 };
 
 const deadlines = [
-  { date: "2 februari 2025", label: "Al van kracht", description: "AI-geletterdheidsplicht voor alle medewerkers en verbod op onaanvaardbare AI-toepassingen (zoals sociale scoring en real-time biometrische identificatie in openbare ruimtes).", active: true },
+  { date: "2 februari 2025", label: "Al van kracht", description: "AI-geletterdheidsplicht (Artikel 4) en verbod op onaanvaardbare AI-toepassingen (Artikel 5, zoals sociale scoring en real-time biometrische identificatie in openbare ruimtes).", active: true },
   { date: "2 augustus 2025", label: "Al van kracht", description: "Verplichtingen voor aanbieders van general-purpose AI-modellen (GPAI), zoals grote taalmodellen. Transparantie-eisen en documentatieplichten treden in werking.", active: true },
-  { date: "2 augustus 2026", label: "Binnenkort", description: "Verplichtingen voor hoog-risico AI-systemen uit Bijlage III. Dit raakt deployers het hardst: conformiteitsbeoordelingen, menselijk toezicht, logging en incidentmelding worden verplicht.", active: false },
-  { date: "2 augustus 2027", label: "In voorbereiding", description: "Alle overige bepalingen van de AI Act worden gehandhaafd. Vanaf dit moment zijn alle verplichtingen volledig van kracht voor alle partijen in de AI-waardeketen.", active: false },
+  { date: "2 augustus 2026", label: "Handhaving Artikel 4", description: "Nationale markttoezichthouders krijgen formele handhavingsbevoegdheden voor Artikel 4 (AI-geletterdheid). Na de Digital Omnibus (juni 2026) zijn de hoog-risico verplichtingen voor Bijlage III-systemen uitgesteld naar 2 december 2027.", active: false },
+  { date: "2 december 2027", label: "Uitgesteld (was 2 aug 2026)", description: "Verplichtingen voor hoog-risico AI-systemen uit Bijlage III. Conformiteitsbeoordelingen, menselijk toezicht, logging en incidentmelding. Uitgesteld via de Digital Omnibus.", active: false },
+  { date: "2 augustus 2028", label: "In voorbereiding", description: "Verplichtingen voor AI-systemen in gereguleerde producten (Bijlage I). Eveneens uitgesteld via de Digital Omnibus.", active: false },
 ];
 
 const faqItems = [
   { q: "Is de AI Act al van kracht?", a: "Ja. De EU AI Act (Verordening 2024/1689) is op 1 augustus 2024 in werking getreden. Sinds 2 februari 2025 gelden de eerste verplichtingen, waaronder de AI-geletterdheidsplicht en het verbod op onaanvaardbare AI-toepassingen. De wet geldt rechtstreeks in alle EU-lidstaten, inclusief Nederland." },
   { q: "Geldt de AI Act ook voor kleine bedrijven?", a: "Ja. De AI Act maakt geen uitzondering op basis van bedrijfsgrootte. Elke organisatie die AI-systemen aanbiedt of inzet valt onder de wet. Voor MKB en startups geldt wel een proportioneel boeteregime (Artikel 99 lid 6), waardoor de feitelijke boete lager uitvalt dan het nominale maximum." },
-  { q: "Wat is de boete bij niet-naleving?", a: "De boetes zijn opgedeeld in drie categorieën. Verboden AI-toepassingen: tot 35 miljoen euro of 7% van de wereldwijde jaaromzet. Niet-naleving van hoog-risico verplichtingen: tot 15 miljoen euro of 3%. Overige overtredingen: tot 7,5 miljoen euro of 1,5%. Handhaving in Nederland wordt uitgevoerd door de Autoriteit Persoonsgegevens." },
+  { q: "Wat is de boete bij niet-naleving?", a: "De AI Act kent drie boetetiers op basis van de ernst van de overtreding. Verboden AI-toepassingen (Artikel 5, zoals social scoring): tot 35 miljoen euro of 7% van de wereldwijde jaaromzet. Niet-naleving van hoog-risico verplichtingen: tot 15 miljoen euro of 3%. Overige overtredingen: tot 7,5 miljoen euro of 1,5%. Belangrijk: Artikel 4 (AI-geletterdheid) kent geen eigen boete. Toezichthouders kunnen het wel meewegen als verzwarende omstandigheid bij andere overtredingen." },
   { q: "Hoe weet ik of mijn organisatie AI-geletterd genoeg is?", a: "De AIGA AI Gereedheidscan meet in drie minuten hoe gereed jouw organisatie is op vijf dimensies: AI-gebruik, bewustzijn van wetgeving, risicobeheer, leiderschap en audit-readiness. Na afloop ontvang je een concreet scorerapport met verbeterpunten." },
 ];
 
@@ -129,7 +130,7 @@ export default function AiActDeadlinesPage() {
               De deadline van augustus 2026 raakt organisaties die hoog-risico AI-systemen inzetten het hardst. Denk aan AI voor sollicitantenscreening, kredietbeoordeling of medische diagnose. Voor deze systemen gelden strenge eisen rondom documentatie, menselijk toezicht en incidentmelding.
             </p>
             <p>
-              Wacht niet tot de deadline nadert. Compliance opbouwen kost tijd: beleid schrijven, medewerkers trainen, processen inrichten. Organisaties die nu beginnen, hebben in 2026 een voorsprong. Organisaties die wachten, riskeren boetes tot 35 miljoen euro.
+              Wacht niet tot de deadline nadert. Compliance opbouwen kost tijd: beleid schrijven, medewerkers trainen, processen inrichten. Organisaties die nu beginnen, staan sterker als toezichthouders vragen beginnen te stellen.
             </p>
           </div>
         </div>

@@ -54,7 +54,7 @@ export default function AiGeletterdheidNederlandPage() {
             </h2>
             <div className="text-muted-foreground leading-relaxed space-y-4">
               <p>
-                De EU AI Act is de eerste wetgeving ter wereld die specifiek gericht is op het reguleren van kunstmatige intelligentie. In Nederland wordt de wet gehandhaafd door de Autoriteit Persoonsgegevens (AP) en sectorspecifieke toezichthouders. Per augustus 2025 wordt actief gehandhaafd. Organisaties die niet kunnen aantonen dat hun medewerkers AI-geletterd zijn, riskeren boetes tot 35 miljoen euro of 7% van de wereldwijde jaaromzet.
+                De EU AI Act is de eerste wetgeving ter wereld die specifiek gericht is op het reguleren van kunstmatige intelligentie. In Nederland werken de Autoriteit Persoonsgegevens (AP) en de Rijksinspectie Digitale Infrastructuur samen als coördinerende toezichthouders, naast ongeveer tien sectorale toezichthouders. Artikel 4 (AI-geletterdheid) geldt al sinds 2 februari 2025. Vanaf 2 augustus 2026 kunnen toezichthouders hierop handhaven. Na de Digital Omnibus (juni 2026) geldt een inspanningsverplichting: organisaties moeten de ontwikkeling van AI-geletterdheid ondersteunen en dat kunnen aantonen.
               </p>
               <p>
                 De wet maakt onderscheid tussen verschillende risiconiveaus van AI-systemen. Maar ongeacht het risiconiveau geldt Artikel 4: alle organisaties moeten investeren in AI-geletterdheid van hun medewerkers.
@@ -106,7 +106,7 @@ export default function AiGeletterdheidNederlandPage() {
                 Start met AI-geletterdheid voor jouw organisatie
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Onze training is volledig Nederlandstalig, gebaseerd op de EU AI Act, en bevat een audit-proof certificaat.
+                Onze training is volledig Nederlandstalig, gebaseerd op de EU AI Act, en leidt tot een digitaal certificaat op naam als controleerbaar bewijs van deelname.
               </p>
               <Link href="/training" className="btn-neon inline-block mt-6 px-8 py-3 rounded-lg text-sm">
                 Bekijk de training

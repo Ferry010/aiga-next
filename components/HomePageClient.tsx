@@ -109,29 +109,41 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* Urgency Banner */}
-      <AnimatedSection>
-        <div className="bg-destructive/5 border border-destructive/20 mx-4 sm:mx-8 lg:mx-auto max-w-7xl px-6 py-5 rounded-xl mt-8">
-          <div className="flex flex-col sm:flex-row sm:items-start gap-4">
-            <div className="flex items-center gap-3 shrink-0">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive/60" />
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-destructive" />
-              </span>
-              <span className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-none">{daysLeft}</span>
-              <span className="text-xs font-medium uppercase tracking-[0.08em] text-muted-foreground leading-tight">dagen<br />resterend</span>
+      {/* Digital Omnibus — Wat er in juni veranderde */}
+      <section className="py-16 bg-card border-y border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection>
+            <SectionLabel text="DIGITAL OMNIBUS · JUNI 2026" />
+            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mt-2 mb-6">
+              Wat er in juni echt veranderde
+            </h2>
+            <div className="max-w-2xl space-y-4 text-muted-foreground leading-relaxed">
+              <p>In juni 2026 is de Digital Omnibus aangenomen. Het Parlement stemde in op 16 juni, de Raad op 29 juni. Sindsdien hoor je twee verhalen, en ze kloppen allebei half.</p>
+              <p><strong className="text-foreground">Wat er versoepeld is.</strong> Artikel 4 vroeg eerst dat je zorgt voor een toereikend niveau van AI-geletterdheid. Nu vraagt het dat je de ontwikkeling ervan ondersteunt. Een inspanningsverplichting in plaats van een resultaatverplichting. Je hoeft niet meer te garanderen wat één specifieke medewerker weet.</p>
+              <p><strong className="text-foreground">Wat er niet veranderd is.</strong> Artikel 4 is niet uitgesteld. Het geldt sinds 2 februari 2025 en vanaf 2 augustus 2026 kunnen toezichthouders erop handhaven.</p>
+              <p><strong className="text-foreground">Wat er wél is uitgesteld.</strong> De zware eisen voor hoog-risico AI. Bijlage III schuift naar 2 december 2027, bijlage I naar 2 augustus 2028. Dat gaat niet over AI-geletterdheid.</p>
+              <p className="font-semibold text-foreground">Kort gezegd: de toon is zachter geworden, de plicht niet.</p>
             </div>
-            <div className="flex-1">
-              <p className="text-sm text-foreground leading-relaxed font-medium">
-                Nog {daysLeft} dagen tot volledige handhaving van de AI Act (2 augustus 2026). Organisaties zonder gecertificeerde medewerkers riskeren boetes tot <strong>€35 miljoen</strong>.
-              </p>
-              <Link href="/training" className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary/80 mt-2 transition-colors">
-                Begin vandaag →
-              </Link>
-            </div>
-          </div>
+          </AnimatedSection>
         </div>
-      </AnimatedSection>
+      </section>
+
+      {/* Over die boetes van 35 miljoen */}
+      <section className="py-16 border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection>
+            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-6">
+              Over die boetes van 35 miljoen
+            </h2>
+            <div className="max-w-2xl space-y-4 text-muted-foreground leading-relaxed">
+              <p>Je leest het overal. Het klopt niet.</p>
+              <p>Dat bedrag hoort bij verboden AI-toepassingen uit artikel 5. Denk aan social scoring. Niet bij AI-geletterdheid.</p>
+              <p>Artikel 4 heeft geen eigen boete. Wat het wel doet: toezichthouders wegen het mee als verzwarende omstandigheid bij andere overtredingen. En als er iemand schade lijdt door verkeerd AI-gebruik, dan is "onze mensen wisten het niet" geen verweer maar een risico.</p>
+              <p>Dat is het eerlijke verhaal. Wij verkopen geen angst. We vertellen je wat er staat.</p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
 
       {/* Definition Block */}
       <section className="py-12">
@@ -201,13 +213,13 @@ export default function HomePageClient() {
               <span className="text-primary">voor teams die al druk zijn.</span>
             </h2>
             <p className="mt-4 text-muted-foreground max-w-2xl leading-relaxed">
-              Geen gedoe. Geen planningshoofdbrekens. Gewoon geregeld. De AIGA online training geeft medewerkers precies de kennis die ze nodig hebben. Zelfstandig, in eigen tempo, volledig online. Na afloop ontvangen ze een audit-proof certificaat waarmee jouw organisatie aantoont te voldoen aan de AI Act.
+              Geen gedoe. Geen planningshoofdbrekens. Gewoon geregeld. De AIGA online training geeft medewerkers precies de kennis die ze nodig hebben. Zelfstandig, in eigen tempo, volledig online. Na afloop ontvangen ze een digitaal certificaat op naam waarmee jouw organisatie aantoont dat er getraind is.
             </p>
           </AnimatedSection>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
             {[
               { icon: Play, title: "Selfpaced", body: "Geen klassikale sessies. Medewerkers volgen de training wanneer het hen uitkomt, in 2 tot 3 uur." },
-              { icon: Award, title: "Gecertificeerd", body: "Iedere deelnemer ontvangt het AI Literacy Practitioner certificaat. Digitaal ondertekend, audit-proof." },
+              { icon: Award, title: "Gecertificeerd", body: "Iedere deelnemer ontvangt het AI Literacy Practitioner certificaat. Digitaal ondertekend, deelbaar via LinkedIn." },
               { icon: Users, title: "Schaalbaar", body: "Per seat te boeken. Geschikt voor teams van 1 tot 1000+ medewerkers. Voortgangsdashboard inbegrepen." },
             ].map((c) => (
               <StaggerItem key={c.title}>
@@ -257,7 +269,7 @@ export default function HomePageClient() {
               Kijk hoe simpel het werkt. 👇
             </h2>
             <p className="mt-4 text-muted-foreground text-center max-w-2xl mx-auto">
-              Van inschrijving tot audit-proof certificaat, uitgelegd in twee minuten.
+              Van inschrijving tot certificaat op naam, uitgelegd in twee minuten.
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.2} className="mt-10">

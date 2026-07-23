@@ -6,14 +6,14 @@ import AiGeletterdheidTrainingClient, {
 export const metadata: Metadata = {
   title: "AI-geletterdheid training (Artikel 4 EU AI Act) | AIGA",
   description:
-    "Maak je team AI-geletterd vóór de handhaving van 2 augustus 2026. Online training met AI Literacy Practitioner-certificaat, in lijn met Artikel 4 van de EU AI Act. €249 ex BTW per deelnemer.",
+    "Ondersteuning van AI-geletterdheid, verplicht onder Artikel 4 EU AI Act. Online training met AI Literacy Practitioner-certificaat. Vanaf 2 augustus 2026 kunnen toezichthouders handhaven. €249 ex BTW per deelnemer.",
   alternates: {
     canonical: "https://aigeletterdheid.academy/ai-geletterdheid-training",
   },
   openGraph: {
     title: "AI-geletterdheid training (Artikel 4 EU AI Act) | AIGA",
     description:
-      "Maak je team AI-geletterd vóór 2 augustus 2026. Online training met AI Literacy Practitioner-certificaat. €249 ex BTW per deelnemer.",
+      "Online training in AI-geletterdheid, in lijn met Artikel 4 EU AI Act. Certificaat op naam. Vanaf 2 augustus 2026 handhaving. €249 ex BTW per deelnemer.",
     url: "https://aigeletterdheid.academy/ai-geletterdheid-training",
     type: "website",
     locale: "nl_NL",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 const faqs: FaqItem[] = [
   {
     q: "Is AI-geletterdheid wettelijk verplicht?",
-    a: "Ja. Artikel 4 van de EU AI Act verplicht organisaties die AI inzetten om voldoende AI-geletterdheid te waarborgen bij hun medewerkers. De verplichting geldt sinds 2 februari 2025. De Autoriteit Persoonsgegevens start met handhaven op 2 augustus 2026.",
+    a: "Ja. Artikel 4 van de EU AI Act verplicht organisaties die AI inzetten om de ontwikkeling van AI-geletterdheid te ondersteunen bij medewerkers die met AI werken. Na de Digital Omnibus (aangenomen juni 2026) is de verplichting verschoven van een resultaatverplichting naar een inspanningsverplichting. De plicht zelf geldt al sinds 2 februari 2025 en wordt handhavingsgereed op 2 augustus 2026.",
   },
   {
     q: "Voor wie geldt Artikel 4 van de EU AI Act?",
@@ -36,7 +36,15 @@ const faqs: FaqItem[] = [
   },
   {
     q: "Wanneer start de handhaving?",
-    a: "De verplichting om AI-geletterdheid te waarborgen geldt al sinds 2 februari 2025. De Autoriteit Persoonsgegevens begint met actieve handhaving op 2 augustus 2026. Organisaties die dan niet kunnen aantonen dat hun medewerkers AI-geletterd zijn, riskeren boetes tot €35 miljoen.",
+    a: "De verplichting geldt al sinds 2 februari 2025. Vanaf 2 augustus 2026 krijgen nationale markttoezichthouders formele handhavingsbevoegdheden. Artikel 4 kent geen eigen boete. Toezichthouders kunnen het wel meewegen als verzwarende omstandigheid bij andere overtredingen.",
+  },
+  {
+    q: "Is AI-geletterdheid nog steeds verplicht na de Digital Omnibus?",
+    a: "Ja. Artikel 4 is versoepeld, niet geschrapt. De plicht ging van 'zorgen voor een toereikend niveau' naar 'het ondersteunen van de ontwikkeling van AI-geletterdheid'. Vanaf 2 augustus 2026 kunnen toezichthouders erop handhaven.",
+  },
+  {
+    q: "Krijgen wij een boete van 35 miljoen als we niets doen?",
+    a: "Nee. Dat bedrag hoort bij verboden AI-toepassingen uit Artikel 5, niet bij Artikel 4. Artikel 4 kent geen eigen boete. Het risico zit erin dat toezichthouders het meewegen bij andere overtredingen, en in civiele aansprakelijkheid als er schade ontstaat.",
   },
   {
     q: "Hoeveel kost de training?",
@@ -44,7 +52,7 @@ const faqs: FaqItem[] = [
   },
   {
     q: "Krijg ik een certificaat?",
-    a: "Ja. Elke deelnemer die slaagt voor het adaptieve examen ontvangt het AI Literacy Practitioner-certificaat. Digitaal ondertekend en audit-proof, zodat je naleving van Artikel 4 kunt aantonen.",
+    a: "Ja. Elke deelnemer die slaagt voor het adaptieve examen ontvangt het AI Literacy Practitioner-certificaat. Digitaal ondertekend en deelbaar via LinkedIn. De AI Act schrijft geen verplicht certificaat voor, maar het certificaat is onderdeel van het dossier waarmee je aantoont dat er getraind is en waarom dat voldoende is.",
   },
   {
     q: "Hoe lang duurt de training?",

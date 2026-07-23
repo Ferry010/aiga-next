@@ -13,7 +13,7 @@ export default function TrainingPage() {
     <>
       <CourseSchema
         name="AI-Geletterdheid voor Teams"
-        description="Online AI-geletterdheid training voor Nederlandse organisaties. Voldoe aan EU AI Act Artikel 4 met een audit-proof certificaat."
+        description="Online AI-geletterdheid training voor Nederlandse organisaties. Voldoe aan EU AI Act Artikel 4 met een digitaal certificaat op naam."
         courseMode="Online"
         courseWorkload="PT3H"
         price="249"

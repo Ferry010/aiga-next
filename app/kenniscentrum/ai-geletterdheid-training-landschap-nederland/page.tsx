@@ -43,7 +43,7 @@ const categories = [
     body: "Gratis trainingen en bewustwordingsprogramma's aangeboden door of namens overheden, de Europese Commissie, of publiek gefinancierde instituten.",
     krijg: "Basisbewustzijn. De content is breed toegankelijk en gratis, maar niet specifiek gericht op de verplichtingen van de EU AI Act voor organisaties. Er is doorgaans geen examen, geen juridisch bruikbaar certificaat en geen aansluiting op de deployer-verplichtingen van Artikel 4.",
     sterk: "Gratis toegankelijk, laagdrempelig, breed bereik.",
-    zwak: "Geen examen, geen audit-proof bewijs, niet specifiek op EU AI Act gericht.",
+    zwak: "Geen examen, geen controleerbaar bewijs van deelname, niet specifiek op EU AI Act gericht.",
     voor: "Particulieren die AI willen begrijpen, en als aanvulling op een bredere trainingsstrategie. Niet als standalone compliance-oplossing voor organisaties.",
   },
   {
@@ -69,7 +69,7 @@ const categories = [
     title: "Gespecialiseerde Nederlandse aanbieders",
     body: "Aanbieders die specifiek gericht zijn op AI-geletterdheid in de Nederlandse context, met focus op EU AI Act-compliance. De content is Nederlandstalig, gericht op Artikel 4 en de deployer-verplichtingen, en leidt tot een individueel certificaat.",
     krijg: "Nederlandstalige training, examen-gebaseerde certificering, en een focus op de juridische context van de EU AI Act. Prijzen zijn vaak publiek gepubliceerd per seat.",
-    sterk: "Taal, juridische relevantie, snelle start, audit-proof certificaat.",
+    sterk: "Taal, juridische relevantie, snelle start, certificaat op naam.",
     zwak: "Kleinere naam dan de grote bureaus, minder relevant voor organisaties die internationaal uitrollen.",
     voor: "Nederlandse organisaties tussen 10 en 1000 medewerkers die snel en betaalbaar willen voldoen aan Artikel 4.",
     note: true,

@@ -240,8 +240,9 @@ export default function ComplianceChecklistClient() {
           {[
             { date: "2 februari 2025", text: "Verboden AI-praktijken (Art. 5) + AI-geletterdheidsplicht (Art. 4) van kracht" },
             { date: "2 augustus 2025", text: "Handhaving GPAI-verplichtingen, governance en toezichtsbepalingen (Ch. V, VII, XII)" },
-            { date: "2 augustus 2026", text: "Volledige toepassing EU AI Act — alle deployer- en providerverplichtingen actief" },
-            { date: "2 augustus 2027", text: "Hoog-risico AI-systemen die onder bestaande productveiligheidswetgeving vallen (Art. 6 lid 1)" },
+            { date: "2 augustus 2026", text: "Handhaving Artikel 4 (AI-geletterdheid). Hoog-risico verplichtingen Bijlage III uitgesteld via Digital Omnibus." },
+            { date: "2 december 2027", text: "Hoog-risico AI-systemen Bijlage III — deployer- en providerverplichtingen (uitgesteld via Digital Omnibus juni 2026)" },
+            { date: "2 augustus 2028", text: "AI-systemen in gereguleerde producten (Bijlage I, Art. 6 lid 1)" },
           ].map((item, i) => (
             <div key={i} className="flex items-start gap-4">
               <div className="flex flex-col items-center">

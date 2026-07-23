@@ -16,7 +16,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Course",
   name: "AI Cursus voor Medewerkers",
-  description: "Praktische AI cursus voor medewerkers. Voldoe aan de EU AI Act met een audit-proof certificaat.",
+  description: "Praktische AI cursus voor medewerkers. Voldoe aan de EU AI Act met een digitaal certificaat op naam.",
   provider: { "@type": "Organization", name: "AIGA | AI Geletterdheid Academy", url: "https://aigeletterdheid.academy" },
   instructor: { "@type": "Person", name: "Ferry Hoes" },
   courseMode: "online",
@@ -80,7 +80,7 @@ export default function AiCursusMedewerkersPage() {
                 De cursus is volledig online en selfpaced. Medewerkers volgen de training in hun eigen tempo, op een moment dat het hen uitkomt. De gemiddelde doorlooptijd is 2 tot 3 uur. De cursus bestaat uit videolessen, praktijkcases en wordt afgesloten met een adaptief examen.
               </p>
               <p>
-                Na het behalen van het examen (minimaal 70% score) ontvangt elke medewerker het <strong className="text-foreground">AI Literacy Practitioner certificaat</strong>. Dit certificaat is digitaal ondertekend, deelbaar via LinkedIn en geldt als audit-proof bewijs voor de AI Act.
+                Na het behalen van het examen (minimaal 70% score) ontvangt elke medewerker het <strong className="text-foreground">AI Literacy Practitioner certificaat</strong>. Dit certificaat is digitaal ondertekend, deelbaar via LinkedIn en is controleerbaar bewijs van deelname voor de AI Act.
               </p>
             </div>
           </AnimatedSection>

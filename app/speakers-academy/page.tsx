@@ -93,7 +93,7 @@ export default function SpeakersAcademyPage() {
               Een keynote opent ogen. Maar bewustwording alleen is niet genoeg om te voldoen aan de AI Act. Artikel 4 vereist dat medewerkers aantoonbaar beschikken over AI-kennis, niet alleen dat ze er een keer over gehoord hebben.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              Daarom heeft Ferry, naast zijn werk als spreker, de AIGA online training ontwikkeld. Dezelfde inhoudelijke diepgang als zijn keynotes, maar gestructureerd als een volwaardig leertraject: met modules, praktijkcases, een adaptief examen en een audit-proof certificaat.
+              Daarom heeft Ferry, naast zijn werk als spreker, de AIGA online training ontwikkeld. Dezelfde inhoudelijke diepgang als zijn keynotes, maar gestructureerd als een volwaardig leertraject: met modules, praktijkcases, een adaptief examen en een digitaal ondertekend certificaat op naam.
             </p>
             <p className="text-muted-foreground leading-relaxed">
               Het resultaat: organisaties die niet alleen geïnspireerd zijn, maar ook compliant, bekwaam en voorbereid.
@@ -190,7 +190,7 @@ export default function SpeakersAcademyPage() {
               Jouw team AI-geletterd maken.
             </h2>
             <p className="mt-6 text-muted-foreground max-w-3xl leading-relaxed">
-              Organisaties die Ferry kennen via Speakers Academy weten wat hij brengt. AIGA vertaalt die kennis naar jouw hele team. Online, selfpaced, schaalbaar tot 1000+ medewerkers. Met een audit-proof certificaat per deelnemer.
+              Organisaties die Ferry kennen via Speakers Academy weten wat hij brengt. AIGA vertaalt die kennis naar jouw hele team. Online, selfpaced, schaalbaar tot 1000+ medewerkers. Met een digitaal ondertekend certificaat per deelnemer.
             </p>
             <div className="flex flex-wrap gap-4 mt-8">
               <Link href="/voor-teams" className="btn-neon inline-block px-6 py-3 rounded-lg text-[15px]">

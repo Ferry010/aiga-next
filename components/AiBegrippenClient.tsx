@@ -73,8 +73,8 @@ const BEGRIPPEN: Begrip[] = [
   { term: "Documentatieverplichting", description: "Hoog-risico AI-systemen moeten uitgebreid gedocumenteerd zijn: hoe werkt het, waarop is het getraind, hoe wordt het getest. Niet voor later — ook te overleggen bij een audit.", theme: "wetgeving" },
   { term: "Technische robuustheid", description: "AI-systemen moeten betrouwbaar, nauwkeurig en bestand zijn tegen fouten en misbruik. Een systeem dat bij een onverwachte invoer compleet ontspoort voldoet niet.", theme: "technologie" },
   { term: "Artikel 4 AI Act", description: "Het artikel dat AI-geletterdheid verplicht stelt voor alle organisaties die AI inzetten. Geldig sinds 2 februari 2025. Dit is de juridische basis voor wat AIGA doet.", theme: "wetgeving", link: { href: "/kenniscentrum/wat-is-ai-geletterdheid", label: "Lees meer over Artikel 4" } },
-  { term: "Handhavingsdeadline", description: "2 augustus 2026. Vanaf die datum wordt de AI Act actief gehandhaafd voor hoog-risico AI-systemen. De klok tikt. Organisaties die nu beginnen, hebben een voorsprong.", theme: "wetgeving" },
-  { term: "Boetes AI Act", description: "Tot €35 miljoen of 7% van de wereldwijde jaaromzet bij de zwaarste overtredingen. Voor hoog-risico systemen: tot €15 miljoen of 3% van de omzet. Geen symbolische bedragen.", theme: "wetgeving" },
+  { term: "Handhavingsdeadline Artikel 4", description: "2 augustus 2026. Vanaf die datum kunnen nationale markttoezichthouders handhaven op AI-geletterdheid (Artikel 4). Na de Digital Omnibus (juni 2026) zijn de hoog-risico verplichtingen voor Bijlage III uitgesteld naar 2 december 2027.", theme: "wetgeving" },
+  { term: "Boetes AI Act", description: "Tot €35 miljoen of 7% van de wereldwijde jaaromzet bij verboden AI-praktijken (Artikel 5, zoals social scoring). Voor hoog-risico systemen: tot €15 miljoen of 3%. Artikel 4 (AI-geletterdheid) heeft geen eigen boete.", theme: "wetgeving" },
 ];
 
 const GLOSSARY_JSONLD = {

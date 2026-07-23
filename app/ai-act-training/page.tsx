@@ -7,14 +7,14 @@ import CountdownClient from "./CountdownClient";
 export const metadata: Metadata = {
   title: "AI Act training voor je team | Online, met certificaat | AIGA",
   description:
-    "Maak je team aantoonbaar AI-vaardig. Online, in eigen tempo, met examen en certificaat op naam. AI Act-proof voor 2 augustus 2026. Vanaf €249 per persoon.",
+    "De AI Act is versoepeld, niet afgeschaft. Ondersteuning van AI-geletterdheid blijft verplicht en toezichthouders kunnen handhaven per 2 augustus 2026. Online training, certificaat op naam. Vanaf €249 per persoon.",
   alternates: {
     canonical: "https://aigeletterdheid.academy/ai-act-training",
   },
   openGraph: {
     title: "AI Act training voor je team | Online, met certificaat | AIGA",
     description:
-      "Maak je team aantoonbaar AI-geletterd voor 2 augustus 2026. Online, in eigen tempo, met examen en certificaat. Vanaf 249 euro per medewerker.",
+      "De AI Act is versoepeld, niet afgeschaft. Online training voor AI-geletterdheid, certificaat op naam, handhaving vanaf 2 augustus 2026. Vanaf 249 euro per medewerker.",
     url: "https://aigeletterdheid.academy/ai-act-training",
     type: "website",
     locale: "nl_NL",
@@ -89,17 +89,20 @@ export default function AiActTrainingPage() {
               Online · Certificaat op naam · Vanaf €249 p.p.
             </p>
 
+            {/* Hero copy: switch sub after 2 augustus 2026 */}
             <h1 className="text-5xl sm:text-6xl font-display font-bold text-foreground leading-[1.1] tracking-tight">
-              Jouw team.<br />
-              <span className="neon-text">Volledig AI-vaardig.</span>
+              De AI Act is versoepeld.<br />
+              <span className="neon-text">Niet afgeschaft.</span>
             </h1>
 
+            {/* Before 2 augustus 2026 */}
             <p className="mt-7 text-xl text-muted-foreground leading-relaxed max-w-2xl">
-              Terwijl iedereen praat over AI, traint jouw team erin. Volledig online, op eigen
-              tempo — 2 tot 3 uur per medewerker. Ze leren slim prompten, veilig omgaan met
-              bedrijfsdata en de tools kiezen die er echt toe doen. Met een certificaat op naam
-              als aantoonbaar bewijs.
+              Vanaf 2 augustus 2026 kunnen Nederlandse toezichthouders handhaven op
+              AI-geletterdheid. Wij leggen uit wat er écht veranderd is, en regelen dat je het
+              kunt aantonen. Online, op eigen tempo, met certificaat op naam.
             </p>
+            {/* From 2 augustus 2026: change above to: "Sinds 2 augustus 2026 kunnen Nederlandse
+                toezichthouders handhaven op AI-geletterdheid..." */}
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4 items-start">
               <a
@@ -119,7 +122,7 @@ export default function AiActTrainingPage() {
             <div className="mt-12">
               <CountdownClient />
               <p className="mt-2 text-xs text-muted-foreground">
-                tot de handhaving van de EU AI Act start op 2 augustus 2026
+                tot toezichthouders kunnen handhaven op 2 augustus 2026
               </p>
             </div>
 
@@ -236,9 +239,11 @@ export default function AiActTrainingPage() {
                   <span className="text-xs font-semibold text-foreground">Omdat de wet het verplicht</span>
                 </div>
                 <p className="text-foreground leading-relaxed">
-                  Artikel 4 van de EU AI Act verplicht aantoonbare AI-geletterdheid voor
-                  iedereen die met AI-systemen werkt. Handhaving start 2 augustus 2026.
-                  Elke deelnemer krijgt een certificaat op naam — geldig als bewijs bij een audit.
+                  Artikel 4 van de EU AI Act verplicht organisaties om de ontwikkeling van
+                  AI-geletterdheid te ondersteunen bij medewerkers die met AI werken. Na de
+                  Digital Omnibus (juni 2026) is het een inspanningsverplichting. Vanaf
+                  2 augustus 2026 kunnen toezichthouders handhaven. Elke deelnemer ontvangt
+                  een certificaat op naam als controleerbaar bewijs.
                 </p>
                 <div>
                   <CountdownClient />

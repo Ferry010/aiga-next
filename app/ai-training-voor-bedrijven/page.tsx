@@ -52,7 +52,7 @@ export default function AiTrainingVoorBedrijvenPage() {
                 Organisaties die investeren in AI-geletterdheid van hun medewerkers zien meetbare resultaten: minder fouten bij het gebruik van AI-tools, betere compliance met wet- en regelgeving, en een hogere productiviteit door het slim en verantwoord inzetten van AI in werkprocessen.
               </p>
               <p>
-                De ROI van AI-training is direct meetbaar. De kosten van één datalek of compliance-overtreding wegen ruimschoots op tegen de investering in training. Met boetes onder de AI Act die oplopen tot 35 miljoen euro of 7% van de jaaromzet, is het risico van niet-handelen groter dan ooit.
+                De ROI van AI-training is direct meetbaar. Teams die AI écht begrijpen, werken productiever en maken minder fouten. Organisaties die kunnen aantonen dat ze in AI-geletterdheid investeren, staan sterker bij toezichthouders en in aanbestedingen.
               </p>
             </div>
           </AnimatedSection>
@@ -66,7 +66,7 @@ export default function AiTrainingVoorBedrijvenPage() {
                 "Volledig Nederlandstalig en afgestemd op Nederlandse wet- en regelgeving",
                 "Schaalbaar: van 1 tot 1000+ medewerkers tegelijk",
                 "Selfpaced: medewerkers volgen de training in eigen tempo, in 2-3 uur",
-                "Audit-proof certificaat: AI Literacy Practitioner",
+                "Certificaat op naam: AI Literacy Practitioner (digitaal ondertekend)",
                 "Voortgangsdashboard voor HR en L&D",
                 "Geen technische voorkennis vereist",
               ].map((item) => (
@@ -89,7 +89,7 @@ export default function AiTrainingVoorBedrijvenPage() {
                 Bedrijven die nu investeren in AI-geletterdheid positioneren zichzelf als betrouwbare partners voor klanten, leveranciers en toezichthouders. In aanbestedingen en bij audits wordt steeds vaker gevraagd naar bewijs van AI-compliance.
               </p>
               <p>
-                Met het AI Literacy Practitioner certificaat van AIGA beschik je over aantoonbaar bewijs dat jouw organisatie voldoet aan de eisen van de EU AI Act. Het certificaat is digitaal ondertekend, deelbaar via LinkedIn en geldt als audit-proof documentatie.
+                Met het AI Literacy Practitioner certificaat van AIGA beschik je over controleerbaar bewijs dat medewerkers getraind zijn. Het certificaat is digitaal ondertekend en deelbaar via LinkedIn. Het is onderdeel van het bredere dossier waarmee je aantoont dat je als organisatie invulling geeft aan Artikel 4.
               </p>
             </div>
           </AnimatedSection>

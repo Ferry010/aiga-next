@@ -13,7 +13,7 @@ const DeadlineCountdown = dynamic(
     ssr: false,
     loading: () => (
       <p className="text-sm text-muted-foreground mt-6 font-medium">
-        Handhaving start 2 augustus 2026.
+        Vanaf 2 augustus 2026 kunnen toezichthouders handhaven.
       </p>
     ),
   }
@@ -48,7 +48,7 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
               <span className="neon-text">voor je hele organisatie</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Sinds februari 2025 verplicht onder Artikel 4 van de EU AI Act. Vanaf 2 augustus 2026 wordt er gehandhaafd. Zorg dat je team op tijd AI-geletterd en gecertificeerd is.
+              Artikel 4 van de EU AI Act verplicht organisaties om de ontwikkeling van AI-geletterdheid te ondersteunen. De plicht geldt al sinds 2 februari 2025. Vanaf 2 augustus 2026 kunnen toezichthouders handhaven.
             </p>
             <DeadlineCountdown />
             <div className="mt-8 flex flex-wrap gap-4">
@@ -206,7 +206,7 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
                 {
                   label: "Certificaat",
                   value:
-                    "AI Literacy Practitioner-certificaat na het adaptieve examen. Digitaal ondertekend en audit-proof, zodat je naleving van Artikel 4 kunt aantonen.",
+                    "AI Literacy Practitioner-certificaat na het adaptieve examen. Digitaal ondertekend, deelbaar via LinkedIn. Controleerbaar bewijs van deelname.",
                 },
                 { label: "Prijs", value: "€249 ex BTW per deelnemer" },
                 { label: "50+ deelnemers", value: "Gratis leiderschapsmasterclass inbegrepen" },
@@ -291,7 +291,7 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
           <AnimatedSection>
             <SectionLabel text="KLAAR OM TE STARTEN?" />
             <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground">
-              Handhaving start 2 augustus 2026.<br />
+              Toezichthouders kunnen handhaven per 2 augustus 2026.<br />
               <span className="text-primary">Zorg dat jouw team er klaar voor is.</span>
             </h2>
             <div className="mt-8 flex flex-wrap gap-4 justify-center">

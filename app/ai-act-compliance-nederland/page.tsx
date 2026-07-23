@@ -79,14 +79,14 @@ export default function AiActComplianceNederlandPage() {
               Boetes bij niet-naleving
             </h2>
             <div className="text-muted-foreground leading-relaxed space-y-4">
-              <p>De boetes onder de AI Act zijn aanzienlijk en bedoeld als serieuze afschrikking:</p>
+              <p>De AI Act kent drie boetetiers, op basis van de ernst van de overtreding:</p>
               <ul className="list-disc list-inside space-y-2 ml-4">
-                <li><strong className="text-foreground">Verboden AI-praktijken:</strong> tot €35 miljoen of 7% van de wereldwijde jaaromzet</li>
-                <li><strong className="text-foreground">High-risk overtredingen:</strong> tot €15 miljoen of 3% van de jaaromzet</li>
+                <li><strong className="text-foreground">Verboden AI-praktijken (Artikel 5):</strong> tot €35 miljoen of 7% van de wereldwijde jaaromzet</li>
+                <li><strong className="text-foreground">Hoog-risico overtredingen:</strong> tot €15 miljoen of 3% van de jaaromzet</li>
                 <li><strong className="text-foreground">Overige overtredingen:</strong> tot €7,5 miljoen of 1,5% van de jaaromzet</li>
               </ul>
               <p>
-                In Nederland is de Autoriteit Persoonsgegevens (AP) aangewezen als coördinerend toezichthouder voor de AI Act.
+                Artikel 4 (AI-geletterdheid) valt niet onder een van deze boetetiers. Toezichthouders kunnen het wel meewegen als verzwarende omstandigheid bij andere overtredingen. In Nederland werken de Autoriteit Persoonsgegevens en de Rijksinspectie Digitale Infrastructuur samen als coördinerende toezichthouders.
               </p>
             </div>
           </AnimatedSection>
@@ -96,11 +96,11 @@ export default function AiActComplianceNederlandPage() {
               De rol van training bij compliance
             </h2>
             <div className="text-muted-foreground leading-relaxed space-y-4">
-              <p>AI-geletterdheid training is de meest directe manier om te voldoen aan Artikel 4 van de AI Act. Een gecertificeerde training biedt:</p>
+              <p>AI-geletterdheid training is de meest directe manier om invulling te geven aan Artikel 4 van de AI Act. Een goede training levert:</p>
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li>Aantoonbaar bewijs van investering in AI-kennis</li>
-                <li>Audit-proof certificering per medewerker</li>
-                <li>Documentatie voor toezichthouders</li>
+                <li>Digitaal ondertekend certificaat per medewerker als bewijs van deelname</li>
+                <li>Documentatie voor je eigen dossier en voor toezichthouders</li>
                 <li>Praktische kennis voor verantwoord AI-gebruik</li>
               </ul>
             </div>

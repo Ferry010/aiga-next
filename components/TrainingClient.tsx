@@ -13,7 +13,7 @@ const faqs = [
   { q: "Hoe lang duurt de training?", a: "De training is selfpaced en kan in meerdere sessies worden gevolgd. Gemiddeld zijn medewerkers twee tot drie uur bezig." },
   { q: "Is er technische voorkennis nodig?", a: "Nee. De training is ontwikkeld voor alle medewerkers, ook zonder technische achtergrond." },
   { q: "Wat als een deelnemer niet slaagt voor het examen?", a: "Dan kan de deelnemer het examen herkansen. Er is geen limiet op het aantal pogingen." },
-  { q: "Hoe werkt het certificaat?", a: "Na het afronden van het adaptieve examen ontvangt iedere deelnemer automatisch het AI Literacy Practitioner certificaat. Digitaal ondertekend, deelbaar via LinkedIn en audit-proof voor de AI Act." },
+  { q: "Hoe werkt het certificaat?", a: "Na het afronden van het adaptieve examen ontvangt iedere deelnemer automatisch het AI Literacy Practitioner certificaat. Digitaal ondertekend en deelbaar via LinkedIn. Het certificaat is onderdeel van het dossier waarmee je aantoont dat er getraind is. De AI Act schrijft geen verplicht certificaatformaat voor." },
   { q: "Kan ik seats bijboeken?", a: "Ja. Je kunt op elk moment extra seats toevoegen via robbert@speakersacademy.nl of tom@speakersacademy.nl." },
   { q: "Hoe snel kunnen we starten?", a: "Na akkoord op de offerte staat jouw organisatie binnen twee werkdagen live op het platform." },
 ];
@@ -44,7 +44,7 @@ export default function TrainingClient() {
             </h2>
             <div className="mt-6 text-muted-foreground max-w-3xl space-y-4 leading-relaxed">
               <p>De EU AI Act stelt duidelijke eisen: medewerkers moeten AI begrijpen, risico's herkennen en weten hoe ze technologie veilig en verantwoord inzetten in hun werk.</p>
-              <p>Onze AI-geletterdheid training voor teams geeft je organisatie precies die kennis, modulair opgebouwd, volledig online en direct toepasbaar. Geen ingewikkelde tools, geen klassikale sessies. Wél een audit-proof certificaat waarmee je organisatie voldoet aan de EU AI wetgeving.</p>
+              <p>Onze AI-geletterdheid training voor teams geeft je organisatie precies die kennis, modulair opgebouwd, volledig online en direct toepasbaar. Geen ingewikkelde tools, geen klassikale sessies. Wél een digitaal certificaat op naam als controleerbaar bewijs van deelname.</p>
               <p>
                 Ook geschikt voor teams zonder technische voorkennis. En voor leidinggevenden is er de{" "}
                 <Link href="/masterclass" className="text-primary hover:underline font-medium">AI Masterclass</Link>.
@@ -61,7 +61,7 @@ export default function TrainingClient() {
               "Zelfstandig en in eigen tempo te volgen",
               "Adaptief examen aan het einde",
               "Geschikt voor teams van elke omvang",
-              "Certificering: AI Literacy Practitioner (digitaal ondertekend en audit-proof)",
+              "Certificaat op naam: AI Literacy Practitioner (digitaal ondertekend)",
               "Kosten: 249,- (ex BTW) per deelnemer",
             ].map((item) => (
               <StaggerItem key={item}>

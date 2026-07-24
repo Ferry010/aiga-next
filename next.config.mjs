@@ -16,6 +16,12 @@ const nextConfig = {
         destination: "https://aigeletterdheid.academy/:path*",
         permanent: true,
       },
+      // Retired campaign LP → outcome-led sales page
+      {
+        source: "/ai-act-training",
+        destination: "/training",
+        permanent: true,
+      },
       // Broken kenniscentrum slugs → corrected canonical slugs
       {
         source: "/kenniscentrum/drie-soorten-collega-s-e-n-wordt-onvervangbaar-welke-ben-jij",

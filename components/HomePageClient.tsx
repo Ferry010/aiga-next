@@ -63,21 +63,20 @@ export default function HomePageClient() {
       <section className="min-h-[90vh] flex items-center relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
           <div>
-            <SectionLabel text="AI GELETTERDHEID VOOR TEAMS" />
-            <h1 className="text-4xl sm:text-6xl lg:text-[56px] font-display font-bold text-foreground leading-tight mt-4">
-              AI-geletterdheid training voor jouw team.<br />
-              <span className="neon-text">Voldoe aan de EU AI Act.</span>
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4 max-w-4xl">
+              Word het team dat met AI vooroploopt.{" "}
+              <span className="neon-text">In plaats van erdoor ingehaald te worden.</span>
             </h1>
-            <p className="text-xl sm:text-2xl font-display font-semibold text-primary mt-4">
-              De #1 AI Geletterdheid Training voor Nederlandse Organisaties
+            <p className="text-xl sm:text-2xl font-display font-semibold text-primary mt-5">
+              De #1 AI-geletterdheid training voor Nederlandse organisaties
             </p>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Sinds februari 2025 is AI-geletterdheid wettelijk verplicht voor organisaties in de EU. Wij helpen je team voldoen aan de{" "}
+              AI verandert nu hoe werk gedaan wordt. Wie het slim inzet, werkt sneller en levert beter werk. Onze praktische online training maakt je team in 2 tot 3 uur echt AI-vaardig, met een certificaat op naam als bewijs. Dat je meteen voldoet aan de{" "}
               <a href="https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">EU AI Act</a>
-              , met een praktische online training en een digitaal certificaat dat telt bij een audit.
+              ? Dat zit er gewoon bij.
             </p>
             <p className="mt-4 text-muted-foreground max-w-2xl leading-relaxed">
-              Speciaal voor Nederlandse organisaties: onze training is volledig Nederlandstalig, gebaseerd op de vereisten van de EU AI Act zoals die in Nederland van toepassing zijn, en gevalideerd door AI-experts die dagelijks werken met Nederlandse bedrijven en overheidsinstellingen.
+              Speciaal voor Nederlandse organisaties: volledig Nederlandstalig en gevalideerd door AI-experts die dagelijks werken met Nederlandse bedrijven en overheidsinstellingen.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link href="/training" className="btn-neon px-7 py-3.5 rounded-lg text-[15px]">
@@ -109,42 +108,6 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* Digital Omnibus — Wat er in juni veranderde */}
-      <section className="py-16 bg-card border-y border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="DIGITAL OMNIBUS · JUNI 2026" />
-            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mt-2 mb-6">
-              Wat er in juni echt veranderde
-            </h2>
-            <div className="max-w-2xl space-y-4 text-muted-foreground leading-relaxed">
-              <p>In juni 2026 is de Digital Omnibus aangenomen. Het Parlement stemde in op 16 juni, de Raad op 29 juni. Sindsdien hoor je twee verhalen, en ze kloppen allebei half.</p>
-              <p><strong className="text-foreground">Wat er versoepeld is.</strong> Artikel 4 vroeg eerst dat je zorgt voor een toereikend niveau van AI-geletterdheid. Nu vraagt het dat je de ontwikkeling ervan ondersteunt. Een inspanningsverplichting in plaats van een resultaatverplichting. Je hoeft niet meer te garanderen wat één specifieke medewerker weet.</p>
-              <p><strong className="text-foreground">Wat er niet veranderd is.</strong> Artikel 4 is niet uitgesteld. Het geldt sinds 2 februari 2025 en vanaf 2 augustus 2026 kunnen toezichthouders erop handhaven.</p>
-              <p><strong className="text-foreground">Wat er wél is uitgesteld.</strong> De zware eisen voor hoog-risico AI. Bijlage III schuift naar 2 december 2027, bijlage I naar 2 augustus 2028. Dat gaat niet over AI-geletterdheid.</p>
-              <p className="font-semibold text-foreground">Kort gezegd: de toon is zachter geworden, de plicht niet.</p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Over die boetes van 35 miljoen */}
-      <section className="py-16 border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="text-2xl sm:text-3xl font-display font-semibold text-foreground mb-6">
-              Over die boetes van 35 miljoen
-            </h2>
-            <div className="max-w-2xl space-y-4 text-muted-foreground leading-relaxed">
-              <p>Je leest het overal. Het klopt niet.</p>
-              <p>Dat bedrag hoort bij verboden AI-toepassingen uit artikel 5. Denk aan social scoring. Niet bij AI-geletterdheid.</p>
-              <p>Artikel 4 heeft geen eigen boete. Wat het wel doet: toezichthouders wegen het mee als verzwarende omstandigheid bij andere overtredingen. En als er iemand schade lijdt door verkeerd AI-gebruik, dan is "onze mensen wisten het niet" geen verweer maar een risico.</p>
-              <p>Dat is het eerlijke verhaal. Wij verkopen geen angst. We vertellen je wat er staat.</p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
       {/* Definition Block */}
       <section className="py-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -160,17 +123,17 @@ export default function HomePageClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="HERKEN JE DIT?" />
-            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
-              De wet is in werking.<br />
-              <span className="text-primary">Maar is jouw team er klaar voor?</span>
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2 max-w-3xl leading-[1.1]">
+              AI is al overal in je organisatie.{" "}
+              <span className="text-primary">Maar haalt je team er echt iets uit?</span>
             </h2>
           </AnimatedSection>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
             {[
-              { icon: AlertTriangle, title: "Medewerkers gebruiken AI zonder kader", body: "ChatGPT, Copilot, sociale media advertenties. Als ze het gebruiken, vallen ze onder de AI Act. Weten ze dat?" },
-              { icon: FileX, title: "Geen bewijs bij een audit", body: "HR vraagt om bewijs. Je hebt geen documentatie. Een audit wordt een probleem." },
-              { icon: Clock, title: "Geen tijd voor klassikale training", body: "Je team is druk. Roosters zijn vol. Een meerdaagse training is geen optie." },
-              { icon: HelpCircle, title: "Onduidelijk wat de wet precies vereist", body: "De AI Act is complex. Wat geldt voor jouw sector, jouw functies, jouw tools?" },
+              { icon: AlertTriangle, title: "Je team gebruikt AI, maar niet goed", body: "ChatGPT, Copilot, Gemini. Ze gebruiken het dagelijks, maar halen er lang niet uit wat erin zit. En soms gaat het mis." },
+              { icon: FileX, title: "Fouten die je pas laat ziet", body: "Zonder de juiste kennis sluipen er fouten in: verkeerde output, gevoelige data op straat, bias in beslissingen. Vaak merk je het te laat." },
+              { icon: Clock, title: "Geen tijd voor lange trainingen", body: "Je team is druk. Roosters zijn vol. Een meerdaagse cursus is gewoon geen optie." },
+              { icon: HelpCircle, title: "Niemand die het team op weg helpt", body: "Ze leren AI met vallen en opstaan, van YouTube en van elkaar. Dat kan sneller, en een stuk beter." },
             ].map((c) => (
               <StaggerItem key={c.title}>
                 <div className="bg-card border border-border rounded-2xl p-10 hover:border-neon-purple/40 neon-glow transition-all duration-300 group">
@@ -394,13 +357,13 @@ export default function HomePageClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground">
-              Klaar om jouw team te certificeren?
+              Klaar om je team echt goed te maken in AI?
             </h2>
             <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-              Vraag een offerte aan. Geen verplichtingen.
+              Vraag de mogelijkheden aan. Geen verplichtingen.
             </p>
             <Link href="/contact" className="btn-neon inline-block mt-8 px-8 py-4 rounded-lg text-[15px]">
-              Vraag offerte aan
+              Vraag de mogelijkheden aan
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">Of bel direct: +31 (0)10 316 7827</p>
           </AnimatedSection>

@@ -6,8 +6,8 @@ import SectionLabel from "@/components/SectionLabel";
 const pillars = [
   {
     icon: ShieldCheck,
-    title: "Wettelijk verplicht sinds februari 2025",
-    text: "De EU AI Act vereist aantoonbare AI-geletterdheid voor alle medewerkers die met AI werken. Onze training is hier specifiek op ontworpen.",
+    title: "Praktijkgericht, niet theoretisch",
+    text: "Je team leert AI toepassen op het echte werk: slim prompten, veilig omgaan met data en betere output halen. En je voldoet er meteen mee aan de EU AI Act.",
   },
   {
     icon: Mic,

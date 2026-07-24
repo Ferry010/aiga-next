@@ -8,7 +8,7 @@ import LeadForm from "@/components/LeadForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const faqs = [
-  { q: "Krijgen we er ook het EU AI Act-certificaat bij?", a: "Ja. Naast dat je team echt beter wordt met AI, sluit iedereen af met een examen en het AI Literacy Practitioner certificaat op naam. Digitaal ondertekend en deelbaar via LinkedIn. Daarmee toon je aan dat er getraind is, precies wat de EU AI Act sinds 2 februari 2025 vraagt. Vanaf 2 augustus 2026 wordt er actief gehandhaafd." },
+  { q: "Krijgen we er ook het EU AI Act-certificaat bij?", a: "Ja. Naast dat je team echt beter wordt met AI, sluit iedereen af met een examen en het AI Literacy Practitioner certificaat op naam. Digitaal ondertekend en deelbaar via LinkedIn. Daarmee toon je aan dat er getraind is, precies wat de EU AI Act van organisaties vraagt." },
   { q: "Hoe lang duurt de training?", a: "De training is selfpaced en kan in meerdere sessies worden gevolgd. Gemiddeld zijn medewerkers twee tot drie uur bezig. Geen klassikale sessies, geen roostergedoe." },
   { q: "Is er technische voorkennis nodig?", a: "Nee. De training is ontwikkeld voor alle medewerkers, ook zonder technische achtergrond." },
   { q: "Wat als een deelnemer niet slaagt voor het examen?", a: "Dan kan de deelnemer het examen herkansen. Er is geen limiet op het aantal pogingen." },
@@ -56,7 +56,7 @@ export default function TrainingClient() {
             <div className="mt-6 text-muted-foreground max-w-3xl space-y-4 leading-relaxed">
               <p>AI verandert nu hoe werk gedaan wordt. De teams die het slim inzetten, werken sneller en leveren beter werk. De teams die blijven aanmodderen met half werkende prompts, vallen langzaam achterop. Zonder dat ze het doorhebben.</p>
               <p>Deze AI-geletterdheid training voor teams geeft je organisatie precies die voorsprong. Modulair opgebouwd, volledig online en direct toepasbaar op het werk van je mensen. Geen ingewikkelde tools, geen klassikale sessies.</p>
-              <p>En ja, er is ook een deadline: de EU AI Act verplicht aantoonbare AI-geletterdheid en vanaf 2 augustus 2026 wordt er gehandhaafd. Deze training dekt dat in één keer af, met een certificaat op naam als bewijs. Twee redenen om het nu te regelen in plaats van straks.</p>
+              <p>Het certificaat op naam is het bewijs dat je team het onder de knie heeft. En je voldoet er meteen mee aan de AI-geletterdheidseis van de EU AI Act. Geen apart compliance-traject nodig, het zit er gewoon bij.</p>
               <p>
                 Ook geschikt voor teams zonder technische voorkennis. En voor leidinggevenden is er de{" "}
                 <Link href="/masterclass" className="text-primary hover:underline font-medium">AI Masterclass</Link>.
@@ -196,7 +196,7 @@ export default function TrainingClient() {
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-8">
               Laat je gegevens achter, dan bespreken we de snelste route. Voor jezelf of voor je hele
-              team. En je bent meteen op tijd voor 2 augustus 2026.
+              team. Binnen twee werkdagen staat alles klaar.
             </p>
             <LeadForm source="Training pagina — offerte aanvraag" />
           </AnimatedSection>

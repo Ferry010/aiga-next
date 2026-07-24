@@ -264,7 +264,7 @@ export default function BoetecalculatorClient() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="BOETECALCULATOR" />
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
               EU AI Act Boetecalculator: wat kost niet-compliance<br />
               <span className="text-primary">jouw organisatie?</span>
             </h1>
@@ -463,7 +463,7 @@ export default function BoetecalculatorClient() {
                     <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">Geschat boetebedrag</p>
                     {results.isZeroRisk ? (
                       <div>
-                        <p className="text-3xl sm:text-4xl font-display font-bold text-green-700 mb-2">€0 verwacht boeterisico</p>
+                        <p className="text-3xl sm:text-5xl font-display font-bold text-green-700 mb-2">€0 verwacht boeterisico</p>
                         <p className="text-sm text-muted-foreground">
                           {results.isLiteracyOnly
                             ? "Je voldoet aan de AI-geletterdheidsplicht (Artikel 4)."
@@ -472,14 +472,14 @@ export default function BoetecalculatorClient() {
                       </div>
                     ) : results.isLiteracyOnly ? (
                       <div>
-                        <p className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-2">
+                        <p className="text-3xl sm:text-5xl font-display font-bold text-foreground mb-2">
                           {formatEuro(results.fineMin)} – {formatEuro(results.fineMax)} per audit
                         </p>
                         <p className="text-sm text-muted-foreground">Handhaving door lidstaten op basis van Artikel 4, EU AI Act.</p>
                       </div>
                     ) : (
                       <div>
-                        <p className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-2">
+                        <p className="text-3xl sm:text-5xl font-display font-bold text-foreground mb-2">
                           {formatEuro(results.fineMin)} – {formatEuro(results.fineMax)}
                         </p>
                         <p className="text-sm text-muted-foreground">Op basis van Art. 99 EU AI Act en jouw organisatieprofiel. Dit is een indicatie, geen juridisch advies.</p>

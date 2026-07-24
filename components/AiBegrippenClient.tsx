@@ -142,7 +142,7 @@ export default function AiBegrippenClient() {
       {/* Hero */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-10 text-center">
         <AnimatedSection>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">
+          <h1 className="text-3xl sm:text-5xl lg:text-5xl font-display font-bold text-foreground mb-4">
             AI Begrippen uitgelegd
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

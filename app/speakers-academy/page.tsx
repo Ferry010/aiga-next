@@ -41,7 +41,7 @@ export default function SpeakersAcademyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="EEN SAMENWERKING" />
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-semibold text-foreground mt-2">
+            <h1 className="text-4xl sm:text-6xl lg:text-6xl font-display font-semibold text-foreground mt-2">
               Van inspiratie naar actie.
             </h1>
             <p className="text-xl sm:text-2xl font-display text-primary mt-4">
@@ -64,7 +64,7 @@ export default function SpeakersAcademyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="DE PARTNER" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               30 jaar kennis aan het podium.
             </h2>
             <p className="mt-6 text-muted-foreground max-w-3xl leading-relaxed">
@@ -83,7 +83,7 @@ export default function SpeakersAcademyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="DE LOGICA" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               Bewustwording is het begin.<br />
               <span className="text-primary">Kennis is het fundament.</span>
             </h2>
@@ -107,7 +107,7 @@ export default function SpeakersAcademyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="DE TRAINER" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               Dezelfde expert.<br />
               <span className="text-primary">Nu in jouw organisatie.</span>
             </h2>
@@ -186,7 +186,7 @@ export default function SpeakersAcademyPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="DE VOLGENDE STAP" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               Jouw team AI-geletterd maken.
             </h2>
             <p className="mt-6 text-muted-foreground max-w-3xl leading-relaxed">
@@ -208,7 +208,7 @@ export default function SpeakersAcademyPage() {
       <section className="py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground">
               Klaar om de volgende stap te zetten?
             </h2>
             <div className="flex flex-wrap justify-center gap-4 mt-8">

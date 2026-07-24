@@ -107,7 +107,7 @@ export default function AiToolsOverzichtClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="KENNISOVERZICHT" />
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
               Welke AI-tools vallen onder de EU AI Act?
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-3xl leading-relaxed">

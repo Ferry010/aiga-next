@@ -45,7 +45,7 @@ export default function DownloadsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="GRATIS DOWNLOADS" />
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
               Praktische documenten voor
               <br />
               <span className="text-primary">jouw AI Act compliance.</span>

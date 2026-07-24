@@ -75,7 +75,7 @@ export default function MasterclassClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="MASTERCLASS VOOR LEIDINGGEVENDEN" />
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
               Wat verwacht de AI Act<br />
               <span className="text-primary">van jou als leidinggevende?</span>
             </h1>
@@ -99,7 +99,7 @@ export default function MasterclassClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="VOOR WIE" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               De Masterclass is bedoeld voor<br /><span className="text-primary">mensen die beslissingen nemen.</span>
             </h2>
             <div className="flex flex-wrap gap-3 mt-6">
@@ -133,7 +133,7 @@ export default function MasterclassClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="PROGRAMMA" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               Twee uur. Vier blokken.<br /><span className="text-primary">Een helder beeld.</span>
             </h2>
           </AnimatedSection>

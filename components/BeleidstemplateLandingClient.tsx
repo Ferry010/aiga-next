@@ -77,7 +77,7 @@ export default function BeleidstemplateLandingClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="GRATIS DOWNLOAD" />
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
               AI-beleid opstellen:<br />
               <span className="text-primary">gratis template.</span>
             </h1>

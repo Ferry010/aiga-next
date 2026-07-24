@@ -153,7 +153,7 @@ export default function QuizClient() {
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight">
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight">
               Jouw team gebruikt AI.<br />
               <span className="neon-text">Voldoe je ook aan de wet?</span>
             </h1>
@@ -333,7 +333,7 @@ export default function QuizClient() {
         {/* ── Bottom CTA ── */}
         <div className="max-w-3xl mx-auto px-4 py-20 text-center">
           <AnimatedSection>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-foreground mb-4">
+            <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground mb-4">
               Vandaag weten is beter dan<br />
               <span className="neon-text">morgen verrast worden</span>
             </h2>

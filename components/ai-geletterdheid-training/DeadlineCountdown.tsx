@@ -35,7 +35,7 @@ export default function DeadlineCountdown() {
         ] as const
       ).map(({ value, label }) => (
         <div key={label} className="flex flex-col items-center min-w-[3rem]">
-          <span className="text-3xl sm:text-4xl font-display font-bold neon-text tabular-nums leading-none">
+          <span className="text-3xl sm:text-5xl font-display font-bold neon-text tabular-nums leading-none">
             {String(value).padStart(2, '0')}
           </span>
           <span className="text-[10px] sm:text-xs text-muted-foreground mt-1 uppercase tracking-widest">

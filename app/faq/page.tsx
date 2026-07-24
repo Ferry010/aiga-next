@@ -42,7 +42,7 @@ export default function FaqPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <AnimatedSection>
               <SectionLabel text="FAQ" />
-              <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
+              <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
                 Veelgestelde vragen over<br />
                 <span className="neon-text">AI-geletterdheid</span>
               </h1>

@@ -34,7 +34,7 @@ export default function AiGeletterdheidNederlandPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="AI-GELETTERDHEID IN NEDERLAND" />
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
               AI-Geletterdheid in Nederland:<br />
               <span className="text-primary">Alles wat je moet weten</span>
             </h1>

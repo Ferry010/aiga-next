@@ -39,7 +39,7 @@ export default function AiCursusMedewerkersPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="AI CURSUS MEDEWERKERS" />
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
               AI Cursus voor Medewerkers:<br />
               <span className="text-primary">Praktisch en Gecertificeerd</span>
             </h1>

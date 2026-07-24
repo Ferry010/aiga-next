@@ -27,7 +27,7 @@ const SocialProof = () => (
       <AnimatedSection>
         <div className="text-center">
           <SectionLabel text="WAAROM AIGA" />
-          <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+          <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
             Gebouwd op expertise.<br />
             <span className="text-primary">Niet op beloften.</span>
           </h2>

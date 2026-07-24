@@ -133,7 +133,7 @@ export default function ArticleDetailClient({ article, prevArticle, nextArticle 
               </span>
             )}
           </div>
-          <h1 className="text-3xl sm:text-4xl font-display font-bold text-foreground leading-tight mb-4">
+          <h1 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-tight mb-4">
             {displayTitle}
           </h1>
 

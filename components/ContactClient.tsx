@@ -65,7 +65,7 @@ export default function ContactClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="CONTACT" />
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
               Klaar om jouw team te certificeren?<br />
               <span className="neon-text">Laten we praten.</span>
             </h1>

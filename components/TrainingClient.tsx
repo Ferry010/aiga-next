@@ -24,8 +24,8 @@ export default function TrainingClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="ONLINE TRAINING VOOR TEAMS" />
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
-              Word het team dat AI gebruikt om vooruit te komen.<br />
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4 max-w-4xl">
+              Word het team dat AI gebruikt om vooruit te komen.{" "}
               <span className="neon-text">Niet het team dat straks achterloopt.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
@@ -50,8 +50,8 @@ export default function TrainingClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="WAAROM NU" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
-              Straks kan iedereen AI.<br /><span className="text-primary">De vraag is of jouw team het goed doet.</span>
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2 max-w-3xl leading-[1.1]">
+              Straks kan iedereen AI. <span className="text-primary">De vraag is of jouw team het goed doet.</span>
             </h2>
             <div className="mt-6 text-muted-foreground max-w-3xl space-y-4 leading-relaxed">
               <p>AI verandert nu hoe werk gedaan wordt. De teams die het slim inzetten, werken sneller en leveren beter werk. De teams die blijven aanmodderen met half werkende prompts, vallen langzaam achterop. Zonder dat ze het doorhebben.</p>
@@ -91,8 +91,8 @@ export default function TrainingClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="WAT JE TEAM ERUIT HAALT" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
-              Concreet, begrijpelijk<br /><span className="text-primary">en direct toepasbaar.</span>
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2 max-w-3xl leading-[1.1]">
+              Concreet, begrijpelijk <span className="text-primary">en direct toepasbaar.</span>
             </h2>
           </AnimatedSection>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
@@ -121,7 +121,7 @@ export default function TrainingClient() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="INVESTERING" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2 text-center">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2 text-center">
               Kies het pakket dat bij jouw team past.
             </h2>
           </AnimatedSection>
@@ -191,7 +191,7 @@ export default function TrainingClient() {
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="AAN DE SLAG" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2 mb-3">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2 mb-3">
               Klaar om je team AI-vaardig te maken?
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-8">

@@ -43,7 +43,7 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="ARTIKEL 4 EU AI ACT · HANDHAVING 2 AUGUSTUS 2026" />
-            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-display font-bold text-foreground leading-tight mt-4">
+            <h1 className="text-4xl sm:text-6xl lg:text-[56px] font-display font-bold text-foreground leading-tight mt-4">
               AI-geletterdheid training<br />
               <span className="neon-text">voor je hele organisatie</span>
             </h1>
@@ -88,7 +88,7 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="VOOR WIE" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               Voor elke rol in jouw organisatie.
             </h2>
           </AnimatedSection>
@@ -128,7 +128,7 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="DE WET" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               Artikel 4 EU AI Act: <span className="text-primary">wat moet jij doen?</span>
             </h2>
             <div className="mt-6 space-y-4 text-muted-foreground leading-relaxed">
@@ -165,7 +165,7 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="WAT JE LEERT" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               Vijf modules. <span className="text-primary">Direct toepasbaar.</span>
             </h2>
           </AnimatedSection>
@@ -193,7 +193,7 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="PRAKTISCHE INFO" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               Alles wat je wilt weten{" "}
               <span className="text-primary">over de training.</span>
             </h2>
@@ -233,7 +233,7 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="WAAROM AIGA" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               Drie redenen om voor AIGA te kiezen.
             </h2>
           </AnimatedSection>
@@ -266,7 +266,7 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="VEELGESTELDE VRAGEN" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               Antwoorden op jouw vragen.
             </h2>
           </AnimatedSection>
@@ -290,7 +290,7 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <SectionLabel text="KLAAR OM TE STARTEN?" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground">
               Toezichthouders kunnen handhaven per 2 augustus 2026.<br />
               <span className="text-primary">Zorg dat jouw team er klaar voor is.</span>
             </h2>

@@ -57,7 +57,7 @@ export default function AiActDeadlinesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="AI ACT TIJDLIJN" />
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
               AI Act deadlines: wanneer moet jouw<br />
               <span className="text-primary">organisatie compliant zijn?</span>
             </h1>

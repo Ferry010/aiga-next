@@ -36,7 +36,7 @@ export default function UseCaseCheckerPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="AI USE CASE CHECKER" />
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
               Valt jouw AI-gebruik onder<br />
               <span className="text-primary">hoog risico?</span>
             </h1>

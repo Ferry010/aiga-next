@@ -40,7 +40,7 @@ const TrainerSection = ({ bio = defaultBio }: TrainerSectionProps) => (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <AnimatedSection>
         <SectionLabel text="DE TRAINER" />
-        <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+        <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
           Niet zomaar een training.<br />
           <span className="text-primary">Een expert die het veld kent.</span>
         </h2>

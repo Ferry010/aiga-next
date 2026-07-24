@@ -64,7 +64,7 @@ export default function HomePageClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
           <div>
             <SectionLabel text="AI GELETTERDHEID VOOR TEAMS" />
-            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-display font-bold text-foreground leading-tight mt-4">
+            <h1 className="text-4xl sm:text-6xl lg:text-[56px] font-display font-bold text-foreground leading-tight mt-4">
               AI-geletterdheid training voor jouw team.<br />
               <span className="neon-text">Voldoe aan de EU AI Act.</span>
             </h1>
@@ -160,7 +160,7 @@ export default function HomePageClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="HERKEN JE DIT?" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               De wet is in werking.<br />
               <span className="text-primary">Maar is jouw team er klaar voor?</span>
             </h2>
@@ -189,7 +189,7 @@ export default function HomePageClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <SectionLabel text="NIET ZEKER WAAR JE STAAT?" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               Doe de gratis AI Gereedheidscan.<br />
               <span className="text-primary">In drie minuten weet je waar je staat.</span>
             </h2>
@@ -208,7 +208,7 @@ export default function HomePageClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="DE OPLOSSING" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               Een training die werkt,<br />
               <span className="text-primary">voor teams die al druk zijn.</span>
             </h2>
@@ -237,7 +237,7 @@ export default function HomePageClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="HOE HET WERKT" />
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
               Van aanvraag tot certificaat<br />
               <span className="text-primary">in drie stappen.</span>
             </h2>
@@ -265,7 +265,7 @@ export default function HomePageClient() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center"><SectionLabel text="ZIE HET IN ACTIE" /></div>
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2 text-center">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2 text-center">
               Kijk hoe simpel het werkt. 👇
             </h2>
             <p className="mt-4 text-muted-foreground text-center max-w-2xl mx-auto">
@@ -309,7 +309,7 @@ export default function HomePageClient() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center"><SectionLabel text="ONS AANBOD" /></div>
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2 text-center">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2 text-center">
               Kies wat bij jouw organisatie past.
             </h2>
           </AnimatedSection>
@@ -369,7 +369,7 @@ export default function HomePageClient() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center"><SectionLabel text="VEELGESTELDE VRAGEN" /></div>
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground mt-2 text-center">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2 text-center">
               Alles wat je wilt weten.
             </h2>
           </AnimatedSection>
@@ -393,7 +393,7 @@ export default function HomePageClient() {
       <section className="py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground">
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground">
               Klaar om jouw team te certificeren?
             </h2>
             <p className="mt-4 text-muted-foreground max-w-xl mx-auto">

@@ -82,7 +82,7 @@ export default function ChecklistLandingClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="GRATIS DOWNLOAD" />
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
               AI Act Compliance Checklist<br />
               <span className="text-primary">voor deployers.</span>
             </h1>

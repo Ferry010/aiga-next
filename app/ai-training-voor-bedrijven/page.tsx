@@ -8,7 +8,7 @@ import BreadcrumbNav from "@/components/BreadcrumbNav";
 export const metadata: Metadata = {
   title: "AI Training voor Bedrijven in Nederland | AIGA Academy",
   description:
-    "Investeer in AI-training voor je bedrijf. Voldoe aan de EU AI Act, verminder risico's en verhoog de productiviteit. Gecertificeerde training vanaf €249 per medewerker.",
+    "Investeer in AI-training voor je bedrijf. Voldoe aan de EU AI Act, verminder risico's en verhoog de productiviteit. Gecertificeerde training voor €249 per medewerker.",
   alternates: { canonical: "/ai-training-voor-bedrijven" },
 };
 
@@ -100,7 +100,7 @@ export default function AiTrainingVoorBedrijvenPage() {
               <h2 className="text-2xl font-display font-semibold text-foreground">
                 Start vandaag met AI-training voor je bedrijf
               </h2>
-              <p className="mt-4 text-muted-foreground">Vanaf €249 per deelnemer (ex BTW). Direct starten.</p>
+              <p className="mt-4 text-muted-foreground">€249 per deelnemer (ex BTW). Direct starten.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
                 <Link href="/training" className="btn-neon px-8 py-3 rounded-lg text-sm">
                   Bekijk de training

@@ -4,7 +4,7 @@ import HomePageClient from "@/components/HomePageClient";
 export const metadata: Metadata = {
   title: "AI Geletterdheid Training voor Teams | AIGA Academy",
   description:
-    "Online AI-geletterdheid training voor Nederlandse organisaties. Voldoe aan de EU AI Act. Audit-proof certificaat. Vanaf 249,- per deelnemer.",
+    "Online AI-geletterdheid training voor Nederlandse organisaties. Voldoe aan de EU AI Act. Audit-proof certificaat. €249,- per deelnemer.",
   alternates: { canonical: "https://aigeletterdheid.academy" },
   openGraph: {
     title: "AI Geletterdheid Training voor Teams | AIGA Academy",

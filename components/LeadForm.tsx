@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 
 function readUtmsFromUrl() {
@@ -38,7 +39,11 @@ function fireTracking() {
   } catch { /* localStorage unavailable */ }
 }
 
-export default function LeadFormClient() {
+/**
+ * Streamlined, conversion-tracked lead form.
+ * `source` is written to the CRM note so we can tell which page the lead came from.
+ */
+export default function LeadForm({ source }: { source: string }) {
   const [form, setForm] = useState({ naam: "", bedrijf: "", email: "", teamgrootte: "" });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -75,7 +80,7 @@ export default function LeadFormClient() {
       hulp: "training",
       aantal: form.teamgrootte || null,
       opmerkingen: [
-        "Bron: AI Act Training campagnepagina — offerte aanvraag",
+        `Bron: ${source}`,
         form.teamgrootte && `Teamgrootte: ${form.teamgrootte}`,
         utmNote,
       ].filter(Boolean).join(" · ") || null,
@@ -94,7 +99,7 @@ export default function LeadFormClient() {
         organisatie: form.bedrijf,
         email: form.email,
         telefoon: null,
-        extra: `AI Act campagnepagina — offerte aanvraag · Teamgrootte: ${form.teamgrootte || "onbekend"}${utmNote ? ` · ${utmNote}` : ""}`,
+        extra: `${source} · Teamgrootte: ${form.teamgrootte || "onbekend"}${utmNote ? ` · ${utmNote}` : ""}`,
       },
     }).catch(console.error);
 
@@ -121,42 +126,42 @@ export default function LeadFormClient() {
     <form onSubmit={handleSubmit} className="space-y-4" aria-label="Offerte aanvraag">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="cl-naam" className="text-sm text-muted-foreground mb-1 block">
+          <label htmlFor="lf-naam" className="text-sm text-muted-foreground mb-1 block">
             Naam <span className="text-neon-purple" aria-hidden>*</span>
           </label>
           <input
-            id="cl-naam" name="naam" type="text" required autoComplete="name"
+            id="lf-naam" name="naam" type="text" required autoComplete="name"
             value={form.naam} onChange={(e) => setForm({ ...form, naam: e.target.value })}
             className={inputClass}
           />
         </div>
         <div>
-          <label htmlFor="cl-bedrijf" className="text-sm text-muted-foreground mb-1 block">
+          <label htmlFor="lf-bedrijf" className="text-sm text-muted-foreground mb-1 block">
             Bedrijf <span className="text-neon-purple" aria-hidden>*</span>
           </label>
           <input
-            id="cl-bedrijf" name="bedrijf" type="text" required autoComplete="organization"
+            id="lf-bedrijf" name="bedrijf" type="text" required autoComplete="organization"
             value={form.bedrijf} onChange={(e) => setForm({ ...form, bedrijf: e.target.value })}
             className={inputClass}
           />
         </div>
       </div>
       <div>
-        <label htmlFor="cl-email" className="text-sm text-muted-foreground mb-1 block">
+        <label htmlFor="lf-email" className="text-sm text-muted-foreground mb-1 block">
           Werk e-mail <span className="text-neon-purple" aria-hidden>*</span>
         </label>
         <input
-          id="cl-email" name="email" type="email" required autoComplete="email"
+          id="lf-email" name="email" type="email" required autoComplete="email"
           value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
           className={inputClass}
         />
       </div>
       <div>
-        <label htmlFor="cl-teamgrootte" className="text-sm text-muted-foreground mb-1 block">
+        <label htmlFor="lf-teamgrootte" className="text-sm text-muted-foreground mb-1 block">
           Voor hoeveel mensen? <span className="text-neon-purple" aria-hidden>*</span>
         </label>
         <select
-          id="cl-teamgrootte" name="teamgrootte" required
+          id="lf-teamgrootte" name="teamgrootte" required
           value={form.teamgrootte} onChange={(e) => setForm({ ...form, teamgrootte: e.target.value })}
           className={inputClass}
         >
@@ -171,8 +176,17 @@ export default function LeadFormClient() {
       {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
 
       <button type="submit" disabled={submitting} className="btn-neon w-full py-3.5 rounded-lg disabled:opacity-50">
-        {submitting ? "Bezig met versturen..." : "Stuur mijn aanvraag"}
+        {submitting ? "Bezig met versturen..." : "Vraag de mogelijkheden aan"}
       </button>
+
+      <p className="text-xs text-muted-foreground leading-relaxed">
+        Geen verplichtingen. We nemen contact op om af te stemmen op jou of je team. Je gegevens
+        gebruiken we daar alleen voor. Zie de{" "}
+        <Link href="/privacyverklaring" className="underline hover:text-foreground transition-colors" target="_blank" rel="noopener">
+          privacyverklaring
+        </Link>
+        .
+      </p>
     </form>
   );
 }

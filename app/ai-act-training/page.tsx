@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Check, Zap, TrendingUp, Shield } from "lucide-react";
-import LeadFormClient from "./LeadFormClient";
+import LeadForm from "@/components/LeadForm";
 import CountdownClient from "./CountdownClient";
 
 export const metadata: Metadata = {
@@ -407,7 +407,7 @@ export default function AiActTrainingPage() {
               trainen en sturen een voorstel op maat. Geen verplichtingen, wel snel antwoord.
             </p>
 
-            <LeadFormClient />
+            <LeadForm source="AI Act Training campagnepagina — offerte aanvraag" />
 
             <div className="mt-8">
               <p className="text-sm text-muted-foreground">

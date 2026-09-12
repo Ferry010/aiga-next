@@ -28,17 +28,17 @@ export default function TrainingClient() {
           <AnimatedSection>
             <SectionLabel text="ONLINE TRAINING VOOR TEAMS" />
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4 max-w-4xl">
-              Op dit moment deelt iemand in je organisatie{" "}
-              <span className="neon-text">data met AI.</span>
+              Je team gebruikt AI elke dag.{" "}
+              <span className="neon-text">Zorg dat ze het veilig doen.</span>
             </h1>
             <p className="mt-5 text-xl sm:text-2xl font-display font-semibold text-primary max-w-2xl">
-              Zorg dat je team weet wat het doet.
+              Van losse experimenten naar één gedeelde, veilige manier van werken.
             </p>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              Train je hele team op de risico's van AI: welke data wél en niet in een tool mag, hoe je
-              shadow AI voorkomt, en hoe je AI veilig én nuttig inzet. Online, in eigen tempo, met een
-              examen en certificaat op naam. Kant-en-klaar, je bouwt niks zelf. En je voldoet er meteen
-              mee aan de EU AI Act.
+              De één plakt bedrijfsdata in ChatGPT, de ander durft er niet aan. Deze training brengt
+              je hele team op dezelfde basis: welke data wél en niet in een tool mag, hoe je shadow AI
+              voorkomt, en hoe je AI veilig én nuttig inzet. Online, in eigen tempo, met examen en
+              certificaat. Kant-en-klaar, je bouwt niks zelf. En je voldoet er meteen mee aan de EU AI Act.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a href="#offerte" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-sm font-semibold">

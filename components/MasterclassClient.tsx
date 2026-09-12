@@ -9,17 +9,18 @@ import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
 
 const takeaways = [
-  "Een helder beeld van wat de AI Act concreet van jouw organisatie vraagt",
-  "Inzicht in welke medewerkers onder de verplichting vallen",
-  "Een praktisch raamwerk voor AI governance in jouw organisatie",
-  "Strategisch perspectief: AI als voordeel in plaats van risico",
+  "Grip op wat er nu al met AI gebeurt in je organisatie",
+  "Welke risico's er spelen (data, shadow AI, foute output) en waar jij op moet sturen",
+  "Een praktisch raamwerk voor AI governance dat mensen ook echt volgen",
+  "Hoe je AI inzet als voordeel, zonder onbeheerst risico",
+  "Wat de EU AI Act van je vraagt, in gewone taal",
   "Antwoorden op jouw specifieke vragen via de live Q&A",
 ];
 
 const programBlocks = [
-  { block: "Blok 1", duration: "30 min", title: "De AI Act in gewone taal", body: "Wat staat er precies in de wet, wat is het tijdpad en wat zijn de gevolgen als je niets doet." },
-  { block: "Blok 2", duration: "45 min", title: "Wat dit betekent voor jouw organisatie", body: "Welke rollen, tools en processen vallen onder de wet. Hoe breng je dit in kaart." },
-  { block: "Blok 3", duration: "30 min", title: "Van compliance naar strategie", body: "AI-geletterdheid is meer dan een wettelijke verplichting. Hoe gebruik je dit als springplank voor een future-ready organisatie." },
+  { block: "Blok 1", duration: "30 min", title: "Wat er nu al met AI gebeurt", body: "Je mensen gebruiken AI allang. Wat betekent dat aan risico's (data, shadow AI, foute output), en hoe zit het met de EU AI Act." },
+  { block: "Blok 2", duration: "45 min", title: "Wat dit betekent voor jou als leidinggevende", body: "Welke rollen, tools en processen het raakt, waar de gaten zitten, en waar jij op stuurt." },
+  { block: "Blok 3", duration: "30 min", title: "Van risico naar richting", body: "Hoe je AI-gebruik in goede banen leidt en er voordeel uit haalt, zonder je mensen af te remmen." },
   { block: "Blok 4", duration: "15 min", title: "Live Q&A met Ferry Hoes", body: "Stel jouw specifieke vragen aan een expert die wekelijks met organisaties hierover spreekt." },
 ];
 
@@ -75,12 +76,12 @@ export default function MasterclassClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="MASTERCLASS VOOR LEIDINGGEVENDEN" />
-            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
-              Wat verwacht de AI Act<br />
-              <span className="text-primary">van jou als leidinggevende?</span>
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
+              Je mensen gebruiken AI.{" "}
+              <span className="text-primary">Als directie ben jij verantwoordelijk voor hoe.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Twee uur live verdieping voor directie, MT en beleidsmakers. Geen saaie compliance-sessie. Wel een helder beeld van wat AI-geletterdheid betekent voor jouw organisatie.
+              Twee uur live verdieping voor directie, MT en beleidsmakers. Geen compliance-college. Je krijgt grip op wat er in je organisatie met AI gebeurt, welke risico's er spelen, en hoe je er richting aan geeft. Zonder de boel af te remmen.
             </p>
             <p className="mt-4 text-sm text-muted-foreground">Gegeven door Ferry Hoes, AI-expert en keynote spreker</p>
             <div className="mt-4 flex flex-wrap gap-4 text-sm text-muted-foreground">

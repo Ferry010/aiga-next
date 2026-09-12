@@ -4,7 +4,7 @@ import CourseSchema from "@/components/seo/CourseSchema";
 
 export const metadata: Metadata = {
   title: "AI Act Masterclass voor Leidinggevenden | In-company | AIGA",
-  description: "Besloten AI Act masterclass voor directie en management in Nederland. Gegeven door AI-expert Ferry Hoes. Op locatie of online. Gratis bij 50+ seats.",
+  description: "Je mensen gebruiken AI, als directie ben jij verantwoordelijk voor hoe. Besloten in-company masterclass voor management: grip op AI-risico's, governance en de EU AI Act. Door Ferry Hoes. Gratis bij 50+ seats.",
   alternates: { canonical: "https://aigeletterdheid.academy/masterclass" },
 };
 

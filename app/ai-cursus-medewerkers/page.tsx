@@ -8,7 +8,7 @@ import BreadcrumbNav from "@/components/BreadcrumbNav";
 export const metadata: Metadata = {
   title: "AI Cursus voor Medewerkers | Gecertificeerd & Praktisch | AIGA",
   description:
-    "AI cursus voor medewerkers: leer AI veilig en verantwoord gebruiken op de werkvloer. Online, selfpaced, 2-3 uur. AI Literacy Practitioner certificaat inbegrepen.",
+    "Je mensen leren AI nu van YouTube en van elkaar. Geef je hele team dezelfde praktische basis: welke data eruit blijft, shadow AI, veilig én nuttig gebruik. Online, 2-3 uur, met certificaat.",
   alternates: { canonical: "/ai-cursus-medewerkers" },
 };
 
@@ -16,7 +16,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Course",
   name: "AI Cursus voor Medewerkers",
-  description: "Praktische AI cursus voor medewerkers. Voldoe aan de EU AI Act met een digitaal certificaat op naam.",
+  description: "Praktische AI cursus voor medewerkers. Leer je hele team AI veilig en verantwoord gebruiken, met een digitaal certificaat op naam.",
   provider: { "@type": "Organization", name: "AIGA | AI Geletterdheid Academy", url: "https://aigeletterdheid.academy" },
   instructor: { "@type": "Person", name: "Ferry Hoes" },
   courseMode: "online",
@@ -39,12 +39,12 @@ export default function AiCursusMedewerkersPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="AI CURSUS MEDEWERKERS" />
-            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
-              AI Cursus voor Medewerkers:<br />
-              <span className="text-primary">Praktisch en Gecertificeerd</span>
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
+              Je mensen leren AI nu van YouTube en van elkaar.{" "}
+              <span className="text-primary">Geef ze één gedeelde basis.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Een AI-cursus die medewerkers leert wat AI is, hoe het werkt, welke risico&apos;s eraan verbonden zijn, en hoe ze AI veilig en verantwoord kunnen inzetten op de werkvloer. Geen technische voorkennis vereist.
+              Iedereen gebruikt AI, maar iedereen op zijn eigen manier. De één plakt bedrijfsdata in ChatGPT, de ander durft er niet aan. Deze AI-cursus voor medewerkers geeft je hele team dezelfde praktische basis: welke data wél en niet in een tool mag, hoe je output controleert, en hoe je AI veilig én nuttig inzet. Geen technische voorkennis nodig, en direct inzetbaar bij onboarding.
             </p>
           </AnimatedSection>
 
@@ -54,12 +54,12 @@ export default function AiCursusMedewerkersPage() {
             </h2>
             <StaggerContainer className="space-y-3 mt-6">
               {[
-                "Wat kunstmatige intelligentie is en hoe het werkt in de praktijk",
-                "Welke AI-systemen ze dagelijks gebruiken (vaak zonder het te weten)",
-                "Hoe ze risico's herkennen: bias, datamisbruik, privacy-schendingen",
-                "Wat de EU AI Act van hen persoonlijk verwacht",
-                "Hoe ze AI verantwoord inzetten binnen de regels van de organisatie",
-                "Wanneer en hoe ze AI-risico's moeten escaleren",
+                "Welke bedrijfsdata wél en niet in een AI-tool mag",
+                "Hoe je AI-output controleert voordat je het gebruikt",
+                "Hoe je hallucinaties en verzonnen bronnen herkent",
+                "Wanneer je AI juist beter niet gebruikt",
+                "Hoe je AI veilig én nuttig inzet in je eigen werk",
+                "Wat verantwoord AI-gebruik betekent, en wat de EU AI Act ervan vraagt",
               ].map((item) => (
                 <StaggerItem key={item}>
                   <div className="flex items-start gap-3 p-3">
@@ -80,7 +80,7 @@ export default function AiCursusMedewerkersPage() {
                 De cursus is volledig online en selfpaced. Medewerkers volgen de training in hun eigen tempo, op een moment dat het hen uitkomt. De gemiddelde doorlooptijd is 2 tot 3 uur. De cursus bestaat uit videolessen, praktijkcases en wordt afgesloten met een adaptief examen.
               </p>
               <p>
-                Na het behalen van het examen (minimaal 70% score) ontvangt elke medewerker het <strong className="text-foreground">AI Literacy Practitioner certificaat</strong>. Dit certificaat is digitaal ondertekend, deelbaar via LinkedIn en is controleerbaar bewijs van deelname voor de AI Act.
+                Na het behalen van het examen (minimaal 70% score) ontvangt elke medewerker het <strong className="text-foreground">AI Literacy Practitioner certificaat</strong>. Dit certificaat is digitaal ondertekend, deelbaar via LinkedIn en is controleerbaar bewijs dat er getraind is.
               </p>
             </div>
           </AnimatedSection>

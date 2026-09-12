@@ -8,7 +8,7 @@ import BreadcrumbNav from "@/components/BreadcrumbNav";
 export const metadata: Metadata = {
   title: "AI Training voor Bedrijven in Nederland | AIGA Academy",
   description:
-    "Investeer in AI-training voor je bedrijf. Voldoe aan de EU AI Act, verminder risico's en verhoog de productiviteit. Gecertificeerde training voor €249 per medewerker.",
+    "Je betaalt al voor AI-tools zoals Copilot. Zorg dat je team ze ook echt goed gebruikt: veilig, met minder fouten en meer rendement. Gecertificeerde AI-training voor bedrijven, €249 per medewerker.",
   alternates: { canonical: "/ai-training-voor-bedrijven" },
 };
 
@@ -34,12 +34,12 @@ export default function AiTrainingVoorBedrijvenPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="AI TRAINING VOOR BEDRIJVEN" />
-            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
-              AI Training voor Bedrijven<br />
-              <span className="text-primary">in Nederland</span>
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
+              Je betaalt al voor AI-tools.{" "}
+              <span className="text-primary">Haalt je team eruit wat het kost?</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              AI verandert de manier waarop bedrijven werken. Maar zonder de juiste kennis leidt het inzetten van AI-tools tot risico&apos;s: datalekken, bias in besluitvorming, compliance-problemen en reputatieschade. Een gerichte AI-training voor bedrijven is daarom geen luxe meer, het is een strategische noodzaak.
+              Je geeft al snel €20 tot €30 per medewerker per maand uit aan Copilot, ChatGPT of Gemini. Maar tools aanzetten is niet hetzelfde als er waarde uit halen. De meesten prompten maar wat, delen data die eruit moet blijven, of laten de tool links liggen. Voor een fractie van wat je al aan licenties betaalt, zorgt deze AI-training voor bedrijven dat je mensen AI veilig én goed gebruiken. Minder fouten, meer rendement.
             </p>
           </AnimatedSection>
 

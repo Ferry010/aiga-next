@@ -27,7 +27,7 @@ const Footer = () => (
           <span className="text-xl font-display font-bold neon-text">AIGA</span>
           <p className="text-sm text-muted-foreground mt-1">AI Geletterdheid Academy</p>
           <p className="text-sm text-muted-foreground mt-4 leading-relaxed">
-            AI-geletterdheid die blijft hangen. Online, schaalbaar en compliant.
+            Zorg dat je team weet wat het met AI doet. Online, schaalbaar en kant-en-klaar.
           </p>
         </div>
         <div>

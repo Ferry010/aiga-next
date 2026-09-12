@@ -7,7 +7,7 @@ import BreadcrumbNav from "@/components/BreadcrumbNav";
 export const metadata: Metadata = {
   title: "AI Act Compliance voor Nederlandse Organisaties | AIGA",
   description:
-    "Alles over AI Act compliance in Nederland: deadlines, stappen, boetes en hoe training helpt bij naleving. Praktische gids voor Nederlandse organisaties.",
+    "Je weet niet wat je mensen met AI doen. Maak verantwoord AI-gebruik dagelijkse gewoonte en leg aantoonbaar vast dat je voldoet aan Artikel 4 van de EU AI Act. Gids en training voor Nederlandse organisaties.",
   alternates: { canonical: "/ai-act-compliance-nederland" },
 };
 
@@ -33,12 +33,12 @@ export default function AiActComplianceNederlandPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="AI ACT COMPLIANCE" />
-            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
-              AI Act Compliance voor<br />
-              <span className="text-primary">Nederlandse Organisaties</span>
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
+              Je weet niet wat je mensen met AI doen.{" "}
+              <span className="text-primary">Dat is precies het risico.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              De EU AI Act is de eerste uitgebreide AI-wetgeving ter wereld. Voor Nederlandse organisaties betekent dit concrete verplichtingen. Deze gids helpt je begrijpen wat compliance inhoudt, welke stappen je moet nemen en welke deadlines gelden.
+              AI is je organisatie binnengekomen zonder dat iemand het heeft aangezet. Medewerkers plakken vertrouwelijke informatie in ChatGPT, nemen output klakkeloos over en gebruiken tools die niemand heeft goedgekeurd. Een AI-beleid op SharePoint verandert dat niet. Deze training maakt verantwoord AI-gebruik onderdeel van het dagelijks handelen: privacy, vertrouwelijke data, hallucinaties, human oversight, bias en verificatie. En je legt er meteen aantoonbaar mee vast dat je voldoet aan Artikel 4 van de EU AI Act.
             </p>
           </AnimatedSection>
 
@@ -62,9 +62,9 @@ export default function AiActComplianceNederlandPage() {
             </h2>
             <div className="space-y-4">
               {[
-                { date: "Februari 2025", text: "AI-geletterdheid verplichting (Artikel 4) treedt in werking" },
-                { date: "Augustus 2025", text: "Start actieve handhaving. Organisaties moeten compliant zijn." },
-                { date: "Augustus 2026", text: "Volledige handhaving high-risk AI-systemen" },
+                { date: "Februari 2025", text: "De AI-geletterdheidsplicht (Artikel 4) treedt in werking" },
+                { date: "Augustus 2025", text: "Regels voor algemene AI-modellen (GPAI) en governance treden in werking" },
+                { date: "Augustus 2026", text: "Actieve handhaving van onder meer de AI-geletterdheidsplicht (Artikel 4)" },
               ].map((d) => (
                 <div key={d.date} className="flex gap-4 p-4 bg-card border border-border rounded-xl">
                   <span className="text-sm font-mono font-bold neon-text shrink-0 w-36">{d.date}</span>
@@ -122,10 +122,10 @@ export default function AiActComplianceNederlandPage() {
           <AnimatedSection delay={0.35}>
             <div className="mt-16 bg-card border border-border rounded-2xl p-8 text-center neon-glow">
               <h2 className="text-2xl font-display font-semibold text-foreground">
-                Begin met AI Act compliance
+                Maak verantwoord AI-gebruik dagelijkse gewoonte
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Onze training zorgt ervoor dat je medewerkers gecertificeerd zijn en je organisatie compliant is.
+                Onze training zorgt dat je mensen weten wat ze wél en niet met AI doen, en je legt aantoonbaar vast dat het geregeld is.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
                 <Link href="/training" className="btn-neon px-8 py-3 rounded-lg text-sm">

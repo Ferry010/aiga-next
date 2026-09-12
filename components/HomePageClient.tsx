@@ -9,6 +9,7 @@ import dynamic from "next/dynamic";
 const TrainerSection = dynamic(() => import("@/components/TrainerSection"));
 const SocialProof = dynamic(() => import("@/components/SocialProof"));
 import DefinitionBlock from "@/components/DefinitionBlock";
+import PillarsSection from "@/components/PillarsSection";
 import { useState, useRef, useEffect } from "react";
 
 const faqItems = [
@@ -210,32 +211,7 @@ export default function HomePageClient() {
       </section>
 
       {/* 4 pijlers */}
-      <section className="py-24 bg-card border-y border-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground max-w-3xl leading-[1.1]">
-              Eén programma.{" "}
-              <span className="text-primary">Vier dingen geregeld.</span>
-            </h2>
-          </AnimatedSection>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            {[
-              { n: "Responsible AI", title: "Je mensen kennen de risico's", body: "Wat je wél en niet met AI deelt, waar het misgaat met data en hallucinaties, en hoe je dat voorkomt." },
-              { n: "AI productivity", title: "Ze halen er echt iets uit", body: "Ze leren goede AI-toepassingen herkennen en betere resultaten krijgen. Slimmer werken, niet eindeloos prompten." },
-              { n: "AI governance", title: "Eén gedeelde basis", body: "Je hele organisatie werkt vanuit dezelfde manier van verantwoord gebruik. Geen vijfhonderd eigen methodes." },
-              { n: "AI literacy / AI Act", title: "Aantoonbaar geregeld", body: "Je legt gestructureerd vast dat je maatregelen hebt genomen. Netjes op orde, zonder dat het je hele verhaal wordt." },
-            ].map((p) => (
-              <StaggerItem key={p.n}>
-                <div className="bg-background border border-border rounded-2xl p-8 h-full hover:border-neon-purple/40 transition-all duration-300">
-                  <span className="text-xs font-mono uppercase tracking-wider neon-text">{p.n}</span>
-                  <p className="text-lg font-semibold text-foreground mt-2 mb-2">{p.title}</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{p.body}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
+      <PillarsSection />
 
       {/* How it works */}
       <section className="py-24">

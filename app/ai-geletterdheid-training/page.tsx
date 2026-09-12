@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
 };
 
-// Single source of truth — used for both the visible FAQ accordion and FAQPage JSON-LD
+// Single source of truth, used for both the visible FAQ accordion and FAQPage JSON-LD
 const faqs: FaqItem[] = [
   {
     q: "Is AI-geletterdheid wettelijk verplicht?",

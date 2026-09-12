@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import TrainerSection from "@/components/TrainerSection";
+import PillarsSection from "@/components/PillarsSection";
 import LeadForm from "@/components/LeadForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
@@ -121,6 +122,8 @@ export default function TrainingClient() {
         </div>
       </section>
 
+      <PillarsSection />
+
       <TrainerSection />
 
       <section className="py-24 bg-card">
@@ -204,7 +207,7 @@ export default function TrainingClient() {
               Laat je gegevens achter, dan bespreken we de snelste route. Voor jezelf of voor je hele
               team. Binnen twee werkdagen staat alles klaar.
             </p>
-            <LeadForm source="Training pagina — offerte aanvraag" />
+            <LeadForm source="Training pagina, offerte aanvraag" />
           </AnimatedSection>
         </div>
       </section>

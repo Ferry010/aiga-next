@@ -11,7 +11,7 @@ import BreadcrumbNav from "@/components/BreadcrumbNav";
 const scans = [
   {
     title: "AI Use Case Checker",
-    description: "Eén tool, één toepassing — is het hoog risico? Selecteer een AI-tool en een specifieke use case om direct te zien of die combinatie onder Bijlage III valt.",
+    description: "Eén tool, één toepassing, is het hoog risico? Selecteer een AI-tool en een specifieke use case om direct te zien of die combinatie onder Bijlage III valt.",
     icon: Search,
     href: "/ai-use-case-checker",
     available: true,
@@ -48,7 +48,7 @@ const downloads = [
     available: true,
   },
   {
-    title: "AI-beleid opstellen — gratis template",
+    title: "AI-beleid opstellen, gratis template",
     description: "Download een kant-en-klaar template om jouw organisatie-breed AI-beleid op te stellen.",
     icon: FileText,
     href: "/tools/downloads/ai-beleid-opstellen",
@@ -65,12 +65,12 @@ export default function ToolsClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="TOOLS & SCANS" />
-            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
-              Praktische tools voor<br />
-              <span className="text-primary">AI Act compliance.</span>
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
+              AI zit al in je organisatie.{" "}
+              <span className="text-primary">Zoek uit waar je staat.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Scans, calculators en downloads om jouw AI Act compliance te beoordelen. Gratis te gebruiken, direct toepasbaar.
+              Gratis scans, calculators en checklists die laten zien waar de risico's zitten, wat je al goed hebt geregeld en wat nog niet. Direct resultaat, geen verplichtingen.
             </p>
           </AnimatedSection>
         </div>

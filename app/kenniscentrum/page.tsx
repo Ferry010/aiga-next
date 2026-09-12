@@ -68,7 +68,7 @@ export default async function KenniscentrumPage() {
     inLanguage: "nl",
     publisher: {
       "@type": "EducationalOrganization",
-      name: "AIGA — AI Geletterdheid Academy",
+      name: "AIGA, AI Geletterdheid Academy",
       url: "https://aigeletterdheid.academy",
     },
   };

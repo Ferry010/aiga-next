@@ -56,21 +56,21 @@ function toSlug(term: string): string {
 
 const BEGRIPPEN: Begrip[] = [
   { term: "AI-geletterdheid", description: "Weten wat AI is, hoe het werkt en wat de risico's zijn. Niet alleen voor je IT-afdeling. Voor iedereen die met AI werkt. En dat is tegenwoordig bijna iedereen. Verplicht onder Artikel 4 van de EU AI Act.", theme: "praktijk" },
-  { term: "EU AI Act", description: "De eerste uitgebreide Europese wet over kunstmatige intelligentie. In werking getreden op 1 augustus 2024. Doel: AI veilig, transparant en menselijk houden. Niet later relevant — nu al.", theme: "wetgeving", link: { href: "/kenniscentrum/eu-ai-act-uitgelegd", label: "Lees de volledige EU AI Act gids" } },
+  { term: "EU AI Act", description: "De eerste uitgebreide Europese wet over kunstmatige intelligentie. In werking getreden op 1 augustus 2024. Doel: AI veilig, transparant en menselijk houden. Niet later relevant, nu al.", theme: "wetgeving", link: { href: "/kenniscentrum/eu-ai-act-uitgelegd", label: "Lees de volledige EU AI Act gids" } },
   { term: "Hoog-risico AI", description: "AI-systemen die een directe impact hebben op mensen: denk aan CV-screening, kredietbeoordeling, of medische diagnoses. Voor deze systemen gelden de strengste verplichtingen uit de wet.", theme: "wetgeving" },
   { term: "Verboden AI", description: "Toepassingen die de EU volledig verbiedt. Sociale scoring door overheden, manipulatieve AI die kwetsbare groepen uitbuit, biometrische profilering zonder toestemming. Harde grens.", theme: "wetgeving" },
   { term: "Beperkt-risico AI", description: "Systemen zoals chatbots. Ze mogen worden ingezet, maar gebruikers moeten altijd weten dat ze met AI communiceren. Transparantie is hier de sleuteleis.", theme: "wetgeving" },
   { term: "Minimaal-risico AI", description: "Spamfilters, aanbevelingsalgoritmes, AI in games. Geen extra verplichtingen, maar ethisch verantwoord gebruik blijft gewenst.", theme: "wetgeving" },
-  { term: "AI-systeem", description: "Software die op basis van data redeneert, voorspelt of beslissingen neemt. Geen gewone software dus — AI leert en past zich aan. Dat is precies waarom de wet apart regelgeving nodig acht.", theme: "technologie" },
-  { term: "Aanbieder (provider)", description: "De partij die een AI-systeem ontwikkelt of op de markt brengt. Zij dragen de zwaarste verantwoordelijkheid onder de wet — denk aan certificering en documentatie.", theme: "rollen" },
+  { term: "AI-systeem", description: "Software die op basis van data redeneert, voorspelt of beslissingen neemt. Geen gewone software dus, AI leert en past zich aan. Dat is precies waarom de wet apart regelgeving nodig acht.", theme: "technologie" },
+  { term: "Aanbieder (provider)", description: "De partij die een AI-systeem ontwikkelt of op de markt brengt. Zij dragen de zwaarste verantwoordelijkheid onder de wet, denk aan certificering en documentatie.", theme: "rollen" },
   { term: "Gebruiksverantwoordelijke (deployer)", description: "De organisatie die een AI-systeem inzet in de praktijk. Jij bent de deployer als je ChatGPT gebruikt voor klantenservice of een AI-tool inzet bij HR-beslissingen.", theme: "rollen" },
-  { term: "Conformiteitsbeoordeling", description: "De formele check of een hoog-risico AI-systeem voldoet aan alle wettelijke eisen. Vergelijk het met een APK voor auto's — maar dan voor algoritmes.", theme: "wetgeving" },
+  { term: "Conformiteitsbeoordeling", description: "De formele check of een hoog-risico AI-systeem voldoet aan alle wettelijke eisen. Vergelijk het met een APK voor auto's, maar dan voor algoritmes.", theme: "wetgeving" },
   { term: "CE-markering voor AI", description: "Hoog-risico AI-systemen moeten een CE-markering hebben voordat ze op de Europese markt mogen. Bewijs dat het systeem is getoetst en veilig bevonden.", theme: "wetgeving" },
   { term: "AI impact assessment", description: "Een risicoanalyse vooraf: welke beslissingen neemt het systeem, wie worden er door geraakt en wat zijn de gevolgen als het misgaat? Verplicht voor hoog-risico toepassingen.", theme: "praktijk", link: { href: "/kenniscentrum/wat-is-een-ai-impact-assessment", label: "Meer over het AI impact assessment" } },
   { term: "Transparantieverplichting", description: "Gebruikers moeten weten wanneer ze met AI te maken hebben. Geen verborgen algoritmes, geen AI die zich voordoet als mens zonder dat iemand het weet.", theme: "wetgeving" },
   { term: "Menselijk toezicht (human oversight)", description: "Bij hoog-risico AI moet een mens altijd kunnen ingrijpen, corrigeren of het systeem stopzetten. AI mag nooit volledig autonoom beslissen over mensen zonder menselijke controle.", theme: "rollen" },
-  { term: "Biometrische identificatie", description: "Het herkennen van mensen op basis van lichaamskenmerken — gezicht, stem, vingerafdruk. Streng gereguleerd onder de AI Act. Realtime toepassing in de publieke ruimte is grotendeels verboden.", theme: "technologie" },
-  { term: "Documentatieverplichting", description: "Hoog-risico AI-systemen moeten uitgebreid gedocumenteerd zijn: hoe werkt het, waarop is het getraind, hoe wordt het getest. Niet voor later — ook te overleggen bij een audit.", theme: "wetgeving" },
+  { term: "Biometrische identificatie", description: "Het herkennen van mensen op basis van lichaamskenmerken, gezicht, stem, vingerafdruk. Streng gereguleerd onder de AI Act. Realtime toepassing in de publieke ruimte is grotendeels verboden.", theme: "technologie" },
+  { term: "Documentatieverplichting", description: "Hoog-risico AI-systemen moeten uitgebreid gedocumenteerd zijn: hoe werkt het, waarop is het getraind, hoe wordt het getest. Niet voor later, ook te overleggen bij een audit.", theme: "wetgeving" },
   { term: "Technische robuustheid", description: "AI-systemen moeten betrouwbaar, nauwkeurig en bestand zijn tegen fouten en misbruik. Een systeem dat bij een onverwachte invoer compleet ontspoort voldoet niet.", theme: "technologie" },
   { term: "Artikel 4 AI Act", description: "Het artikel dat AI-geletterdheid verplicht stelt voor alle organisaties die AI inzetten. Geldig sinds 2 februari 2025. Dit is de juridische basis voor wat AIGA doet.", theme: "wetgeving", link: { href: "/kenniscentrum/wat-is-ai-geletterdheid", label: "Lees meer over Artikel 4" } },
   { term: "Handhavingsdeadline Artikel 4", description: "2 augustus 2026. Vanaf die datum kunnen nationale markttoezichthouders handhaven op AI-geletterdheid (Artikel 4). Na de Digital Omnibus (juni 2026) zijn de hoog-risico verplichtingen voor Bijlage III uitgesteld naar 2 december 2027.", theme: "wetgeving" },
@@ -146,7 +146,7 @@ export default function AiBegrippenClient() {
             AI Begrippen uitgelegd
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            De EU AI Act introduceert veel nieuwe termen. Hier vind je ze allemaal — zonder jargon, zonder lawyers-taal.
+            De EU AI Act introduceert veel nieuwe termen. Hier vind je ze allemaal, zonder jargon, zonder lawyers-taal.
           </p>
         </AnimatedSection>
       </section>

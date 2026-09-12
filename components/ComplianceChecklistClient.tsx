@@ -34,7 +34,7 @@ const Toelichting = ({ children }: { children: React.ReactNode }) => (
 
 const SectionTitle = ({ number, title }: { number: number; title: string }) => (
   <h2 className="text-lg font-display font-bold text-foreground mt-8 mb-1">
-    Sectie {number} — {title}
+    Sectie {number}, {title}
   </h2>
 );
 
@@ -78,7 +78,7 @@ export default function ComplianceChecklistClient() {
             AI Act Compliance Checklist
           </h1>
           <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
-            Voor organisaties die AI-systemen inzetten (deployers) — Gebaseerd op EU AI Act Verordening 2024/1689
+            Voor organisaties die AI-systemen inzetten (deployers), Gebaseerd op EU AI Act Verordening 2024/1689
           </p>
           <p className="text-xs text-muted-foreground mt-1">
             Versie: 1.0 · Bijgewerkt: maart 2025 · Bron: EUR-Lex 32024R1689
@@ -107,7 +107,7 @@ export default function ComplianceChecklistClient() {
         {/* SECTIE 1 */}
         <SectionTitle number={1} title="AI-geletterdheid (Artikel 4)" />
         <p className="text-xs text-muted-foreground mb-2">
-          Deadline: <DeadlineBadge text="Feb 2025 — al van kracht" />
+          Deadline: <DeadlineBadge text="Feb 2025, al van kracht" />
         </p>
         <div className="space-y-0.5">
           <CheckItem color="green">Breng in kaart welke medewerkers AI-systemen gebruiken of bedienen namens de organisatie</CheckItem>
@@ -211,7 +211,7 @@ export default function ComplianceChecklistClient() {
         {/* SECTIE 8 */}
         <SectionTitle number={8} title="Verboden AI-praktijken (Artikel 5)" />
         <p className="text-xs text-muted-foreground mb-2">
-          Deadline: <DeadlineBadge text="Feb 2025 — al van kracht" />
+          Deadline: <DeadlineBadge text="Feb 2025, al van kracht" />
         </p>
         <div className="space-y-0.5">
           <CheckItem color="green">Gebruik geen AI-systemen die subliminale of manipulatieve technieken inzetten om gedrag te beïnvloeden zonder bewustzijn van de gebruiker</CheckItem>
@@ -231,7 +231,7 @@ export default function ComplianceChecklistClient() {
           <CheckItem color="green">Documenteer alle compliance-maatregelen en bewaar deze minimaal 10 jaar (Art. 18)</CheckItem>
           <CheckItem color="yellow">Stel een organisatie-breed AI-beleid op dat de governance van AI-gebruik regelt</CheckItem>
           <CheckItem color="red">Voer een data protection impact assessment (DPIA) uit voor hoog-risico AI-systemen die persoonsgegevens verwerken (Art. 26 lid 9 jo. AVG Art. 35)</CheckItem>
-          <CheckItem color="red">Registreer hoog-risico AI-systemen in de EU-database indien vereist (Art. 49 — geldt voor overheidsinstanties)</CheckItem>
+          <CheckItem color="red">Registreer hoog-risico AI-systemen in de EU-database indien vereist (Art. 49, geldt voor overheidsinstanties)</CheckItem>
         </div>
 
         {/* SECTIE 10 */}
@@ -241,7 +241,7 @@ export default function ComplianceChecklistClient() {
             { date: "2 februari 2025", text: "Verboden AI-praktijken (Art. 5) + AI-geletterdheidsplicht (Art. 4) van kracht" },
             { date: "2 augustus 2025", text: "Handhaving GPAI-verplichtingen, governance en toezichtsbepalingen (Ch. V, VII, XII)" },
             { date: "2 augustus 2026", text: "Handhaving Artikel 4 (AI-geletterdheid). Hoog-risico verplichtingen Bijlage III uitgesteld via Digital Omnibus." },
-            { date: "2 december 2027", text: "Hoog-risico AI-systemen Bijlage III — deployer- en providerverplichtingen (uitgesteld via Digital Omnibus juni 2026)" },
+            { date: "2 december 2027", text: "Hoog-risico AI-systemen Bijlage III, deployer- en providerverplichtingen (uitgesteld via Digital Omnibus juni 2026)" },
             { date: "2 augustus 2028", text: "AI-systemen in gereguleerde producten (Bijlage I, Art. 6 lid 1)" },
           ].map((item, i) => (
             <div key={i} className="flex items-start gap-4">

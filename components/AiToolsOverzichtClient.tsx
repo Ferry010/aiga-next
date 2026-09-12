@@ -39,7 +39,7 @@ const jsonLd = {
   "@type": "Article",
   headline: "Welke AI-tools vallen onder de EU AI Act?",
   description:
-    "Overzicht van 49 veelgebruikte AI-tools in Nederlandse organisaties — met type, standaard categorie, situationeel hoog risico en trainingsplicht.",
+    "Overzicht van 49 veelgebruikte AI-tools in Nederlandse organisaties, met type, standaard categorie, situationeel hoog risico en trainingsplicht.",
   author: { "@type": "Person", name: "Ferry Hoes" },
   publisher: {
     "@type": "EducationalOrganization",
@@ -111,7 +111,7 @@ export default function AiToolsOverzichtClient() {
               Welke AI-tools vallen onder de EU AI Act?
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-3xl leading-relaxed">
-              Overzicht van 49 veelgebruikte AI-tools in Nederlandse organisaties — met type, standaard categorie en wanneer ze hoog risico worden.
+              Overzicht van 49 veelgebruikte AI-tools in Nederlandse organisaties, met type, standaard categorie en wanneer ze hoog risico worden.
             </p>
           </AnimatedSection>
 
@@ -247,7 +247,7 @@ export default function AiToolsOverzichtClient() {
 
           {/* Footnote */}
           <p className="mt-4 text-xs text-muted-foreground">
-            * Artikel 4 EU AI Act verplicht AI-geletterdheid voor alle medewerkers die AI-systemen gebruiken — ongeacht risicocategorie.
+            * Artikel 4 EU AI Act verplicht AI-geletterdheid voor alle medewerkers die AI-systemen gebruiken, ongeacht risicocategorie.
           </p>
 
           {/* CTA bar */}

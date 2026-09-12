@@ -88,7 +88,7 @@ const aiGroups = [
   },
   {
     id: "C",
-    label: "Beperkt risico (Artikel 50 — transparantieverplichtingen)",
+    label: "Beperkt risico (Artikel 50, transparantieverplichtingen)",
     color: "text-yellow-600",
     items: [
       { key: "c_chatbot", label: "Chatbots of AI-gegenereerde content die aan klanten/gebruikers wordt getoond" },
@@ -97,10 +97,10 @@ const aiGroups = [
   },
   {
     id: "D",
-    label: "Minimaal risico (Artikel 4 — AI-geletterdheidsplicht)",
+    label: "Minimaal risico (Artikel 4, AI-geletterdheidsplicht)",
     color: "text-muted-foreground",
     items: [
-      { key: "d_genai", label: "Generatieve AI intern (ChatGPT, Copilot, Gemini) — alleen voor medewerkers" },
+      { key: "d_genai", label: "Generatieve AI intern (ChatGPT, Copilot, Gemini), alleen voor medewerkers" },
       { key: "d_marketing", label: "AI voor marketing of contentcreatie (intern)" },
       { key: "d_spam", label: "Spamfilters, aanbevelingsalgoritmen" },
       { key: "d_none", label: "Geen van bovenstaande" },
@@ -169,7 +169,7 @@ function calculate(aiSelections: string[], compliance: ComplianceLevel, orgSize:
     const max = compliance === "partial" ? 25_000 : 50_000;
     const risk: RiskLevel = compliance === "partial" ? "GEMIDDELD" : "HOOG";
     const color = compliance === "partial" ? "bg-orange-100 text-orange-800 border-orange-200" : "bg-red-100 text-red-800 border-red-200";
-    return { riskLevel: risk, riskColor: color, fineMin: min, fineMax: max, articles: "Artikel 4 (AI-geletterdheidsplicht) — handhaving door lidstaten", complianceCost, isLiteracyOnly: true, isZeroRisk: false };
+    return { riskLevel: risk, riskColor: color, fineMin: min, fineMax: max, articles: "Artikel 4 (AI-geletterdheidsplicht), handhaving door lidstaten", complianceCost, isLiteracyOnly: true, isZeroRisk: false };
   }
 
   let flatCap: number;
@@ -319,7 +319,7 @@ export default function BoetecalculatorClient() {
 
                   {step === 2 && (() => {
                     const popularItems = [
-                      { key: "d_genai", label: "Generatieve AI intern (ChatGPT, Copilot, Gemini) — alleen voor medewerkers" },
+                      { key: "d_genai", label: "Generatieve AI intern (ChatGPT, Copilot, Gemini), alleen voor medewerkers" },
                       { key: "c_chatbot", label: "Chatbots of AI-gegenereerde content die aan klanten/gebruikers wordt getoond" },
                       { key: "b_hr", label: "AI voor werving, selectie of beoordeling van medewerkers (CV-screening, scoring)" },
                       { key: "d_marketing", label: "AI voor marketing of contentcreatie (intern)" },
@@ -355,7 +355,7 @@ export default function BoetecalculatorClient() {
                             return (
                               <div key={group.id}>
                                 <p className={cn("text-xs font-semibold uppercase tracking-wide mb-3", group.color)}>
-                                  Groep {group.id} — {group.label}
+                                  Groep {group.id}, {group.label}
                                 </p>
                                 <div className="grid grid-cols-1 gap-2">
                                   {filteredItems.map((item) => (
@@ -493,7 +493,7 @@ export default function BoetecalculatorClient() {
                       <div>
                         <p className="text-sm font-semibold text-foreground">Kosten van compliance nu</p>
                         <p className="text-sm text-muted-foreground">
-                          Certificeer je medewerkers voor €{results.complianceCost.toLocaleString("nl-NL")} (€249 p.p.) — een fractie van je risico
+                          Certificeer je medewerkers voor €{results.complianceCost.toLocaleString("nl-NL")} (€249 p.p.), een fractie van je risico
                         </p>
                       </div>
                     </div>

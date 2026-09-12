@@ -85,12 +85,12 @@ export default function OverAigaClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="OVER AIGA" />
-            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
-              AI-geletterdheid is geen buzzword.<br />
-              <span className="text-primary">Het is de basis.</span>
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
+              Iedereen gebruikt AI.{" "}
+              <span className="text-primary">Bijna niemand weet hoe het veilig moet.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              AIGA is opgericht met een duidelijk doel: organisaties helpen om serieus, verantwoord en strategisch met AI om te gaan.
+              Daarom is AIGA er. Wij leren teams AI veilig en goed gebruiken, met een kant-en-klaar programma uit de praktijk. Geen buzzwords, wel gedrag dat verandert.
             </p>
             <a href="#contact" className="btn-neon inline-block mt-8 px-7 py-3 rounded-lg text-sm font-semibold">
               Neem contact op

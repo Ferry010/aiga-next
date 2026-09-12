@@ -12,7 +12,7 @@ const TIER_COLORS: Record<string, string> = {
 
 const TIER_INTERPRETATIONS: Record<string, string> = {
   "NIET GEREED":
-    "Jouw organisatie gebruikt waarschijnlijk al AI, maar zonder gedeelde kennis of spelregels. Dat maakt jullie kwetsbaar bij een audit. Het goede nieuws: je weet het nu — en dat is de eerste stap naar actie.",
+    "Jouw organisatie gebruikt waarschijnlijk al AI, maar zonder gedeelde kennis of spelregels. Dat maakt jullie kwetsbaar bij een audit. Het goede nieuws: je weet het nu, en dat is de eerste stap naar actie.",
   "GEDEELTELIJK GEREED":
     "Een deel van je team begrijpt AI goed, maar zonder een gedeelde basis zijn er blinde vlekken. Met gerichte stappen op de dimensies waar je laag scoort, kom je snel een stuk verder.",
   VOORLOPER:
@@ -49,14 +49,14 @@ export default function ResultClient() {
   try {
     if (dimRaw) dimScores = JSON.parse(atob(dimRaw));
   } catch {
-    // malformed param — skip dimension bars
+    // malformed param, skip dimension bars
   }
 
   const tierColor = TIER_COLORS[category] ?? TIER_COLORS["NIET GEREED"];
   const interpretation = TIER_INTERPRETATIONS[category] ?? TIER_INTERPRETATIONS["NIET GEREED"];
 
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
-  const shareText = `Ik deed de AI Gereedheidscan van AIGA en scoorde ${score}% — ${category}. Hoe scoort jouw organisatie?`;
+  const shareText = `Ik deed de AI Gereedheidscan van AIGA en scoorde ${score}%, ${category}. Hoe scoort jouw organisatie?`;
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(shareUrl);
@@ -68,7 +68,7 @@ export default function ResultClient() {
 
   return (
     <>
-      {/* Print stylesheet — hides everything except the report */}
+      {/* Print stylesheet, hides everything except the report */}
       <style>{`
         @media print {
           .no-print { display: none !important; }

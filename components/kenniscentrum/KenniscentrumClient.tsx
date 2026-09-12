@@ -125,7 +125,7 @@ export default function KenniscentrumClient({ articles }: Props) {
                     Welke AI-tools vallen onder de EU AI Act?
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Overzicht van 49 veelgebruikte AI-tools — met risicocategorie, trainingsplicht en aandachtspunten per tool.
+                    Overzicht van 49 veelgebruikte AI-tools, met risicocategorie, trainingsplicht en aandachtspunten per tool.
                   </p>
                   <span className="mt-auto flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all pt-2">
                     Bekijk overzicht <ArrowRight size={16} />
@@ -145,7 +145,7 @@ export default function KenniscentrumClient({ articles }: Props) {
                     AI Begrippen: Glossarium EU AI Act
                   </h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Alle belangrijke begrippen uit de EU AI Act helder uitgelegd — van hoog-risico AI tot conformiteitsbeoordeling.
+                    Alle belangrijke begrippen uit de EU AI Act helder uitgelegd, van hoog-risico AI tot conformiteitsbeoordeling.
                   </p>
                   <span className="mt-auto flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all pt-2">
                     Bekijk begrippenlijst <ArrowRight size={16} />

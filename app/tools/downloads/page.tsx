@@ -28,7 +28,7 @@ const documents = [
   },
   {
     type: "template" as DocumentType,
-    title: "AI-beleid opstellen — template",
+    title: "AI-beleid opstellen, template",
     description:
       "Kant-en-klaar beleidstemplate. Pas aan voor jouw organisatie en voldoe direct aan de documentatie-eisen van de AI Act.",
     icon: FileText,

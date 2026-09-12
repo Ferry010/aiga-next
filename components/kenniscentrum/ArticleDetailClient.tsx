@@ -209,8 +209,8 @@ export default function ArticleDetailClient({ article, prevArticle, nextArticle 
             <div className="mt-12 pt-8 border-t border-border">
               <h3 className="text-sm font-semibold text-foreground mb-3">Bronnen</h3>
               <ul className="space-y-1 text-sm text-muted-foreground">
-                <li><a href="https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">EUR-Lex — EU AI Act (Verordening 2024/1689)</a></li>
-                <li><a href="https://www.rijksoverheid.nl/onderwerpen/kunstmatige-intelligentie-ai" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Rijksoverheid.nl — Kunstmatige Intelligentie</a></li>
+                <li><a href="https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">EUR-Lex, EU AI Act (Verordening 2024/1689)</a></li>
+                <li><a href="https://www.rijksoverheid.nl/onderwerpen/kunstmatige-intelligentie-ai" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Rijksoverheid.nl, Kunstmatige Intelligentie</a></li>
               </ul>
             </div>
 

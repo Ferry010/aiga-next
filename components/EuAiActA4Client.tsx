@@ -26,19 +26,19 @@ const riskCategories = [
     examples: "Sociale scoring door overheden, manipulatieve AI, real-time biometrische identificatie in openbare ruimte",
   },
   {
-    label: "Hoog risico — zwaarste verplichtingen",
+    label: "Hoog risico, zwaarste verplichtingen",
     color: "bg-amber-50 border-amber-300 text-amber-900",
     dotColor: "bg-amber-500",
     examples: "Biometrie · Kritieke infrastructuur · Onderwijs · Werving & HR · Essentiële diensten (krediet, zorg, uitkeringen) · Rechtshandhaving · Migratie · Rechtsbedeling",
   },
   {
-    label: "Beperkt risico — transparantieplicht",
+    label: "Beperkt risico, transparantieplicht",
     color: "bg-yellow-50 border-yellow-300 text-yellow-900",
     dotColor: "bg-yellow-500",
     examples: "Chatbots, deepfakes, AI-gegenereerde content. Gebruikers moeten weten dat ze met AI interageren.",
   },
   {
-    label: "Minimaal risico — geen verplichtingen",
+    label: "Minimaal risico, geen verplichtingen",
     color: "bg-green-50 border-green-300 text-green-900",
     dotColor: "bg-green-500",
     examples: "Spamfilters, AI in videogames, aanbevelingssystemen in privécontext",
@@ -83,11 +83,11 @@ export default function EuAiActA4Client() {
             {/* Header */}
             <div className="flex justify-between items-start mb-4">
               <div>
-                <p className="text-xs md:text-[9px] text-muted-foreground tracking-wide">AI Geletterdheid Academy — aigeletterdheid.academy</p>
+                <p className="text-xs md:text-[9px] text-muted-foreground tracking-wide">AI Geletterdheid Academy, aigeletterdheid.academy</p>
                 <h1 className="text-2xl sm:text-3xl font-bold mt-1 leading-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
                   EU AI Act in 1 A4
                 </h1>
-                <p className="text-muted-foreground text-sm md:text-[11px] mt-0.5">De Europese AI-verordening — wat je moet weten als organisatie</p>
+                <p className="text-muted-foreground text-sm md:text-[11px] mt-0.5">De Europese AI-verordening, wat je moet weten als organisatie</p>
               </div>
               <span className="text-xs md:text-[9px] text-muted-foreground whitespace-nowrap mt-1">Versie maart 2026</span>
             </div>
@@ -98,7 +98,7 @@ export default function EuAiActA4Client() {
             <div className="mb-5 md:mb-3">
               <SectionLabel>Achtergrond</SectionLabel>
               <p>
-                De EU AI Act (Verordening 2024/1689) is de eerste bindende AI-wet ter wereld. Hij regelt hoe AI-systemen ontwikkeld, aangeboden en gebruikt mogen worden in de Europese Unie. De wet geldt voor alle organisaties die AI gebruiken — ongeacht of ze in de EU gevestigd zijn.
+                De EU AI Act (Verordening 2024/1689) is de eerste bindende AI-wet ter wereld. Hij regelt hoe AI-systemen ontwikkeld, aangeboden en gebruikt mogen worden in de Europese Unie. De wet geldt voor alle organisaties die AI gebruiken, ongeacht of ze in de EU gevestigd zijn.
               </p>
             </div>
 
@@ -106,7 +106,7 @@ export default function EuAiActA4Client() {
             <div className="mb-5 md:mb-3">
               <SectionLabel>Inwerkingtreding</SectionLabel>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-0 mt-2 md:mt-1 relative">
-                {/* Connecting line — desktop only */}
+                {/* Connecting line, desktop only */}
                 <div className="hidden md:block absolute top-[7px] left-[7px] right-[7px] h-[2px] bg-border" />
                 {timelineItems.map((item, i) => (
                   <div key={i} className="relative z-10 flex md:flex-col items-start md:items-center md:text-center gap-2 md:gap-0 px-0 md:px-1">
@@ -124,7 +124,7 @@ export default function EuAiActA4Client() {
                 ))}
               </div>
               <p className="text-sm md:text-[9px] text-muted-foreground italic mt-2 md:mt-1.5">
-                De AI-geletterdheidsplicht geldt al — organisaties zijn nu al verplicht medewerkers te trainen.
+                De AI-geletterdheidsplicht geldt al, organisaties zijn nu al verplicht medewerkers te trainen.
               </p>
             </div>
 
@@ -148,11 +148,11 @@ export default function EuAiActA4Client() {
             <div className="mb-5 md:mb-3">
               <SectionLabel>Jouw verplichting</SectionLabel>
               <p className="mb-1.5">
-                Artikel 4 geldt voor alle organisaties die AI gebruiken — ongeacht risicocategorie. De verplichting is al van kracht sinds 2 februari 2025.
+                Artikel 4 geldt voor alle organisaties die AI gebruiken, ongeacht risicocategorie. De verplichting is al van kracht sinds 2 februari 2025.
               </p>
               <ul className="space-y-1">
                 {[
-                  "Zorg dat medewerkers die AI gebruiken voldoende AI-geletterd zijn — afgestemd op hun rol en het systeem dat ze gebruiken",
+                  "Zorg dat medewerkers die AI gebruiken voldoende AI-geletterd zijn, afgestemd op hun rol en het systeem dat ze gebruiken",
                   "Documenteer welke AI-systemen je inzet en welke trainingen medewerkers gevolgd hebben",
                   "Pas het trainingsniveau aan op de risicocategorie van het systeem en de functie van de medewerker",
                 ].map((text, i) => (
@@ -166,7 +166,7 @@ export default function EuAiActA4Client() {
 
             {/* Blok 5: Hoog risico verplichtingen */}
             <div className="mb-5 md:mb-3">
-              <SectionLabel>Hoog risico — extra verplichtingen</SectionLabel>
+              <SectionLabel>Hoog risico, extra verplichtingen</SectionLabel>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-3 mt-1">
                 <div>
                   <p className="font-bold text-sm md:text-[10px] mb-1">Voor aanbieders (providers):</p>
@@ -217,7 +217,7 @@ export default function EuAiActA4Client() {
             {/* Document footer */}
             <div className="mt-auto pt-2 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 text-sm md:text-[9px] text-muted-foreground">
               <span className="font-bold neon-text print:text-black">AIGA</span>
-              <span>© 2026 AI Geletterdheid Academy — aigeletterdheid.academy</span>
+              <span>© 2026 AI Geletterdheid Academy, aigeletterdheid.academy</span>
               <span>Artikel 4 EU AI Act training: €249 per medewerker</span>
             </div>
           </div>

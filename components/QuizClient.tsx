@@ -159,7 +159,7 @@ export default function QuizClient() {
             </h1>
 
             <p className="mt-6 text-xl text-muted-foreground leading-relaxed max-w-2xl">
-              Doe de gratis scan en ontdek in 3 minuten hoe jouw organisatie scoort op AI-compliance — met een persoonlijk actieplan in je inbox.
+              Doe de gratis scan en ontdek in 3 minuten hoe jouw organisatie scoort op AI-compliance, met een persoonlijk actieplan in je inbox.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -195,7 +195,7 @@ export default function QuizClient() {
                   {
                     icon: "📊",
                     title: "Score op 5 dimensies",
-                    body: "AI-gebruik, wetgeving, risicobeheer, leiderschap en audit-readiness — elk apart inzichtelijk.",
+                    body: "AI-gebruik, wetgeving, risicobeheer, leiderschap en audit-readiness, elk apart inzichtelijk.",
                   },
                   {
                     icon: "⚠️",
@@ -205,7 +205,7 @@ export default function QuizClient() {
                   {
                     icon: "🎯",
                     title: "Wat je als eerste aanpakt",
-                    body: "Een heldere prioriteitenlijst zodat je vandaag kunt beginnen — zonder te gokken.",
+                    body: "Een heldere prioriteitenlijst zodat je vandaag kunt beginnen, zonder te gokken.",
                   },
                   {
                     icon: "📋",
@@ -232,13 +232,13 @@ export default function QuizClient() {
                 De meeste organisaties denken dat het wel meevalt.
               </h2>
               <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
-                Tot ze de scan doen. Ontdek in 3 minuten waar jij staat — en wat je moet doen om jezelf te beschermen.
+                Tot ze de scan doen. Ontdek in 3 minuten waar jij staat, en wat je moet doen om jezelf te beschermen.
               </p>
               <button
                 onClick={() => setPhase("quiz")}
                 className="btn-neon px-8 py-4 rounded-lg text-[15px]"
               >
-                Doe de scan nu — gratis →
+                Doe de scan nu, gratis →
               </button>
               <p className="mt-3 text-xs text-muted-foreground">Geen creditcard. Geen account. Wel direct inzicht.</p>
             </div>
@@ -262,7 +262,7 @@ export default function QuizClient() {
                   {
                     step: "02",
                     title: "Zie direct je score",
-                    body: "Direct na de laatste vraag zie je jouw resultaat: een score op 5 dimensies en je tier — van Niet Gereed tot Voorloper.",
+                    body: "Direct na de laatste vraag zie je jouw resultaat: een score op 5 dimensies en je tier, van Niet Gereed tot Voorloper.",
                   },
                   {
                     step: "03",
@@ -295,7 +295,7 @@ export default function QuizClient() {
                 },
                 {
                   q: "Hoe lang duurt de scan?",
-                  a: "Minder dan 3 minuten. Je beantwoordt 10 vragen en ziet daarna direct je resultaat — zonder wachten of aanmelden.",
+                  a: "Minder dan 3 minuten. Je beantwoordt 10 vragen en ziet daarna direct je resultaat, zonder wachten of aanmelden.",
                 },
                 {
                   q: "Is de scan echt gratis?",
@@ -311,7 +311,7 @@ export default function QuizClient() {
                 },
                 {
                   q: "Wat als ik laag scoor?",
-                  a: "Dan ben je in goed gezelschap — de meeste organisaties staan er niet zo goed voor als ze denken. Wat je wél hebt na de scan: inzicht. En inzicht is het begin van actie. In je rapport staat precies wat je als eerste moet doen.",
+                  a: "Dan ben je in goed gezelschap, de meeste organisaties staan er niet zo goed voor als ze denken. Wat je wél hebt na de scan: inzicht. En inzicht is het begin van actie. In je rapport staat precies wat je als eerste moet doen.",
                 },
                 {
                   q: "Worden mijn gegevens gedeeld met derden?",
@@ -393,7 +393,7 @@ export default function QuizClient() {
     score: Math.round((d.indices.reduce((sum, i) => sum + (answers[i] || 0), 0) / 6) * 100),
   }));
 
-  const shareText = `Ik deed de AI Gereedheidscan van AIGA en scoorde ${pct}% — ${tier.badge}. Hoe scoort jouw organisatie?`;
+  const shareText = `Ik deed de AI Gereedheidscan van AIGA en scoorde ${pct}%, ${tier.badge}. Hoe scoort jouw organisatie?`;
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(shareUrl);
@@ -406,7 +406,7 @@ export default function QuizClient() {
       <div className="max-w-2xl mx-auto">
         <AnimatedSection>
 
-          {/* Form — shown until submitted */}
+          {/* Form, shown until submitted */}
           {!shareUrl && (
             <div className="bg-card border border-border rounded-2xl p-8 mb-8">
               <h3 className="text-lg font-semibold text-foreground mb-2">Je scan is klaar</h3>
@@ -440,7 +440,7 @@ export default function QuizClient() {
             </div>
           )}
 
-          {/* Results — revealed after submit */}
+          {/* Results, revealed after submit */}
           {shareUrl && (
             <motion.div
               initial={reduced ? false : { opacity: 0, y: 16 }}

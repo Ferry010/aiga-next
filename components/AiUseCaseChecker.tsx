@@ -126,7 +126,7 @@ const AiUseCaseChecker = () => {
             </Popover>
           </div>
 
-          {/* Out of scope — immediate result for Spotify/Netflix */}
+          {/* Out of scope, immediate result for Spotify/Netflix */}
           {isOutOfScope && (
             <div className="rounded-lg border border-green-500/40 bg-green-500/10 p-6">
               <Badge className="bg-green-500/20 text-green-700 dark:text-green-400 border-green-500/30 mb-3">
@@ -182,12 +182,12 @@ const AiUseCaseChecker = () => {
             </div>
           )}
 
-          {/* Step 3 — Outcome */}
+          {/* Step 3, Outcome */}
           <div ref={outcomeRef} />
           {outcome === "high" && selectedUseCase && (
             <div className="rounded-lg border border-destructive/40 bg-destructive/10 p-6">
               <Badge className="bg-destructive/20 text-destructive border-destructive/30 mb-3">
-                Hoog risico — Bijlage III van toepassing
+                Hoog risico, Bijlage III van toepassing
               </Badge>
               <h3 className="text-lg font-display font-semibold text-foreground mb-2">
                 Dit gebruik valt onder hoog risico (Bijlage III EU AI Act)
@@ -198,15 +198,15 @@ const AiUseCaseChecker = () => {
               <ul className="space-y-2 mb-6 text-sm text-muted-foreground">
                 <li className="flex gap-2">
                   <span className="text-destructive font-bold">•</span>
-                  <span><strong>Menselijk toezicht verplicht</strong> — beslissingen mogen niet volledig aan AI worden overgelaten</span>
+                  <span><strong>Menselijk toezicht verplicht</strong>, beslissingen mogen niet volledig aan AI worden overgelaten</span>
                 </li>
                 <li className="flex gap-2">
                   <span className="text-destructive font-bold">•</span>
-                  <span><strong>Documentatieplicht</strong> — je moet kunnen aantonen hoe het systeem werkt en welke data gebruikt is</span>
+                  <span><strong>Documentatieplicht</strong>, je moet kunnen aantonen hoe het systeem werkt en welke data gebruikt is</span>
                 </li>
                 <li className="flex gap-2">
                   <span className="text-destructive font-bold">•</span>
-                  <span><strong>Transparantie</strong> — betrokkenen (kandidaten, klanten, patiënten) moeten geïnformeerd worden over AI-gebruik</span>
+                  <span><strong>Transparantie</strong>, betrokkenen (kandidaten, klanten, patiënten) moeten geïnformeerd worden over AI-gebruik</span>
                 </li>
               </ul>
               <div className="flex flex-wrap gap-3">
@@ -225,7 +225,7 @@ const AiUseCaseChecker = () => {
           {outcome === "limited" && (
             <div className="rounded-lg border border-green-500/40 bg-green-500/10 p-6">
               <Badge className="bg-green-500/20 text-green-700 dark:text-green-400 border-green-500/30 mb-3">
-                Goed nieuws — beperkt risico
+                Goed nieuws, beperkt risico
               </Badge>
               <h3 className="text-lg font-display font-semibold text-foreground mb-2">
                 Goed bezig! Dit gebruik valt onder beperkt risico.
@@ -236,11 +236,11 @@ const AiUseCaseChecker = () => {
               <ul className="space-y-2 mb-6 text-sm text-muted-foreground">
                 <li className="flex gap-2">
                   <span className="text-green-600 font-bold">•</span>
-                  <span><strong>Transparantieverplichting</strong> — gebruikers en klanten moeten weten dat ze met AI interageren</span>
+                  <span><strong>Transparantieverplichting</strong>, gebruikers en klanten moeten weten dat ze met AI interageren</span>
                 </li>
                 <li className="flex gap-2">
                   <span className="text-green-600 font-bold">•</span>
-                  <span><strong>AI-geletterdheid verplicht</strong> — Artikel 4 geldt voor alle medewerkers die AI gebruiken</span>
+                  <span><strong>AI-geletterdheid verplicht</strong>, Artikel 4 geldt voor alle medewerkers die AI gebruiken</span>
                 </li>
               </ul>
               <div className="flex flex-wrap gap-3">

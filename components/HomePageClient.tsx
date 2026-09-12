@@ -1,16 +1,12 @@
 'use client';
 import Link from "next/link";
-import { AlertTriangle, ChevronDown, FileX, HelpCircle, Play, Award, Users, Check } from "lucide-react";
+import { AlertTriangle, ChevronDown, FileX, HelpCircle, Users, Check } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
-import { motion } from "framer-motion";
-import { useReduceMotion } from "@/hooks/use-reduce-motion";
 import dynamic from "next/dynamic";
 const TrainerSection = dynamic(() => import("@/components/TrainerSection"));
-const SocialProof = dynamic(() => import("@/components/SocialProof"));
 import PillarsSection from "@/components/PillarsSection";
 import LeadForm from "@/components/LeadForm";
-import { useState, useRef, useEffect } from "react";
 
 const faqItems = [
   {
@@ -26,50 +22,16 @@ const faqItems = [
     a: "Welke informatie wél en niet in een AI-tool mag, waarom dat uitmaakt, en hoe je gevoelige of vertrouwelijke data herkent voordat je het deelt.",
   },
   {
-    q: "Is dit niet gewoon een promptcursus?",
-    a: "Nee. Het gaat net zo goed over wanneer je AI juist níét gebruikt, hoe je output beoordeelt, welke data eruit blijft, en hoe je AI als assistent inzet in plaats van als autoriteit.",
-  },
-  {
-    q: "Moeten we eerst een AI-beleid hebben?",
-    a: "Nee. Een beleid dat niemand toepast verandert geen gedrag. Deze training maakt van de regels praktijk, ook als je beleid nog niet af is.",
-  },
-  {
     q: "En de AI Act dan?",
     a: "Die vraagt dat je aantoonbaar aandacht besteedt aan AI-geletterdheid. Hoe je dat organiseert, is aan jou. Dit programma dekt dat af, met een certificaat als bewijs. Maar het is niet de reden dat je het doet.",
-  },
-  {
-    q: "Wat als een medewerker het examen niet haalt?",
-    a: "Deelnemers mogen het examen herhalen. We zorgen dat iedereen het certificaat behaalt voordat de toegang verloopt.",
   },
   {
     q: "Hoe snel kunnen we starten?",
     a: "Direct na boeking krijg je toegang tot het platform. Je kunt dezelfde dag nog medewerkers uitnodigen.",
   },
-  {
-    q: "Zijn er volumekortingen bij een groot team?",
-    a: "Ja. Vraag een offerte aan via het contactformulier voor een prijsopgave op maat. Vanaf 50 seats ontvang je de Masterclass gratis.",
-  },
 ];
 
 export default function HomePageClient() {
-  const reduced = useReduceMotion();
-  const [videoPlaying, setVideoPlaying] = useState(false);
-
-  const calcDays = () => Math.max(0, Math.ceil((new Date('2026-08-02').getTime() - Date.now()) / 86400000));
-  const [daysLeft, setDaysLeft] = useState(calcDays);
-  useEffect(() => {
-    const id = setInterval(() => setDaysLeft(calcDays()), 3600000);
-    return () => clearInterval(id);
-  }, []);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const handlePlayVideo = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-      setVideoPlaying(true);
-    }
-  };
-
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -145,146 +107,14 @@ export default function HomePageClient() {
               </StaggerItem>
             ))}
           </StaggerContainer>
-        </div>
-      </section>
-
-      {/* FOMO band */}
-      <section className="py-20 bg-card border-y border-border">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <AnimatedSection>
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground leading-[1.15]">
-              Je concurrent traint zijn team al.{" "}
-              <span className="text-primary">Elke maand dat je wacht, groeit het gat.</span>
-            </h2>
-            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-              De teams die AI nu goed leren gebruiken, lopen straks voor. De rest loopt risico én achter.
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Risico-scan CTA */}
-      <section className="py-24 bg-brand-dim border-y border-primary/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <AnimatedSection>
-            <SectionLabel text="NIET ZEKER WAAR JE STAAT?" />
-            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
-              Doe de gratis AI Gereedheidscan.<br />
-              <span className="text-primary">In drie minuten weet je waar je staat.</span>
-            </h2>
-            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-              10 vragen over hoe je team AI gebruikt, welke risico's je loopt en waar je staat. Direct resultaat.
-            </p>
-            <Link href="/gereedheidscan" className="btn-neon inline-block mt-8 px-8 py-4 rounded-lg text-[15px]">
-              Start de AI Gereedheidscan
-            </Link>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Solution section */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="DE OPLOSSING" />
-            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2 max-w-3xl leading-[1.1]">
-              Eén praktische basis.{" "}
-              <span className="text-primary">Kant-en-klaar, zonder dat je iets bouwt.</span>
-            </h2>
-            <p className="mt-4 text-muted-foreground max-w-2xl leading-relaxed">
-              Niet iedereen hoeft AI-expert te worden. Iedereen moet wél weten wat je met AI deelt, hoe je output controleert en waar het misgaat. De AIGA online training regelt dat organisatiebreed. Zelfstandig, in eigen tempo, volledig online. Jij hoeft geen programma te bouwen, uit te rollen en bij te houden.
-            </p>
-          </AnimatedSection>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
-            {[
-              { icon: Play, title: "Selfpaced", body: "Geen klassikale sessies. Medewerkers volgen de training wanneer het hen uitkomt, in 2 tot 3 uur." },
-              { icon: Award, title: "Gecertificeerd", body: "Iedere deelnemer ontvangt het AI Literacy Practitioner certificaat. Digitaal ondertekend, deelbaar via LinkedIn." },
-              { icon: Users, title: "Schaalbaar", body: "Per seat te boeken. Geschikt voor teams van 1 tot 1000+ medewerkers. Voortgangsdashboard inbegrepen." },
-            ].map((c) => (
-              <StaggerItem key={c.title}>
-                <c.icon size={24} className="text-primary mb-4" />
-                <p className="text-lg font-semibold text-foreground mb-2">{c.title}</p>
-                <p className="text-sm text-muted-foreground leading-relaxed">{c.body}</p>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
+          <p className="mt-12 text-center text-xl sm:text-2xl font-display font-semibold text-foreground max-w-2xl mx-auto leading-snug">
+            Je concurrent traint zijn team al. <span className="text-primary">Elke maand dat je wacht, groeit het gat.</span>
+          </p>
         </div>
       </section>
 
       {/* 4 pijlers */}
       <PillarsSection />
-
-      {/* How it works */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="HOE HET WERKT" />
-            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
-              Van aanvraag tot certificaat<br />
-              <span className="text-primary">in drie stappen.</span>
-            </h2>
-          </AnimatedSection>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
-            {[
-              { step: "01", title: "Meldt je team gemakkelijk aan", body: "Meldt je team gemakkelijk aan in de online omgeving. We stellen alles direct voor je in." },
-              { step: "02", title: "Medewerkers volgen de training zelfstandig", body: "Volledig online, in eigen tempo. Videolessen, praktijkcases en een adaptief afsluitend examen." },
-              { step: "03", title: "Ontvang de certificaten", body: "Iedere deelnemer ontvangt het AI Literacy Practitioner certificaat. Digitaal ondertekend, direct deelbaar via LinkedIn." },
-            ].map((s) => (
-              <StaggerItem key={s.step}>
-                <div className="relative">
-                  <span className="text-5xl font-mono neon-text font-bold">{s.step}</span>
-                  <p className="text-lg font-semibold text-foreground mt-2 mb-2">{s.title}</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{s.body}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* Video section */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <div className="text-center"><SectionLabel text="ZIE HET IN ACTIE" /></div>
-            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2 text-center">
-              Kijk hoe simpel het werkt. 👇
-            </h2>
-            <p className="mt-4 text-muted-foreground text-center max-w-2xl mx-auto">
-              Van inschrijving tot certificaat op naam, uitgelegd in twee minuten.
-            </p>
-          </AnimatedSection>
-          <AnimatedSection delay={0.2} className="mt-10">
-            <div className="neon-border-lg rounded-2xl" style={{ padding: '3px' }}>
-              <div className="neon-inner bg-background rounded-2xl overflow-hidden relative">
-                <video
-                  ref={videoRef}
-                  src="/assets/AI-Geletterdheid-Homepage-scaled-1.webm"
-                  controls={videoPlaying}
-                  muted
-                  playsInline
-                  className="w-full rounded-2xl"
-                  onPlay={() => setVideoPlaying(true)}
-                />
-                {!videoPlaying && (
-                  <button
-                    onClick={handlePlayVideo}
-                    className="absolute inset-0 flex items-center justify-center bg-foreground/10 rounded-2xl transition-colors hover:bg-foreground/20"
-                    aria-label="Video afspelen"
-                  >
-                    <div className="w-20 h-20 rounded-full bg-background/90 flex items-center justify-center shadow-lg">
-                      <Play size={36} className="text-primary ml-1" />
-                    </div>
-                  </button>
-                )}
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Social Proof */}
-      <SocialProof />
 
       {/* Ons Aanbod */}
       <section className="py-24">
@@ -390,6 +220,15 @@ export default function HomePageClient() {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Sticky mobile CTA */}
+      <a
+        href="#contact"
+        className="md:hidden fixed bottom-0 inset-x-0 z-40 text-white text-center py-4 text-[15px] font-semibold shadow-[0_-4px_20px_rgba(0,0,0,0.15)]"
+        style={{ background: "linear-gradient(135deg, hsl(263 70% 58%), hsl(330 81% 60%))" }}
+      >
+        Vraag de mogelijkheden aan →
+      </a>
     </div>
   );
 }

@@ -8,8 +8,8 @@ import { useReduceMotion } from "@/hooks/use-reduce-motion";
 import dynamic from "next/dynamic";
 const TrainerSection = dynamic(() => import("@/components/TrainerSection"));
 const SocialProof = dynamic(() => import("@/components/SocialProof"));
-import DefinitionBlock from "@/components/DefinitionBlock";
 import PillarsSection from "@/components/PillarsSection";
+import LeadForm from "@/components/LeadForm";
 import { useState, useRef, useEffect } from "react";
 
 const faqItems = [
@@ -107,26 +107,12 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* Partner logos */}
-      <section className="py-6 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center gap-4">
-            <span className="text-xs font-medium uppercase tracking-[0.08em] text-muted-foreground font-body">Een samenwerking tussen</span>
-            <div className="flex items-center gap-8">
-              <img src="/assets/brand-humanizing-logo.png" alt="Brand Humanizing Institute" className="rounded" style={{ height: '65px' }} />
-              <img src="/assets/speakers-academy-logo.png" alt="Speakers Academy" className="rounded" style={{ height: '65px' }} />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Definition Block */}
-      <section className="py-12">
+      {/* Trainer authority strip */}
+      <section className="py-8 bg-muted/40 border-y border-border">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <DefinitionBlock
-            term="Wat is AI-geletterdheid?"
-            definition="AI-geletterdheid is het vermogen van medewerkers om te begrijpen wat kunstmatige intelligentie is, hoe AI-systemen werken, welke risico's ze met zich meebrengen, en hoe ze AI op een veilige, verantwoorde en ethisch verantwoorde manier kunnen inzetten in hun dagelijks werk. Onder Artikel 4 van de EU AI Act (van kracht vanaf februari 2025) zijn organisaties in de EU verplicht om AI-geletterdheid te waarborgen voor alle medewerkers die met AI-systemen werken."
-          />
+          <p className="text-center text-[15px] text-muted-foreground leading-relaxed">
+            Ontwikkeld door <span className="font-semibold text-foreground">Ferry Hoes</span>, een van de meest gevraagde AI-sprekers van Nederland. Uit de praktijk, niet uit een boekje.
+          </p>
         </div>
       </section>
 
@@ -159,6 +145,21 @@ export default function HomePageClient() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+        </div>
+      </section>
+
+      {/* FOMO band */}
+      <section className="py-20 bg-card border-y border-border">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <AnimatedSection>
+            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground leading-[1.15]">
+              Je concurrent traint zijn team al.{" "}
+              <span className="text-primary">Elke maand dat je wacht, groeit het gat.</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
+              De teams die AI nu goed leren gebruiken, lopen straks voor. De rest loopt risico én achter.
+            </p>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -370,20 +371,22 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Final CTA with inline form */}
+      <section id="contact" className="py-28 bg-card border-t border-border">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
-            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground">
-              Klaar om je team echt goed te maken in AI?
-            </h2>
-            <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-              Vraag de mogelijkheden aan. Geen verplichtingen.
+            <div className="text-center mb-8">
+              <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground">
+                Klaar om je team echt goed te maken in AI?
+              </h2>
+              <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
+                Laat je gegevens achter. Er antwoordt een echt mens, meestal binnen een werkdag. Geen verplichtingen.
+              </p>
+            </div>
+            <LeadForm source="Homepage — offerte aanvraag" />
+            <p className="mt-6 text-center text-sm text-muted-foreground">
+              Liever even bellen? <a href="tel:+31103167827" className="text-primary hover:underline font-medium">+31 (0)10 316 7827</a>
             </p>
-            <Link href="/contact" className="btn-neon inline-block mt-8 px-8 py-4 rounded-lg text-[15px]">
-              Vraag de mogelijkheden aan
-            </Link>
-            <p className="mt-4 text-sm text-muted-foreground">Of bel direct: +31 (0)10 316 7827</p>
           </AnimatedSection>
         </div>
       </section>

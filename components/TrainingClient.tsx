@@ -8,7 +8,10 @@ import LeadForm from "@/components/LeadForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const faqs = [
-  { q: "Krijgen we er ook het EU AI Act-certificaat bij?", a: "Ja. Naast dat je team echt beter wordt met AI, sluit iedereen af met een examen en het AI Literacy Practitioner certificaat op naam. Digitaal ondertekend en deelbaar via LinkedIn. Daarmee toon je aan dat er getraind is, precies wat de EU AI Act van organisaties vraagt." },
+  { q: "Wat als onze mensen al AI gebruiken?", a: "Precies daarom. De training gaat niet over óf ze AI mogen gebruiken, maar of ze het veilig en goed doen: welke data eruit blijft, hoe je output controleert, en waar het misgaat." },
+  { q: "Wat is shadow AI en waarom is het een risico?", a: "Medewerkers gebruiken AI-tools buiten het zicht van IT. Handig, maar zo lekt bedrijfsdata weg en sluipen er fouten in. De training leert je mensen waar de grenzen liggen, zodat je er grip op houdt." },
+  { q: "Wat leren onze mensen over data en privacy?", a: "Welke informatie wél en niet in een AI-tool mag, waarom dat uitmaakt, en hoe je gevoelige of vertrouwelijke data herkent voordat je het deelt." },
+  { q: "Krijgen we er ook het EU AI Act-certificaat bij?", a: "Ja. Iedereen sluit af met een examen en het AI Literacy Practitioner certificaat op naam. Digitaal ondertekend en deelbaar via LinkedIn. Daarmee toon je aan dat er getraind is, precies wat de EU AI Act van organisaties vraagt. Maar het is niet de reden dat je het doet." },
   { q: "Hoe lang duurt de training?", a: "De training is selfpaced en kan in meerdere sessies worden gevolgd. Gemiddeld zijn medewerkers twee tot drie uur bezig. Geen klassikale sessies, geen roostergedoe." },
   { q: "Is er technische voorkennis nodig?", a: "Nee. De training is ontwikkeld voor alle medewerkers, ook zonder technische achtergrond." },
   { q: "Wat als een deelnemer niet slaagt voor het examen?", a: "Dan kan de deelnemer het examen herkansen. Er is geen limiet op het aantal pogingen." },
@@ -25,14 +28,17 @@ export default function TrainingClient() {
           <AnimatedSection>
             <SectionLabel text="ONLINE TRAINING VOOR TEAMS" />
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4 max-w-4xl">
-              Word het team dat AI gebruikt om vooruit te komen.{" "}
-              <span className="neon-text">Niet het team dat straks achterloopt.</span>
+              Op dit moment deelt iemand in je organisatie{" "}
+              <span className="neon-text">data met AI.</span>
             </h1>
+            <p className="mt-5 text-xl sm:text-2xl font-display font-semibold text-primary max-w-2xl">
+              Zorg dat je team weet wat het doet.
+            </p>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-              In een paar uur worden jij en je collega's echt AI-vaardig: slim prompten, veilig
-              werken met bedrijfsdata en weten welke tools er nu toe doen. Deze AI-geletterdheid
-              training voor teams is online, in eigen tempo, met een examen en certificaat op naam.
-              Dat je meteen voldoet aan de EU AI Act? Mooi meegenomen.
+              Train je hele team op de risico's van AI: welke data wél en niet in een tool mag, hoe je
+              shadow AI voorkomt, en hoe je AI veilig én nuttig inzet. Online, in eigen tempo, met een
+              examen en certificaat op naam. Kant-en-klaar, je bouwt niks zelf. En je voldoet er meteen
+              mee aan de EU AI Act.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a href="#offerte" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-sm font-semibold">
@@ -51,12 +57,12 @@ export default function TrainingClient() {
           <AnimatedSection>
             <SectionLabel text="WAAROM NU" />
             <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2 max-w-3xl leading-[1.1]">
-              Straks kan iedereen AI. <span className="text-primary">De vraag is of jouw team het goed doet.</span>
+              AI is sneller binnengekomen <span className="text-primary">dan de afspraken erover.</span>
             </h2>
             <div className="mt-6 text-muted-foreground max-w-3xl space-y-4 leading-relaxed">
-              <p>AI verandert nu hoe werk gedaan wordt. De teams die het slim inzetten, werken sneller en leveren beter werk. De teams die blijven aanmodderen met half werkende prompts, vallen langzaam achterop. Zonder dat ze het doorhebben.</p>
-              <p>Deze AI-geletterdheid training voor teams geeft je organisatie precies die voorsprong. Modulair opgebouwd, volledig online en direct toepasbaar op het werk van je mensen. Geen ingewikkelde tools, geen klassikale sessies.</p>
-              <p>Het certificaat op naam is het bewijs dat je team het onder de knie heeft. En je voldoet er meteen mee aan de AI-geletterdheidseis van de EU AI Act. Geen apart compliance-traject nodig, het zit er gewoon bij.</p>
+              <p>Je hebt het niet aangezet, het gebeurde gewoon. Terwijl je dit leest, plakt iemand in je team bedrijfsdata in ChatGPT, neemt iemand AI-output klakkeloos over, of gebruikt iemand een tool die niemand heeft goedgekeurd.</p>
+              <p>Deze training geeft je hele team dezelfde praktische basis: welke data wél en niet in AI mag, hoe je shadow AI voorkomt, hoe je output controleert en hoe je de tools veilig én nuttig inzet. Modulair, volledig online en direct toepasbaar. Kant-en-klaar, je bouwt niks zelf.</p>
+              <p>Het certificaat op naam is het bewijs dat het geregeld is. En je voldoet er meteen mee aan de AI-geletterdheidseis van de EU AI Act, zonder dat het je hele verhaal wordt.</p>
               <p>
                 Ook geschikt voor teams zonder technische voorkennis. En voor leidinggevenden is er de{" "}
                 <Link href="/masterclass" className="text-primary hover:underline font-medium">AI Masterclass</Link>.

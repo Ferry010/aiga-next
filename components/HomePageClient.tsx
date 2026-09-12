@@ -1,6 +1,6 @@
 'use client';
 import Link from "next/link";
-import { AlertTriangle, ChevronDown, FileX, Clock, HelpCircle, Play, Award, Users, Check } from "lucide-react";
+import { AlertTriangle, ChevronDown, FileX, HelpCircle, Play, Award, Users, Check } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import { motion } from "framer-motion";
@@ -13,27 +13,39 @@ import { useState, useRef, useEffect } from "react";
 
 const faqItems = [
   {
-    q: "Is deze training juridisch voldoende om te voldoen aan de AI Act?",
-    a: "Ja. De training is specifiek ontworpen op basis van Artikel 4 van de EU AI Act en gevalideerd door AI-rechtexperts. Het certificaat geldt als aantoonbaar bewijs bij een audit.",
+    q: "Wat als onze mensen al AI gebruiken?",
+    a: "Precies daarom. De training gaat niet over óf ze AI mogen gebruiken, maar of ze het veilig en goed doen: welke data eruit blijft, hoe je output controleert, en waar het misgaat.",
+  },
+  {
+    q: "Wat is shadow AI en waarom is het een risico?",
+    a: "Medewerkers gebruiken AI-tools buiten het zicht van IT. Handig, maar zo lekt bedrijfsdata weg en sluipen er fouten in. De training leert je mensen waar de grenzen liggen, zodat je er grip op houdt.",
+  },
+  {
+    q: "Wat leren onze mensen over data en privacy?",
+    a: "Welke informatie wél en niet in een AI-tool mag, waarom dat uitmaakt, en hoe je gevoelige of vertrouwelijke data herkent voordat je het deelt.",
+  },
+  {
+    q: "Is dit niet gewoon een promptcursus?",
+    a: "Nee. Het gaat net zo goed over wanneer je AI juist níét gebruikt, hoe je output beoordeelt, welke data eruit blijft, en hoe je AI als assistent inzet in plaats van als autoriteit.",
+  },
+  {
+    q: "Moeten we eerst een AI-beleid hebben?",
+    a: "Nee. Een beleid dat niemand toepast verandert geen gedrag. Deze training maakt van de regels praktijk, ook als je beleid nog niet af is.",
+  },
+  {
+    q: "En de AI Act dan?",
+    a: "Die vraagt dat je aantoonbaar aandacht besteedt aan AI-geletterdheid. Hoe je dat organiseert, is aan jou. Dit programma dekt dat af, met een certificaat als bewijs. Maar het is niet de reden dat je het doet.",
   },
   {
     q: "Wat als een medewerker het examen niet haalt?",
     a: "Deelnemers mogen het examen herhalen. We zorgen dat iedereen het certificaat behaalt voordat de toegang verloopt.",
   },
   {
-    q: "Kunnen we de training integreren met ons eigen LMS of HR-systeem?",
-    a: "Voor grotere organisaties bieden we CSV-exports en op aanvraag integraties. Neem contact op voor maatwerk.",
-  },
-  {
     q: "Hoe snel kunnen we starten?",
     a: "Direct na boeking krijg je toegang tot het platform. Je kunt dezelfde dag nog medewerkers uitnodigen.",
   },
   {
-    q: "Is er een factuur / is dit BTW-aftrekbaar?",
-    a: "Ja, je ontvangt een factuur op bedrijfsnaam. Zakelijke trainingskosten zijn doorgaans BTW-aftrekbaar; check dit met je eigen fiscalist.",
-  },
-  {
-    q: "Wat als we een groot team hebben, zijn er volumekortingen?",
+    q: "Zijn er volumekortingen bij een groot team?",
     a: "Ja. Vraag een offerte aan via het contactformulier voor een prijsopgave op maat. Vanaf 50 seats ontvang je de Masterclass gratis.",
   },
 ];
@@ -64,19 +76,18 @@ export default function HomePageClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
           <div>
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4 max-w-4xl">
-              Word het team dat met AI vooroploopt.{" "}
-              <span className="neon-text">In plaats van erdoor ingehaald te worden.</span>
+              Op dit moment deelt iemand in je organisatie{" "}
+              <span className="neon-text">data met AI.</span>
             </h1>
             <p className="text-xl sm:text-2xl font-display font-semibold text-primary mt-5">
-              De #1 AI-geletterdheid training voor Nederlandse organisaties
+              Zorg dat je team weet wat het doet.
             </p>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              AI verandert nu hoe werk gedaan wordt. Wie het slim inzet, werkt sneller en levert beter werk. Onze praktische online training maakt je team in 2 tot 3 uur echt AI-vaardig, met een certificaat op naam als bewijs. Dat je meteen voldoet aan de{" "}
-              <a href="https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">EU AI Act</a>
-              ? Dat zit er gewoon bij.
+              Train je hele team op de risico's van AI: welke data wél en niet in een tool mag, hoe je shadow AI voorkomt, en hoe je AI veilig én nuttig inzet. Kant-en-klaar programma, je bouwt niks zelf. En je voldoet er meteen mee aan de{" "}
+              <a href="https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">EU AI Act</a>.
             </p>
             <p className="mt-4 text-muted-foreground max-w-2xl leading-relaxed">
-              Speciaal voor Nederlandse organisaties: volledig Nederlandstalig en gevalideerd door AI-experts die dagelijks werken met Nederlandse bedrijven en overheidsinstellingen.
+              Volledig Nederlandstalig en ontwikkeld door AI-experts die dagelijks met Nederlandse organisaties werken. De #1 AI-geletterdheid training van Nederland.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link href="/training" className="btn-neon px-7 py-3.5 rounded-lg text-[15px]">
@@ -124,16 +135,19 @@ export default function HomePageClient() {
           <AnimatedSection>
             <SectionLabel text="HERKEN JE DIT?" />
             <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2 max-w-3xl leading-[1.1]">
-              AI is al overal in je organisatie.{" "}
-              <span className="text-primary">Maar haalt je team er echt iets uit?</span>
+              AI is sneller binnengekomen{" "}
+              <span className="text-primary">dan de afspraken erover.</span>
             </h2>
+            <p className="mt-5 text-lg text-muted-foreground max-w-2xl leading-relaxed">
+              Je hebt het niet aangezet, het gebeurde gewoon. Terwijl je dit leest, plakt iemand in je team bedrijfsdata in ChatGPT, neemt iemand AI-output klakkeloos over, of gebruikt iemand een tool die niemand heeft goedgekeurd.
+            </p>
           </AnimatedSection>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
             {[
-              { icon: AlertTriangle, title: "Je team gebruikt AI, maar niet goed", body: "ChatGPT, Copilot, Gemini. Ze gebruiken het dagelijks, maar halen er lang niet uit wat erin zit. En soms gaat het mis." },
-              { icon: FileX, title: "Fouten die je pas laat ziet", body: "Zonder de juiste kennis sluipen er fouten in: verkeerde output, gevoelige data op straat, bias in beslissingen. Vaak merk je het te laat." },
-              { icon: Clock, title: "Geen tijd voor lange trainingen", body: "Je team is druk. Roosters zijn vol. Een meerdaagse cursus is gewoon geen optie." },
-              { icon: HelpCircle, title: "Niemand die het team op weg helpt", body: "Ze leren AI met vallen en opstaan, van YouTube en van elkaar. Dat kan sneller, en een stuk beter." },
+              { icon: AlertTriangle, title: "Bedrijfsdata in een chatbot", body: "Iemand plakt een klantcontract of persoonsgegevens in ChatGPT om tijd te besparen. Weg is het, en je weet niet waarheen." },
+              { icon: FileX, title: "Output die niemand controleert", body: "Een AI-antwoord gaat één op één de deur uit. Inclusief een verzonnen getal of bron die niemand heeft nagekeken." },
+              { icon: Users, title: "Shadow AI en wildgroei", body: "Mensen gebruiken tools buiten het zicht van IT. Handig, tot er iets misgaat en niemand weet wat er draait." },
+              { icon: HelpCircle, title: "Iedereen doet het anders", body: "De één haalt er wonderen uit, de ander durft niet. Er is een AI-beleid, maar niemand heeft het gelezen." },
             ].map((c) => (
               <StaggerItem key={c.title}>
                 <div className="bg-card border border-border rounded-2xl p-10 hover:border-neon-purple/40 neon-glow transition-all duration-300 group">
@@ -157,7 +171,7 @@ export default function HomePageClient() {
               <span className="text-primary">In drie minuten weet je waar je staat.</span>
             </h2>
             <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-              10 vragen over AI-gebruik, wetgeving, risicobeheer, leiderschap en audit-readiness. Direct resultaat.
+              10 vragen over hoe je team AI gebruikt, welke risico's je loopt en waar je staat. Direct resultaat.
             </p>
             <Link href="/gereedheidscan" className="btn-neon inline-block mt-8 px-8 py-4 rounded-lg text-[15px]">
               Start de AI Gereedheidscan
@@ -171,12 +185,12 @@ export default function HomePageClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="DE OPLOSSING" />
-            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
-              Een training die werkt,<br />
-              <span className="text-primary">voor teams die al druk zijn.</span>
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2 max-w-3xl leading-[1.1]">
+              Eén praktische basis.{" "}
+              <span className="text-primary">Kant-en-klaar, zonder dat je iets bouwt.</span>
             </h2>
             <p className="mt-4 text-muted-foreground max-w-2xl leading-relaxed">
-              Geen gedoe. Geen planningshoofdbrekens. Gewoon geregeld. De AIGA online training geeft medewerkers precies de kennis die ze nodig hebben. Zelfstandig, in eigen tempo, volledig online. Na afloop ontvangen ze een digitaal certificaat op naam waarmee jouw organisatie aantoont dat er getraind is.
+              Niet iedereen hoeft AI-expert te worden. Iedereen moet wél weten wat je met AI deelt, hoe je output controleert en waar het misgaat. De AIGA online training regelt dat organisatiebreed. Zelfstandig, in eigen tempo, volledig online. Jij hoeft geen programma te bouwen, uit te rollen en bij te houden.
             </p>
           </AnimatedSection>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
@@ -195,8 +209,36 @@ export default function HomePageClient() {
         </div>
       </section>
 
+      {/* 4 pijlers */}
+      <section className="py-24 bg-card border-y border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection>
+            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground max-w-3xl leading-[1.1]">
+              Eén programma.{" "}
+              <span className="text-primary">Vier dingen geregeld.</span>
+            </h2>
+          </AnimatedSection>
+          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+            {[
+              { n: "Responsible AI", title: "Je mensen kennen de risico's", body: "Wat je wél en niet met AI deelt, waar het misgaat met data en hallucinaties, en hoe je dat voorkomt." },
+              { n: "AI productivity", title: "Ze halen er echt iets uit", body: "Ze leren goede AI-toepassingen herkennen en betere resultaten krijgen. Slimmer werken, niet eindeloos prompten." },
+              { n: "AI governance", title: "Eén gedeelde basis", body: "Je hele organisatie werkt vanuit dezelfde manier van verantwoord gebruik. Geen vijfhonderd eigen methodes." },
+              { n: "AI literacy / AI Act", title: "Aantoonbaar geregeld", body: "Je legt gestructureerd vast dat je maatregelen hebt genomen. Netjes op orde, zonder dat het je hele verhaal wordt." },
+            ].map((p) => (
+              <StaggerItem key={p.n}>
+                <div className="bg-background border border-border rounded-2xl p-8 h-full hover:border-neon-purple/40 transition-all duration-300">
+                  <span className="text-xs font-mono uppercase tracking-wider neon-text">{p.n}</span>
+                  <p className="text-lg font-semibold text-foreground mt-2 mb-2">{p.title}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{p.body}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerContainer>
+        </div>
+      </section>
+
       {/* How it works */}
-      <section className="py-24 bg-card">
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="HOE HET WERKT" />

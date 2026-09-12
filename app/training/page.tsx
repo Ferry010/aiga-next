@@ -4,7 +4,7 @@ import CourseSchema from "@/components/seo/CourseSchema";
 
 export const metadata: Metadata = {
   title: "AI-Geletterdheid Training voor Teams in Nederland | Certificaat | AIGA",
-  description: "Maak je team echt goed in AI: slim prompten, veilig werken, meer uit AI halen. Online AI-geletterdheid training, selfpaced, 2-3 uur. Met examen en certificaat. Meteen EU AI Act-proof.",
+  description: "Je mensen gebruiken AI al. Train je hele team op de risico's: welke data eruit blijft, shadow AI, en veilig én nuttig gebruik. Online, selfpaced, met examen en certificaat. Kant-en-klaar.",
   alternates: { canonical: "https://aigeletterdheid.academy/training" },
 };
 

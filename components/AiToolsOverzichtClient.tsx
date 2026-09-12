@@ -254,7 +254,7 @@ export default function AiToolsOverzichtClient() {
           <div className="mt-10 rounded-2xl neon-border-lg">
             <div className="neon-inner rounded-2xl p-8 bg-background flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <p className="text-foreground font-body leading-relaxed max-w-2xl">
-                Meerdere tools in jouw organisatie vereisen training? De AIGA-certificering dekt alle verplichtingen onder Artikel 4 EU AI Act — voor <span className="font-semibold">€249 per medewerker</span>.
+                Je mensen gebruiken deze tools nu al. De AIGA-training leert ze veilig én goed met AI werken, en dekt meteen de AI-geletterdheidsplicht af. <span className="font-semibold">€249 per medewerker</span>.
               </p>
               <Link
                 href="/gereedheidscan"

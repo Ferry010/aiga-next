@@ -397,8 +397,8 @@ export default function AiRisicoscanClient() {
           ) : (
             <Card className="border-border bg-accent/30">
               <CardContent className="p-8 text-center">
-                <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-3">Klaar om compliant te worden?</h2>
-                <p className="text-muted-foreground max-w-xl mx-auto mb-6">De AIGA-training dekt de AI-geletterdheidsplicht voor al jouw medewerkers — voor alle tools in dit overzicht.</p>
+                <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-3">Zorg dat je team weet wat het doet</h2>
+                <p className="text-muted-foreground max-w-xl mx-auto mb-6">De AIGA-training leert je hele team veilig met AI omgaan, voor alle tools in dit overzicht. En je voldoet er meteen mee aan de AI-geletterdheidsplicht.</p>
                 <div className="flex flex-wrap justify-center gap-3 mb-6">
                   <Button asChild className="neon-glow"><Link href="/training">Bekijk de training <ArrowRight size={16} /></Link></Button>
                   <Button asChild variant="outline"><Link href="/contact">Vraag offerte aan</Link></Button>

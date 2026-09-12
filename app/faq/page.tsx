@@ -6,11 +6,14 @@ import BreadcrumbNav from "@/components/BreadcrumbNav";
 
 export const metadata: Metadata = {
   title: "Veelgestelde Vragen over AI-Geletterdheid & AI Act | AIGA",
-  description: "Antwoorden op veelgestelde vragen over AI-geletterdheid en de EU AI Act. Wat is verplicht, hoe werkt het certificaat en wat kost het?",
+  description: "Antwoorden op veelgestelde vragen over AI-training voor teams: shadow AI, data en privacy, het certificaat, de kosten, en hoe het zit met de EU AI Act.",
   alternates: { canonical: "https://aigeletterdheid.academy/faq" },
 };
 
 const faqItems = [
+  { q: "Wat als onze mensen al AI gebruiken?", a: "Precies daarom. De training gaat niet over óf ze AI mogen gebruiken, maar of ze het veilig en goed doen: welke data eruit blijft, hoe je output controleert, en waar het misgaat." },
+  { q: "Wat is shadow AI en waarom is het een risico?", a: "Shadow AI is het gebruik van AI-tools buiten het zicht van IT. Handig, maar zo lekt bedrijfsdata weg en sluipen er fouten in. De training leert je mensen waar de grenzen liggen, zodat je er grip op houdt." },
+  { q: "Wat leren onze mensen over data en privacy?", a: "Welke informatie wél en niet in een AI-tool mag, waarom dat uitmaakt, en hoe je gevoelige of vertrouwelijke data herkent voordat je het deelt." },
   { q: "Wat is AI-geletterdheid?", a: "AI-geletterdheid is het vermogen van medewerkers om AI-systemen te begrijpen, risico's te herkennen en AI veilig en verantwoord in te zetten op de werkvloer. Onder Artikel 4 van de EU AI Act geldt een inspanningsverplichting voor organisaties om de ontwikkeling van AI-geletterdheid te ondersteunen bij medewerkers die met AI werken." },
   { q: "Is een AI-geletterdheid training verplicht in Nederland?", a: "Artikel 4 van de EU AI Act is van kracht sinds 2 februari 2025. Organisaties moeten de ontwikkeling van AI-geletterdheid ondersteunen bij medewerkers die met AI werken, en dat kunnen onderbouwen. Vanaf 2 augustus 2026 kunnen nationale toezichthouders hierop handhaven." },
   { q: "Is AI-geletterdheid nog steeds verplicht na de Digital Omnibus?", a: "Ja. Artikel 4 is versoepeld, niet geschrapt. De plicht ging van 'zorgen voor een toereikend niveau' naar 'het ondersteunen van de ontwikkeling van AI-geletterdheid'. Vanaf 2 augustus 2026 kunnen toezichthouders erop handhaven." },

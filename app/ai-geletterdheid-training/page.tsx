@@ -6,7 +6,7 @@ import AiGeletterdheidTrainingClient, {
 export const metadata: Metadata = {
   title: "AI-geletterdheid training (Artikel 4 EU AI Act) | AIGA",
   description:
-    "Ondersteuning van AI-geletterdheid, verplicht onder Artikel 4 EU AI Act. Online training met AI Literacy Practitioner-certificaat. Vanaf 2 augustus 2026 kunnen toezichthouders handhaven. €249 ex BTW per deelnemer.",
+    "AI zit al in je organisatie. Train je hele team op de risico's: data, shadow AI, output controleren, veilig én nuttig werken. Online, met certificaat. Meteen goed voor Artikel 4 EU AI Act. €249 ex BTW per deelnemer.",
   alternates: {
     canonical: "https://aigeletterdheid.academy/ai-geletterdheid-training",
   },

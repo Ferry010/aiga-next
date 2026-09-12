@@ -1,23 +1,10 @@
 'use client';
 import Link from "next/link";
 import { Check } from "lucide-react";
-import dynamic from "next/dynamic";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-
-const DeadlineCountdown = dynamic(
-  () => import("./DeadlineCountdown"),
-  {
-    ssr: false,
-    loading: () => (
-      <p className="text-sm text-muted-foreground mt-6 font-medium">
-        Vanaf 2 augustus 2026 kunnen toezichthouders handhaven.
-      </p>
-    ),
-  }
-);
 
 export interface FaqItem {
   q: string;
@@ -42,15 +29,13 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
       <section className="pt-8 pb-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
-            <SectionLabel text="ARTIKEL 4 EU AI ACT · HANDHAVING 2 AUGUSTUS 2026" />
-            <h1 className="text-4xl sm:text-6xl lg:text-[56px] font-display font-bold text-foreground leading-tight mt-4">
-              AI-geletterdheid training<br />
-              <span className="neon-text">voor je hele organisatie</span>
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
+              AI is je organisatie al binnengekomen.{" "}
+              <span className="neon-text">Train je mensen op de risico's.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Artikel 4 van de EU AI Act verplicht organisaties om de ontwikkeling van AI-geletterdheid te ondersteunen. De plicht geldt al sinds 2 februari 2025. Vanaf 2 augustus 2026 kunnen toezichthouders handhaven.
+              Je mensen gebruiken ChatGPT, Copilot en Gemini, vaak zonder te weten welke data eruit moet blijven of wanneer output niet klopt. Deze AI-geletterdheid training geeft je hele team dezelfde praktische basis: data, shadow AI, output controleren, veilig én nuttig werken. Kant-en-klaar, online, met certificaat. En je voldoet er meteen mee aan Artikel 4 van de EU AI Act.
             </p>
-            <DeadlineCountdown />
             <div className="mt-8 flex flex-wrap gap-4">
               <Link href="https://aigeletterdheid.academy/training#offerte" className="btn-neon px-7 py-3.5 rounded-lg text-[15px]">
                 Vraag een offerte aan
@@ -96,15 +81,15 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
             {[
               {
                 title: "HR & L&D",
-                body: "Verantwoordelijk voor scholing en compliance. Jij moet kunnen aantonen dat medewerkers AI-geletterd zijn voor de deadline.",
+                body: "Jij geeft iedereen dezelfde basis, ook de niet-technische mensen, en houdt de voortgang bij in één dashboard.",
               },
               {
                 title: "Management & directie",
-                body: "Moeten kunnen aantonen dat het personeel AI-geletterd is. De wet vraagt om bewijs, niet om intenties.",
+                body: "Je wilt weten dat je mensen veilig met AI werken. Dit maakt het geregeld, en aantoonbaar.",
               },
               {
                 title: "Teams die AI gebruiken",
-                body: "Iedereen die ChatGPT, Copilot of andere tools inzet. Gebruik je AI op het werk? Dan geldt Artikel 4 voor jou.",
+                body: "Iedereen die ChatGPT, Copilot of andere tools inzet. Je leert wat wél en niet mag, en hoe je er meer uit haalt.",
               },
             ].map((card) => (
               <StaggerItem key={card.title}>
@@ -171,11 +156,11 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
           </AnimatedSection>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10 max-w-3xl">
             {[
-              "Hoe AI werkt (basis, zonder jargon)",
+              "Welke data wél en niet in een AI-tool mag",
               "Risico's, privacy en datalekken herkennen",
-              "Verantwoord en effectief prompten",
-              "Ethiek, bias en menselijk toezicht",
-              "AI veilig inzetten binnen jouw rol en organisatie",
+              "Output controleren en hallucinaties eruit halen",
+              "Wanneer je AI juist niet gebruikt, en wanneer wel",
+              "AI veilig én nuttig inzetten binnen jouw rol",
             ].map((item) => (
               <StaggerItem key={item}>
                 <div className="flex items-start gap-3 p-4">
@@ -291,8 +276,8 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
           <AnimatedSection>
             <SectionLabel text="KLAAR OM TE STARTEN?" />
             <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground">
-              Toezichthouders kunnen handhaven per 2 augustus 2026.<br />
-              <span className="text-primary">Zorg dat jouw team er klaar voor is.</span>
+              Klaar om het te regelen?<br />
+              <span className="text-primary">Voor je hele team, kant-en-klaar.</span>
             </h2>
             <div className="mt-8 flex flex-wrap gap-4 justify-center">
               <Link

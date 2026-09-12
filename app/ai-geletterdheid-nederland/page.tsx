@@ -8,7 +8,7 @@ import DefinitionBlock from "@/components/DefinitionBlock";
 export const metadata: Metadata = {
   title: "AI-Geletterdheid in Nederland: Complete Gids 2026 | AIGA",
   description:
-    "Alles over AI-geletterdheid in Nederland: wetgeving, training, certificering en compliance voor Nederlandse organisaties. De complete gids van AIGA.",
+    "AI zit al in je organisatie. Weten je mensen wat ze ermee mogen? Kort en concreet: wat de EU AI Act in Nederland vraagt, en hoe je het in één keer regelt met een kant-en-klaar programma.",
   alternates: { canonical: "/ai-geletterdheid-nederland" },
 };
 
@@ -34,12 +34,12 @@ export default function AiGeletterdheidNederlandPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionLabel text="AI-GELETTERDHEID IN NEDERLAND" />
-            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
-              AI-Geletterdheid in Nederland:<br />
-              <span className="text-primary">Alles wat je moet weten</span>
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
+              AI zit al in je organisatie.{" "}
+              <span className="text-primary">Weten je mensen wat ze ermee mogen?</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Sinds februari 2025 is AI-geletterdheid wettelijk verplicht voor alle organisaties in de EU die met AI-systemen werken. Nederland loopt voorop in de implementatie, maar veel organisaties weten nog niet precies wat er van hen verwacht wordt.
+              De EU AI Act vraagt sinds februari 2025 dat je aantoonbaar investeert in AI-geletterdheid. Maar het echte probleem is niet de wet. Het is dat je mensen AI allang gebruiken zonder dat iemand ze heeft uitgelegd wat wél en niet mag. Hieronder kort wat er in Nederland speelt. En hoe je het in één keer regelt.
             </p>
           </AnimatedSection>
 
@@ -76,9 +76,6 @@ export default function AiGeletterdheidNederlandPage() {
                 <li>Een intern AI-beleid opstellen met duidelijke richtlijnen</li>
                 <li>Verantwoordelijkheden voor AI-gebruik vastleggen</li>
               </ul>
-              <p>
-                Het kabinet heeft aangekondigd dat de handhaving van de AI Act in Nederland serieus zal worden opgepakt, met de AP als coördinerend toezichthouder.
-              </p>
             </div>
           </AnimatedSection>
 
@@ -88,13 +85,10 @@ export default function AiGeletterdheidNederlandPage() {
             </h2>
             <div className="text-muted-foreground leading-relaxed space-y-4">
               <p>
-                Uit onderzoek blijkt dat minder dan 20% van de Nederlandse organisaties op dit moment een formeel AI-geletterdheidsbeleid heeft. Veel organisaties weten dat ze iets moeten doen, maar weten niet waar te beginnen.
+                Minder dan 20% van de Nederlandse organisaties heeft een formeel AI-geletterdheidsbeleid. De rest weet dat er iets moet, maar niet waar te beginnen. Ondertussen gebruiken hun mensen AI gewoon door.
               </p>
               <p>
-                De organisaties die wél vooroplopen hebben een aantal dingen gemeen: ze investeren in gecertificeerde trainingen voor álle medewerkers (niet alleen IT), ze hebben een duidelijk AI-beleid en ze documenteren hun inspanningen voor audit-doeleinden.
-              </p>
-              <p>
-                AIGA helpt Nederlandse organisaties met precies dit proces: van bewustwording tot certificering, met een praktische online training die medewerkers in 2-3 uur zelfstandig kunnen volgen.
+                Wachten op het perfecte beleid heeft geen zin: een document verandert geen gedrag. Wat wél werkt is één gedeelde basis voor álle medewerkers, niet alleen IT. Precies dat regelt AIGA, met een kant-en-klaar programma dat je mensen in 2 tot 3 uur zelfstandig volgen.
               </p>
             </div>
           </AnimatedSection>
@@ -103,13 +97,13 @@ export default function AiGeletterdheidNederlandPage() {
           <AnimatedSection delay={0.25}>
             <div className="mt-16 bg-card border border-border rounded-2xl p-8 text-center neon-glow">
               <h2 className="text-2xl font-display font-semibold text-foreground">
-                Start met AI-geletterdheid voor jouw organisatie
+                Regel het in één keer
               </h2>
               <p className="mt-4 text-muted-foreground">
-                Onze training is volledig Nederlandstalig, gebaseerd op de EU AI Act, en leidt tot een digitaal certificaat op naam als controleerbaar bewijs van deelname.
+                Eén kant-en-klaar programma voor je hele team. Online, in eigen tempo, met certificaat als bewijs. Je bouwt niks zelf.
               </p>
               <Link href="/training" className="btn-neon inline-block mt-6 px-8 py-3 rounded-lg text-sm">
-                Bekijk de training
+                Bekijk het programma
               </Link>
             </div>
           </AnimatedSection>

@@ -16,6 +16,7 @@ const seoLinks = [
   { to: "/ai-training-voor-bedrijven", label: "AI Training voor Bedrijven" },
   { to: "/ai-act-compliance-nederland", label: "AI Act Compliance" },
   { to: "/ai-cursus-medewerkers", label: "AI Cursus Medewerkers" },
+  { to: "/shadow-ai", label: "Shadow AI" },
   { to: "/ai-act-deadlines", label: "AI Act Deadlines" },
 ];
 

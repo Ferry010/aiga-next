@@ -16,6 +16,7 @@ const staticRoutes: Array<{ url: string; changeFrequency: MetadataRoute.Sitemap[
   { url: `${BASE_URL}/ai-geletterdheid-nederland`,                         changeFrequency: "monthly", priority: 0.7 },
   { url: `${BASE_URL}/ai-training-voor-bedrijven`,                         changeFrequency: "monthly", priority: 0.7 },
   { url: `${BASE_URL}/ai-cursus-medewerkers`,                              changeFrequency: "monthly", priority: 0.7 },
+  { url: `${BASE_URL}/shadow-ai`,                                          changeFrequency: "monthly", priority: 0.7 },
   { url: `${BASE_URL}/ai-tools-onder-de-ai-act`,                          changeFrequency: "monthly", priority: 0.7 },
   { url: `${BASE_URL}/ai-use-case-checker`,                                changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/contact`,                                            changeFrequency: "yearly",  priority: 0.7 },

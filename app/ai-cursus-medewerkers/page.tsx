@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
+import LeadForm from "@/components/LeadForm";
 
 export const metadata: Metadata = {
   title: "AI Cursus voor Medewerkers | Gecertificeerd & Praktisch | AIGA",
@@ -101,19 +102,17 @@ export default function AiCursusMedewerkersPage() {
 
           {/* CTA */}
           <AnimatedSection delay={0.25}>
-            <div className="mt-16 bg-card border border-border rounded-2xl p-8 text-center neon-glow">
-              <h2 className="text-2xl font-display font-semibold text-foreground">
-                Start de AI cursus voor je medewerkers
-              </h2>
-              <p className="mt-4 text-muted-foreground">Direct starten. Geen verplichtingen.</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-                <Link href="/training" className="btn-neon px-8 py-3 rounded-lg text-sm">
-                  Bekijk alle details
-                </Link>
-                <Link href="/contact" className="btn-neon-outline px-8 py-3 text-sm font-semibold">
-                  Vraag een offerte aan
-                </Link>
+            <div className="mt-16 bg-card border border-border rounded-2xl p-8 neon-glow">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-display font-semibold text-foreground">
+                  Zet je hele team op dezelfde AI-basis
+                </h2>
+                <p className="mt-3 text-muted-foreground">Laat je gegevens achter. Er antwoordt een echt mens, meestal binnen een werkdag.</p>
               </div>
+              <LeadForm source="AI cursus medewerkers — offerte aanvraag" />
+              <p className="mt-6 text-center text-sm text-muted-foreground">
+                Liever eerst de gratis check? <Link href="/gereedheidscan" className="text-primary hover:underline font-medium">In 3 minuten weet je waar je team staat.</Link>
+              </p>
             </div>
           </AnimatedSection>
 

@@ -56,7 +56,7 @@ export default function HomePageClient() {
                 Bekijk de training
               </Link>
               <Link href="/gereedheidscan" className="btn-neon-outline px-7 py-3.5 rounded-lg text-[15px] font-semibold border-2">
-                Doe de gratis gereedheidscan
+                Gratis AI-check: waar staat je team? (3 min)
               </Link>
             </div>
             <div className="flex flex-wrap gap-6 mt-6 text-xs text-muted-foreground/70">
@@ -107,7 +107,7 @@ export default function HomePageClient() {
             ))}
           </StaggerContainer>
           <p className="mt-12 text-center text-xl sm:text-2xl font-display font-semibold text-foreground max-w-2xl mx-auto leading-snug">
-            Je concurrent traint zijn team al. <span className="text-primary">Elke maand dat je wacht, groeit het gat.</span>
+            Niemand doet het expres verkeerd. Ze weten gewoon niet beter. <span className="text-primary">Elke dag zonder duidelijke afspraken is een dag dat het misgaat.</span>
           </p>
         </div>
       </section>

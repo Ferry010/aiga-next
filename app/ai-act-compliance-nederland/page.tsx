@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
+import LeadForm from "@/components/LeadForm";
 
 export const metadata: Metadata = {
   title: "AI Act Compliance voor Nederlandse Organisaties | AIGA",
@@ -120,21 +121,17 @@ export default function AiActComplianceNederlandPage() {
 
           {/* CTA */}
           <AnimatedSection delay={0.35}>
-            <div className="mt-16 bg-card border border-border rounded-2xl p-8 text-center neon-glow">
-              <h2 className="text-2xl font-display font-semibold text-foreground">
-                Maak verantwoord AI-gebruik dagelijkse gewoonte
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                Onze training zorgt dat je mensen weten wat ze wél en niet met AI doen, en je legt aantoonbaar vast dat het geregeld is.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-                <Link href="/training" className="btn-neon px-8 py-3 rounded-lg text-sm">
-                  Bekijk de training
-                </Link>
-                <Link href="/gereedheidscan" className="btn-neon-outline px-8 py-3 text-sm font-semibold">
-                  Doe de gratis AI Gereedheidscan
-                </Link>
+            <div className="mt-16 bg-card border border-border rounded-2xl p-8 neon-glow">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-display font-semibold text-foreground">
+                  Maak verantwoord AI-gebruik dagelijkse gewoonte
+                </h2>
+                <p className="mt-3 text-muted-foreground">Laat je gegevens achter. Er antwoordt een echt mens, meestal binnen een werkdag.</p>
               </div>
+              <LeadForm source="AI Act compliance pagina — offerte aanvraag" />
+              <p className="mt-6 text-center text-sm text-muted-foreground">
+                Liever eerst de gratis check? <Link href="/gereedheidscan" className="text-primary hover:underline font-medium">In 3 minuten weet je waar je team staat.</Link>
+              </p>
             </div>
           </AnimatedSection>
         </div>

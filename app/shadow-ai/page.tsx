@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Check } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
+import LeadForm from "@/components/LeadForm";
 
 export const metadata: Metadata = {
   title: "Shadow AI in je organisatie | Grip zonder verbod | AIGA",
@@ -99,21 +100,17 @@ export default function ShadowAiPage() {
 
           {/* CTA */}
           <AnimatedSection delay={0.25}>
-            <div className="mt-16 bg-card border border-border rounded-2xl p-8 text-center neon-glow">
-              <h2 className="text-2xl font-display font-semibold text-foreground">
-                Krijg grip op shadow AI
-              </h2>
-              <p className="mt-4 text-muted-foreground">
-                Kant-en-klaar, van 1 tot 1000+ medewerkers. Je bouwt niks zelf.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-                <Link href="/training" className="btn-neon px-8 py-3 rounded-lg text-sm">
-                  Bekijk het programma
-                </Link>
-                <Link href="/gereedheidscan" className="btn-neon-outline px-8 py-3 text-sm font-semibold">
-                  Doe de gratis AI Gereedheidscan
-                </Link>
+            <div className="mt-16 bg-card border border-border rounded-2xl p-8 neon-glow">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-display font-semibold text-foreground">
+                  Krijg grip op shadow AI
+                </h2>
+                <p className="mt-3 text-muted-foreground">Laat je gegevens achter. Er antwoordt een echt mens, meestal binnen een werkdag.</p>
               </div>
+              <LeadForm source="Shadow AI pagina — offerte aanvraag" />
+              <p className="mt-6 text-center text-sm text-muted-foreground">
+                Liever eerst de gratis check? <Link href="/gereedheidscan" className="text-primary hover:underline font-medium">In 3 minuten weet je waar je team staat.</Link>
+              </p>
             </div>
           </AnimatedSection>
 

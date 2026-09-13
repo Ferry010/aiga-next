@@ -16,7 +16,7 @@ const TIER_INTERPRETATIONS: Record<string, string> = {
   "GEDEELTELIJK GEREED":
     "Een deel van je team begrijpt AI goed, maar zonder een gedeelde basis zijn er blinde vlekken. Met gerichte stappen op de dimensies waar je laag scoort, kom je snel een stuk verder.",
   VOORLOPER:
-    "Jullie lopen voor op de meeste Nederlandse organisaties. Je team heeft een solide basis. Dit is het moment om die voorsprong te formaliseren, te certificeren en te borgen voor de lange termijn.",
+    "Je team heeft een solide basis, mooi. De volgende stap is het borgen: zorgen dat iedereen dezelfde veilige manier van werken aanhoudt, ook nieuwe mensen.",
 };
 
 export default function ResultClient() {

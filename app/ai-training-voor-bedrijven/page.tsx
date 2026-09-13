@@ -4,6 +4,7 @@ import { Check } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
+import LeadForm from "@/components/LeadForm";
 
 export const metadata: Metadata = {
   title: "AI Training voor Bedrijven in Nederland | AIGA Academy",
@@ -86,7 +87,7 @@ export default function AiTrainingVoorBedrijvenPage() {
             </h2>
             <div className="text-muted-foreground leading-relaxed space-y-4">
               <p>
-                Bedrijven die hun mensen nu leren AI goed te gebruiken, lopen straks voor. Niet omdat ze meer AI hebben, maar omdat hun team het slim én veilig inzet. Dat merk je aan de kwaliteit van het werk en aan de rust in de organisatie.
+                Bedrijven die hun mensen nu leren AI goed te gebruiken, halen er meer uit én lopen minder risico. Niet omdat ze meer AI hebben, maar omdat hun team het slim én veilig inzet. Dat merk je aan de kwaliteit van het werk en aan de rust in de organisatie.
               </p>
               <p>
                 Met het AI Literacy Practitioner certificaat laat je bovendien intern en naar klanten zien dat het geregeld is. Digitaal ondertekend en deelbaar via LinkedIn.
@@ -96,19 +97,17 @@ export default function AiTrainingVoorBedrijvenPage() {
 
           {/* CTA */}
           <AnimatedSection delay={0.25}>
-            <div className="mt-16 bg-card border border-border rounded-2xl p-8 text-center neon-glow">
-              <h2 className="text-2xl font-display font-semibold text-foreground">
-                Start vandaag met AI-training voor je bedrijf
-              </h2>
-              <p className="mt-4 text-muted-foreground">€249 per deelnemer (ex BTW). Direct starten.</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
-                <Link href="/training" className="btn-neon px-8 py-3 rounded-lg text-sm">
-                  Bekijk de training
-                </Link>
-                <Link href="/contact" className="btn-neon-outline px-8 py-3 text-sm font-semibold">
-                  Vraag een offerte aan
-                </Link>
+            <div className="mt-16 bg-card border border-border rounded-2xl p-8 neon-glow">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-display font-semibold text-foreground">
+                  Haal meer uit de AI-tools die je al betaalt
+                </h2>
+                <p className="mt-3 text-muted-foreground">€249 per deelnemer. Laat je gegevens achter, er antwoordt een echt mens.</p>
               </div>
+              <LeadForm source="AI training voor bedrijven — offerte aanvraag" />
+              <p className="mt-6 text-center text-sm text-muted-foreground">
+                Liever eerst de gratis check? <Link href="/gereedheidscan" className="text-primary hover:underline font-medium">In 3 minuten weet je waar je team staat.</Link>
+              </p>
             </div>
           </AnimatedSection>
         </div>

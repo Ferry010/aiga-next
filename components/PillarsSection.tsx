@@ -30,7 +30,7 @@ const pillars = [
 
 export default function PillarsSection() {
   return (
-    <section className="py-24 bg-card border-y border-border">
+    <section className="py-24 block-lilac border-y border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection>
           <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground max-w-3xl leading-[1.1]">

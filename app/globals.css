@@ -4,56 +4,61 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 20% 14%;
+    --background: 36 38% 98%;
+    --foreground: 24 14% 15%;
 
-    --card: 210 20% 98%;
-    --card-foreground: 220 20% 14%;
+    --card: 33 34% 96%;
+    --card-foreground: 24 14% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 220 20% 14%;
+    --popover: 36 40% 99%;
+    --popover-foreground: 24 14% 15%;
 
-    --primary: 189 35% 42%;
+    --primary: 189 42% 38%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 14% 96%;
-    --secondary-foreground: 220 20% 14%;
+    --secondary: 33 28% 93%;
+    --secondary-foreground: 24 14% 15%;
 
-    --muted: 220 14% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 33 28% 93%;
+    --muted-foreground: 26 9% 43%;
 
-    --accent: 189 25% 94%;
-    --accent-foreground: 220 20% 14%;
+    --accent: 28 52% 92%;
+    --accent-foreground: 24 14% 15%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 13% 91%;
-    --input: 220 13% 91%;
-    --ring: 189 35% 42%;
+    --border: 33 22% 88%;
+    --input: 33 22% 88%;
+    --ring: 189 42% 38%;
 
     --radius: 0.9rem;
 
     --warning: 38 92% 50%;
-    --success: 160 84% 39%;
+    --success: 152 55% 42%;
 
-    --surface: 210 20% 98%;
-    --surface-2: 220 14% 96%;
-    --brand-dim: 189 30% 95%;
-    --text-faint: 215 16% 75%;
+    --surface: 36 34% 97%;
+    --surface-2: 33 28% 93%;
+    --brand-dim: 28 55% 94%;
+    --text-faint: 28 10% 66%;
 
     --neon-purple: 263 70% 58%;
-    --neon-pink: 330 81% 60%;
+    --neon-pink: 330 78% 60%;
     --neon-glow: 0 0 20px hsl(263 70% 58% / 0.15), 0 0 40px hsl(330 81% 60% / 0.1);
 
-    --sidebar-background: 210 20% 98%;
-    --sidebar-foreground: 220 20% 14%;
-    --sidebar-primary: 189 35% 42%;
+    --block-peach: 22 78% 93%;
+    --block-butter: 44 78% 91%;
+    --block-sage: 146 28% 91%;
+    --block-lilac: 268 46% 95%;
+
+    --sidebar-background: 36 34% 97%;
+    --sidebar-foreground: 24 14% 15%;
+    --sidebar-primary: 189 42% 38%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 14% 96%;
-    --sidebar-accent-foreground: 220 20% 14%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 189 35% 42%;
+    --sidebar-accent: 33 28% 93%;
+    --sidebar-accent-foreground: 24 14% 15%;
+    --sidebar-border: 33 22% 88%;
+    --sidebar-ring: 189 42% 38%;
   }
 }
 
@@ -80,6 +85,12 @@
 .font-mono-display {
   font-family: 'DM Mono', monospace;
 }
+
+/* Warm colored section blocks (flat, no gradients/blobs) */
+.block-peach { background-color: hsl(var(--block-peach)); }
+.block-butter { background-color: hsl(var(--block-butter)); }
+.block-sage { background-color: hsl(var(--block-sage)); }
+.block-lilac { background-color: hsl(var(--block-lilac)); }
 
 /* Neon gradient border wrapper — use on a parent div, put content inside with bg-background */
 .neon-border {

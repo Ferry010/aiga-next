@@ -116,7 +116,7 @@ export default function HomePageClient() {
       <PillarsSection />
 
       {/* Ons Aanbod */}
-      <section className="py-24">
+      <section className="py-24 block-sage border-y border-border">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center"><SectionLabel text="ONS AANBOD" /></div>
@@ -201,7 +201,7 @@ export default function HomePageClient() {
       </section>
 
       {/* Final CTA with inline form */}
-      <section id="contact" className="py-28 bg-card border-t border-border">
+      <section id="contact" className="py-28 block-peach border-t border-border">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="text-center mb-8">

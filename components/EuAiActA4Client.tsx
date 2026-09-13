@@ -84,7 +84,7 @@ export default function EuAiActA4Client() {
             <div className="flex justify-between items-start mb-4">
               <div>
                 <p className="text-xs md:text-[9px] text-muted-foreground tracking-wide">AI Geletterdheid Academy, aigeletterdheid.academy</p>
-                <h1 className="text-2xl sm:text-3xl font-bold mt-1 leading-tight" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+                <h1 className="text-2xl sm:text-3xl font-bold mt-1 leading-tight" style={{ fontFamily: "'Lato', sans-serif" }}>
                   EU AI Act in 1 A4
                 </h1>
                 <p className="text-muted-foreground text-sm md:text-[11px] mt-0.5">De Europese AI-verordening, wat je moet weten als organisatie</p>

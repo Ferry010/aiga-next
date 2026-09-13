@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Space Grotesk", "sans-serif"],
-        body: ["DM Sans", "sans-serif"],
+        display: ["Lato", "sans-serif"],
+        body: ["Lato", "sans-serif"],
         mono: ["DM Mono", "monospace"],
       },
       colors: {

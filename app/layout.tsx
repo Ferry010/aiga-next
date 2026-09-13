@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, DM_Sans, DM_Mono } from "next/font/google";
+import { Lato, DM_Mono } from "next/font/google";
 import "./globals.css";
 import LayoutShell from "@/components/LayoutShell";
 import { Toaster } from "@/components/ui/toaster";
@@ -7,13 +7,10 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Providers from "@/components/Providers";
 
-const spaceGrotesk = Space_Grotesk({
+const lato = Lato({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
-});
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
+  weight: ["300", "400", "700", "900"],
+  variable: "--font-lato",
 });
 const dmMono = DM_Mono({
   subsets: ["latin"],
@@ -87,7 +84,7 @@ export default function RootLayout({
   return (
     <html
       lang="nl"
-      className={`${spaceGrotesk.variable} ${dmSans.variable} ${dmMono.variable}`}
+      className={`${lato.variable} ${dmMono.variable}`}
     >
       <head>
         <script

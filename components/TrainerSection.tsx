@@ -1,5 +1,6 @@
 import { AnimatedSection } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
+import CountUp from "@/components/CountUp";
 
 interface TrainerSectionProps {
   bio?: string;
@@ -9,9 +10,9 @@ const defaultBio =
   'Ferry Hoes is veelgevraagd spreker op het gebied van Artificial Intelligence. Hij staat meermaals per maand op het podium en spreekt voor organisaties zoals a.s.r Verzekeringen, VodafoneZiggo, MKB bedrijven en verschillende Ministeries. In 2020 won hij de "Anti-Discriminatie AI-Hackathon". Ferry weet precies hoe je AI-geletterdheid vertaalt naar actie, compliance én voordeel.';
 
 const stats = [
-  { val: "40+", label: "Keynotes per jaar, internationale events en in-house sessies" },
-  { val: "15+", label: "Jaar ervaring van startups tot wereldwijde corporates in allerlei sectoren" },
-  { val: "2020", label: "Winnaar prestigieuze AI Hackathon van de Nederlandse overheid" },
+  { num: 40, suffix: "+", label: "Keynotes per jaar, internationale events en in-house sessies" },
+  { num: 15, suffix: "+", label: "Jaar ervaring van startups tot wereldwijde corporates in allerlei sectoren" },
+  { num: 2020, suffix: "", plain: true, label: "Winnaar prestigieuze AI Hackathon van de Nederlandse overheid" },
 ];
 
 const testimonials = [
@@ -49,13 +50,15 @@ const TrainerSection = ({ bio = defaultBio }: TrainerSectionProps) => (
       <AnimatedSection delay={0.2} className="mt-12">
         <div className="flex flex-col md:flex-row gap-10 items-start">
           <div className="w-full md:w-5/12 shrink-0">
-            <div className="neon-border-lg rounded-2xl" style={{ padding: '3px' }}>
-              <div className="neon-inner bg-card rounded-2xl overflow-hidden">
-                <img
-                  src="/assets/ferry-hoes.gif"
-                  alt="Ferry Hoes"
-                  className="w-full aspect-[4/3] object-cover rounded-2xl"
-                />
+            <div className="relative">
+              <img
+                src="/assets/ferry-session.jpg"
+                alt="Ferry Hoes tijdens een in-company sessie"
+                className="w-full aspect-[4/5] object-cover rounded-3xl shadow-soft rotate-[-1.5deg]"
+              />
+              <div className="absolute -bottom-4 -right-4 bg-background border border-border rounded-2xl px-4 py-3 shadow-soft rotate-[1.5deg]">
+                <p className="text-sm font-display font-semibold text-foreground">In-company</p>
+                <p className="text-xs text-muted-foreground">bij teams &amp; directies</p>
               </div>
             </div>
           </div>
@@ -66,8 +69,10 @@ const TrainerSection = ({ bio = defaultBio }: TrainerSectionProps) => (
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
               {stats.map((s) => (
-                <div key={s.val} className="bg-background border border-border rounded-xl p-4 hover:border-neon-purple/40 neon-glow transition-all duration-300">
-                  <span className="text-2xl font-mono font-bold neon-text">{s.val}</span>
+                <div key={s.label} className="bg-background border border-border rounded-xl p-4 shadow-soft lift">
+                  <span className="text-2xl font-mono font-bold neon-text">
+                    {s.plain ? s.num : <CountUp to={s.num} suffix={s.suffix} />}
+                  </span>
                   <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{s.label}</p>
                 </div>
               ))}

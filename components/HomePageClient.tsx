@@ -36,8 +36,9 @@ export default function HomePageClient() {
     <div className="min-h-screen">
       {/* Hero */}
       <section className="min-h-[90vh] flex items-center relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
-          <div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 w-full">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+            <div>
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4 max-w-4xl">
               Geef je hele team{" "}
               <span className="neon-text">dezelfde basiskennis van AI.</span>
@@ -60,6 +61,16 @@ export default function HomePageClient() {
               <span className="flex items-center gap-1.5"><Check size={14} className="text-primary/60" /> Per seat beschikbaar</span>
               <span className="flex items-center gap-1.5"><Check size={14} className="text-primary/60" /> Gratis Masterclass vanaf 50 seats</span>
               <span className="flex items-center gap-1.5"><Check size={14} className="text-primary/60" /> Direct starten</span>
+            </div>
+            </div>
+            <div className="hidden lg:block">
+              <div className="relative max-w-sm ml-auto">
+                <img src="/assets/ferry-stage.jpg" alt="Ferry Hoes op het podium voor een publiek" className="rounded-3xl shadow-soft w-full object-cover aspect-[4/5] rotate-2" />
+                <div className="absolute -bottom-4 -left-4 bg-background border border-border rounded-2xl px-4 py-3 shadow-soft -rotate-2">
+                  <p className="text-sm font-display font-semibold text-foreground">Ferry Hoes</p>
+                  <p className="text-xs text-muted-foreground">live voor teams &amp; directies</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -197,17 +208,21 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* Stakes + scan lead magnet */}
-      <section className="py-20 border-t border-border">
+      {/* Stakes + scan lead magnet — bold statement block */}
+      <section className="py-24 statement-block">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
-            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground leading-[1.15] max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-5xl font-display font-bold leading-[1.12] max-w-2xl mx-auto">
               AI-adoptie zonder grip is geen strategie.
             </h2>
-            <p className="mt-5 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+            <p className="mt-5 text-lg max-w-xl mx-auto leading-relaxed text-muted-foreground">
               Als er morgen iets fout gaat door AI, kun jij uitleggen wat je vandaag hebt gedaan? Voorkom dat je pas na een incident ontdekt hoe je team AI gebruikt.
             </p>
-            <Link href="/gereedheidscan" className="btn-neon inline-block mt-8 px-8 py-4 rounded-lg text-[15px]">
+            <Link
+              href="/gereedheidscan"
+              className="inline-block mt-8 px-8 py-4 rounded-full text-[15px] font-semibold shadow-soft transition-transform hover:-translate-y-0.5"
+              style={{ background: "#fff", color: "hsl(263 52% 40%)" }}
+            >
               Gratis scan: ontdek je risico met shadow AI
             </Link>
             <p className="mt-3 text-sm text-muted-foreground">Gratis, 3 minuten. Direct resultaat.</p>

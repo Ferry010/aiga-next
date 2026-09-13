@@ -5,17 +5,17 @@ import Link from "next/link";
 import ScoreGauge from "@/components/ScoreGauge";
 
 const TIER_COLORS: Record<string, string> = {
-  "NIET GEREED": "hsl(0,84%,60%)",
-  "GEDEELTELIJK GEREED": "hsl(38,92%,50%)",
-  VOORLOPER: "hsl(160,84%,39%)",
+  "HOOG RISICO": "hsl(0,84%,60%)",
+  "GEMIDDELD RISICO": "hsl(38,92%,50%)",
+  "WEINIG RISICO": "hsl(152,55%,42%)",
 };
 
 const TIER_INTERPRETATIONS: Record<string, string> = {
-  "NIET GEREED":
-    "Jouw organisatie gebruikt waarschijnlijk al AI, maar zonder gedeelde kennis of spelregels. Dat maakt jullie kwetsbaar bij een audit. Het goede nieuws: je weet het nu, en dat is de eerste stap naar actie.",
-  "GEDEELTELIJK GEREED":
-    "Een deel van je team begrijpt AI goed, maar zonder een gedeelde basis zijn er blinde vlekken. Met gerichte stappen op de dimensies waar je laag scoort, kom je snel een stuk verder.",
-  VOORLOPER:
+  "HOOG RISICO":
+    "Jouw organisatie gebruikt al AI, maar zonder gedeelde basis, duidelijke afspraken of zicht. Data kan weglekken en fouten blijven onopgemerkt. Het goede nieuws: je weet het nu, en dat is de eerste stap naar actie.",
+  "GEMIDDELD RISICO":
+    "Een deel van je team werkt bewust met AI, maar zonder een gedeelde basis zijn er blinde vlekken. Met gerichte stappen op de dimensies waar je laag scoort, dicht je die snel.",
+  "WEINIG RISICO":
     "Je team heeft een solide basis, mooi. De volgende stap is het borgen: zorgen dat iedereen dezelfde veilige manier van werken aanhoudt, ook nieuwe mensen.",
 };
 
@@ -52,8 +52,8 @@ export default function ResultClient() {
     // malformed param, skip dimension bars
   }
 
-  const tierColor = TIER_COLORS[category] ?? TIER_COLORS["NIET GEREED"];
-  const interpretation = TIER_INTERPRETATIONS[category] ?? TIER_INTERPRETATIONS["NIET GEREED"];
+  const tierColor = TIER_COLORS[category] ?? TIER_COLORS["HOOG RISICO"];
+  const interpretation = TIER_INTERPRETATIONS[category] ?? TIER_INTERPRETATIONS["HOOG RISICO"];
 
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
   const shareText = `Ik deed de AI Gereedheidscan van AIGA en scoorde ${score}%, ${category}. Hoe scoort jouw organisatie?`;

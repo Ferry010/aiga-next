@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import QuizClient from "@/components/QuizClient";
 
 export const metadata: Metadata = {
-  title: "AI Gereedheidscan, Voldoe jij aan de EU AI Act? | AIGA",
+  title: "Gratis AI-risicocheck: hoeveel risico loop je met AI? | AIGA",
   description:
-    "Doe de gratis AI Gereedheidscan en ontdek in 3 minuten hoe jouw organisatie scoort op AI-compliance. 10 vragen, directe score op 5 dimensies, persoonlijk actieplan per e-mail.",
+    "Doe de gratis AI-risicocheck en ontdek in 3 minuten waar je organisatie risico loopt met AI: shadow AI, bedrijfsdata en kennisverschil in je team. 10 vragen, directe score, persoonlijk rapport per e-mail.",
   alternates: { canonical: "https://aigeletterdheid.academy/gereedheidscan" },
   openGraph: {
-    title: "AI Gereedheidscan, Voldoe jij aan de EU AI Act?",
+    title: "Gratis AI-risicocheck: hoeveel risico loop je met AI?",
     description:
-      "Doe de gratis scan en ontdek in 3 minuten hoe jouw organisatie scoort op AI-compliance. Persoonlijk actieplan in je inbox.",
+      "Ontdek in 3 minuten waar je organisatie risico loopt met AI: shadow AI, data en kennisverschil. Persoonlijk rapport in je inbox.",
     url: "https://aigeletterdheid.academy/gereedheidscan",
     type: "website",
     siteName: "AI Geletterdheid Academy",

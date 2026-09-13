@@ -7,24 +7,24 @@ import { motion } from "framer-motion";
 import { useReduceMotion } from "@/hooks/use-reduce-motion";
 
 const questions = [
-  { q: "Hoeveel medewerkers in jouw organisatie gebruiken AI-tools zoals ChatGPT, Copilot of vergelijkbare software?", options: ["Niemand, voor zover ik weet", "Een handvol early adopters", "Een significant deel van de teams", "De meeste medewerkers, dagelijks"] },
-  { q: "Heeft jouw organisatie een beleid of richtlijn voor verantwoord AI-gebruik?", options: ["Nee, dat bestaat niet bij ons", "Er zijn informele afspraken maar niets op papier", "We hebben iets, maar het is niet actueel", "Ja, een formeel beleid dat actief wordt gebruikt"] },
-  { q: "Weten jouw medewerkers wat de EU AI Act inhoudt en wat die van hen vraagt?", options: ["Nee, de meesten hebben er nog nooit van gehoord", "Enkelen hebben erover gelezen maar er is geen bewustzijn", "Het management weet het, de werkvloer nog niet", "Ja, er is breed bewustzijn en we zijn al bezig met compliance"] },
-  { q: "Heeft jouw organisatie documentatie die bewijst dat medewerkers AI-geletterd zijn?", options: ["Nee, niets", "We hebben wat notities maar niets formeel", "Er zijn trainingen gevolgd maar geen formeel certificaat", "Ja, medewerkers zijn gecertificeerd via een erkend programma"] },
-  { q: "Hoe worden AI-gerelateerde risico's (bias, datamisbruik, privacy) momenteel beheerd?", options: ["Dat wordt niet actief beheerd", "Incidenteel, als er iets misgaat", "Er zijn richtlijnen maar geen actieve monitoring", "Er is een actief risicobeheer met duidelijke verantwoordelijken"] },
-  { q: "Zijn leidinggevenden in staat om AI-gebruik van hun team te beoordelen en te sturen?", options: ["Nee, ze weten zelf ook weinig van AI", "Ze begrijpen de basis maar missen diepgang", "De meesten wel, maar het is inconsistent", "Ja, leidinggevenden hebben voldoende kennis en kaders"] },
-  { q: "Hoe urgent is AI Act-compliance voor jouw organisatie op dit moment?", options: ["We hebben er nog niet serieus over nagedacht", "We weten dat het moet maar hebben geen plan", "We zijn er mee bezig maar lopen achter", "We zijn goed op weg en hebben een duidelijk plan"] },
-  { q: "Heeft jouw organisatie een AI-verantwoordelijke of intern aanspreekpunt voor AI-beleid?", options: ["Nee", "Iemand doet het erbij maar het is niet officieel", "Er is iemand aangewezen maar zonder budget of mandaat", "Ja, er is een dedicated verantwoordelijke met mandaat"] },
-  { q: "Hoe worden nieuwe medewerkers geintroduceerd op het gebied van AI-gebruik en AI-risico's?", options: ["Dat gebeurt niet", "Via informele kennisoverdracht van collega's", "Er is een onboarding module maar die is niet up-to-date", "Via een formeel en actueel AI-onboardingprogramma"] },
-  { q: "Stel: er is morgen een audit op AI-geletterdheid. Hoe sta je ervoor?", options: ["Slecht. We kunnen niets aantonen.", "Matig. We hebben wel iets maar het is niet overtuigend.", "Redelijk. We zijn bezig maar nog niet compliant.", "Goed. We kunnen aantonen dat ons team gecertificeerd is."] },
+  { q: "Weet je precies welke AI-tools je mensen gebruiken voor hun werk?", options: ["Nee, geen idee", "Grofweg, maar niet zeker", "Van de meeste teams wel", "Ja, we hebben er goed zicht op"] },
+  { q: "Is er afgesproken welke bedrijfsdata wél en niet in een AI-tool mag?", options: ["Nee, niets afgesproken", "Informeel, niet op papier", "Er ligt iets, maar niet iedereen kent het", "Ja, duidelijk en bij iedereen bekend"] },
+  { q: "Hoe groot is het verschil in AI-vaardigheid tussen je mensen?", options: ["Enorm: van expert tot totale leek", "Groot, het leunt op een paar mensen", "Wisselend, maar redelijk", "Klein: iedereen heeft een basis"] },
+  { q: "Wordt AI-output gecontroleerd voordat het naar buiten gaat?", options: ["Nee, gaat vaak één op één de deur uit", "Soms, hangt van de persoon af", "Meestal wel bij belangrijk werk", "Ja, dat is een vaste stap"] },
+  { q: "Gebruiken mensen AI-tools buiten het zicht van IT (shadow AI)?", options: ["Vast wel, maar we weten het niet", "Waarschijnlijk, deels", "Een beetje, we houden het redelijk bij", "Nauwelijks, we hebben het in beeld"] },
+  { q: "Weten je mensen hoe ze gevoelige of vertrouwelijke data herkennen voordat ze het delen?", options: ["Nee", "Sommigen wel", "De meesten wel", "Ja, dat is aangeleerd"] },
+  { q: "Werkt iedereen vanuit dezelfde afspraken over verantwoord AI-gebruik?", options: ["Nee, iedereen doet het anders", "Deels, informeel", "Grotendeels wel", "Ja, één gedeelde basis"] },
+  { q: "Kunnen leidinggevenden het AI-gebruik van hun team beoordelen en bijsturen?", options: ["Nee, ze weten zelf te weinig van AI", "Beperkt", "De meesten wel", "Ja, ze hebben de kennis en de kaders"] },
+  { q: "Als er iets misgaat met AI (datalek, foute output), zou je het merken?", options: ["Nee, pas als het echt fout is", "Misschien, met geluk", "Waarschijnlijk wel", "Ja, we zouden het snel zien"] },
+  { q: "Krijgen nieuwe medewerkers uitleg over veilig AI-gebruik?", options: ["Nee", "Informeel, van collega's", "Er is iets, maar niet up-to-date", "Ja, vast onderdeel van de onboarding"] },
 ];
 
 const dimensions = [
-  { label: "AI-gebruik", indices: [0, 1] },
-  { label: "Bewustzijn & wetgeving", indices: [2, 3] },
-  { label: "Risicobeheer", indices: [4, 5] },
-  { label: "Leiderschap & urgentie", indices: [6, 7] },
-  { label: "Onboarding & audit-readiness", indices: [8, 9] },
+  { label: "Zicht op AI-gebruik", indices: [0, 4] },
+  { label: "Bescherming van data", indices: [1, 5] },
+  { label: "Gedeelde basiskennis", indices: [2, 6] },
+  { label: "Controle op output", indices: [3, 8] },
+  { label: "Sturing & onboarding", indices: [7, 9] },
 ];
 
 interface TierData {
@@ -40,24 +40,24 @@ interface TierData {
 const tiers: TierData[] = [
   {
     minPct: 0, maxPct: 40,
-    badge: "NIET GEREED", color: "hsl(0, 84%, 60%)",
-    heading: "Jullie organisatie is nog niet gereed",
-    body: "Jullie gebruiken waarschijnlijk al AI-tools, maar zonder gedeelde kennis of spelregels. Dat maakt jullie kwetsbaar bij een audit.",
-    textLink: { label: "Of bekijk direct onze trainingen voor teams →", to: "/training" },
+    badge: "HOOG RISICO", color: "hsl(0, 84%, 60%)",
+    heading: "Je loopt op meerdere plekken risico met AI",
+    body: "Je mensen gebruiken AI, maar zonder gedeelde basis, duidelijke afspraken of zicht. Data kan weglekken en fouten blijven onopgemerkt. Het goede nieuws: dit is precies wat één training oplost.",
+    textLink: { label: "Bekijk hoe de training dit oplost →", to: "/training" },
   },
   {
     minPct: 41, maxPct: 70,
-    badge: "GEDEELTELIJK GEREED", color: "hsl(38, 92%, 50%)",
-    heading: "Jullie zijn op de goede weg, maar er zijn blinde vlekken",
-    body: "Een deel van je team begrijpt AI goed. Maar zonder gedeelde basis werkt niet iedereen vanuit dezelfde kennis.",
-    textLink: { label: "Bekijk onze e-learning met EU AI Act-certificering →", to: "/training" },
+    badge: "GEMIDDELD RISICO", color: "hsl(38, 92%, 50%)",
+    heading: "Je hebt een deel op orde, maar er zijn blinde vlekken",
+    body: "Een deel van je team werkt bewust met AI. Maar niet iedereen werkt vanuit dezelfde basis, en op sommige plekken loop je nog risico.",
+    textLink: { label: "Bekijk hoe de training de gaten dicht →", to: "/training" },
   },
   {
     minPct: 71, maxPct: 100,
-    badge: "VOORLOPER", color: "hsl(160, 84%, 39%)",
-    heading: "Jullie lopen voor op de meeste organisaties",
-    body: "Je team heeft een solide basis, en dat is zeldzamer dan je denkt. Dit is precies het moment om dat te formaliseren.",
-    textLink: { label: "Bekijk onze e-learning met EU AI Act-certificering →", to: "/training" },
+    badge: "WEINIG RISICO", color: "hsl(152, 55%, 42%)",
+    heading: "Je hebt het aardig op orde",
+    body: "Je team heeft een solide basis, en dat is zeldzamer dan je denkt. De volgende stap is het borgen, zodat iedereen dezelfde veilige manier van werken aanhoudt, ook nieuwe mensen.",
+    textLink: { label: "Bekijk hoe je dit borgt →", to: "/training" },
   },
 ];
 
@@ -149,17 +149,17 @@ export default function QuizClient() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-destructive" />
                 </span>
-                EU AI Act is van kracht · Artikel 4 handhaving vanaf 2 augustus 2026
+                Gratis risicocheck · 3 minuten · direct inzicht
               </span>
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight">
-              Jouw team gebruikt AI.<br />
-              <span className="neon-text">Voldoe je ook aan de wet?</span>
+              Hoeveel risico loopt je organisatie met AI?<br />
+              <span className="neon-text">Ontdek het in 3 minuten.</span>
             </h1>
 
             <p className="mt-6 text-xl text-muted-foreground leading-relaxed max-w-2xl">
-              Doe de gratis scan en ontdek in 3 minuten hoe jouw organisatie scoort op AI-compliance, met een persoonlijk actieplan in je inbox.
+              Je mensen gebruiken AI al. Deze gratis scan laat zien wáár je risico loopt: shadow AI, bedrijfsdata die weglekt, en waar de kennis in je team te ver uiteenloopt. Met een persoonlijk rapport in je inbox.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -193,24 +193,24 @@ export default function QuizClient() {
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
                   {
-                    icon: "📊",
-                    title: "Score op 5 dimensies",
-                    body: "AI-gebruik, wetgeving, risicobeheer, leiderschap en audit-readiness, elk apart inzichtelijk.",
+                    icon: "🔍",
+                    title: "Hoeveel zicht je écht hebt",
+                    body: "Welke AI-tools je mensen gebruiken, en hoeveel er buiten je zicht gebeurt (shadow AI).",
                   },
                   {
-                    icon: "⚠️",
-                    title: "Waar de grootste risico's zitten",
-                    body: "Exact welke onderdelen van jouw organisatie blootgesteld zijn aan boetes of reputatieschade.",
+                    icon: "🔒",
+                    title: "Waar je data-risico zit",
+                    body: "Op welke plekken bedrijfsdata via AI-tools je organisatie uit kan lekken.",
+                  },
+                  {
+                    icon: "⚖️",
+                    title: "Hoe groot het kennisverschil is",
+                    body: "Hoe ver de AI-vaardigheid in je team uiteenloopt, en waar dat risico oplevert.",
                   },
                   {
                     icon: "🎯",
                     title: "Wat je als eerste aanpakt",
-                    body: "Een heldere prioriteitenlijst zodat je vandaag kunt beginnen, zonder te gokken.",
-                  },
-                  {
-                    icon: "📋",
-                    title: "Of je een audit zou doorstaan",
-                    body: "Een eerlijk antwoord op de vraag die elke manager en bestuurder wakker houdt.",
+                    body: "Een heldere prioriteit zodat je vandaag kunt beginnen, zonder te gokken.",
                   },
                 ].map((item) => (
                   <div key={item.title} className="neon-card-top bg-background border border-border rounded-xl p-5">
@@ -306,11 +306,11 @@ export default function QuizClient() {
                   a: "Direct na de laatste vraag zie je jouw score op 5 dimensies en de bijbehorende tier. Als je je naam en e-mailadres achterlaat, ontvang je een persoonlijk rapport met uitleg en concrete aanbevelingen per e-mail.",
                 },
                 {
-                  q: "Wat is de EU AI Act en wat verandert er voor mij?",
-                  a: "De EU AI Act is de Europese wetgeving die regelt hoe organisaties AI mogen gebruiken. Artikel 4 verplicht organisaties om de ontwikkeling van AI-geletterdheid te ondersteunen bij medewerkers die met AI werken. De plicht geldt al sinds 2 februari 2025. Vanaf 2 augustus 2026 kunnen toezichthouders handhaven. Artikel 4 kent geen eigen boete.",
+                  q: "Wat voor risico's meet de scan?",
+                  a: "Denk aan bedrijfsdata die weglekt via AI-tools, shadow AI (tools die mensen gebruiken buiten het zicht van IT), ongecontroleerde output die de deur uit gaat, en grote verschillen in kennis binnen je team. Precies de dingen die pas opvallen als het misgaat.",
                 },
                 {
-                  q: "Wat als ik laag scoor?",
+                  q: "Wat als ik hoog risico scoor?",
                   a: "Dan ben je in goed gezelschap, de meeste organisaties staan er niet zo goed voor als ze denken. Wat je wél hebt na de scan: inzicht. En inzicht is het begin van actie. In je rapport staat precies wat je als eerste moet doen.",
                 },
                 {
@@ -338,7 +338,7 @@ export default function QuizClient() {
               <span className="neon-text">morgen verrast worden</span>
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
-              De EU AI Act wacht niet. Elk dag zonder inzicht is een dag meer risico. De scan is gratis en duurt 3 minuten.
+              Elke dag zonder inzicht is een dag dat je risico loopt zonder het te weten. De scan is gratis en duurt 3 minuten.
             </p>
             <button
               onClick={() => setPhase("quiz")}

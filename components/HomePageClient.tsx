@@ -1,11 +1,12 @@
 'use client';
 import Link from "next/link";
-import { AlertTriangle, ChevronDown, FileX, HelpCircle, Users, Check } from "lucide-react";
+import { ChevronDown, Check } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import dynamic from "next/dynamic";
 const TrainerSection = dynamic(() => import("@/components/TrainerSection"));
 import PillarsSection from "@/components/PillarsSection";
+import HeroFloat from "@/components/HeroFloat";
 
 const faqItems = [
   {
@@ -63,13 +64,7 @@ export default function HomePageClient() {
             </div>
             </div>
             <div className="hidden lg:block">
-              <div className="relative max-w-sm ml-auto">
-                <img src="/assets/ferry-session.jpg" alt="Ferry Hoes tijdens een in-company sessie" className="rounded-3xl shadow-soft w-full object-cover aspect-[4/5] rotate-2" />
-                <div className="absolute -bottom-4 -left-4 bg-background border border-border rounded-2xl px-4 py-3 shadow-soft -rotate-2">
-                  <p className="text-sm font-display font-semibold text-foreground">Ferry Hoes</p>
-                  <p className="text-xs text-muted-foreground">live voor teams &amp; directies</p>
-                </div>
-              </div>
+              <HeroFloat />
             </div>
           </div>
         </div>
@@ -90,14 +85,13 @@ export default function HomePageClient() {
           </AnimatedSection>
           <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
             {[
-              { icon: AlertTriangle, title: "Bedrijfsdata in een chatbot", body: "Iemand plakt een klantcontract of persoonsgegevens in ChatGPT om tijd te besparen. Weg is het, en je weet niet waarheen." },
-              { icon: FileX, title: "Output die niemand controleert", body: "Een AI-antwoord gaat één op één de deur uit. Inclusief een verzonnen getal of bron die niemand heeft nagekeken." },
-              { icon: Users, title: "Shadow AI en wildgroei", body: "Mensen gebruiken tools buiten het zicht van IT. Handig, tot er iets misgaat en niemand weet wat er draait." },
-              { icon: HelpCircle, title: "Iedereen doet het anders", body: "De één haalt er wonderen uit, de ander durft niet. Er is een AI-beleid, maar niemand heeft het gelezen." },
+              { title: "Bedrijfsdata in een chatbot", body: "Iemand plakt een klantcontract of persoonsgegevens in ChatGPT om tijd te besparen. Weg is het, en je weet niet waarheen." },
+              { title: "Output die niemand controleert", body: "Een AI-antwoord gaat één op één de deur uit. Inclusief een verzonnen getal of bron die niemand heeft nagekeken." },
+              { title: "Shadow AI en wildgroei", body: "Mensen gebruiken tools buiten het zicht van IT. Handig, tot er iets misgaat en niemand weet wat er draait." },
+              { title: "Iedereen doet het anders", body: "De één haalt er wonderen uit, de ander durft niet. Er is een AI-beleid, maar niemand heeft het gelezen." },
             ].map((c) => (
               <StaggerItem key={c.title}>
                 <div className="bg-card border border-border rounded-2xl p-10 hover:border-neon-purple/40 neon-glow transition-all duration-300 group">
-                  <c.icon size={24} className="text-neon-purple mb-4" />
                   <p className="text-lg font-semibold text-foreground mb-2">{c.title}</p>
                   <p className="text-sm text-muted-foreground leading-relaxed">{c.body}</p>
                 </div>

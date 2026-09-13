@@ -39,24 +39,21 @@ export default function HomePageClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
           <div>
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4 max-w-4xl">
-              Op dit moment deelt iemand in je organisatie{" "}
-              <span className="neon-text">data met AI.</span>
+              Geef je hele team{" "}
+              <span className="neon-text">dezelfde basiskennis van AI.</span>
             </h1>
-            <p className="text-xl sm:text-2xl font-display font-semibold text-primary mt-5">
-              Zorg dat je team weet wat het doet.
+            <p className="text-xl sm:text-2xl font-display font-semibold text-primary mt-5 max-w-2xl">
+              De verschillen zijn soms groot. Wij zorgen dat iedereen dezelfde basiskennis van AI krijgt.
             </p>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Train je hele team op de risico's van AI: welke data wél en niet in een tool mag, hoe je shadow AI voorkomt, en hoe je AI veilig én nuttig inzet. Kant-en-klaar programma, je bouwt niks zelf.
-            </p>
-            <p className="mt-4 text-muted-foreground max-w-2xl leading-relaxed">
-              Volledig Nederlandstalig en ontwikkeld door AI-experts die dagelijks met Nederlandse organisaties werken. De #1 AI-geletterdheid training van Nederland.
+              Van de collega die alles al met ChatGPT doet tot degene die het niet durft aan te raken: iedereen leert wat AI wél en niet kan, welke data eruit blijft, en hoe je het veilig én nuttig gebruikt. Kant-en-klaar programma, je bouwt niks zelf.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link href="/training" className="btn-neon px-7 py-3.5 rounded-lg text-[15px]">
                 Bekijk de training
               </Link>
               <Link href="/gereedheidscan" className="btn-neon-outline px-7 py-3.5 rounded-lg text-[15px] font-semibold border-2">
-                Gratis AI-check: waar staat je team? (3 min)
+                Gratis scan: hoeveel risico loop je? (3 min)
               </Link>
             </div>
             <div className="flex flex-wrap gap-6 mt-6 text-xs text-muted-foreground/70">
@@ -83,8 +80,8 @@ export default function HomePageClient() {
           <AnimatedSection>
             <SectionLabel text="HERKEN JE DIT?" />
             <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2 max-w-3xl leading-[1.1]">
-              AI is sneller binnengekomen{" "}
-              <span className="text-primary">dan de afspraken erover.</span>
+              Op dit moment deelt iemand in je organisatie{" "}
+              <span className="text-primary">data met AI.</span>
             </h2>
             <p className="mt-5 text-lg text-muted-foreground max-w-2xl leading-relaxed">
               Je hebt het niet aangezet, het gebeurde gewoon. Terwijl je dit leest, plakt iemand in je team bedrijfsdata in ChatGPT, neemt iemand AI-output klakkeloos over, of gebruikt iemand een tool die niemand heeft goedgekeurd.
@@ -196,6 +193,24 @@ export default function HomePageClient() {
                 </details>
               ))}
             </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Stakes + scan lead magnet */}
+      <section className="py-20 border-t border-border">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <AnimatedSection>
+            <h2 className="text-3xl sm:text-4xl font-display font-semibold text-foreground leading-[1.15] max-w-2xl mx-auto">
+              AI-adoptie zonder grip is geen strategie.
+            </h2>
+            <p className="mt-5 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+              Als er morgen iets fout gaat door AI, kun jij uitleggen wat je vandaag hebt gedaan? Voorkom dat je pas na een incident ontdekt hoe je team AI gebruikt.
+            </p>
+            <Link href="/gereedheidscan" className="btn-neon inline-block mt-8 px-8 py-4 rounded-lg text-[15px]">
+              Gratis scan: ontdek je risico met shadow AI
+            </Link>
+            <p className="mt-3 text-sm text-muted-foreground">Gratis, 3 minuten. Direct resultaat.</p>
           </AnimatedSection>
         </div>
       </section>

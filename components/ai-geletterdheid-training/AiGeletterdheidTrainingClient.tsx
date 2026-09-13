@@ -34,7 +34,7 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
               <span className="neon-text">Train je mensen op de risico's.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Je mensen gebruiken ChatGPT, Copilot en Gemini, vaak zonder te weten welke data eruit moet blijven of wanneer output niet klopt. Deze AI-geletterdheid training geeft je hele team dezelfde praktische basis: data, shadow AI, output controleren, veilig én nuttig werken. Kant-en-klaar, online, met certificaat. En je voldoet er meteen mee aan Artikel 4 van de EU AI Act.
+              Je mensen gebruiken ChatGPT, Copilot en Gemini, vaak zonder te weten welke data eruit moet blijven of wanneer output niet klopt. Deze AI-geletterdheid training geeft je hele team dezelfde praktische basis: data, shadow AI, output controleren, veilig én nuttig werken. Kant-en-klaar, online, met certificaat.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link href="https://aigeletterdheid.academy/training#offerte" className="btn-neon px-7 py-3.5 rounded-lg text-[15px]">

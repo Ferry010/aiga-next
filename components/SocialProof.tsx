@@ -7,7 +7,7 @@ const pillars = [
   {
     icon: ShieldCheck,
     title: "Praktijkgericht, niet theoretisch",
-    text: "Je team leert AI toepassen op het echte werk: slim prompten, veilig omgaan met data en betere output halen. En je voldoet er meteen mee aan de EU AI Act.",
+    text: "Je team leert AI toepassen op het echte werk: slim prompten, veilig omgaan met data en betere output halen. Praktisch, en direct toepasbaar.",
   },
   {
     icon: Mic,

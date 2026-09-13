@@ -22,8 +22,8 @@ const faqItems = [
     a: "Welke informatie wél en niet in een AI-tool mag, waarom dat uitmaakt, en hoe je gevoelige of vertrouwelijke data herkent voordat je het deelt.",
   },
   {
-    q: "En de AI Act dan?",
-    a: "Die vraagt dat je aantoonbaar aandacht besteedt aan AI-geletterdheid. Hoe je dat organiseert, is aan jou. Dit programma dekt dat af, met een certificaat als bewijs. Maar het is niet de reden dat je het doet.",
+    q: "Werkt dit ook voor mensen zonder technische kennis?",
+    a: "Ja. De training is gemaakt voor iedereen die met AI werkt, niet alleen de techneuten. Geen voorkennis nodig.",
   },
   {
     q: "Hoe snel kunnen we starten?",
@@ -46,8 +46,7 @@ export default function HomePageClient() {
               Zorg dat je team weet wat het doet.
             </p>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Train je hele team op de risico's van AI: welke data wél en niet in een tool mag, hoe je shadow AI voorkomt, en hoe je AI veilig én nuttig inzet. Kant-en-klaar programma, je bouwt niks zelf. En je voldoet er meteen mee aan de{" "}
-              <a href="https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">EU AI Act</a>.
+              Train je hele team op de risico's van AI: welke data wél en niet in een tool mag, hoe je shadow AI voorkomt, en hoe je AI veilig én nuttig inzet. Kant-en-klaar programma, je bouwt niks zelf.
             </p>
             <p className="mt-4 text-muted-foreground max-w-2xl leading-relaxed">
               Volledig Nederlandstalig en ontwikkeld door AI-experts die dagelijks met Nederlandse organisaties werken. De #1 AI-geletterdheid training van Nederland.
@@ -134,7 +133,7 @@ export default function HomePageClient() {
                   <p className="text-sm text-muted-foreground mt-1">Online training met certificaat</p>
                   <p className="text-2xl font-bold text-foreground mt-4">249,- <span className="text-sm font-normal text-muted-foreground">per deelnemer (ex BTW)</span></p>
                   <p className="text-xs text-muted-foreground mt-1">Vanaf 50 seats: neem contact op voor een voorstel op maat</p>
-                  <p className="text-xs text-muted-foreground mt-1 italic">Minder dan één dag klassikale training, en meteen compliant.</p>
+                  <p className="text-xs text-muted-foreground mt-1 italic">Minder dan één dag klassikale training, en meteen goed geregeld.</p>
                   <ul className="space-y-2 mt-6 mb-8 flex-1">
                     {["Volledig online, in eigen tempo", "Adaptief examen", "AI Literacy Practitioner certificaat", "Voortgangsdashboard"].map((f) => (
                       <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -158,7 +157,7 @@ export default function HomePageClient() {
                 <p className="text-xs text-muted-foreground mt-1">Gratis bij 50+ training seats</p>
                 <p className="text-xs text-muted-foreground mt-1 italic">Inclusief bij 50+ online seats, anders minder dan één middag extern advies.</p>
                 <ul className="space-y-2 mt-6 mb-8 flex-1">
-                  {["In-company, ca. 2 uur", "Voor C-level, management & beleidsmakers", "Strategisch inzicht in de AI Act", "Direct toepasbaar in beleid"].map((f) => (
+                  {["In-company, ca. 2 uur", "Voor C-level, management & beleidsmakers", "Strategisch inzicht in AI-risico's en governance", "Direct toepasbaar in beleid"].map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm text-muted-foreground">
                       <Check size={14} className="text-primary mt-0.5 shrink-0" />{f}
                     </li>
@@ -174,7 +173,7 @@ export default function HomePageClient() {
       </section>
 
       {/* About Ferry */}
-      <TrainerSection bio="Ferry Hoes staat meermaals per maand op het podium voor organisaties als a.s.r. Verzekeringen, VodafoneZiggo en verschillende Ministeries. In 2020 won hij de Anti-Discriminatie AI-Hackathon. Hij weet precies hoe je AI-geletterdheid vertaalt naar actie, compliance en voordeel." />
+      <TrainerSection bio="Ferry Hoes staat meermaals per maand op het podium voor organisaties als a.s.r. Verzekeringen, VodafoneZiggo en verschillende Ministeries. In 2020 won hij de Anti-Discriminatie AI-Hackathon. Hij weet precies hoe je een team AI slim én veilig laat gebruiken." />
 
       {/* FAQ */}
       <section className="py-24">

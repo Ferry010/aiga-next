@@ -12,11 +12,11 @@ const faqs = [
   { q: "Wat als onze mensen al AI gebruiken?", a: "Precies daarom. De training gaat niet over óf ze AI mogen gebruiken, maar of ze het veilig en goed doen: welke data eruit blijft, hoe je output controleert, en waar het misgaat." },
   { q: "Wat is shadow AI en waarom is het een risico?", a: "Medewerkers gebruiken AI-tools buiten het zicht van IT. Handig, maar zo lekt bedrijfsdata weg en sluipen er fouten in. De training leert je mensen waar de grenzen liggen, zodat je er grip op houdt." },
   { q: "Wat leren onze mensen over data en privacy?", a: "Welke informatie wél en niet in een AI-tool mag, waarom dat uitmaakt, en hoe je gevoelige of vertrouwelijke data herkent voordat je het deelt." },
-  { q: "Krijgen we er ook het EU AI Act-certificaat bij?", a: "Ja. Iedereen sluit af met een examen en het AI Literacy Practitioner certificaat op naam. Digitaal ondertekend en deelbaar via LinkedIn. Daarmee toon je aan dat er getraind is, precies wat de EU AI Act van organisaties vraagt. Maar het is niet de reden dat je het doet." },
+  { q: "Krijgen deelnemers een certificaat?", a: "Ja. Iedereen sluit af met een examen en het AI Literacy Practitioner certificaat op naam. Digitaal ondertekend en deelbaar via LinkedIn. Zo laat je zien dat het geregeld is." },
   { q: "Hoe lang duurt de training?", a: "De training is selfpaced en kan in meerdere sessies worden gevolgd. Gemiddeld zijn medewerkers twee tot drie uur bezig. Geen klassikale sessies, geen roostergedoe." },
   { q: "Is er technische voorkennis nodig?", a: "Nee. De training is ontwikkeld voor alle medewerkers, ook zonder technische achtergrond." },
   { q: "Wat als een deelnemer niet slaagt voor het examen?", a: "Dan kan de deelnemer het examen herkansen. Er is geen limiet op het aantal pogingen." },
-  { q: "Hoe werkt het certificaat?", a: "Na het afronden van het adaptieve examen ontvangt iedere deelnemer automatisch het AI Literacy Practitioner certificaat. Digitaal ondertekend en deelbaar via LinkedIn. Het certificaat is onderdeel van het dossier waarmee je aantoont dat er getraind is. De AI Act schrijft geen verplicht certificaatformaat voor." },
+  { q: "Hoe werkt het certificaat?", a: "Na het afronden van het adaptieve examen ontvangt iedere deelnemer automatisch het AI Literacy Practitioner certificaat. Digitaal ondertekend en deelbaar via LinkedIn. Zo laat je intern zien dat het geregeld is." },
   { q: "Kan ik seats bijboeken?", a: "Ja. Je kunt op elk moment extra seats toevoegen via robbert@speakersacademy.nl of tom@speakersacademy.nl." },
   { q: "Hoe snel kunnen we starten?", a: "Na akkoord op de offerte staat jouw organisatie binnen twee werkdagen live op het platform." },
 ];
@@ -39,7 +39,7 @@ export default function TrainingClient() {
               De één plakt bedrijfsdata in ChatGPT, de ander durft er niet aan. Deze training brengt
               je hele team op dezelfde basis: welke data wél en niet in een tool mag, hoe je shadow AI
               voorkomt, en hoe je AI veilig én nuttig inzet. Online, in eigen tempo, met examen en
-              certificaat. Kant-en-klaar, je bouwt niks zelf. En je voldoet er meteen mee aan de EU AI Act.
+              certificaat. Kant-en-klaar, je bouwt niks zelf.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
               <a href="#offerte" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-sm font-semibold">
@@ -63,7 +63,7 @@ export default function TrainingClient() {
             <div className="mt-6 text-muted-foreground max-w-3xl space-y-4 leading-relaxed">
               <p>Je hebt het niet aangezet, het gebeurde gewoon. Terwijl je dit leest, plakt iemand in je team bedrijfsdata in ChatGPT, neemt iemand AI-output klakkeloos over, of gebruikt iemand een tool die niemand heeft goedgekeurd.</p>
               <p>Deze training geeft je hele team dezelfde praktische basis: welke data wél en niet in AI mag, hoe je shadow AI voorkomt, hoe je output controleert en hoe je de tools veilig én nuttig inzet. Modulair, volledig online en direct toepasbaar. Kant-en-klaar, je bouwt niks zelf.</p>
-              <p>Het certificaat op naam is het bewijs dat het geregeld is. En je voldoet er meteen mee aan de AI-geletterdheidseis van de EU AI Act, zonder dat het je hele verhaal wordt.</p>
+              <p>Het certificaat op naam is het bewijs dat het geregeld is. Zo laat je intern zien dat je team weet wat het doet.</p>
               <p>
                 Ook geschikt voor teams zonder technische voorkennis. En voor leidinggevenden is er de{" "}
                 <Link href="/masterclass" className="text-primary hover:underline font-medium">AI Masterclass</Link>.
@@ -109,7 +109,7 @@ export default function TrainingClient() {
               "Veilig omgaan met bedrijfsdata en gevoelige informatie",
               "Wat AI wél en niet kan (en waar het de mist in gaat)",
               "Risico's als bias en fouten herkennen en voorkomen",
-              "Wat de EU AI Act van jullie vraagt, in gewone taal",
+              "Verantwoord met AI omgaan, uitgelegd in gewone taal",
             ].map((item) => (
               <StaggerItem key={item}>
                 <div className="flex items-start gap-3 p-4">

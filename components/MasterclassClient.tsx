@@ -13,12 +13,12 @@ const takeaways = [
   "Welke risico's er spelen (data, shadow AI, foute output) en waar jij op moet sturen",
   "Een praktisch raamwerk voor AI governance dat mensen ook echt volgen",
   "Hoe je AI inzet als voordeel, zonder onbeheerst risico",
-  "Wat de EU AI Act van je vraagt, in gewone taal",
+  "Hoe je verantwoord AI-gebruik verankert in je organisatie",
   "Antwoorden op jouw specifieke vragen via de live Q&A",
 ];
 
 const programBlocks = [
-  { block: "Blok 1", duration: "30 min", title: "Wat er nu al met AI gebeurt", body: "Je mensen gebruiken AI allang. Wat betekent dat aan risico's (data, shadow AI, foute output), en hoe zit het met de EU AI Act." },
+  { block: "Blok 1", duration: "30 min", title: "Wat er nu al met AI gebeurt", body: "Je mensen gebruiken AI allang. Wat betekent dat aan risico's (data, shadow AI, foute output), en waar zitten de gaten." },
   { block: "Blok 2", duration: "45 min", title: "Wat dit betekent voor jou als leidinggevende", body: "Welke rollen, tools en processen het raakt, waar de gaten zitten, en waar jij op stuurt." },
   { block: "Blok 3", duration: "30 min", title: "Van risico naar richting", body: "Hoe je AI-gebruik in goede banen leidt en er voordeel uit haalt, zonder je mensen af te remmen." },
   { block: "Blok 4", duration: "15 min", title: "Live Q&A met Ferry Hoes", body: "Stel jouw specifieke vragen aan een expert die wekelijks met organisaties hierover spreekt." },

@@ -49,10 +49,10 @@ export default function AiTrainingVoorBedrijvenPage() {
             </h2>
             <div className="text-muted-foreground leading-relaxed space-y-4">
               <p>
-                Organisaties die investeren in AI-geletterdheid van hun medewerkers zien meetbare resultaten: minder fouten bij het gebruik van AI-tools, betere compliance met wet- en regelgeving, en een hogere productiviteit door het slim en verantwoord inzetten van AI in werkprocessen.
+                Bedrijven die hun mensen leren goed met AI te werken, zien meetbare resultaten: minder fouten met AI-tools, minder data die eruit lekt, en meer rendement uit de licenties die je al betaalt.
               </p>
               <p>
-                De ROI van AI-training is direct meetbaar. Teams die AI écht begrijpen, werken productiever en maken minder fouten. Organisaties die kunnen aantonen dat ze in AI-geletterdheid investeren, staan sterker bij toezichthouders en in aanbestedingen.
+                De ROI is direct meetbaar. Teams die AI écht begrijpen, werken sneller, leveren betere output en maken minder domme fouten. Voor een fractie van wat je maandelijks aan tooling uitgeeft.
               </p>
             </div>
           </AnimatedSection>
@@ -63,7 +63,7 @@ export default function AiTrainingVoorBedrijvenPage() {
             </h2>
             <StaggerContainer className="space-y-3 mt-6">
               {[
-                "Volledig Nederlandstalig en afgestemd op Nederlandse wet- en regelgeving",
+                "Volledig Nederlandstalig en afgestemd op de Nederlandse praktijk",
                 "Schaalbaar: van 1 tot 1000+ medewerkers tegelijk",
                 "Selfpaced: medewerkers volgen de training in eigen tempo, in 2-3 uur",
                 "Certificaat op naam: AI Literacy Practitioner (digitaal ondertekend)",
@@ -82,14 +82,14 @@ export default function AiTrainingVoorBedrijvenPage() {
 
           <AnimatedSection delay={0.2}>
             <h2 className="text-2xl font-display font-semibold text-foreground mt-16 mb-4">
-              Compliance als concurrentievoordeel
+              Een team dat AI vertrouwt, en goed gebruikt
             </h2>
             <div className="text-muted-foreground leading-relaxed space-y-4">
               <p>
-                Bedrijven die nu investeren in AI-geletterdheid positioneren zichzelf als betrouwbare partners voor klanten, leveranciers en toezichthouders. In aanbestedingen en bij audits wordt steeds vaker gevraagd naar bewijs van AI-compliance.
+                Bedrijven die hun mensen nu leren AI goed te gebruiken, lopen straks voor. Niet omdat ze meer AI hebben, maar omdat hun team het slim én veilig inzet. Dat merk je aan de kwaliteit van het werk en aan de rust in de organisatie.
               </p>
               <p>
-                Met het AI Literacy Practitioner certificaat van AIGA beschik je over controleerbaar bewijs dat medewerkers getraind zijn. Het certificaat is digitaal ondertekend en deelbaar via LinkedIn. Het is onderdeel van het bredere dossier waarmee je aantoont dat je als organisatie invulling geeft aan Artikel 4.
+                Met het AI Literacy Practitioner certificaat laat je bovendien intern en naar klanten zien dat het geregeld is. Digitaal ondertekend en deelbaar via LinkedIn.
               </p>
             </div>
           </AnimatedSection>

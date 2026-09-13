@@ -59,7 +59,7 @@ export default function AiCursusMedewerkersPage() {
                 "Hoe je hallucinaties en verzonnen bronnen herkent",
                 "Wanneer je AI juist beter niet gebruikt",
                 "Hoe je AI veilig én nuttig inzet in je eigen werk",
-                "Wat verantwoord AI-gebruik betekent, en wat de EU AI Act ervan vraagt",
+                "Wat verantwoord AI-gebruik betekent in de praktijk",
               ].map((item) => (
                 <StaggerItem key={item}>
                   <div className="flex items-start gap-3 p-3">

@@ -85,7 +85,7 @@ export default function ShadowAiPage() {
                 "Hoe je AI-output controleert en hallucinaties eruit haalt",
                 "Wanneer je AI juist beter niet gebruikt",
                 "Eén gedeelde standaard, in plaats van vijfhonderd eigen methodes",
-                "Aantoonbaar vastgelegd, ook voor de EU AI Act",
+                "Aantoonbaar vastgelegd, zodat je kunt laten zien dat het op orde is",
               ].map((item) => (
                 <StaggerItem key={item}>
                   <div className="flex items-start gap-3 p-3">

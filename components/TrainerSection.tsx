@@ -52,13 +52,13 @@ const TrainerSection = ({ bio = defaultBio }: TrainerSectionProps) => (
           <div className="w-full md:w-5/12 shrink-0">
             <div className="relative">
               <img
-                src="/assets/ferry-session.jpg"
-                alt="Ferry Hoes tijdens een in-company sessie"
+                src="/assets/ferry-stage.jpg"
+                alt="Ferry Hoes op het podium voor een publiek"
                 className="w-full aspect-[4/5] object-cover rounded-3xl shadow-soft rotate-[-1.5deg]"
               />
               <div className="absolute -bottom-4 -right-4 bg-background border border-border rounded-2xl px-4 py-3 shadow-soft rotate-[1.5deg]">
-                <p className="text-sm font-display font-semibold text-foreground">In-company</p>
-                <p className="text-xs text-muted-foreground">bij teams &amp; directies</p>
+                <p className="text-sm font-display font-semibold text-foreground">Op het podium</p>
+                <p className="text-xs text-muted-foreground">keynotes &amp; in-house sessies</p>
               </div>
             </div>
           </div>

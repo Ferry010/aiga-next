@@ -6,7 +6,6 @@ import SectionLabel from "@/components/SectionLabel";
 import dynamic from "next/dynamic";
 const TrainerSection = dynamic(() => import("@/components/TrainerSection"));
 import PillarsSection from "@/components/PillarsSection";
-import LeadForm from "@/components/LeadForm";
 
 const faqItems = [
   {
@@ -47,14 +46,14 @@ export default function HomePageClient() {
               De verschillen zijn soms groot. Wij zorgen dat iedereen dezelfde basiskennis van AI krijgt.
             </p>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Van de collega die alles al met ChatGPT doet tot degene die het niet durft aan te raken: iedereen leert wat AI wél en niet kan, welke data eruit blijft, en hoe je het veilig én nuttig gebruikt. Kant-en-klaar programma, je bouwt niks zelf.
+              Van de collega die alles al met ChatGPT doet tot degene die het niet durft aan te raken: iedereen leert wat AI wél en niet kan, welke data eruit blijft, en hoe je het veilig én nuttig inzet. Geen cursus die je zelf bouwt: binnen een dag heeft je hele team dezelfde basis en weet iedereen wat hij doet.
             </p>
             <div className="mt-8 flex flex-wrap gap-4">
               <Link href="/training" className="btn-neon px-7 py-3.5 rounded-lg text-[15px]">
                 Bekijk de training
               </Link>
               <Link href="/gereedheidscan" className="btn-neon-outline px-7 py-3.5 rounded-lg text-[15px] font-semibold border-2">
-                Gratis scan: hoeveel risico loop je? (3 min)
+                Gratis scan: hoeveel risico loop je?
               </Link>
             </div>
             <div className="flex flex-wrap gap-6 mt-6 text-xs text-muted-foreground/70">
@@ -65,7 +64,7 @@ export default function HomePageClient() {
             </div>
             <div className="hidden lg:block">
               <div className="relative max-w-sm ml-auto">
-                <img src="/assets/ferry-stage.jpg" alt="Ferry Hoes op het podium voor een publiek" className="rounded-3xl shadow-soft w-full object-cover aspect-[4/5] rotate-2" />
+                <img src="/assets/ferry-session.jpg" alt="Ferry Hoes tijdens een in-company sessie" className="rounded-3xl shadow-soft w-full object-cover aspect-[4/5] rotate-2" />
                 <div className="absolute -bottom-4 -left-4 bg-background border border-border rounded-2xl px-4 py-3 shadow-soft -rotate-2">
                   <p className="text-sm font-display font-semibold text-foreground">Ferry Hoes</p>
                   <p className="text-xs text-muted-foreground">live voor teams &amp; directies</p>
@@ -73,15 +72,6 @@ export default function HomePageClient() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Trainer authority strip */}
-      <section className="py-8 bg-muted/40 border-y border-border">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-[15px] text-muted-foreground leading-relaxed">
-            Ontwikkeld door <span className="font-semibold text-foreground">Ferry Hoes</span>, een van de meest gevraagde AI-sprekers van Nederland. Uit de praktijk, niet uit een boekje.
-          </p>
         </div>
       </section>
 
@@ -225,39 +215,24 @@ export default function HomePageClient() {
             >
               Gratis scan: ontdek je risico met shadow AI
             </Link>
-            <p className="mt-3 text-sm text-muted-foreground">Gratis, 3 minuten. Direct resultaat.</p>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Final CTA with inline form */}
-      <section id="contact" className="py-28 block-peach border-t border-border">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <div className="text-center mb-8">
-              <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground">
-                Klaar om je team echt goed te maken in AI?
-              </h2>
-              <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-                Laat je gegevens achter. Er antwoordt een echt mens, meestal binnen een werkdag. Geen verplichtingen.
-              </p>
-            </div>
-            <LeadForm source="Homepage — offerte aanvraag" />
-            <p className="mt-6 text-center text-sm text-muted-foreground">
-              Liever even bellen? <a href="tel:+31103167827" className="text-primary hover:underline font-medium">+31 (0)10 316 7827</a>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Liever direct sparren over je team?{" "}
+              <Link href="/contact" className="underline underline-offset-2 hover:opacity-80 font-medium" style={{ color: "#fff" }}>
+                Neem contact op
+              </Link>
             </p>
           </AnimatedSection>
         </div>
       </section>
 
       {/* Sticky mobile CTA */}
-      <a
-        href="#contact"
+      <Link
+        href="/gereedheidscan"
         className="md:hidden fixed bottom-0 inset-x-0 z-40 text-white text-center py-4 text-[15px] font-semibold shadow-[0_-4px_20px_rgba(0,0,0,0.15)]"
-        style={{ background: "linear-gradient(135deg, hsl(263 70% 58%), hsl(330 81% 60%))" }}
+        style={{ background: "hsl(263 70% 58%)" }}
       >
-        Vraag de mogelijkheden aan →
-      </a>
+        Doe de gratis scan →
+      </Link>
     </div>
   );
 }

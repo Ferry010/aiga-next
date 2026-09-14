@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import HomePageClient from "@/components/HomePageClient";
 
 export const metadata: Metadata = {
-  title: "AI Geletterdheid Training voor Teams | AIGA Academy",
+  title: "AI-training voor je hele team en je directie | AIGA",
   description:
-    "Je mensen gebruiken AI al. Train je hele team op de risico's: data, shadow AI, veilig én nuttig gebruik. Kant-en-klaar programma, online, met certificaat. €249,- per deelnemer.",
+    "Je mensen gebruiken AI al, vaak buiten je zicht. AIGA brengt je hele team op dezelfde praktische basis en geeft je directie de richting. Twee manieren, één premisse.",
   alternates: { canonical: "https://aigeletterdheid.academy" },
   openGraph: {
-    title: "AI Geletterdheid Training voor Teams | AIGA Academy",
+    title: "AI-training voor je hele team en je directie | AIGA",
     description:
-      "Je mensen gebruiken AI al. Train je hele team op de risico's: data, shadow AI, veilig én nuttig gebruik. Kant-en-klaar, met certificaat.",
+      "Je mensen gebruiken AI al, vaak buiten je zicht. Breng je team op dezelfde basis en geef je directie de richting.",
     url: "https://aigeletterdheid.academy",
-    images: [{ url: "/og/home.jpg", width: 1200, height: 630, alt: "AI Geletterdheid Academy, gecertificeerde AI-training voor Nederlandse organisaties" }],
+    images: [{ url: "/og/home.jpg", width: 1200, height: 630, alt: "AIGA, AI-training voor teams en directies" }],
   },
 };
 
@@ -22,23 +22,31 @@ const homeJsonLd = {
   alternateName: "AIGA",
   url: "https://aigeletterdheid.academy",
   logo: "https://aigeletterdheid.academy/assets/AIGA_transparent-CxHDVoMM.png",
-  description: "AIGA helpt Nederlandse organisaties te voldoen aan de EU AI Act door gecertificeerde AI-geletterdheid trainingen voor teams en leidinggevenden.",
+  description:
+    "AIGA brengt organisaties op één praktische basis voor verantwoord AI-gebruik: een online teamtraining voor iedereen en een live masterclass voor directie en management.",
   areaServed: { "@type": "Country", name: "Nederland" },
   telephone: "+31103167827",
   email: "robbert@speakersacademy.nl",
   foundingDate: "2024",
   contactPoint: { "@type": "ContactPoint", telephone: "+31103167827", contactType: "sales", availableLanguage: "Dutch" },
   sameAs: ["https://www.linkedin.com/company/aiga-nl"],
-  knowsAbout: ["AI-geletterdheid", "EU AI Act", "AI compliance", "AI training"],
+  knowsAbout: ["AI-geletterdheid", "verantwoord AI-gebruik", "AI governance", "AI training"],
 };
 
+// Exact gelijk aan de drie vraag-antwoordparen in sectie 3 van de homepage.
 const faqItems = [
-  { q: "Is deze training juridisch voldoende om te voldoen aan de AI Act?", a: "Ja. De training is specifiek ontworpen op basis van Artikel 4 van de EU AI Act en gevalideerd door AI-rechtexperts. Het certificaat geldt als aantoonbaar bewijs bij een audit." },
-  { q: "Wat als een medewerker het examen niet haalt?", a: "Deelnemers mogen het examen herhalen. We zorgen dat iedereen het certificaat behaalt voordat de toegang verloopt." },
-  { q: "Kunnen we de training integreren met ons eigen LMS of HR-systeem?", a: "Voor grotere organisaties bieden we CSV-exports en op aanvraag integraties. Neem contact op voor maatwerk." },
-  { q: "Hoe snel kunnen we starten?", a: "Direct na boeking krijg je toegang tot het platform. Je kunt dezelfde dag nog medewerkers uitnodigen." },
-  { q: "Is er een factuur / is dit BTW-aftrekbaar?", a: "Ja, je ontvangt een factuur op bedrijfsnaam. Zakelijke trainingskosten zijn doorgaans BTW-aftrekbaar; check dit met je eigen fiscalist." },
-  { q: "Wat als we een groot team hebben, zijn er volumekortingen?", a: "Ja. Vraag een offerte aan via het contactformulier voor een prijsopgave op maat. Vanaf 50 seats ontvang je de Masterclass gratis." },
+  {
+    q: "Kan ik het niet gewoon verbieden?",
+    a: "Dat werkt niet meer. AI zit in de tools die je mensen elke dag gebruiken. Verbieden betekent alleen dat het verder uit je zicht verdwijnt.",
+  },
+  {
+    q: "We hebben toch al een AI-beleid?",
+    a: "Een document verandert geen gedrag. Als niemand het kent of toepast, gebeurt op de werkvloer alsnog precies wat er nu gebeurt.",
+  },
+  {
+    q: "Moet mijn hele team dan AI-expert worden?",
+    a: "Nee. Ze hoeven alleen te weten hoe AI werkt, waar het misgaat, en hoe je het verstandig inzet. Dat is een paar uur, geen opleiding.",
+  },
 ];
 
 const faqJsonLd = {
@@ -51,26 +59,11 @@ const faqJsonLd = {
   })),
 };
 
-const courseJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Course",
-  name: "AI-Geletterdheid Training voor Teams",
-  description: "Online AI-geletterdheid training voor medewerkers. Voldoe aan de EU AI Act. AI Literacy Practitioner certificaat. Selfpaced, 2-3 uur.",
-  provider: { "@type": "Organization", name: "AIGA | AI Geletterdheid Academy", url: "https://aigeletterdheid.academy" },
-  url: "https://aigeletterdheid.academy/training",
-  inLanguage: "nl",
-  educationalLevel: "beginner",
-  teaches: "EU AI Act compliance, AI-geletterdheid, verantwoord AI-gebruik",
-  offers: { "@type": "Offer", price: "249", priceCurrency: "EUR", availability: "https://schema.org/InStock" },
-  hasCourseInstance: { "@type": "CourseInstance", courseMode: "online", courseWorkload: "PT2H30M" },
-};
-
 export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }} />
       <HomePageClient />
     </>
   );

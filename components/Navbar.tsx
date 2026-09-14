@@ -5,8 +5,8 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { to: "/training", label: "Voor teams" },
-  { to: "/masterclass", label: "Voor leidinggevenden" },
+  { to: "/training", label: "Teamtraining" },
+  { to: "/masterclass", label: "Masterclass" },
   { to: "/kenniscentrum", label: "Kenniscentrum" },
   { to: "/tools", label: "Tools" },
   { to: "/over-aiga", label: "Over AIGA" },

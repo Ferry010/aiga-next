@@ -2,6 +2,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
+import FerryAuthority from "@/components/FerryAuthority";
 import LeadForm from "@/components/LeadForm";
 
 /** Zichtbare placeholder tot Ferry de echte waarde invult. Niet verzinnen. */
@@ -141,6 +142,9 @@ export default function TrainingClient() {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Wie zit hierachter - authority strip */}
+      <FerryAuthority />
 
       {/* De AI Act (laag) */}
       <section className="py-24 bg-card border-y border-border">

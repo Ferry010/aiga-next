@@ -3,6 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
+import FerryAuthority from "@/components/FerryAuthority";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
 
@@ -178,6 +179,9 @@ export default function MasterclassClient() {
           </AnimatedSection>
         </div>
       </section>
+
+      {/* Wie zit hierachter - authority strip */}
+      <FerryAuthority />
 
       {/* De AI Act */}
       <section className="py-24 bg-card border-b border-border">

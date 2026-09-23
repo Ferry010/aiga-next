@@ -16,7 +16,6 @@ const SendCopyForm = ({ document }: SendCopyFormProps) => {
   const [sent, setSent] = useState(false);
   const [voornaam, setVoornaam] = useState("");
   const [email, setEmail] = useState("");
-  const [telefoon, setTelefoon] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,7 +28,6 @@ const SendCopyForm = ({ document }: SendCopyFormProps) => {
         id: leadId,
         voornaam: voornaam.trim(),
         email: email.trim(),
-        telefoon: telefoon.trim(),
         document,
       });
 
@@ -40,7 +38,6 @@ const SendCopyForm = ({ document }: SendCopyFormProps) => {
           idempotencyKey: `copy-doc-${leadId}`,
           templateData: {
             voornaam: voornaam.trim(),
-            telefoon: telefoon.trim(),
             documentType: document,
           },
         },
@@ -87,15 +84,6 @@ const SendCopyForm = ({ document }: SendCopyFormProps) => {
         onChange={(e) => setEmail(e.target.value)}
         maxLength={255}
         className="w-48 h-9 text-sm"
-      />
-      <Input
-        type="tel"
-        placeholder="Telefoonnummer"
-        required
-        value={telefoon}
-        onChange={(e) => setTelefoon(e.target.value)}
-        maxLength={40}
-        className="w-40 h-9 text-sm"
       />
       <Button type="submit" variant="outline" size="sm" disabled={submitting}>
         <Mail size={16} /> {submitting ? "..." : "Stuur mij een kopie"}

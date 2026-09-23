@@ -121,6 +121,7 @@ export type Database = {
           id: string
           newsletter_optin: boolean | null
           organisatie: string | null
+          telefoon: string | null
           voornaam: string
         }
         Insert: {
@@ -132,6 +133,7 @@ export type Database = {
           id?: string
           newsletter_optin?: boolean | null
           organisatie?: string | null
+          telefoon?: string | null
           voornaam: string
         }
         Update: {
@@ -143,6 +145,7 @@ export type Database = {
           id?: string
           newsletter_optin?: boolean | null
           organisatie?: string | null
+          telefoon?: string | null
           voornaam?: string
         }
         Relationships: []
@@ -303,6 +306,7 @@ export type Database = {
           id: string
           naam: string
           opgevolgd: boolean | null
+          telefoon: string | null
           tier: string
           totaal_score: number
         }
@@ -314,6 +318,7 @@ export type Database = {
           id?: string
           naam: string
           opgevolgd?: boolean | null
+          telefoon?: string | null
           tier: string
           totaal_score: number
         }
@@ -325,6 +330,7 @@ export type Database = {
           id?: string
           naam?: string
           opgevolgd?: boolean | null
+          telefoon?: string | null
           tier?: string
           totaal_score?: number
         }

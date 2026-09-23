@@ -21,10 +21,12 @@ const DownloadLeadDialog = ({ open, onOpenChange, document, onSuccess }: Downloa
   const [submitted, setSubmitted] = useState(false);
   const [voornaam, setVoornaam] = useState("");
   const [email, setEmail] = useState("");
+  const [telefoon, setTelefoon] = useState("");
 
   const resetForm = () => {
     setVoornaam("");
     setEmail("");
+    setTelefoon("");
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -38,14 +40,13 @@ const DownloadLeadDialog = ({ open, onOpenChange, document, onSuccess }: Downloa
         id: leadId,
         voornaam: voornaam.trim(),
         email: email.trim(),
+        telefoon: telefoon.trim(),
         document,
       });
 
+      // Non-fatal: a CRM insert hiccup should never block the download.
       if (error) {
-        console.error("Download lead insert error:", error);
-        toast.error("Er ging iets mis. Probeer het opnieuw.");
-        setSubmitting(false);
-        return;
+        console.error("Download lead insert error (non-fatal):", error);
       }
 
       const { error: fnError } = await supabase.functions.invoke("send-transactional-email", {
@@ -55,6 +56,7 @@ const DownloadLeadDialog = ({ open, onOpenChange, document, onSuccess }: Downloa
           idempotencyKey: `download-doc-${leadId}`,
           templateData: {
             voornaam: voornaam.trim(),
+            telefoon: telefoon.trim(),
             documentType: document,
           },
         },
@@ -104,6 +106,10 @@ const DownloadLeadDialog = ({ open, onOpenChange, document, onSuccess }: Downloa
               <div className="space-y-1.5">
                 <Label htmlFor="email">E-mailadres *</Label>
                 <Input id="email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} maxLength={255} />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="telefoon">Telefoonnummer *</Label>
+                <Input id="telefoon" type="tel" required value={telefoon} onChange={(e) => setTelefoon(e.target.value)} maxLength={40} />
               </div>
               <Button
                 type="submit"

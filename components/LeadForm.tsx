@@ -44,7 +44,7 @@ function fireTracking() {
  * `source` is written to the CRM note so we can tell which page the lead came from.
  */
 export default function LeadForm({ source }: { source: string }) {
-  const [form, setForm] = useState({ naam: "", bedrijf: "", email: "", teamgrootte: "" });
+  const [form, setForm] = useState({ naam: "", bedrijf: "", email: "", telefoon: "", teamgrootte: "" });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -76,7 +76,7 @@ export default function LeadForm({ source }: { source: string }) {
       organisatie: form.bedrijf,
       functie: null,
       email: form.email,
-      telefoon: null,
+      telefoon: form.telefoon,
       hulp: "training",
       aantal: form.teamgrootte || null,
       opmerkingen: [
@@ -98,7 +98,7 @@ export default function LeadForm({ source }: { source: string }) {
         naam: form.naam,
         organisatie: form.bedrijf,
         email: form.email,
-        telefoon: null,
+        telefoon: form.telefoon,
         extra: `${source} · Teamgrootte: ${form.teamgrootte || "onbekend"}${utmNote ? ` · ${utmNote}` : ""}`,
       },
     }).catch(console.error);
@@ -153,6 +153,16 @@ export default function LeadForm({ source }: { source: string }) {
         <input
           id="lf-email" name="email" type="email" required autoComplete="email"
           value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
+          className={inputClass}
+        />
+      </div>
+      <div>
+        <label htmlFor="lf-telefoon" className="text-sm text-muted-foreground mb-1 block">
+          Telefoonnummer <span className="text-neon-purple" aria-hidden>*</span>
+        </label>
+        <input
+          id="lf-telefoon" name="telefoon" type="tel" required autoComplete="tel"
+          value={form.telefoon} onChange={(e) => setForm({ ...form, telefoon: e.target.value })}
           className={inputClass}
         />
       </div>

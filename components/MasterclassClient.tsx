@@ -221,7 +221,7 @@ export default function MasterclassClient() {
                 { name: "organisatie", label: "Organisatie", required: true },
                 { name: "functie", label: "Functie", required: false },
                 { name: "email", label: "E-mailadres", required: true, type: "email" },
-                { name: "telefoon", label: "Telefoonnummer", required: false, type: "tel" },
+                { name: "telefoon", label: "Telefoonnummer", required: true, type: "tel" },
               ].map((f) => (
                 <div key={f.name}>
                   <label className="text-sm text-muted-foreground mb-1 block">{f.label} {f.required && <span className="text-neon-purple">*</span>}</label>

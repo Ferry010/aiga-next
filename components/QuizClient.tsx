@@ -69,7 +69,7 @@ export default function QuizClient() {
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [selected, setSelected] = useState<number | null>(null);
-  const [formData, setFormData] = useState({ naam: "", email: "", bedrijf: "" });
+  const [formData, setFormData] = useState({ naam: "", email: "", telefoon: "", bedrijf: "" });
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
@@ -111,6 +111,7 @@ export default function QuizClient() {
         body: JSON.stringify({
           name: formData.naam,
           email: formData.email,
+          telefoon: formData.telefoon,
           bedrijf: formData.bedrijf,
           score: pct,
           score_category: tier.badge,
@@ -417,10 +418,13 @@ export default function QuizClient() {
                 {[
                   { name: "naam", label: "Naam", required: true },
                   { name: "email", label: "E-mailadres", required: true, type: "email" },
+                  { name: "telefoon", label: "Telefoonnummer", required: true, type: "tel" },
                   { name: "bedrijf", label: "Bedrijfsnaam", required: false },
                 ].map((f) => (
                   <div key={f.name}>
-                    <label className="text-sm text-muted-foreground mb-1 block">{f.label}</label>
+                    <label className="text-sm text-muted-foreground mb-1 block">
+                      {f.label} {f.required && <span className="text-neon-purple" aria-hidden>*</span>}
+                    </label>
                     <input
                       type={f.type || "text"}
                       required={f.required}

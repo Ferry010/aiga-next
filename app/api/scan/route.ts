@@ -94,7 +94,7 @@ function buildEmail({
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
-  const { name, email, bedrijf, score, score_category, dimension_scores } = body;
+  const { name, email, telefoon, bedrijf, score, score_category, dimension_scores } = body;
 
   if (!name || !email || score === undefined || !score_category) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -110,6 +110,7 @@ export async function POST(req: NextRequest) {
       .insert({
         naam: name,
         email,
+        telefoon: telefoon || null,
         bedrijfsnaam: bedrijf || "Niet opgegeven",
         tier: score_category,
         totaal_score: score,

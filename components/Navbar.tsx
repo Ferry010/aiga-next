@@ -41,7 +41,7 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-3">
             <Link
               href="/gereedheidscan"
-              className="btn-neon-outline text-sm font-semibold px-4 py-2"
+              className="text-sm font-body text-muted-foreground hover:text-primary transition-colors"
             >
               Doe de scan
             </Link>

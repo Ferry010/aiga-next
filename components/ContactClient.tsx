@@ -66,7 +66,7 @@ export default function ContactClient() {
           <AnimatedSection>
             <SectionLabel text="CONTACT" />
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
-              Klaar om jouw team te certificeren?<br />
+              Klaar om je team op één AI-basis te zetten?<br />
               <span className="neon-text">Laten we praten.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
@@ -86,7 +86,6 @@ export default function ContactClient() {
                   {[
                     { name: "naam", label: "Naam", required: true },
                     { name: "organisatie", label: "Organisatie", required: true },
-                    { name: "functie", label: "Functie", required: false },
                     { name: "email", label: "E-mailadres", required: true, type: "email" },
                     { name: "telefoon", label: "Telefoonnummer", required: true, type: "tel" },
                   ].map((f) => (
@@ -114,21 +113,11 @@ export default function ContactClient() {
                     </select>
                   </div>
                   <div>
-                    <label htmlFor="contact-aantal" className="text-sm text-muted-foreground mb-1 block">Aantal seats</label>
-                    <select id="contact-aantal" name="aantal" value={form.aantal} onChange={(e) => setForm({ ...form, aantal: e.target.value })} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300">
-                      <option value="">Selecteer...</option>
-                      <option value="1">1</option>
-                      <option value="2-49">2-49</option>
-                      <option value="50-99">50-99</option>
-                      <option value="100+">100+</option>
-                    </select>
-                  </div>
-                  <div>
                     <label htmlFor="contact-opmerkingen" className="text-sm text-muted-foreground mb-1 block">Vragen of opmerkingen</label>
                     <textarea id="contact-opmerkingen" name="opmerkingen" value={form.opmerkingen} onChange={(e) => setForm({ ...form, opmerkingen: e.target.value })} rows={4} className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300 resize-none" />
                   </div>
                   <button type="submit" disabled={submitting} className="btn-neon w-full py-3 rounded-lg disabled:opacity-50">
-                    {submitting ? "Bezig met versturen..." : "Verstuur bericht"}
+                    {submitting ? "Bezig met versturen..." : "Vraag een offerte aan"}
                   </button>
                 </form>
               )}

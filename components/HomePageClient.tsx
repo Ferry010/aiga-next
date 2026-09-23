@@ -205,7 +205,10 @@ export default function HomePageClient() {
                   Iedereen dezelfde praktische AI-basis. Online, in eigen tempo, in een paar uur per
                   persoon. Uitrollen naar honderd of duizend mensen kost je evenveel moeite.
                 </p>
-                <Link href="/training" className="btn-neon text-center py-3 rounded-lg text-sm mt-8">
+                <p className="mt-6 text-lg font-display font-semibold text-foreground">
+                  &euro;249 <span className="text-sm font-normal text-muted-foreground">per persoon</span>
+                </p>
+                <Link href="/training" className="btn-neon text-center py-3 rounded-lg text-sm mt-4">
                   Bekijk de teamtraining →
                 </Link>
               </div>
@@ -217,7 +220,10 @@ export default function HomePageClient() {
                   Een live masterclass voor wie de beslissingen neemt. Over verantwoord AI-gebruik,
                   governance en waar jouw aansprakelijkheid ligt.
                 </p>
-                <Link href="/masterclass" className="btn-neon-outline text-center py-3 rounded-lg text-sm font-semibold mt-8">
+                <p className="mt-6 text-lg font-display font-semibold text-foreground">
+                  Prijs op aanvraag
+                </p>
+                <Link href="/masterclass" className="btn-neon-outline text-center py-3 rounded-lg text-sm font-semibold mt-4">
                   Bekijk de masterclass →
                 </Link>
               </div>

@@ -1,18 +1,8 @@
 'use client';
 import Link from "next/link";
-import type { ReactNode } from "react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import FerryAuthority from "@/components/FerryAuthority";
 import LeadForm from "@/components/LeadForm";
-
-/** Zichtbare placeholder tot Ferry de echte waarde invult. Niet verzinnen. */
-function Ph({ children }: { children: ReactNode }) {
-  return (
-    <span className="rounded px-1 font-medium text-foreground" style={{ backgroundColor: "hsl(var(--warning) / 0.18)" }}>
-      {children}
-    </span>
-  );
-}
 
 function Dot() {
   return <span className="mt-[0.55rem] h-1.5 w-1.5 rounded-full bg-neon-purple shrink-0" aria-hidden />;
@@ -67,7 +57,7 @@ export default function TrainingClient() {
               Niet méér AI gebruiken. AI beter gebruiken.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground max-w-3xl leading-relaxed">
-              In <Ph>[vijf]</Ph> korte modules leren je mensen de dingen die echt het verschil maken:
+              In een paar korte modules leren je mensen de dingen die echt het verschil maken:
             </p>
           </AnimatedSection>
           <StaggerContainer className="mt-8 space-y-3 max-w-2xl">
@@ -96,8 +86,8 @@ export default function TrainingClient() {
               De grootste angst bij online training is dat niemand hem afmaakt.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground max-w-3xl leading-relaxed">
-              Terecht. Daarom is deze kort, concreet en direct toepasbaar. <Ph>[Ongeveer twee uur]</Ph>,
-              opgedeeld in modules die mensen tussen het werk door doen. Met een toets en een
+              Terecht. Daarom is deze kort, concreet en direct toepasbaar. Een paar uur per persoon,
+              opgedeeld in korte modules die mensen tussen het werk door doen. Met een toets en een
               deelnamebewijs per persoon, zodat je precies ziet wie klaar is. Geen video van drie uur
               die halverwege wordt weggeklikt.
             </p>
@@ -131,8 +121,8 @@ export default function TrainingClient() {
               Eén prijs per medewerker. Daarna is het van jullie.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground max-w-3xl leading-relaxed">
-              <Ph>[&euro;249]</Ph> per deelnemer. Vanaf <Ph>[50]</Ph> deelnemers op maat. Geen
-              abonnement, geen kosten per maand. Je betaalt één keer en rolt het uit zo breed als je wil.
+              &euro;249 per deelnemer. Vanaf 50 deelnemers op maat. Geen abonnement, geen kosten per
+              maand. Je betaalt één keer en rolt het uit zo breed als je wil.
             </p>
             <div className="mt-8">
               <a href="#offerte" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-[15px] font-semibold">

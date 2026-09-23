@@ -206,7 +206,7 @@ export default function OverAigaClient() {
                     />
                   </div>
                   <button type="submit" disabled={submitting} className="btn-neon w-full py-3 rounded-lg disabled:opacity-50">
-                    {submitting ? "Bezig met versturen..." : "Verstuur bericht"}
+                    {submitting ? "Bezig met versturen..." : "Vraag een offerte aan"}
                   </button>
                 </form>
               )}

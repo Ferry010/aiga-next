@@ -1,20 +1,10 @@
 'use client';
 import { useState } from "react";
 import Link from "next/link";
-import type { ReactNode } from "react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import FerryAuthority from "@/components/FerryAuthority";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
-
-/** Zichtbare placeholder tot Ferry de echte waarde invult. Niet verzinnen. */
-function Ph({ children }: { children: ReactNode }) {
-  return (
-    <span className="rounded px-1 font-medium text-foreground" style={{ backgroundColor: "hsl(var(--warning) / 0.18)" }}>
-      {children}
-    </span>
-  );
-}
 
 function Dot() {
   return <span className="mt-[0.55rem] h-1.5 w-1.5 rounded-full bg-neon-purple shrink-0" aria-hidden />;
@@ -85,7 +75,7 @@ export default function MasterclassClient() {
             <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-3xl leading-relaxed">
               Een live masterclass voor directie en management. Over wat verantwoord AI-gebruik betekent
               voor hoe je leidt, wat je governance nodig heeft, en waar jouw aansprakelijkheid ligt.{" "}
-              <Ph>[Dagdeel]</Ph>, <Ph>[op locatie of online]</Ph>.
+              Live, op locatie of online, op een moment dat jullie past.
             </p>
             <div className="mt-8">
               <a href="#aanmelden" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-[15px] font-semibold">
@@ -123,7 +113,7 @@ export default function MasterclassClient() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-display font-semibold text-foreground leading-[1.15]">
-              Wat je na een <Ph>[dagdeel]</Ph> weet.
+              Wat je na deze sessie weet.
             </h2>
           </AnimatedSection>
           <StaggerContainer className="mt-8 space-y-3 max-w-2xl">
@@ -153,7 +143,7 @@ export default function MasterclassClient() {
             </h2>
             <p className="mt-5 text-lg text-muted-foreground max-w-3xl leading-relaxed">
               Directie, management, en iedereen die beslist hoe de organisatie met AI omgaat. Live en
-              interactief, toegespitst op jouw sector. <Ph>[Groepsgrootte, duur, locatie: vul in]</Ph>.
+              interactief, toegespitst op jouw sector. De precieze opzet stemmen we met je af.
             </p>
           </AnimatedSection>
         </div>

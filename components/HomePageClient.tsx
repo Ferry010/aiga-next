@@ -51,9 +51,9 @@ export default function HomePageClient() {
       <section className="pt-20 pb-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
-            <h1 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.1]">
-              Ergens in je team, vandaag:{" "}
-              <span className="neon-text">
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight max-w-3xl">
+              Ergens in je team, vandaag:
+              <span className="neon-text block mt-2">
                 {"“Even dit contract in ChatGPT gooien, scheelt me een uur.”"}
               </span>
             </h1>
@@ -79,12 +79,14 @@ export default function HomePageClient() {
               Het zijn nooit de grote beslissingen. Het zijn de kleine, de hele dag door.
             </h2>
           </AnimatedSection>
-          <StaggerContainer className="mt-10 space-y-5">
-            {dinsdag.map((d) => (
+          <StaggerContainer className="mt-10 max-w-3xl border-b border-border">
+            {dinsdag.map((d, i) => (
               <StaggerItem key={d.main}>
-                <div className="bg-background border border-border rounded-2xl p-6 shadow-soft">
-                  <p className="text-foreground font-medium leading-relaxed">{d.main}</p>
-                  <p className="mt-1 italic text-muted-foreground/80">{d.soft}</p>
+                <div className="flex gap-5 sm:gap-7 items-baseline py-5 border-t border-border">
+                  <span className="font-mono text-sm font-bold text-primary shrink-0 w-6">0{i + 1}</span>
+                  <p className="text-lg text-foreground leading-relaxed">
+                    {d.main} <span className="italic text-muted-foreground/80">{d.soft}</span>
+                  </p>
                 </div>
               </StaggerItem>
             ))}
@@ -112,9 +114,9 @@ export default function HomePageClient() {
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <div className="mt-10 bg-background border border-border rounded-2xl p-8 sm:p-10 shadow-soft max-w-2xl">
-              <p className="text-5xl sm:text-6xl font-display font-bold neon-text leading-none">82%</p>
-              <p className="mt-4 text-lg text-foreground leading-relaxed">
+            <div className="mt-10 border-l-2 border-primary/30 pl-6 sm:pl-8 max-w-xl">
+              <p className="text-6xl sm:text-7xl font-display font-bold text-primary leading-none tracking-tight">82%</p>
+              <p className="mt-5 text-lg text-foreground leading-relaxed">
                 van de bedrijfsdata die in AI-tools belandt, komt uit privé-accounts buiten het zicht
                 van de organisatie.
               </p>
@@ -137,11 +139,11 @@ export default function HomePageClient() {
               Misschien denk je nu een van deze dingen.
             </h2>
           </AnimatedSection>
-          <StaggerContainer className="mt-10 space-y-6">
+          <StaggerContainer className="mt-10 max-w-3xl border-b border-border">
             {gedachten.map((g) => (
               <StaggerItem key={g.q}>
-                <div className="bg-card border border-border rounded-2xl p-7 shadow-soft">
-                  <p className="text-lg font-display font-semibold text-foreground">
+                <div className="py-6 border-t border-border">
+                  <p className="text-lg sm:text-xl font-display font-semibold text-foreground">
                     {"“"}{g.q}{"”"}
                   </p>
                   <p className="mt-2 text-muted-foreground leading-relaxed">{g.a}</p>
@@ -165,11 +167,12 @@ export default function HomePageClient() {
               Zo voelt het als het geregeld is.
             </h2>
           </AnimatedSection>
-          <StaggerContainer className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-5">
+          <StaggerContainer className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-12 max-w-4xl">
             {geregeld.map((g) => (
               <StaggerItem key={g}>
-                <div className="bg-background border border-border rounded-2xl p-6 h-full shadow-soft">
-                  <p className="text-foreground leading-relaxed">{g}</p>
+                <div className="flex gap-4 py-5 border-t border-border h-full">
+                  <span className="mt-[0.55rem] h-1.5 w-1.5 rounded-full bg-primary shrink-0" aria-hidden />
+                  <p className="text-lg text-foreground leading-relaxed">{g}</p>
                 </div>
               </StaggerItem>
             ))}
@@ -197,38 +200,41 @@ export default function HomePageClient() {
               te pakken. De meeste organisaties doen ze allebei.
             </p>
           </AnimatedSection>
-          <StaggerContainer className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-            <StaggerItem>
-              <div className="bg-card border border-border rounded-2xl p-8 sm:p-10 h-full flex flex-col shadow-soft lift">
-                <h3 className="text-xl font-semibold text-foreground">Voor je hele team</h3>
+          <AnimatedSection delay={0.1} className="mt-12">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-10 md:gap-14">
+              <div className="flex flex-col border-t-2 border-foreground pt-7">
+                <span className="text-xs font-semibold uppercase tracking-[0.12em] text-primary">Voor je hele team</span>
+                <h3 className="mt-2 text-2xl font-display font-bold text-foreground tracking-tight">De online teamtraining</h3>
                 <p className="mt-3 text-muted-foreground leading-relaxed flex-1">
                   Iedereen dezelfde praktische AI-basis. Online, in eigen tempo, in een paar uur per
                   persoon. Uitrollen naar honderd of duizend mensen kost je evenveel moeite.
                 </p>
-                <p className="mt-6 text-lg font-display font-semibold text-foreground">
-                  &euro;249 <span className="text-sm font-normal text-muted-foreground">per persoon</span>
+                <p className="mt-6 text-3xl font-display font-bold text-foreground tracking-tight">
+                  &euro;249 <span className="text-base font-normal text-muted-foreground">per persoon</span>
                 </p>
-                <Link href="/training" className="btn-neon text-center py-3 rounded-lg text-sm mt-4">
+                <Link href="/training" className="btn-neon self-start mt-6 px-7 py-3 rounded-lg text-sm">
                   Bekijk de teamtraining →
                 </Link>
               </div>
-            </StaggerItem>
-            <StaggerItem>
-              <div className="bg-card border border-border rounded-2xl p-8 sm:p-10 h-full flex flex-col shadow-soft lift">
-                <h3 className="text-xl font-semibold text-foreground">Voor je directie en management</h3>
+
+              <div className="hidden md:block bg-border" aria-hidden />
+
+              <div className="flex flex-col border-t-2 border-border pt-7">
+                <span className="text-xs font-semibold uppercase tracking-[0.12em] text-primary">Voor directie &amp; management</span>
+                <h3 className="mt-2 text-2xl font-display font-bold text-foreground tracking-tight">De live masterclass</h3>
                 <p className="mt-3 text-muted-foreground leading-relaxed flex-1">
                   Een live masterclass voor wie de beslissingen neemt. Over verantwoord AI-gebruik,
                   governance en waar jouw aansprakelijkheid ligt.
                 </p>
-                <p className="mt-6 text-lg font-display font-semibold text-foreground">
+                <p className="mt-6 text-3xl font-display font-bold text-foreground tracking-tight">
                   Prijs op aanvraag
                 </p>
-                <Link href="/masterclass" className="btn-neon-outline text-center py-3 rounded-lg text-sm font-semibold mt-4">
+                <Link href="/masterclass" className="btn-neon-outline self-start mt-6 px-7 py-3 rounded-lg text-sm font-semibold">
                   Bekijk de masterclass →
                 </Link>
               </div>
-            </StaggerItem>
-          </StaggerContainer>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 

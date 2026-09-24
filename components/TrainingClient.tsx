@@ -31,9 +31,9 @@ export default function TrainingClient() {
       <section className="pt-20 pb-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
-            <h1 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.1]">
-              Geef je hele team dezelfde AI-basis.{" "}
-              <span className="neon-text">Zonder er zelf een dag aan kwijt te zijn.</span>
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight max-w-3xl">
+              Geef je hele team dezelfde AI-basis.
+              <span className="neon-text block mt-2">Zonder er zelf een dag aan kwijt te zijn.</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-3xl leading-relaxed">
               De online training van AIGA leert je mensen generatieve AI veilig, kritisch en effectief
@@ -60,12 +60,12 @@ export default function TrainingClient() {
               In een paar korte modules leren je mensen de dingen die echt het verschil maken:
             </p>
           </AnimatedSection>
-          <StaggerContainer className="mt-8 space-y-3 max-w-2xl">
+          <StaggerContainer className="mt-8 max-w-2xl border-b border-border">
             {leren.map((l) => (
               <StaggerItem key={l}>
-                <div className="flex items-start gap-3 bg-background border border-border rounded-xl p-4 shadow-soft">
+                <div className="flex items-start gap-4 py-4 border-t border-border">
                   <Dot />
-                  <span className="text-foreground leading-relaxed">{l}</span>
+                  <span className="text-lg text-foreground leading-relaxed">{l}</span>
                 </div>
               </StaggerItem>
             ))}
@@ -93,13 +93,13 @@ export default function TrainingClient() {
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <div className="mt-10 bg-background border border-border rounded-2xl p-8 shadow-soft max-w-2xl">
+            <div className="mt-10 max-w-2xl">
               <p className="text-sm font-mono uppercase tracking-wider text-muted-foreground">Wat erbij zit</p>
-              <ul className="mt-4 space-y-3">
+              <ul className="mt-4 border-b border-border">
                 {inclusief.map((i) => (
-                  <li key={i} className="flex items-start gap-3">
+                  <li key={i} className="flex items-start gap-4 py-4 border-t border-border">
                     <Dot />
-                    <span className="text-foreground leading-relaxed">{i}</span>
+                    <span className="text-lg text-foreground leading-relaxed">{i}</span>
                   </li>
                 ))}
               </ul>

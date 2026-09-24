@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
@@ -53,7 +52,7 @@ export default function AiCursusMedewerkersPage() {
             <h2 className="text-2xl font-display font-semibold text-foreground mt-16 mb-4">
               Wat leren medewerkers in deze cursus?
             </h2>
-            <StaggerContainer className="space-y-3 mt-6">
+            <StaggerContainer className="mt-6 max-w-2xl border-b border-border">
               {[
                 "Welke bedrijfsdata wél en niet in een AI-tool mag",
                 "Hoe je AI-output controleert voordat je het gebruikt",
@@ -63,9 +62,9 @@ export default function AiCursusMedewerkersPage() {
                 "Wat verantwoord AI-gebruik betekent in de praktijk",
               ].map((item) => (
                 <StaggerItem key={item}>
-                  <div className="flex items-start gap-3 p-3">
-                    <Check size={16} className="text-primary mt-0.5 shrink-0" />
-                    <span className="text-foreground text-sm">{item}</span>
+                  <div className="flex items-start gap-4 py-4 border-t border-border">
+                    <span className="mt-[0.55rem] h-1.5 w-1.5 rounded-full bg-primary shrink-0" aria-hidden />
+                    <span className="text-foreground">{item}</span>
                   </div>
                 </StaggerItem>
               ))}

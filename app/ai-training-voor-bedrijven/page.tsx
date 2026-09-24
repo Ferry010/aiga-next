@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
@@ -62,7 +61,7 @@ export default function AiTrainingVoorBedrijvenPage() {
             <h2 className="text-2xl font-display font-semibold text-foreground mt-16 mb-4">
               Wat maakt de AIGA training uniek?
             </h2>
-            <StaggerContainer className="space-y-3 mt-6">
+            <StaggerContainer className="mt-6 max-w-2xl border-b border-border">
               {[
                 "Volledig Nederlandstalig en afgestemd op de Nederlandse praktijk",
                 "Schaalbaar: van 1 tot 1000+ medewerkers tegelijk",
@@ -72,9 +71,9 @@ export default function AiTrainingVoorBedrijvenPage() {
                 "Geen technische voorkennis vereist",
               ].map((item) => (
                 <StaggerItem key={item}>
-                  <div className="flex items-start gap-3 p-3">
-                    <Check size={16} className="text-primary mt-0.5 shrink-0" />
-                    <span className="text-foreground text-sm">{item}</span>
+                  <div className="flex items-start gap-4 py-4 border-t border-border">
+                    <span className="mt-[0.55rem] h-1.5 w-1.5 rounded-full bg-primary shrink-0" aria-hidden />
+                    <span className="text-foreground">{item}</span>
                   </div>
                 </StaggerItem>
               ))}

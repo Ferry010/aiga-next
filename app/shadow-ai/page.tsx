@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import LeadForm from "@/components/LeadForm";
@@ -79,7 +78,7 @@ export default function ShadowAiPage() {
                 Eén kant-en-klaar trainingsprogramma geeft je hele organisatie dezelfde basis, zodat verantwoord AI-gebruik een gewoonte wordt in plaats van een gok. Wat je team leert:
               </p>
             </div>
-            <StaggerContainer className="space-y-3 mt-6">
+            <StaggerContainer className="mt-6 max-w-2xl border-b border-border">
               {[
                 "Welke bedrijfsdata wél en niet in een AI-tool mag",
                 "Hoe je herkent of een tool veilig is om te gebruiken",
@@ -89,9 +88,9 @@ export default function ShadowAiPage() {
                 "Aantoonbaar vastgelegd, zodat je kunt laten zien dat het op orde is",
               ].map((item) => (
                 <StaggerItem key={item}>
-                  <div className="flex items-start gap-3 p-3">
-                    <Check size={16} className="text-primary mt-0.5 shrink-0" />
-                    <span className="text-foreground text-sm">{item}</span>
+                  <div className="flex items-start gap-4 py-4 border-t border-border">
+                    <span className="mt-[0.55rem] h-1.5 w-1.5 rounded-full bg-primary shrink-0" aria-hidden />
+                    <span className="text-foreground">{item}</span>
                   </div>
                 </StaggerItem>
               ))}

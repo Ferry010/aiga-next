@@ -68,9 +68,9 @@ export default function MasterclassClient() {
       <section className="pt-20 pb-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
-            <h1 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.1]">
-              Je team kun je trainen.{" "}
-              <span className="neon-text">Maar wie stuurt de mensen die de beslissingen nemen?</span>
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight max-w-3xl">
+              Je team kun je trainen.
+              <span className="neon-text block mt-2">Maar wie stuurt de mensen die de beslissingen nemen?</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-3xl leading-relaxed">
               Een live masterclass voor directie en management. Over wat verantwoord AI-gebruik betekent
@@ -116,12 +116,12 @@ export default function MasterclassClient() {
               Wat je na deze sessie weet.
             </h2>
           </AnimatedSection>
-          <StaggerContainer className="mt-8 space-y-3 max-w-2xl">
+          <StaggerContainer className="mt-8 max-w-2xl border-b border-border">
             {meeneemt.map((m) => (
               <StaggerItem key={m}>
-                <div className="flex items-start gap-3 bg-background border border-border rounded-xl p-4 shadow-soft">
+                <div className="flex items-start gap-4 py-4 border-t border-border">
                   <Dot />
-                  <span className="text-foreground leading-relaxed">{m}</span>
+                  <span className="text-lg text-foreground leading-relaxed">{m}</span>
                 </div>
               </StaggerItem>
             ))}

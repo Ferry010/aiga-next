@@ -26,6 +26,13 @@ export function trackLead(event: string, value?: number) {
   }
 }
 
+/** A plain GA4 event, e.g. scan_complete. No personal data, no Meta "Lead". */
+export function trackEvent(event: string) {
+  if (typeof window === "undefined") return;
+  const w = window as Win;
+  if (typeof w.gtag === "function") w.gtag("event", event);
+}
+
 export type LeadAlert = {
   type: "offerte" | "masterclass" | "contact" | "callback";
   naam: string;

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase/server";
 import { sendMail, escapeHtml, teamAlertHtml, TEAM_INBOX } from "@/lib/mail";
+import { QUESTIONS } from "@/lib/scan";
 
 const SITE = "https://aigeletterdheid.academy";
 
@@ -25,7 +26,7 @@ const TIERS: Record<string, { color: string; label: string; heading: string; bod
   },
 };
 
-function buildEmail(name: string, score: number, category: string, dims: Record<string, number>, resultUrl: string): string {
+function buildEmail(name: string, score: number, category: string, dims: Record<string, number>, answers: number[], resultUrl: string): string {
   const tier = TIERS[category] ?? TIERS["HOOG RISICO"];
   const trainingUrl = `${SITE}/training?utm_source=scan_email&utm_medium=email&utm_campaign=risicocheck`;
   const weakestFirst = Object.entries(dims).sort((a, b) => a[1] - b[1]);
@@ -39,6 +40,13 @@ function buildEmail(name: string, score: number, category: string, dims: Record<
     })
     .join("");
 
+  const answerRows = answers.length
+    ? QUESTIONS.map(
+        (q, i) =>
+          `<tr><td style="padding:10px 0;border-top:1px solid #E4DCCF"><span style="font-size:13px;color:#6B6459">${i + 1}. ${escapeHtml(q.q)}</span><br><span style="font-size:15px;font-weight:bold;color:#23201D">${escapeHtml(q.options[answers[i]] ?? "-")}</span></td></tr>`
+      ).join("")
+    : "";
+
   return `<!DOCTYPE html>
 <html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Je AI-risicocheck</title></head>
 <body style="margin:0;padding:0;background:#F3EDE3;font-family:Arial,Helvetica,sans-serif">
@@ -49,7 +57,7 @@ function buildEmail(name: string, score: number, category: string, dims: Record<
 <tr><td style="padding:28px 36px 0"><span style="font-size:22px;font-weight:bold;color:#6E43D6;letter-spacing:-0.5px">AIGA</span></td></tr>
 
 <tr><td style="padding:24px 36px 0">
-<p style="margin:0 0 6px;font-size:16px;color:#23201D">Hoi ${escapeHtml(name)},</p>
+<p style="margin:0 0 6px;font-size:16px;color:#23201D">Hoi${name ? ` ${escapeHtml(name)}` : ""},</p>
 <p style="margin:0;font-size:16px;line-height:1.6;color:#6B6459">Dit is je uitslag van de AI-risicocheck.</p>
 </td></tr>
 
@@ -69,6 +77,11 @@ function buildEmail(name: string, score: number, category: string, dims: Record<
 <p style="margin:0 0 4px;font-size:16px;font-weight:bold;color:#23201D">Per onderdeel, zwakste eerst</p>
 <table width="100%" cellpadding="0" cellspacing="0" border="0">${dimRows}</table>
 </td></tr>
+
+${answerRows ? `<tr><td style="padding:26px 36px 0">
+<p style="margin:0 0 4px;font-size:16px;font-weight:bold;color:#23201D">Jouw antwoorden</p>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">${answerRows}</table>
+</td></tr>` : ""}
 
 <tr><td style="padding:30px 36px 0">
 <p style="margin:0 0 14px;font-size:17px;font-weight:bold;color:#23201D">Zo krijg je je hele team op dezelfde basis</p>
@@ -94,9 +107,15 @@ function buildEmail(name: string, score: number, category: string, dims: Record<
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
-  const { name, email, bedrijf, score, score_category, dimension_scores } = body ?? {};
+  const { email, bedrijf, score, score_category, dimension_scores } = body ?? {};
+  const name = typeof body?.name === "string" ? body.name.trim().slice(0, 100) : "";
+  const answers: number[] =
+    Array.isArray(body?.answers) && body.answers.length === QUESTIONS.length &&
+    body.answers.every((a: unknown) => Number.isInteger(a) && (a as number) >= 0 && (a as number) <= 3)
+      ? body.answers
+      : [];
 
-  if (!name || !email || typeof score !== "number" || !TIERS[score_category]) {
+  if (!email || typeof score !== "number" || !TIERS[score_category]) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
@@ -118,7 +137,7 @@ export async function POST(req: NextRequest) {
     const { data, error } = await supabase
       .from("risk_scan_submissions")
       .insert({
-        naam: String(name).slice(0, 200),
+        naam: name || "Onbekend",
         email: String(email).slice(0, 200),
         bedrijfsnaam: bedrijf ? String(bedrijf).slice(0, 200) : "Niet opgegeven",
         tier: score_category,
@@ -145,14 +164,14 @@ export async function POST(req: NextRequest) {
   const toLead = await sendMail({
     to: String(email),
     subject: `Je AI-risicocheck: ${tier.label.toLowerCase()} (${cleanScore}% grip)`,
-    html: buildEmail(String(name), cleanScore, score_category, dims, resultUrl),
+    html: buildEmail(name, cleanScore, score_category, dims, answers, resultUrl),
     replyTo: TEAM_INBOX ? TEAM_INBOX.split(",")[0].trim() : undefined,
   });
 
   if (TEAM_INBOX) {
     await sendMail({
       to: TEAM_INBOX,
-      subject: `Nieuwe AI-risicocheck: ${String(name).slice(0, 60)} (${tier.label})`,
+      subject: `Nieuwe AI-risicocheck: ${name || String(email).slice(0, 60)} (${tier.label})`,
       html: teamAlertHtml("Nieuwe AI-risicocheck", [
         ["Naam", name],
         ["E-mail", email],
@@ -169,11 +188,11 @@ export async function POST(req: NextRequest) {
     await createServerClient().functions.invoke("notify-new-submission", {
       body: {
         type: "contact",
-        naam: String(name).slice(0, 200),
+        naam: name || "Onbekend",
         organisatie: bedrijf ? String(bedrijf).slice(0, 200) : "Onbekend",
         email: String(email).slice(0, 200),
         telefoon: null,
-        extra: `AI-risicocheck ingevuld · ${tier.label}, ${cleanScore}% grip · ${resultUrl}`,
+        extra: `Uitslag van de AI-risicocheck naar zichzelf gemaild · ${tier.label}, ${cleanScore}% grip · zwakst: ${Object.entries(dims).sort((a, b) => a[1] - b[1]).slice(0, 2).map(([l, v]) => `${l} ${v}%`).join(", ")} · ${resultUrl}`,
       },
     });
   } catch (err) {

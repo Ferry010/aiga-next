@@ -2,32 +2,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import SectionLabel from "@/components/SectionLabel";
-import { motion } from "framer-motion";
-import { useReduceMotion } from "@/hooks/use-reduce-motion";
 import ScanCallback from "@/components/ScanCallback";
-import { trackLead } from "@/lib/track";
-
-const questions = [
-  { q: "Weet je precies welke AI-tools je mensen gebruiken voor hun werk?", options: ["Nee, geen idee", "Grofweg, maar niet zeker", "Van de meeste teams wel", "Ja, we hebben er goed zicht op"] },
-  { q: "Is er afgesproken welke bedrijfsdata wél en niet in een AI-tool mag?", options: ["Nee, niets afgesproken", "Informeel, niet op papier", "Er ligt iets, maar niet iedereen kent het", "Ja, duidelijk en bij iedereen bekend"] },
-  { q: "Hoe groot is het verschil in AI-vaardigheid tussen je mensen?", options: ["Enorm: van expert tot totale leek", "Groot, het leunt op een paar mensen", "Wisselend, maar redelijk", "Klein: iedereen heeft een basis"] },
-  { q: "Wordt AI-output gecontroleerd voordat het naar buiten gaat?", options: ["Nee, gaat vaak één op één de deur uit", "Soms, hangt van de persoon af", "Meestal wel bij belangrijk werk", "Ja, dat is een vaste stap"] },
-  { q: "Gebruiken mensen AI-tools buiten het zicht van IT (shadow AI)?", options: ["Vast wel, maar we weten het niet", "Waarschijnlijk, deels", "Een beetje, we houden het redelijk bij", "Nauwelijks, we hebben het in beeld"] },
-  { q: "Weten je mensen hoe ze gevoelige of vertrouwelijke data herkennen voordat ze het delen?", options: ["Nee", "Sommigen wel", "De meesten wel", "Ja, dat is aangeleerd"] },
-  { q: "Werkt iedereen vanuit dezelfde afspraken over verantwoord AI-gebruik?", options: ["Nee, iedereen doet het anders", "Deels, informeel", "Grotendeels wel", "Ja, één gedeelde basis"] },
-  { q: "Kunnen leidinggevenden het AI-gebruik van hun team beoordelen en bijsturen?", options: ["Nee, ze weten zelf te weinig van AI", "Beperkt", "De meesten wel", "Ja, ze hebben de kennis en de kaders"] },
-  { q: "Als er iets misgaat met AI (datalek, foute output), zou je het merken?", options: ["Nee, pas als het echt fout is", "Misschien, met geluk", "Waarschijnlijk wel", "Ja, we zouden het snel zien"] },
-  { q: "Krijgen nieuwe medewerkers uitleg over veilig AI-gebruik?", options: ["Nee", "Informeel, van collega's", "Er is iets, maar niet up-to-date", "Ja, vast onderdeel van de onboarding"] },
-];
-
-const dimensions = [
-  { label: "Zicht op AI-gebruik", indices: [0, 4] },
-  { label: "Bescherming van data", indices: [1, 5] },
-  { label: "Gedeelde basiskennis", indices: [2, 6] },
-  { label: "Controle op output", indices: [3, 8] },
-  { label: "Sturing & onboarding", indices: [7, 9] },
-];
+import { trackLead, trackEvent } from "@/lib/track";
+import { QUESTIONS as questions, DIMENSIONS as dimensions } from "@/lib/scan";
 
 interface TierData {
   minPct: number;
@@ -65,17 +42,13 @@ const tiers: TierData[] = [
 
 type Phase = "intro" | "quiz" | "result";
 
-export default function QuizClient() {
-  const reduced = useReduceMotion();
+export default function QuizClient({ canEmail = false }: { canEmail?: boolean }) {
   const [phase, setPhase] = useState<Phase>("intro");
   const [current, setCurrent] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
   const [selected, setSelected] = useState<number | null>(null);
-  const [formData, setFormData] = useState({ naam: "", email: "", bedrijf: "" });
-  const [submitting, setSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState(false);
-  const [shareUrl, setShareUrl] = useState("");
-  const [copied, setCopied] = useState(false);
+  const [formData, setFormData] = useState({ naam: "", email: "" });
+  const [sendState, setSendState] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const handleAnswer = (idx: number) => {
     setSelected(idx);
@@ -87,6 +60,7 @@ export default function QuizClient() {
         setCurrent(current + 1);
       } else {
         setPhase("result");
+        trackEvent("scan_complete");
       }
     }, 400);
   };
@@ -95,17 +69,15 @@ export default function QuizClient() {
   const pct = Math.round((score / 30) * 100);
   const tier = tiers.find((t) => pct >= t.minPct && pct <= t.maxPct) || tiers[0];
 
-  const handleFormSubmit = async (e: React.FormEvent) => {
+  // Optional: mail the result to yourself. The result itself is never behind this.
+  const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitting(true);
-    setSubmitError(false);
-
+    setSendState("sending");
     const dimensieScores: Record<string, number> = {};
     dimensions.forEach((d) => {
       const dim = d.indices.reduce((sum, i) => sum + (answers[i] || 0), 0);
       dimensieScores[d.label] = Math.round((dim / 6) * 100);
     });
-
     try {
       const res = await fetch("/api/scan", {
         method: "POST",
@@ -113,29 +85,19 @@ export default function QuizClient() {
         body: JSON.stringify({
           name: formData.naam,
           email: formData.email,
-          bedrijf: formData.bedrijf,
           score: pct,
           score_category: tier.badge,
           dimension_scores: dimensieScores,
+          answers,
         }),
       });
-
-      if (!res.ok) throw new Error("submission failed");
-
-      const result = await res.json();
-      const { id, score: s, score_category, dimension_scores } = result;
-      const params = new URLSearchParams({
-        n: formData.naam,
-        s: String(s),
-        c: score_category,
-        d: btoa(JSON.stringify(dimension_scores)),
-      });
-      const url = `${window.location.origin}/gereedheidscan/resultaat/${id}?${params.toString()}`;
-      setShareUrl(url);
+      if (!res.ok) throw new Error("send failed");
+      const { emailSent } = await res.json();
+      if (!emailSent) throw new Error("mail not sent");
       trackLead("lead_scan");
+      setSendState("sent");
     } catch {
-      setSubmitError(true);
-      setSubmitting(false);
+      setSendState("error");
     }
   };
 
@@ -153,7 +115,7 @@ export default function QuizClient() {
             </h1>
 
             <p className="mt-6 text-xl text-muted-foreground leading-relaxed max-w-2xl">
-              Je mensen gebruiken AI al. Deze gratis scan laat zien wáár je risico loopt: shadow AI, bedrijfsdata die weglekt, en waar de kennis in je team te ver uiteenloopt. Met een persoonlijk rapport in je inbox.
+              Je mensen gebruiken AI al. Deze gratis scan laat zien wáár je risico loopt: shadow AI, bedrijfsdata die weglekt, en waar de kennis in je team te ver uiteenloopt. Je ziet je uitslag direct, zonder iets in te vullen.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -167,7 +129,7 @@ export default function QuizClient() {
             </div>
 
             <div className="mt-8 flex flex-wrap gap-6 border-t border-border pt-8">
-              {["Gratis, altijd", "Geen account nodig", "Persoonlijk rapport per e-mail"].map((t) => (
+              {["Gratis, altijd", "Geen account nodig", "Direct je uitslag"].map((t) => (
                 <span key={t} className="flex items-center gap-1.5 text-sm text-muted-foreground">
                   <span className="text-primary font-bold">✓</span> {t}
                 </span>
@@ -256,12 +218,12 @@ export default function QuizClient() {
                   {
                     step: "02",
                     title: "Zie direct je score",
-                    body: "Direct na de laatste vraag zie je jouw resultaat: een score op 5 dimensies en je tier, van Niet Gereed tot Voorloper.",
+                    body: "Direct na de laatste vraag zie je jouw resultaat: een score op 5 onderdelen en hoeveel risico je loopt.",
                   },
                   {
                     step: "03",
-                    title: "Ontvang je actieplan",
-                    body: "Vul je e-mailadres in en ontvang een persoonlijk rapport met concrete aanbevelingen voor jouw situatie.",
+                    title: "Weet wat je eerst aanpakt",
+                    body: "Je ziet waar het grootste gat zit en wat je antwoordde. Bewaren of doorsturen kan, hoeft niet.",
                   },
                 ].map((s) => (
                   <div key={s.step} className="flex flex-col gap-3">
@@ -297,7 +259,7 @@ export default function QuizClient() {
                 },
                 {
                   q: "Wat ontvang ik na de scan?",
-                  a: "Direct na de laatste vraag zie je jouw score op 5 dimensies en de bijbehorende tier. Als je je naam en e-mailadres achterlaat, ontvang je een persoonlijk rapport met uitleg en concrete aanbevelingen per e-mail.",
+                  a: "Direct na de laatste vraag zie je je score op 5 onderdelen, waar je grootste gat zit en een overzicht van je antwoorden. Je hoeft daarvoor niets in te vullen.",
                 },
                 {
                   q: "Wat voor risico's meet de scan?",
@@ -305,11 +267,11 @@ export default function QuizClient() {
                 },
                 {
                   q: "Wat als ik hoog risico scoor?",
-                  a: "Dan ben je in goed gezelschap, de meeste organisaties staan er niet zo goed voor als ze denken. Wat je wél hebt na de scan: inzicht. En inzicht is het begin van actie. In je rapport staat precies wat je als eerste moet doen.",
+                  a: "Dan ben je in goed gezelschap, de meeste organisaties staan er niet zo goed voor als ze denken. Wat je wél hebt na de scan: inzicht. Je uitslag laat zien waar je grootste gat zit, dus waar je als eerste begint.",
                 },
                 {
                   q: "Worden mijn gegevens gedeeld met derden?",
-                  a: "Nee. Je gegevens worden alleen gebruikt om je rapport te sturen en om de kwaliteit van de scan te verbeteren. We delen niets met derden.",
+                  a: "Nee. Voor de uitslag vragen we geen gegevens. Laat je zelf je e-mailadres of telefoonnummer achter, dan gebruiken we dat alleen om je uitslag te sturen of je te bellen. We delen niets met derden.",
                 },
               ].map((faq) => (
                 <details key={faq.q} className="group py-5">
@@ -381,143 +343,119 @@ export default function QuizClient() {
     );
   }
 
-  // Result phase
+  // Result phase: shown straight away, never behind a form
   const dimScores = dimensions.map((d) => ({
     label: d.label,
     score: Math.round((d.indices.reduce((sum, i) => sum + (answers[i] || 0), 0) / 6) * 100),
   }));
 
-  const shareText = `Ik deed de gratis AI-risicocheck van AIGA: ${pct}% grip, ${tier.badge.toLowerCase()}. Hoeveel grip heeft jouw organisatie?`;
-
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(shareUrl);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const input =
+    "w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-[15px] focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20";
 
   return (
-    <div className="min-h-screen py-20 px-4">
+    <div className="min-h-screen py-16 sm:py-20 px-4">
       <div className="max-w-2xl mx-auto">
         <AnimatedSection>
+          <div className="text-center mb-10">
+            <span className="inline-block px-4 py-2 rounded-full text-sm font-bold text-white mb-4" style={{ backgroundColor: tier.color }}>
+              {tier.badge}
+            </span>
+            <div className="text-7xl font-display font-bold text-foreground">{pct}%</div>
+            <p className="text-sm text-muted-foreground mt-1">grip op AI-gebruik</p>
+            <h1 className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-5 tracking-tight">{tier.heading}</h1>
+            <p className="text-muted-foreground mt-3 leading-relaxed">{tier.body}</p>
+          </div>
 
-          {/* Form, shown until submitted */}
-          {!shareUrl && (
-            <div className="bg-card border border-border rounded-2xl p-8 mb-8">
-              <h3 className="text-lg font-semibold text-foreground mb-2">Je scan is klaar</h3>
-              <p className="text-sm text-muted-foreground mb-6">
-                Laat je gegevens achter om je uitslag te bekijken en te bewaren.
-              </p>
-              <form onSubmit={handleFormSubmit} className="space-y-4">
-                {[
-                  { name: "naam", label: "Naam", required: true },
-                  { name: "email", label: "E-mailadres", required: true, type: "email" },
-                  { name: "bedrijf", label: "Bedrijfsnaam", required: false },
-                ].map((f) => (
-                  <div key={f.name}>
-                    <label className="text-sm text-muted-foreground mb-1 block">{f.label}</label>
-                    <input
-                      type={f.type || "text"}
-                      required={f.required}
-                      value={formData[f.name as keyof typeof formData]}
-                      onChange={(e) => setFormData({ ...formData, [f.name]: e.target.value })}
-                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple transition-all"
+          <div className="rounded-2xl border border-border bg-white p-6 mb-4">
+            <h2 className="text-base font-bold text-foreground mb-4">Score per onderdeel</h2>
+            <div className="space-y-3">
+              {dimScores.map((d) => (
+                <div key={d.label}>
+                  <div className="flex justify-between text-sm mb-1">
+                    <span className="text-foreground">{d.label}</span>
+                    <span className="text-muted-foreground tabular-nums">{d.score}%</span>
+                  </div>
+                  <div className="h-2 bg-border rounded-full overflow-hidden">
+                    <div
+                      className="h-full rounded-full"
+                      style={{ width: `${Math.max(d.score, 3)}%`, background: d.score < 40 ? "hsl(0 65% 48%)" : d.score < 70 ? "hsl(38 85% 42%)" : "hsl(152 45% 36%)" }}
                     />
                   </div>
-                ))}
-                {submitError && (
-                  <p className="text-sm text-destructive">Er ging iets mis. Probeer het opnieuw.</p>
-                )}
-                <button type="submit" disabled={submitting} className="btn-neon w-full py-3 rounded-lg">
-                  {submitting ? "Bezig..." : "Bekijk uitslag →"}
-                </button>
-              </form>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <details className="rounded-2xl border border-border bg-white px-6 py-4 mb-10 group">
+            <summary className="cursor-pointer font-bold text-foreground list-none flex justify-between items-center">
+              Jouw antwoorden
+              <span className="text-primary text-sm font-semibold group-open:hidden">Bekijk</span>
+              <span className="text-primary text-sm font-semibold hidden group-open:inline">Verberg</span>
+            </summary>
+            <ol className="mt-4 border-t border-border">
+              {questions.map((q, i) => (
+                <li key={q.q} className="border-b border-border last:border-0 py-3">
+                  <p className="text-sm text-muted-foreground">{i + 1}. {q.q}</p>
+                  <p className="mt-1 text-foreground font-semibold">{q.options[answers[i]] ?? "-"}</p>
+                </li>
+              ))}
+            </ol>
+          </details>
+
+          {canEmail && (
+            <div className="border-t-2 border-foreground pt-6 mb-12">
+              {sendState === "sent" ? (
+                <>
+                  <h3 className="text-2xl font-display font-bold text-foreground tracking-tight">Staat in je mailbox.</h3>
+                  <p className="mt-2 text-muted-foreground leading-relaxed">
+                    Je uitslag en je antwoorden zijn verstuurd naar {formData.email}. Niet binnen een paar minuten? Kijk
+                    even in je spam.
+                  </p>
+                </>
+              ) : (
+                <form onSubmit={handleSend} aria-label="Uitslag mailen">
+                  <h3 className="text-2xl font-display font-bold text-foreground tracking-tight">Uitslag bewaren of doorsturen?</h3>
+                  <p className="mt-2 text-muted-foreground leading-relaxed">
+                    We mailen je de uitslag met al je antwoorden. Handig om erbij te pakken, of door te sturen naar wie
+                    over AI-gebruik beslist.
+                  </p>
+                  <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                      <label htmlFor="scan-email" className="text-sm text-muted-foreground mb-1 block">E-mailadres</label>
+                      <input id="scan-email" type="email" required autoComplete="email" value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={input} />
+                    </div>
+                    <div>
+                      <label htmlFor="scan-naam" className="text-sm text-muted-foreground mb-1 block">Voornaam (optioneel)</label>
+                      <input id="scan-naam" autoComplete="given-name" value={formData.naam}
+                        onChange={(e) => setFormData({ ...formData, naam: e.target.value })} className={input} />
+                    </div>
+                  </div>
+                  {sendState === "error" && (
+                    <p role="alert" className="mt-3 text-sm text-destructive">
+                      Versturen lukte niet. Probeer het nog eens, je uitslag hierboven blijft gewoon staan.
+                    </p>
+                  )}
+                  <button type="submit" disabled={sendState === "sending"} className="btn-neon mt-5 px-7 py-3.5 rounded-lg font-semibold disabled:opacity-50">
+                    {sendState === "sending" ? "Even versturen..." : "Mail mij de uitslag"}
+                  </button>
+                </form>
+              )}
             </div>
           )}
 
-          {/* Results, revealed after submit */}
-          {shareUrl && (
-            <motion.div
-              initial={reduced ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              <div className="text-center mb-10">
-                <span className="inline-block px-4 py-2 rounded-full text-sm font-bold text-white mb-4" style={{ backgroundColor: tier.color }}>
-                  {tier.badge}
-                </span>
-                <div className="text-7xl font-display font-bold text-foreground">{pct}%</div>
-                <h2 className="text-2xl font-display font-semibold text-foreground mt-4">{tier.heading}</h2>
-                <p className="text-muted-foreground mt-3 leading-relaxed">{tier.body}</p>
-              </div>
+          {/* Next step: one-click callback, then the training */}
+          <ScanCallback
+            name={sendState === "sent" ? formData.naam : ""}
+            email={sendState === "sent" ? formData.email : ""}
+            summary={`${tier.badge}, ${pct}% grip`}
+          />
 
-              <div className="bg-card border border-border rounded-2xl p-6 mb-6">
-                <h3 className="text-sm font-semibold text-foreground mb-4">Score per dimensie</h3>
-                <div className="space-y-3">
-                  {dimScores.map((d) => (
-                    <div key={d.label}>
-                      <div className="flex justify-between text-sm mb-1">
-                        <span className="text-foreground">{d.label}</span>
-                        <span className="text-muted-foreground">{d.score}%</span>
-                      </div>
-                      <div className="h-2 bg-border rounded-full overflow-hidden">
-                        <div
-                          className="h-full rounded-full"
-                          style={{ width: `${d.score}%`, background: d.score < 40 ? "hsl(0 65% 48%)" : d.score < 70 ? "hsl(38 85% 42%)" : "hsl(152 45% 36%)" }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Next step: one-click callback, then the training */}
-              <div className="mb-10">
-                <ScanCallback name={formData.naam} email={formData.email} summary={`${tier.badge}, ${pct}% grip`} />
-              </div>
-
-              {/* Sharing */}
-              <div className="border-t border-border pt-6">
-                <p className="text-sm font-semibold text-foreground mb-4">Deel jouw resultaat</p>
-                <div className="flex flex-wrap gap-2">
-                  <button
-                    onClick={handleCopy}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-card text-sm text-foreground hover:border-primary/40 transition-colors"
-                  >
-                    {copied ? "Link gekopieerd" : "Kopieer link"}
-                  </button>
-                  <a
-                    href={`https://wa.me/?text=${encodeURIComponent(shareText + "\n" + shareUrl)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-card text-sm text-foreground hover:border-primary/40 transition-colors"
-                  >
-                    <span>💬</span> WhatsApp
-                  </a>
-                  <a
-                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-card text-sm text-foreground hover:border-primary/40 transition-colors"
-                  >
-                    <span>💼</span> LinkedIn
-                  </a>
-                  <button
-                    onClick={() => window.print()}
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-card text-sm text-foreground hover:border-primary/40 transition-colors"
-                  >
-                    <span>🖨️</span> Opslaan als PDF
-                  </button>
-                </div>
-              </div>
-
-              <p className="mt-4 text-center text-xs text-muted-foreground">
-                <Link href={tier.textLink.to} className="text-primary hover:underline">
-                  {tier.textLink.label}
-                </Link>
-              </p>
-            </motion.div>
-          )}
-
+          <p className="mt-10 text-center text-sm">
+            <Link href={tier.textLink.to} className="text-primary font-semibold hover:underline">
+              {tier.textLink.label}
+            </Link>
+          </p>
         </AnimatedSection>
       </div>
     </div>

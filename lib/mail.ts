@@ -18,6 +18,16 @@ type Mail = { to: string; subject: string; html: string; text?: string; replyTo?
 
 const FROM = process.env.MAIL_FROM || "AIGA <ferry@brandhumanizing.com>";
 
+/**
+ * True when an email can actually go out: SMTP, or Resend with a sender set on
+ * purpose (Resend refuses the default sender, its domain isn't verified there).
+ */
+export function mailConfigured(): boolean {
+  return Boolean(
+    (process.env.SMTP_USER && process.env.SMTP_PASS) || (process.env.RESEND_API_KEY && process.env.MAIL_FROM)
+  );
+}
+
 export async function sendMail(mail: Mail): Promise<MailResult> {
   if (process.env.SMTP_USER && process.env.SMTP_PASS) {
     try {

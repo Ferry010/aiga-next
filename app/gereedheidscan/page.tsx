@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import QuizClient from "@/components/QuizClient";
+import { mailConfigured } from "@/lib/mail";
 
 export const metadata: Metadata = {
   title: "Gratis AI-risicocheck: hoeveel risico loop je met AI? | AIGA",
   description:
-    "Doe de gratis AI-risicocheck en ontdek in 3 minuten waar je organisatie risico loopt met AI: shadow AI, bedrijfsdata en kennisverschil in je team. 10 vragen, directe score, persoonlijk rapport per e-mail.",
+    "Doe de gratis AI-risicocheck en ontdek in 3 minuten waar je organisatie risico loopt met AI: shadow AI, bedrijfsdata en kennisverschil in je team. 10 vragen, direct je score, zonder dat je iets hoeft in te vullen.",
   alternates: { canonical: "https://aigeletterdheid.academy/gereedheidscan" },
   openGraph: {
     title: "Gratis AI-risicocheck: hoeveel risico loop je met AI?",
     description:
-      "Ontdek in 3 minuten waar je organisatie risico loopt met AI: shadow AI, data en kennisverschil. Persoonlijk rapport in je inbox.",
+      "Ontdek in 3 minuten waar je organisatie risico loopt met AI: shadow AI, data en kennisverschil. Direct je score.",
     url: "https://aigeletterdheid.academy/gereedheidscan",
     type: "website",
     siteName: "AI Geletterdheid Academy",
@@ -56,7 +57,7 @@ const faqSchema = {
       name: "Wat ontvang ik na de AI-risicocheck?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Direct na de laatste vraag zie je jouw score op 5 dimensies en de bijbehorende tier. Als je je naam en e-mailadres achterlaat, ontvang je een persoonlijk rapport met uitleg en concrete aanbevelingen per e-mail.",
+        text: "Direct na de laatste vraag zie je je score op 5 onderdelen, waar je grootste gat zit en een overzicht van je antwoorden. Je hoeft daarvoor niets in te vullen.",
       },
     },
     {
@@ -64,7 +65,7 @@ const faqSchema = {
       name: "Wat als ik laag scoor?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Dan ben je in goed gezelschap, de meeste organisaties staan er niet zo goed voor als ze denken. Wat je wél hebt na de scan: inzicht. En inzicht is het begin van actie. In je rapport staat precies wat je als eerste moet doen.",
+        text: "Dan ben je in goed gezelschap, de meeste organisaties staan er niet zo goed voor als ze denken. Wat je wél hebt na de scan: inzicht. Je uitslag laat zien waar je grootste gat zit, dus waar je als eerste begint.",
       },
     },
     {
@@ -72,7 +73,7 @@ const faqSchema = {
       name: "Worden mijn gegevens gedeeld met derden?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Nee. Je gegevens worden alleen gebruikt om je rapport te sturen en om de kwaliteit van de scan te verbeteren. We delen niets met derden.",
+        text: "Nee. Voor de uitslag vragen we geen gegevens. Laat je zelf je e-mailadres of telefoonnummer achter, dan gebruiken we dat alleen om je uitslag te sturen of je te bellen. We delen niets met derden.",
       },
     },
   ],
@@ -108,7 +109,7 @@ export default function GereedheidscanPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <QuizClient />
+      <QuizClient canEmail={mailConfigured()} />
     </>
   );
 }

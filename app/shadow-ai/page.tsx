@@ -9,7 +9,7 @@ import LeadForm from "@/components/LeadForm";
 export const metadata: Metadata = {
   title: "Shadow AI: je team zet bedrijfsdata in ChatGPT | AIGA",
   description:
-    "Iemand in je team zet een klantcontract in ChatGPT om tijd te besparen. Dat heet shadow AI: het kan in strijd zijn met de AVG en je eigen beleid, en je data raakt uit beeld. Zo krijg je er grip op.",
+    "Iemand in je team zet klantgegevens in een privé ChatGPT-account. Dat heet shadow AI: AI-gebruik waar je organisatie niet van weet. Het kan in strijd zijn met de AVG en je beleid, en je data raakt uit beeld.",
   alternates: { canonical: "/shadow-ai" },
 };
 
@@ -55,7 +55,7 @@ const today = [
   },
   {
     title: "Als het misgaat, is de vraag wat jij had geregeld",
-    body: "Niet wat de medewerker deed, maar of iemand hem ooit had verteld waar de grens ligt. Dat antwoord wil je vandaag al kunnen geven.",
+    body: "Niet wat de medewerker deed, maar of iemand ooit had uitgelegd waar de grens ligt. Dat antwoord wil je vandaag al kunnen geven.",
   },
 ];
 
@@ -64,7 +64,7 @@ const learns = [
   "Hoe je herkent of een tool veilig is om te gebruiken",
   "Hoe je AI-output controleert voordat hij de deur uitgaat",
   "Wanneer je AI juist beter niet gebruikt",
-  "Eén gedeelde standaard, in plaats van ieder zijn eigen manier",
+  "Eén gedeelde standaard, in plaats van iedereen op een eigen manier",
 ];
 
 function H2({ children }: { children: React.ReactNode }) {
@@ -86,12 +86,16 @@ export default function ShadowAiPage() {
         <div className={`${container} grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center`}>
           <AnimatedSection>
             <h1 className="text-4xl sm:text-[3.4rem] font-display font-bold text-foreground leading-[1.05] tracking-tight">
-              Iemand in je team zet vandaag een klantcontract in ChatGPT.
-              <span className="neon-text block mt-3">Dat heet shadow AI.</span>
+              Iemand in je team zet klantgegevens in een privé ChatGPT-account.
+              <span className="neon-text block mt-3">Daar zit je risico.</span>
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              Niet uit onwil: het scheelt een uur. Maar het kan in strijd zijn met de AVG, het gaat tegen je eigen
-              beleid in en je bedrijfsdata staat daarna op een plek waar jij niet bij kunt.
+            <p className="mt-6 text-xl sm:text-2xl font-display font-bold text-foreground max-w-xl leading-snug">
+              Dat heet shadow AI: AI-gebruik binnen je organisatie waar de organisatie zelf niet van weet.
+            </p>
+            <p className="mt-4 text-lg text-muted-foreground max-w-xl leading-relaxed">
+              Niet uit onwil, het scheelt gewoon tijd. Maar niemand heeft er afspraken over gemaakt en niemand ziet
+              waar die gegevens daarna blijven. Dat kan in strijd zijn met de AVG, het gaat vaak tegen je eigen beleid
+              in en je data is uit beeld.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Link
@@ -120,9 +124,13 @@ export default function ShadowAiPage() {
           <AnimatedSection delay={0.05}>
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
-                Shadow AI is AI-gebruik voor je werk dat buiten het zicht van de organisatie gebeurt. Een privé
-                ChatGPT-account voor een klantmail. Een gratis tool die een vergaderverslag uitwerkt. Een
-                browser-extensie die meeleest met wat je typt.
+                Shadow AI is AI die je mensen gebruiken voor hun werk, zonder dat de organisatie ervan weet. Geen
+                toestemming, geen afspraken, geen zicht. De naam komt van shadow IT: het gebeurt in de schaduw, buiten
+                het zicht van IT en management.
+              </p>
+              <p>
+                Het ziet er heel gewoon uit. Een klantmail laten herschrijven in een privé ChatGPT-account. Een gratis
+                tool die een vergaderverslag uitwerkt. Een offerte laten samenvatten op je eigen telefoon.
               </p>
               <p className="text-foreground">
                 Bijna iedereen doet het, meestal met de beste bedoelingen. Het probleem is niet de tool, maar dat

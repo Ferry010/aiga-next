@@ -18,7 +18,7 @@ export const TRAINING_FAQ: Faq[] = [
   },
   {
     q: "Wat leren medewerkers precies?",
-    a: "Vier modules: begrijpen wat AI is, veilig en verantwoord werken met AI, slim werken met AI, en AI toepassen in je eigen werk.",
+    a: "Vier modules met samen 22 lessen: begrijpen wat AI is, veilig en verantwoord werken met AI, slim werken met AI, en AI toepassen in je eigen werk. Van wat je nooit in een AI-tool invoert tot je eerste drie toepassingen. Het volledige programma staat op deze pagina.",
   },
   {
     q: "Hoeveel tijd kost het per medewerker?",

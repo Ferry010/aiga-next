@@ -123,7 +123,7 @@ export default function LeadForm({ source }: { source: string }) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="lf-naam" className="text-sm text-muted-foreground mb-1 block">
-            Naam <span className="text-neon-purple" aria-hidden>*</span>
+            Naam
           </label>
           <input
             id="lf-naam" name="naam" type="text" required autoComplete="name"
@@ -133,7 +133,7 @@ export default function LeadForm({ source }: { source: string }) {
         </div>
         <div>
           <label htmlFor="lf-bedrijf" className="text-sm text-muted-foreground mb-1 block">
-            Bedrijf <span className="text-neon-purple" aria-hidden>*</span>
+            Bedrijf
           </label>
           <input
             id="lf-bedrijf" name="bedrijf" type="text" required autoComplete="organization"
@@ -144,7 +144,7 @@ export default function LeadForm({ source }: { source: string }) {
       </div>
       <div>
         <label htmlFor="lf-email" className="text-sm text-muted-foreground mb-1 block">
-          Werk e-mail <span className="text-neon-purple" aria-hidden>*</span>
+          Werk e-mail
         </label>
         <input
           id="lf-email" name="email" type="email" required autoComplete="email"
@@ -154,7 +154,7 @@ export default function LeadForm({ source }: { source: string }) {
       </div>
       <div>
         <label htmlFor="lf-telefoon" className="text-sm text-muted-foreground mb-1 block">
-          Telefoonnummer <span className="text-neon-purple" aria-hidden>*</span>
+          Telefoonnummer
         </label>
         <input
           id="lf-telefoon" name="telefoon" type="tel" required autoComplete="tel"
@@ -164,7 +164,7 @@ export default function LeadForm({ source }: { source: string }) {
       </div>
       <div>
         <label htmlFor="lf-teamgrootte" className="text-sm text-muted-foreground mb-1 block">
-          Voor hoeveel mensen? <span className="text-neon-purple" aria-hidden>*</span>
+          Voor hoeveel mensen?
         </label>
         <select
           id="lf-teamgrootte" name="teamgrootte" required

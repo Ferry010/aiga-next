@@ -146,15 +146,6 @@ export default function QuizClient() {
         {/* ── Hero ── */}
         <div className="max-w-3xl mx-auto px-4 pt-28 pb-16">
           <AnimatedSection>
-            <div className="mb-8">
-              <span className="inline-flex items-center gap-2 bg-destructive/10 text-destructive text-xs font-semibold px-3 py-1.5 rounded-full">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-destructive" />
-                </span>
-                Gratis risicocheck · 3 minuten · direct inzicht
-              </span>
-            </div>
 
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight">
               Welke bedrijfsdata verdwijnt er bij jou in AI-tools?<br />

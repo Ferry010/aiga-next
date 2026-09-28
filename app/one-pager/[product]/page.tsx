@@ -120,7 +120,7 @@ export default async function OnePager({ params }: { params: Promise<{ product: 
       <article className="op-sheet">
         <header className="flex items-baseline justify-between border-b-2 border-[#23201D] pb-3">
           <span className="text-[22px] font-black tracking-tight text-[#6E43D6]">AIGA</span>
-          <span className="text-[11px] font-bold uppercase tracking-[0.12em] text-[#2F7E8B]">{s.eyebrow}</span>
+          <span className="text-[13px] font-bold text-[#23201D]">{s.eyebrow}</span>
         </header>
 
         <div className="flex flex-col gap-3">
@@ -139,7 +139,7 @@ export default async function OnePager({ params }: { params: Promise<{ product: 
 
         <div className="grid grid-cols-2 gap-8">
           <section>
-            <h2 className="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-[#2F7E8B]">{s.listTitle}</h2>
+            <h2 className="mb-2 text-[14px] font-black text-[#23201D]">{s.listTitle}</h2>
             <ul className="border-b border-[#E4DCCF]">
               {s.list.map((item) => (
                 <li key={item.text} className="flex gap-3 border-t border-[#E4DCCF] py-[7px] text-[13px] leading-[1.45]">
@@ -150,7 +150,7 @@ export default async function OnePager({ params }: { params: Promise<{ product: 
             </ul>
           </section>
           <section>
-            <h2 className="mb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-[#2F7E8B]">{s.howTitle}</h2>
+            <h2 className="mb-2 text-[14px] font-black text-[#23201D]">{s.howTitle}</h2>
             <ul className="border-b border-[#E4DCCF]">
               {s.how.map((h) => (
                 <li key={h} className="flex gap-3 border-t border-[#E4DCCF] py-[7px] text-[13px] leading-[1.45]">

@@ -52,7 +52,13 @@ Zullen we dit plannen?`,
   },
 } as const;
 
-export default function ShareWithColleague({ product = "training" }: { product?: keyof typeof MAILS }) {
+export default function ShareWithColleague({
+  product = "training",
+  inline = false,
+}: {
+  product?: keyof typeof MAILS;
+  inline?: boolean;
+}) {
   const m = MAILS[product];
   const [copied, setCopied] = useState(false);
   const href = `mailto:?subject=${encodeURIComponent(m.subject)}&body=${encodeURIComponent(m.body(m.pdf, m.page))}`;
@@ -71,6 +77,22 @@ export default function ShareWithColleague({ product = "training" }: { product?:
       /* clipboard blocked */
     }
   };
+
+  if (inline) {
+    return (
+      <p className="text-muted-foreground leading-relaxed">
+        Beslis je dit niet alleen?{" "}
+        <a href={href} onClick={onMail} className="text-primary font-semibold hover:underline">
+          Mail het naar een collega
+        </a>{" "}
+        of{" "}
+        <a href={m.onePager} target="_blank" rel="noopener" className="text-primary font-semibold hover:underline">
+          bekijk de one-pager
+        </a>
+        .
+      </p>
+    );
+  }
 
   return (
     <div className="border-t-2 border-foreground pt-6">

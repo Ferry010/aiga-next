@@ -174,7 +174,7 @@ export default function LandschapPage() {
                   <div className="px-6 py-5 space-y-3">
                     <p className="text-sm text-muted-foreground leading-relaxed">{cat.body}</p>
                     <div>
-                      <p className="text-xs font-bold text-foreground uppercase tracking-wide mb-1">Wat krijg je?</p>
+                      <p className="text-sm font-bold text-foreground mb-1">Wat krijg je?</p>
                       <p className="text-sm text-muted-foreground leading-relaxed">{cat.krijg}</p>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -188,7 +188,7 @@ export default function LandschapPage() {
                       </div>
                     </div>
                     <div>
-                      <p className="text-xs font-bold text-foreground uppercase tracking-wide mb-1">Voor wie?</p>
+                      <p className="text-sm font-bold text-foreground mb-1">Voor wie?</p>
                       <p className="text-sm text-muted-foreground leading-relaxed">{cat.voor}</p>
                     </div>
                     {cat.note && (

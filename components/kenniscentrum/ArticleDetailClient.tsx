@@ -164,7 +164,7 @@ export default function ArticleDetailClient({ article, prevArticle, nextArticle 
           {showToc && (
             <aside className="lg:w-64 shrink-0">
               <div className="sticky top-24 bg-card border border-border rounded-xl p-5">
-                <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">Inhoudsopgave</p>
+                <p className="text-sm font-semibold text-foreground mb-3">In dit artikel</p>
                 <ul className="space-y-2">
                   {headings.map((h) => (
                     <li key={h.id}>

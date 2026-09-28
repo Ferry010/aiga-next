@@ -101,15 +101,15 @@ export default function AiCursusMedewerkersPage() {
 
           {/* CTA */}
           <AnimatedSection delay={0.25}>
-            <div className="mt-16 bg-card border border-border rounded-2xl p-8 neon-glow">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl font-display font-semibold text-foreground">
+            <div className="mt-16 border-t-2 border-foreground pt-10">
+              <div className="mb-8">
+                <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground tracking-tight">
                   Zet je hele team op dezelfde AI-basis
                 </h2>
                 <p className="mt-3 text-muted-foreground">Laat je gegevens achter. Binnen één werkdag belt een van ons je.</p>
               </div>
               <LeadForm source="AI cursus medewerkers — offerte aanvraag" />
-              <p className="mt-6 text-center text-sm text-muted-foreground">
+              <p className="mt-6 text-sm text-muted-foreground">
                 Liever eerst de gratis check? <Link href="/gereedheidscan" className="text-primary hover:underline font-medium">In 3 minuten weet je waar je team staat.</Link>
               </p>
             </div>

@@ -66,7 +66,7 @@ function buildEmail(name: string, score: number, category: string, dims: Record<
 </td></tr>
 
 <tr><td style="padding:26px 36px 0">
-<p style="margin:0 0 4px;font-size:12px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:#2F7E8B">Per onderdeel, zwakste eerst</p>
+<p style="margin:0 0 4px;font-size:16px;font-weight:bold;color:#23201D">Per onderdeel, zwakste eerst</p>
 <table width="100%" cellpadding="0" cellspacing="0" border="0">${dimRows}</table>
 </td></tr>
 

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
-import { trackLead, alertTeam } from "@/lib/track";
+import { trackLead, alertTeam, trackQuoteRequest } from "@/lib/track";
 
 function readUtmsFromUrl() {
   const p = new URLSearchParams(window.location.search);
@@ -91,6 +91,7 @@ export default function LeadForm({ source }: { source: string }) {
     }).catch(console.error);
 
     trackLead("lead_offerte", 249);
+    trackQuoteRequest();
     alertTeam({
       type: "offerte",
       naam: form.naam,

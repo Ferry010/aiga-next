@@ -7,7 +7,7 @@ import SectionLabel from "@/components/SectionLabel";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
-import { trackLead, alertTeam } from "@/lib/track";
+import { trackLead, alertTeam, trackQuoteRequest } from "@/lib/track";
 
 const contactFaqs = [
   { q: "Kan ik eerst een demo aanvragen?", a: "Ja. Vermeld dit in je bericht en we plannen iets in." },
@@ -56,6 +56,7 @@ export default function ContactClient() {
 
     setSubmitting(false);
     trackLead("lead_contact");
+    trackQuoteRequest();
     alertTeam({
       type: "contact",
       naam: form.naam,

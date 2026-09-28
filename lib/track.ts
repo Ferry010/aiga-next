@@ -26,6 +26,19 @@ export function trackLead(event: string, value?: number) {
   }
 }
 
+/**
+ * Google Ads conversion "Request quote" (event snippet from Google Ads). Fired on
+ * every offerte request, the primary goal of the Buyers campaign. It goes through
+ * the Google tag in app/layout.tsx and respects Consent Mode.
+ */
+export function trackQuoteRequest(value = 249) {
+  if (typeof window === "undefined") return;
+  const w = window as Win;
+  if (typeof w.gtag === "function") {
+    w.gtag("event", "ads_conversion_Request_quote_1", { value, currency: "EUR" });
+  }
+}
+
 /** A plain GA4 event, e.g. scan_complete. No personal data, no Meta "Lead". */
 export function trackEvent(event: string) {
   if (typeof window === "undefined") return;

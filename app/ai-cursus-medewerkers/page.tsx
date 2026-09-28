@@ -6,9 +6,9 @@ import BreadcrumbNav from "@/components/BreadcrumbNav";
 import LeadForm from "@/components/LeadForm";
 
 export const metadata: Metadata = {
-  title: "AI Cursus voor Medewerkers | Gecertificeerd & Praktisch | AIGA",
+  title: "AI-cursus voor medewerkers: weet je team wat er niet in ChatGPT mag? | AIGA",
   description:
-    "Je mensen leren AI nu van YouTube en van elkaar. Geef je hele team dezelfde praktische basis: welke data eruit blijft, shadow AI, veilig én nuttig gebruik. Online, 2-3 uur, met certificaat.",
+    "Je mensen leren AI nu van YouTube en van elkaar. Geef je hele team dezelfde praktische basis: welke data eruit blijft, shadow AI, veilig én nuttig gebruik. Online in vier modules, met toetsen, digitaal eindexamen en certificaat van deelname. €249 ex btw per medewerker.",
   alternates: { canonical: "/ai-cursus-medewerkers" },
 };
 
@@ -16,7 +16,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Course",
   name: "AI Cursus voor Medewerkers",
-  description: "Praktische AI cursus voor medewerkers. Leer je hele team AI veilig en verantwoord gebruiken, met een digitaal certificaat op naam.",
+  description: "Praktische AI cursus voor medewerkers. Leer je hele team AI veilig en verantwoord gebruiken, met een certificaat van deelname.",
   provider: { "@type": "Organization", name: "AIGA | AI Geletterdheid Academy", url: "https://aigeletterdheid.academy" },
   instructor: { "@type": "Person", name: "Ferry Hoes" },
   courseMode: "online",
@@ -41,7 +41,7 @@ export default function AiCursusMedewerkersPage() {
             <SectionLabel text="AI CURSUS MEDEWERKERS" />
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
               Je mensen leren AI nu van YouTube en van elkaar.{" "}
-              <span className="text-primary">Geef ze één gedeelde basis.</span>
+              <span className="text-primary">Ondertussen weet niemand welke data er weglekt.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
               Iedereen gebruikt AI, maar iedereen op zijn eigen manier. De één plakt bedrijfsdata in ChatGPT, de ander durft er niet aan. Deze AI-cursus voor medewerkers geeft je hele team dezelfde praktische basis: welke data wél en niet in een tool mag, hoe je output controleert, en hoe je AI veilig én nuttig inzet. Geen technische voorkennis nodig, en direct inzetbaar bij onboarding.
@@ -77,10 +77,10 @@ export default function AiCursusMedewerkersPage() {
             </h2>
             <div className="text-muted-foreground leading-relaxed space-y-4">
               <p>
-                De cursus is volledig online en selfpaced. Medewerkers volgen de training in hun eigen tempo, op een moment dat het hen uitkomt. De gemiddelde doorlooptijd is 2 tot 3 uur. De cursus bestaat uit videolessen, praktijkcases en wordt afgesloten met een adaptief examen.
+                De cursus is volledig online en in eigen tempo. Medewerkers volgen vier modules op een moment dat het hen uitkomt: begrijpen wat AI is, veilig en verantwoord werken met AI, slim werken met AI, en AI toepassen in je werk.
               </p>
               <p>
-                Na het behalen van het examen (minimaal 70% score) ontvangt elke medewerker het <strong className="text-foreground">AI Literacy Practitioner certificaat</strong>. Dit certificaat is digitaal ondertekend, deelbaar via LinkedIn en is controleerbaar bewijs dat er getraind is.
+                Na de modules volgen tussentijdse toetsen en een digitaal eindexamen. Bij voldoende resultaat ontvangt elke medewerker een <strong className="text-foreground">certificaat van deelname</strong>. Handig meegenomen: daarmee laat je ook zien dat je AI-geletterdheid ondersteunt, zoals de AI Act vraagt.
               </p>
             </div>
           </AnimatedSection>
@@ -91,7 +91,7 @@ export default function AiCursusMedewerkersPage() {
             </h2>
             <div className="text-muted-foreground leading-relaxed space-y-4">
               <p>
-                De cursus kost <strong className="text-foreground">€249 per medewerker</strong> (exclusief BTW). Er is geen minimum aantal deelnemers. Je kunt starten met 1 seat of direct je hele organisatie inschrijven. Voor grotere aantallen gelden staffelkortingen.
+                De cursus kost <strong className="text-foreground">€249 ex btw per medewerker</strong>. Er is geen minimum: begin met één collega of schrijf direct je hele organisatie in, en voeg later onbeperkt deelnemers toe. Binnen twee werkdagen na akkoord staat je team live.
               </p>
               <p>
                 Bij 50 of meer seats is een <Link href="/masterclass" className="text-primary hover:underline">live Masterclass voor leidinggevenden</Link> gratis inbegrepen.
@@ -106,7 +106,7 @@ export default function AiCursusMedewerkersPage() {
                 <h2 className="text-2xl font-display font-semibold text-foreground">
                   Zet je hele team op dezelfde AI-basis
                 </h2>
-                <p className="mt-3 text-muted-foreground">Laat je gegevens achter. Er antwoordt een echt mens, meestal binnen een werkdag.</p>
+                <p className="mt-3 text-muted-foreground">Laat je gegevens achter. Binnen één werkdag belt een van ons je.</p>
               </div>
               <LeadForm source="AI cursus medewerkers — offerte aanvraag" />
               <p className="mt-6 text-center text-sm text-muted-foreground">

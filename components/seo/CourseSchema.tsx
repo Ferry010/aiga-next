@@ -27,10 +27,10 @@ export default function CourseSchema({
     },
     inLanguage: "nl-NL",
     teaches: [
-      "AI Act Artikel 4",
-      "Verantwoord AI-gebruik",
-      "AI-risicoherkenning",
-      "Compliance en governance",
+      "Begrijpen wat AI is",
+      "Veilig en verantwoord werken met AI",
+      "Slim werken met AI",
+      "AI toepassen in je werk",
     ],
     hasCourseInstance: {
       "@type": "CourseInstance",

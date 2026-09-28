@@ -93,8 +93,8 @@ export default function KenniscentrumClient({ articles }: Props) {
           <AnimatedSection>
             <SectionLabel text="KENNISCENTRUM" />
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
-              Alles over AI-geletterdheid.<br />
-              <span className="text-primary">Op één plek.</span>
+              Wat je team over AI moet weten.<br />
+              <span className="text-primary">Voordat er iets misgaat.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
               Artikelen, uitleg en achtergronden over de AI Act, AI op de werkvloer en verantwoord AI-gebruik. Geschreven door Ferry Hoes.

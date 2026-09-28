@@ -7,6 +7,7 @@ import SectionLabel from "@/components/SectionLabel";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
+import { trackLead, alertTeam } from "@/lib/track";
 
 const contactFaqs = [
   { q: "Kan ik eerst een demo aanvragen?", a: "Ja. Vermeld dit in je bericht en we plannen iets in." },
@@ -54,8 +55,17 @@ export default function ContactClient() {
     }).catch(console.error);
 
     setSubmitting(false);
+    trackLead("lead_contact");
+    alertTeam({
+      type: "contact",
+      naam: form.naam,
+      email: form.email,
+      telefoon: form.telefoon,
+      organisatie: form.organisatie,
+      extra: [form.hulp && `Interesse: ${form.hulp}`, form.opmerkingen].filter(Boolean).join(" · "),
+      source: "Contactpagina",
+    });
     setSubmitted(true);
-    toast.success("Bericht verstuurd! We nemen snel contact met je op.");
   };
 
   return (
@@ -66,11 +76,11 @@ export default function ContactClient() {
           <AnimatedSection>
             <SectionLabel text="CONTACT" />
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
-              Klaar om je team op één AI-basis te zetten?<br />
+              Hoe langer niemand afspraken maakt, hoe meer data er al weg is.<br />
               <span className="neon-text">Laten we praten.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-              Vul het formulier in en we nemen contact met je op met een offerte op maat. Geen verplichtingen.
+              Vul het formulier in. Binnen één werkdag belt een van ons je. Geen verplichtingen.
             </p>
           </AnimatedSection>
 
@@ -78,8 +88,8 @@ export default function ContactClient() {
             <AnimatedSection delay={0.1}>
               {submitted ? (
                 <div className="bg-card border border-neon-purple/30 rounded-2xl p-10 text-center">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Bedankt voor je bericht!</h3>
-                  <p className="text-muted-foreground">We nemen zo snel mogelijk contact met je op.</p>
+                  <h3 className="text-2xl font-display font-bold text-foreground tracking-tight mb-2">Gelukt. De telefoon gaat zo.</h3>
+                  <p className="text-muted-foreground">Binnen één werkdag belt een van ons je op. Robbert, Tom of Ferry: wie het wordt, hangt af van wie het eerst zijn koffie op heeft.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">

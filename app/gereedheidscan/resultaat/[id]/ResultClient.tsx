@@ -3,6 +3,7 @@ import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import Link from "next/link";
 import ScoreGauge from "@/components/ScoreGauge";
+import ScanCallback from "@/components/ScanCallback";
 
 const TIER_COLORS: Record<string, string> = {
   "HOOG RISICO": "hsl(0,84%,60%)",
@@ -56,7 +57,7 @@ export default function ResultClient() {
   const interpretation = TIER_INTERPRETATIONS[category] ?? TIER_INTERPRETATIONS["HOOG RISICO"];
 
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
-  const shareText = `Ik deed de AI Gereedheidscan van AIGA en scoorde ${score}%, ${category}. Hoe scoort jouw organisatie?`;
+  const shareText = `Ik deed de gratis AI-risicocheck van AIGA: ${score}% grip, ${category.toLowerCase()}. Hoeveel grip heeft jouw organisatie?`;
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(shareUrl);
@@ -121,7 +122,7 @@ export default function ResultClient() {
                         className="h-full rounded-full"
                         style={{
                           width: `${pct}%`,
-                          background: "linear-gradient(90deg,#9B3FF5,#E040C8)",
+                          background: pct < 40 ? "hsl(0 65% 48%)" : pct < 70 ? "hsl(38 85% 42%)" : "hsl(152 45% 36%)",
                         }}
                       />
                     </div>
@@ -131,20 +132,9 @@ export default function ResultClient() {
             </div>
           )}
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-3 no-print">
-            <Link
-              href="/contact"
-              className="btn-neon flex-1 text-center py-4 rounded-lg font-semibold text-sm"
-            >
-              Offerte aanvragen
-            </Link>
-            <Link
-              href="/training"
-              className="btn-neon-outline flex-1 text-center py-4 rounded-lg font-semibold text-sm"
-            >
-              Bekijk de training
-            </Link>
+          {/* Next step: one-click callback, then the training */}
+          <div className="no-print">
+            <ScanCallback summary={`${category}, ${score}% grip`} />
           </div>
 
           {/* Share section */}
@@ -157,15 +147,7 @@ export default function ResultClient() {
                 onClick={handleCopy}
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-card text-sm text-foreground hover:border-primary/40 transition-colors"
               >
-                {copied ? (
-                  <>
-                    <span className="text-primary">✓</span> Link gekopieerd
-                  </>
-                ) : (
-                  <>
-                    <span>🔗</span> Kopieer link
-                  </>
-                )}
+                {copied ? "Link gekopieerd" : "Kopieer link"}
               </button>
 
               {/* WhatsApp */}

@@ -6,6 +6,7 @@ import SectionLabel from "@/components/SectionLabel";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
+import { trackLead, alertTeam } from "@/lib/track";
 
 interface ArticleLink {
   title: string;
@@ -71,9 +72,18 @@ export default function OverAigaClient() {
       },
     }).catch(console.error);
 
+    trackLead("lead_contact");
+    alertTeam({
+      type: "contact",
+      naam: form.naam,
+      email: form.email,
+      telefoon: form.telefoon,
+      organisatie: form.organisatie,
+      extra: [form.hulp && `Interesse: ${form.hulp}`, form.opmerkingen].filter(Boolean).join(" · "),
+      source: "Over AIGA",
+    });
     setSubmitting(false);
     setSubmitted(true);
-    toast.success("Bericht verstuurd! We nemen snel contact met je op.");
   };
 
   return (
@@ -120,11 +130,11 @@ export default function OverAigaClient() {
           <AnimatedSection>
             <SectionLabel text="CONTACT" />
             <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
-              Klaar om jouw team te certificeren?<br />
-              <span className="neon-text">Laten we praten.</span>
+              Je team gebruikt AI al.<br />
+              <span className="neon-text">Laten we zorgen dat het veilig gebeurt.</span>
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Vul het formulier in en we nemen contact met je op met een offerte op maat. Geen verplichtingen.
+              Vul het formulier in. Binnen één werkdag belt een van ons je. Geen verplichtingen.
             </p>
           </AnimatedSection>
 
@@ -132,8 +142,8 @@ export default function OverAigaClient() {
             <AnimatedSection delay={0.1}>
               {submitted ? (
                 <div className="bg-background border border-neon-purple/30 rounded-2xl p-10 text-center">
-                  <h3 className="text-xl font-semibold text-foreground mb-2">Bedankt voor je bericht!</h3>
-                  <p className="text-muted-foreground">We nemen zo snel mogelijk contact met je op.</p>
+                  <h3 className="text-2xl font-display font-bold text-foreground tracking-tight mb-2">Gelukt. De telefoon gaat zo.</h3>
+                  <p className="text-muted-foreground">Binnen één werkdag belt een van ons je op. Robbert, Tom of Ferry: wie het wordt, hangt af van wie het eerst zijn koffie op heeft.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">

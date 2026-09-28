@@ -17,9 +17,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Gereedheidscan, Voldoe jij aan de EU AI Act?",
+    title: "Gratis AI-risicocheck: welke data verdwijnt er in AI-tools?",
     description:
-      "Doe de gratis scan en ontdek in 3 minuten hoe jouw organisatie scoort op AI-compliance.",
+      "Ontdek in 3 minuten waar je organisatie risico loopt met AI: shadow AI, bedrijfsdata en kennisverschil in je team.",
   },
 };
 
@@ -29,15 +29,15 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
-      name: "Voor wie is de AI Gereedheidscan bedoeld?",
+      name: "Voor wie is de AI-risicocheck bedoeld?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Voor iedereen die verantwoordelijkheid draagt voor mensen, beleid of compliance binnen een organisatie. Denk aan managers, HR-directeuren, compliance officers, bestuurders en ondernemers die willen weten hoe ze er echt voor staan.",
+        text: "Voor iedereen die verantwoordelijk is voor mensen of werkprocessen: managers, HR, IT, directie en ondernemers die willen weten welke data er via AI hun organisatie verlaat.",
       },
     },
     {
       "@type": "Question",
-      name: "Hoe lang duurt de AI Gereedheidscan?",
+      name: "Hoe lang duurt de AI-risicocheck?",
       acceptedAnswer: {
         "@type": "Answer",
         text: "Minder dan 3 minuten. Je beantwoordt 10 vragen en ziet daarna direct je resultaat, zonder wachten of aanmelden.",
@@ -45,7 +45,7 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      name: "Is de AI Gereedheidscan echt gratis?",
+      name: "Is de AI-risicocheck echt gratis?",
       acceptedAnswer: {
         "@type": "Answer",
         text: "Ja. Geen creditcard, geen proefperiode, geen verborgen kosten. De scan is een service van AIGA om organisaties te helpen begrijpen waar ze staan.",
@@ -53,7 +53,7 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      name: "Wat ontvang ik na de AI Gereedheidscan?",
+      name: "Wat ontvang ik na de AI-risicocheck?",
       acceptedAnswer: {
         "@type": "Answer",
         text: "Direct na de laatste vraag zie je jouw score op 5 dimensies en de bijbehorende tier. Als je je naam en e-mailadres achterlaat, ontvang je een persoonlijk rapport met uitleg en concrete aanbevelingen per e-mail.",
@@ -61,15 +61,7 @@ const faqSchema = {
     },
     {
       "@type": "Question",
-      name: "Wat is de EU AI Act en wat verandert er voor mij?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "De EU AI Act is de Europese wetgeving die regelt hoe organisaties AI mogen gebruiken. Sinds 2 februari 2025 geldt Artikel 4: organisaties die AI inzetten moeten de ontwikkeling van AI-geletterdheid ondersteunen bij medewerkers die met AI werken. Vanaf 2 augustus 2026 kunnen toezichthouders hierop handhaven. Artikel 4 heeft geen eigen boete, maar toezichthouders kunnen het meewegen als verzwarende omstandigheid bij andere overtredingen.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Wat als ik laag scoor op de AI Gereedheidscan?",
+      name: "Wat als ik laag scoor?",
       acceptedAnswer: {
         "@type": "Answer",
         text: "Dan ben je in goed gezelschap, de meeste organisaties staan er niet zo goed voor als ze denken. Wat je wél hebt na de scan: inzicht. En inzicht is het begin van actie. In je rapport staat precies wat je als eerste moet doen.",
@@ -99,7 +91,7 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       position: 2,
-      name: "AI Gereedheidscan",
+      name: "AI-risicocheck",
       item: "https://aigeletterdheid.academy/gereedheidscan",
     },
   ],

@@ -6,7 +6,7 @@ import BreadcrumbNav from "@/components/BreadcrumbNav";
 import LeadForm from "@/components/LeadForm";
 
 export const metadata: Metadata = {
-  title: "AI Act Compliance voor Nederlandse Organisaties | AIGA",
+  title: "Weet jij wat je team met AI doet? AI-gebruik en de AI Act | AIGA",
   description:
     "Je weet niet wat je mensen met AI doen. Maak verantwoord AI-gebruik dagelijkse gewoonte en leg aantoonbaar vast dat je voldoet aan Artikel 4 van de EU AI Act. Gids en training voor Nederlandse organisaties.",
   alternates: { canonical: "/ai-act-compliance-nederland" },
@@ -36,7 +36,7 @@ export default function AiActComplianceNederlandPage() {
             <SectionLabel text="AI ACT COMPLIANCE" />
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
               Je weet niet wat je mensen met AI doen.{" "}
-              <span className="text-primary">Dat is precies het risico.</span>
+              <span className="text-primary">Elke dag zonder zicht is data die al weg is.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
               AI is je organisatie binnengekomen zonder dat iemand het heeft aangezet. Medewerkers plakken vertrouwelijke informatie in ChatGPT, nemen output klakkeloos over en gebruiken tools die niemand heeft goedgekeurd. Een AI-beleid op SharePoint verandert dat niet. Deze training maakt verantwoord AI-gebruik onderdeel van het dagelijks handelen: privacy, vertrouwelijke data, hallucinaties, human oversight, bias en verificatie. En je legt er meteen aantoonbaar mee vast dat je voldoet aan Artikel 4 van de EU AI Act.
@@ -100,7 +100,7 @@ export default function AiActComplianceNederlandPage() {
               <p>AI-geletterdheid training is de meest directe manier om invulling te geven aan Artikel 4 van de AI Act. Een goede training levert:</p>
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li>Aantoonbaar bewijs van investering in AI-kennis</li>
-                <li>Digitaal ondertekend certificaat per medewerker als bewijs van deelname</li>
+                <li>Een certificaat van deelname per medewerker, na een digitaal eindexamen</li>
                 <li>Documentatie voor je eigen dossier en voor toezichthouders</li>
                 <li>Praktische kennis voor verantwoord AI-gebruik</li>
               </ul>
@@ -126,7 +126,7 @@ export default function AiActComplianceNederlandPage() {
                 <h2 className="text-2xl font-display font-semibold text-foreground">
                   Maak verantwoord AI-gebruik dagelijkse gewoonte
                 </h2>
-                <p className="mt-3 text-muted-foreground">Laat je gegevens achter. Er antwoordt een echt mens, meestal binnen een werkdag.</p>
+                <p className="mt-3 text-muted-foreground">Laat je gegevens achter. Binnen één werkdag belt een van ons je.</p>
               </div>
               <LeadForm source="AI Act compliance pagina — offerte aanvraag" />
               <p className="mt-6 text-center text-sm text-muted-foreground">

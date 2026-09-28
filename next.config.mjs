@@ -22,6 +22,11 @@ const nextConfig = {
         destination: "/training",
         permanent: true,
       },
+      // Retired AI Act tools (fines calculator, risk classifier, compliance
+      // downloads, use-case checker) → the free AI-risicocheck
+      { source: "/tools", destination: "/gereedheidscan", permanent: true },
+      { source: "/tools/:path*", destination: "/gereedheidscan", permanent: true },
+      { source: "/ai-use-case-checker", destination: "/gereedheidscan", permanent: true },
       // Broken kenniscentrum slugs → corrected canonical slugs
       {
         source: "/kenniscentrum/drie-soorten-collega-s-e-n-wordt-onvervangbaar-welke-ben-jij",

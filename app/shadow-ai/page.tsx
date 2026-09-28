@@ -33,8 +33,8 @@ export default function ShadowAiPage() {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
-              Een verbod stopt shadow AI niet.{" "}
-              <span className="text-primary">Maak je mensen onderdeel van je governance.</span>
+              Shadow AI draait al in je organisatie.{" "}
+              <span className="text-primary">Een verbod maakt het alleen onzichtbaar.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
               Je mensen gebruiken AI-tools die niemand heeft goedgekeurd. Niet uit onwil, maar omdat het werkt. Verbieden drijft het alleen ondergronds, waar je er helemaal geen zicht meer op hebt. De echte oplossing is niet meer controle op de tools, maar mensen die weten waar de grenzen liggen en waarom. Zo wordt je grootste risico juist je eerste verdedigingslinie.
@@ -104,7 +104,7 @@ export default function ShadowAiPage() {
                 <h2 className="text-2xl font-display font-semibold text-foreground">
                   Krijg grip op shadow AI
                 </h2>
-                <p className="mt-3 text-muted-foreground">Laat je gegevens achter. Er antwoordt een echt mens, meestal binnen een werkdag.</p>
+                <p className="mt-3 text-muted-foreground">Laat je gegevens achter. Binnen één werkdag belt een van ons je.</p>
               </div>
               <LeadForm source="Shadow AI pagina — offerte aanvraag" />
               <p className="mt-6 text-center text-sm text-muted-foreground">

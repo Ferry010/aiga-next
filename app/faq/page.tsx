@@ -46,8 +46,8 @@ export default function FaqPage() {
             <AnimatedSection>
               <SectionLabel text="FAQ" />
               <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
-                Veelgestelde vragen over<br />
-                <span className="neon-text">AI-geletterdheid</span>
+                Vragen over AI in je team?<br />
+                <span className="neon-text">Liever nu gesteld dan na een datalek.</span>
               </h1>
               <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
                 Hier vind je de antwoorden op de meestgestelde vragen over AI-geletterdheid en de EU AI Act.

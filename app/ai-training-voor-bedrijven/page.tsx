@@ -6,9 +6,9 @@ import BreadcrumbNav from "@/components/BreadcrumbNav";
 import LeadForm from "@/components/LeadForm";
 
 export const metadata: Metadata = {
-  title: "AI Training voor Bedrijven in Nederland | AIGA Academy",
+  title: "AI-training voor bedrijven: welke data stopt je team in AI? | AIGA",
   description:
-    "Je betaalt al voor AI-tools zoals Copilot. Zorg dat je team ze ook echt goed gebruikt: veilig, met minder fouten en meer rendement. Gecertificeerde AI-training voor bedrijven, €249 per medewerker.",
+    "Je betaalt al voor AI-tools zoals Copilot. Zorg dat je team ze ook echt goed gebruikt: veilig, met minder fouten en meer rendement. Online training met certificaat van deelname, €249 ex btw per medewerker.",
   alternates: { canonical: "/ai-training-voor-bedrijven" },
 };
 
@@ -16,7 +16,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "AI Training voor Bedrijven in Nederland",
-  description: "Gecertificeerde AI-training voor Nederlandse bedrijven.",
+  description: "Online AI-training voor Nederlandse bedrijven, met certificaat van deelname.",
   url: "https://aigeletterdheid.academy/ai-training-voor-bedrijven",
   publisher: { "@type": "Organization", name: "AIGA | AI Geletterdheid Academy" },
 };
@@ -36,7 +36,7 @@ export default function AiTrainingVoorBedrijvenPage() {
             <SectionLabel text="AI TRAINING VOOR BEDRIJVEN" />
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
               Je betaalt al voor AI-tools.{" "}
-              <span className="text-primary">Haalt je team eruit wat het kost?</span>
+              <span className="text-primary">Maar weet je welke data je team erin stopt?</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
               Je geeft al snel €20 tot €30 per medewerker per maand uit aan Copilot, ChatGPT of Gemini. Maar tools aanzetten is niet hetzelfde als er waarde uit halen. De meesten prompten maar wat, delen data die eruit moet blijven, of laten de tool links liggen. Voor een fractie van wat je al aan licenties betaalt, zorgt deze AI-training voor bedrijven dat je mensen AI veilig én goed gebruiken. Minder fouten, meer rendement.
@@ -65,8 +65,8 @@ export default function AiTrainingVoorBedrijvenPage() {
               {[
                 "Volledig Nederlandstalig en afgestemd op de Nederlandse praktijk",
                 "Schaalbaar: van 1 tot 1000+ medewerkers tegelijk",
-                "Selfpaced: medewerkers volgen de training in eigen tempo, in 2-3 uur",
-                "Certificaat op naam: AI Literacy Practitioner (digitaal ondertekend)",
+                "Vier modules in eigen tempo, met tussentijdse toetsen",
+                "Digitaal eindexamen en certificaat van deelname",
                 "Voortgangsdashboard voor HR en L&D",
                 "Geen technische voorkennis vereist",
               ].map((item) => (
@@ -89,7 +89,7 @@ export default function AiTrainingVoorBedrijvenPage() {
                 Bedrijven die hun mensen nu leren AI goed te gebruiken, halen er meer uit én lopen minder risico. Niet omdat ze meer AI hebben, maar omdat hun team het slim én veilig inzet. Dat merk je aan de kwaliteit van het werk en aan de rust in de organisatie.
               </p>
               <p>
-                Met het AI Literacy Practitioner certificaat laat je bovendien intern en naar klanten zien dat het geregeld is. Digitaal ondertekend en deelbaar via LinkedIn.
+                Wie het digitale eindexamen haalt, krijgt een certificaat van deelname. Zo laat je intern en naar klanten zien dat het geregeld is.
               </p>
             </div>
           </AnimatedSection>
@@ -101,7 +101,7 @@ export default function AiTrainingVoorBedrijvenPage() {
                 <h2 className="text-2xl font-display font-semibold text-foreground">
                   Haal meer uit de AI-tools die je al betaalt
                 </h2>
-                <p className="mt-3 text-muted-foreground">€249 per deelnemer. Laat je gegevens achter, er antwoordt een echt mens.</p>
+                <p className="mt-3 text-muted-foreground">€249 ex btw per deelnemer. Binnen één werkdag belt een van ons je.</p>
               </div>
               <LeadForm source="AI training voor bedrijven — offerte aanvraag" />
               <p className="mt-6 text-center text-sm text-muted-foreground">

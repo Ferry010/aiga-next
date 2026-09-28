@@ -52,15 +52,12 @@ export default function HomePageClient() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight max-w-3xl">
-              Ergens in je team, vandaag:
-              <span className="neon-text block mt-2">
-                {"“Even dit contract in ChatGPT gooien, scheelt me een uur.”"}
-              </span>
+              Ergens in je team verdwijnt vandaag een contract in ChatGPT.
+              <span className="neon-text block mt-2">En niemand weet waar het daarna blijft.</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-3xl leading-relaxed">
-              Onschuldig bedoeld, handig zelfs. En precies zo verdwijnt vertrouwelijke informatie in
-              een tool die jij niet ziet. Dit gebeurt nu dagelijks in je organisatie. Hieronder zie je
-              wat er nog meer speelt, en hoe je het oplost.
+              {"“Even erin gooien, scheelt me een uur.”"} Onschuldig bedoeld, handig zelfs. Maar die data staat
+              nu in een tool die jij niet ziet. En morgen gebeurt het weer.
             </p>
             <div className="mt-8">
               <a href="#oplossing" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-[15px] font-semibold">
@@ -121,6 +118,9 @@ export default function HomePageClient() {
                 van de organisatie.
               </p>
               <p className="mt-3 text-sm text-muted-foreground">Bron: LayerX, 2025.</p>
+              <Link href="/gereedheidscan" className="mt-5 inline-block text-sm font-semibold text-primary hover:underline">
+                Benieuwd hoe dat bij jou zit? Doe de gratis AI-risicocheck →
+              </Link>
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.15}>
@@ -210,8 +210,9 @@ export default function HomePageClient() {
                   persoon. Uitrollen naar honderd of duizend mensen kost je evenveel moeite.
                 </p>
                 <p className="mt-6 text-3xl font-display font-bold text-foreground tracking-tight">
-                  &euro;249 <span className="text-base font-normal text-muted-foreground">per persoon</span>
+                  &euro;249 <span className="text-base font-normal text-muted-foreground">ex btw per deelnemer</span>
                 </p>
+                <p className="mt-2 text-sm font-semibold text-primary">Vanaf 50 deelnemers: de masterclass gratis</p>
                 <Link href="/training" className="btn-neon self-start mt-6 px-7 py-3 rounded-lg text-sm">
                   Bekijk de teamtraining →
                 </Link>
@@ -227,29 +228,14 @@ export default function HomePageClient() {
                   governance en waar jouw aansprakelijkheid ligt.
                 </p>
                 <p className="mt-6 text-3xl font-display font-bold text-foreground tracking-tight">
-                  Prijs op aanvraag
+                  &euro;495 <span className="text-base font-normal text-muted-foreground">ex btw per deelnemer</span>
                 </p>
+                <p className="mt-2 text-sm text-muted-foreground">Minimaal 5 deelnemers, op locatie of online</p>
                 <Link href="/masterclass" className="btn-neon-outline self-start mt-6 px-7 py-3 rounded-lg text-sm font-semibold">
                   Bekijk de masterclass →
                 </Link>
               </div>
             </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Sectie 6 - DE AI ACT (laag, geen angst) */}
-      <section className="py-24 bg-card border-y border-border">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <h2 className="text-2xl sm:text-4xl font-display font-semibold text-foreground leading-[1.15] max-w-3xl">
-              En ja, het helpt ook met de AI Act.
-            </h2>
-            <p className="mt-5 text-lg text-muted-foreground max-w-3xl leading-relaxed">
-              De EU AI Act vraagt organisaties om AI-geletterdheid te ondersteunen. Hoe je dat doet,
-              bepaal je zelf. Met een gestructureerd programma regel je dat in één keer, en kun je het
-              aantonen. Maar dat is de bijvangst. De reden is simpeler: je mensen gebruiken AI nu al.
-            </p>
           </AnimatedSection>
         </div>
       </section>

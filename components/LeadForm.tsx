@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
+import { trackLead, alertTeam } from "@/lib/track";
 
 function readUtmsFromUrl() {
   const p = new URLSearchParams(window.location.search);
@@ -24,20 +25,6 @@ function getStoredUtms(): Record<string, string | undefined> {
   }
 }
 
-function fireTracking() {
-  if (typeof window === "undefined") return;
-  if (typeof (window as any).gtag === "function") {
-    (window as any).gtag("event", "lead_offerte", { currency: "EUR", value: 249 });
-    // TODO: Uncomment and fill once Google Ads conversion label is known:
-    // (window as any).gtag("event", "conversion", { send_to: "AW-11161273960/zzzzzzzzzzz", currency: "EUR", value: 249 });
-  }
-  try {
-    const consent = localStorage.getItem("aiga_cookie_consent");
-    if (consent === "accepted" && typeof (window as any).fbq === "function") {
-      (window as any).fbq("track", "Lead");
-    }
-  } catch { /* localStorage unavailable */ }
-}
 
 /**
  * Streamlined, conversion-tracked lead form.
@@ -103,18 +90,27 @@ export default function LeadForm({ source }: { source: string }) {
       },
     }).catch(console.error);
 
-    fireTracking();
+    trackLead("lead_offerte", 249);
+    alertTeam({
+      type: "offerte",
+      naam: form.naam,
+      email: form.email,
+      telefoon: form.telefoon,
+      organisatie: form.bedrijf,
+      extra: `Teamgrootte: ${form.teamgrootte || "onbekend"}`,
+      source: [source, utmNote].filter(Boolean).join(" · "),
+    });
     setSubmitting(false);
     setSubmitted(true);
   };
 
   if (submitted) {
     return (
-      <div className="bg-card border border-neon-purple/30 rounded-2xl p-10 text-center">
-        <h3 className="text-xl font-semibold text-foreground mb-2">Top, we hebben je aanvraag.</h3>
-        <p className="text-muted-foreground leading-relaxed">
-          We nemen snel contact op om de snelste route naar een AI-vaardig team met je door te nemen.
-          Voor jezelf of voor je hele organisatie.
+      <div className="bg-card border border-neon-purple/30 rounded-2xl p-8 sm:p-10 text-left">
+        <h3 className="text-2xl font-display font-bold text-foreground tracking-tight">Gelukt. De telefoon gaat zo.</h3>
+        <p className="mt-3 text-muted-foreground leading-relaxed">
+          Binnen één werkdag belt een van ons je op. Robbert, Tom of Ferry: wie het wordt, hangt af van wie het
+          eerst zijn koffie op heeft.
         </p>
       </div>
     );

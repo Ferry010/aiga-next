@@ -5,6 +5,8 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import { motion } from "framer-motion";
 import { useReduceMotion } from "@/hooks/use-reduce-motion";
+import ScanCallback from "@/components/ScanCallback";
+import { trackLead } from "@/lib/track";
 
 const questions = [
   { q: "Weet je precies welke AI-tools je mensen gebruiken voor hun werk?", options: ["Nee, geen idee", "Grofweg, maar niet zeker", "Van de meeste teams wel", "Ja, we hebben er goed zicht op"] },
@@ -130,6 +132,7 @@ export default function QuizClient() {
       });
       const url = `${window.location.origin}/gereedheidscan/resultaat/${id}?${params.toString()}`;
       setShareUrl(url);
+      trackLead("lead_scan");
     } catch {
       setSubmitError(true);
       setSubmitting(false);
@@ -154,8 +157,8 @@ export default function QuizClient() {
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight">
-              Hoeveel risico loopt je organisatie met AI?<br />
-              <span className="neon-text">Ontdek het in 3 minuten.</span>
+              Welke bedrijfsdata verdwijnt er bij jou in AI-tools?<br />
+              <span className="neon-text">Ontdek in 3 minuten waar je risico loopt.</span>
             </h1>
 
             <p className="mt-6 text-xl text-muted-foreground leading-relaxed max-w-2xl">
@@ -291,7 +294,7 @@ export default function QuizClient() {
               {[
                 {
                   q: "Voor wie is deze scan bedoeld?",
-                  a: "Voor iedereen die verantwoordelijkheid draagt voor mensen, beleid of compliance binnen een organisatie. Denk aan managers, HR-directeuren, compliance officers, bestuurders en ondernemers die willen weten hoe ze er echt voor staan.",
+                  a: "Voor iedereen die verantwoordelijk is voor mensen of werkprocessen: managers, HR, IT, directie en ondernemers die willen weten welke data er via AI hun organisatie verlaat.",
                 },
                 {
                   q: "Hoe lang duurt de scan?",
@@ -393,7 +396,7 @@ export default function QuizClient() {
     score: Math.round((d.indices.reduce((sum, i) => sum + (answers[i] || 0), 0) / 6) * 100),
   }));
 
-  const shareText = `Ik deed de AI Gereedheidscan van AIGA en scoorde ${pct}%, ${tier.badge}. Hoe scoort jouw organisatie?`;
+  const shareText = `Ik deed de gratis AI-risicocheck van AIGA: ${pct}% grip, ${tier.badge.toLowerCase()}. Hoeveel grip heeft jouw organisatie?`;
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(shareUrl);
@@ -468,7 +471,7 @@ export default function QuizClient() {
                       <div className="h-2 bg-border rounded-full overflow-hidden">
                         <div
                           className="h-full rounded-full"
-                          style={{ width: `${d.score}%`, background: "linear-gradient(90deg,#9B3FF5,#E040C8)" }}
+                          style={{ width: `${d.score}%`, background: d.score < 40 ? "hsl(0 65% 48%)" : d.score < 70 ? "hsl(38 85% 42%)" : "hsl(152 45% 36%)" }}
                         />
                       </div>
                     </div>
@@ -476,14 +479,9 @@ export default function QuizClient() {
                 </div>
               </div>
 
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 mb-8">
-                <Link href="/contact" className="btn-neon flex-1 text-center py-4 rounded-lg font-semibold text-sm">
-                  Offerte aanvragen
-                </Link>
-                <Link href="/training" className="btn-neon-outline flex-1 text-center py-4 rounded-lg font-semibold text-sm">
-                  Bekijk de training
-                </Link>
+              {/* Next step: one-click callback, then the training */}
+              <div className="mb-10">
+                <ScanCallback name={formData.naam} email={formData.email} summary={`${tier.badge}, ${pct}% grip`} />
               </div>
 
               {/* Sharing */}
@@ -494,7 +492,7 @@ export default function QuizClient() {
                     onClick={handleCopy}
                     className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg border border-border bg-card text-sm text-foreground hover:border-primary/40 transition-colors"
                   >
-                    {copied ? <><span className="text-primary">✓</span> Link gekopieerd</> : <><span>🔗</span> Kopieer link</>}
+                    {copied ? "Link gekopieerd" : "Kopieer link"}
                   </button>
                   <a
                     href={`https://wa.me/?text=${encodeURIComponent(shareText + "\n" + shareUrl)}`}

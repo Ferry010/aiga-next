@@ -8,7 +8,6 @@ const navLinks = [
   { to: "/training", label: "Teamtraining" },
   { to: "/masterclass", label: "Masterclass" },
   { to: "/kenniscentrum", label: "Kenniscentrum" },
-  { to: "/tools", label: "Tools" },
   { to: "/over-aiga", label: "Over AIGA" },
 ];
 

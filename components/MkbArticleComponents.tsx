@@ -189,8 +189,8 @@ export const MkbLeesOok = () => (
   <AnimatedSection delay={0.16}>
     <div className="mt-10 space-y-2">
       <p className="text-sm font-semibold text-foreground mb-3">Lees ook</p>
-      <Link href="/tools/downloads/ai-act-compliance-checklist" className="block text-sm text-primary hover:underline">
-        AI Act compliance checklist voor kleine bedrijven →
+      <Link href="/gereedheidscan" className="block text-sm text-primary hover:underline">
+        Gratis AI-risicocheck: welke data verdwijnt er bij jou in AI-tools? →
       </Link>
       <Link href="/kenniscentrum/ai-geletterdheidsplicht-zo-voldoe-je-in-5-stappen-aiga" className="block text-sm text-primary hover:underline">
         AI-geletterdheidsplicht: zo voldoe je in 5 stappen →

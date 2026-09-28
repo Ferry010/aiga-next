@@ -5,6 +5,7 @@ import FerryAuthority from "@/components/FerryAuthority";
 import LeadForm from "@/components/LeadForm";
 import FaqList from "@/components/FaqList";
 import ShareWithColleague from "@/components/ShareWithColleague";
+import StickyCta from "@/components/StickyCta";
 import { TRAINING_FAQ } from "@/lib/faq";
 
 const modules = [
@@ -38,22 +39,14 @@ const included = [
   "Tussentijdse toetsen",
   "Digitaal eindexamen",
   "Certificaat van deelname",
-  "Dashboard: jij ziet wie klaar is",
   "Data op Europese servers",
-  "Onbeperkt deelnemers toevoegen",
-];
-
-const examples = [
-  { n: 10, total: "€2.490", extra: "" },
-  { n: 25, total: "€6.225", extra: "" },
-  { n: 50, total: "€12.450", extra: "+ masterclass voor je MT gratis" },
 ];
 
 export default function TrainingClient() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="pt-20 pb-20">
+      <section className="pt-10 pb-14 sm:pt-20 sm:pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight max-w-3xl">
@@ -61,9 +54,8 @@ export default function TrainingClient() {
               <span className="neon-text block mt-2">Weet iedereen wat er níet in mag?</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-3xl leading-relaxed">
-              Zonder gedeelde afspraken verdwijnt er elke dag bedrijfsdata in tools die jij niet ziet. Niet uit
-              onwil: AI kwam sneller binnen dan de afspraken erover. Deze online training geeft je hele team in een
-              paar uur dezelfde basis.
+              Zonder afspraken verdwijnt er elke dag bedrijfsdata in tools die jij niet ziet. Niet uit onwil:
+              niemand heeft de grens ooit uitgelegd. Deze training doet dat, voor je hele team, in een paar uur.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <a href="#offerte" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-[15px] font-semibold">
@@ -73,15 +65,17 @@ export default function TrainingClient() {
                 Bekijk wat het kost
               </a>
             </div>
-            <p className="mt-6 font-mono text-sm text-muted-foreground">
-              €249 ex btw per deelnemer · onbeperkt deelnemers toevoegen · binnen 2 werkdagen live
-            </p>
+            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-muted-foreground">
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />€249 ex btw per persoon</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />Zoveel mensen als je wil</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />Binnen 2 werkdagen live</li>
+            </ul>
           </AnimatedSection>
         </div>
       </section>
 
       {/* Modules */}
-      <section className="py-20 bg-card border-y border-border">
+      <section className="py-14 sm:py-20 bg-card border-y border-border">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-display font-bold text-foreground leading-[1.15] tracking-tight">
@@ -108,15 +102,15 @@ export default function TrainingClient() {
       </section>
 
       {/* How it works */}
-      <section className="py-20">
+      <section className="py-14 sm:py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-display font-bold text-foreground leading-[1.15] tracking-tight max-w-3xl">
               De grootste angst bij online training is dat niemand hem afmaakt.
             </h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Terecht. Daarom is deze kort, met toetsen tussendoor en een examen aan het eind. En jij ziet in het
-              dashboard precies wie klaar is.
+              Terecht. Daarom is deze kort, in vier modules, met toetsen tussendoor en een examen aan het eind.
+              Zo weet iedereen waar hij staat.
             </p>
           </AnimatedSection>
           <StaggerContainer className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8">
@@ -134,7 +128,7 @@ export default function TrainingClient() {
       </section>
 
       {/* Price */}
-      <section id="prijs" className="py-20 block-lilac border-y border-border scroll-mt-20">
+      <section id="prijs" className="py-14 sm:py-20 block-lilac border-y border-border scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-display font-bold text-foreground leading-[1.15] tracking-tight">
@@ -145,17 +139,16 @@ export default function TrainingClient() {
             <div className="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-10 md:gap-14">
               <div>
                 <p className="text-6xl sm:text-7xl font-display font-bold text-foreground leading-none tracking-tight">€249</p>
-                <p className="mt-3 text-lg text-muted-foreground">ex btw per deelnemer</p>
-                <div className="mt-8 border-b border-border">
-                  {examples.map((e) => (
-                    <div key={e.n} className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-t border-border py-3">
-                      <span className="text-foreground">{e.n} deelnemers</span>
-                      <span className="font-mono text-foreground">
-                        {e.total} <span className="text-muted-foreground text-sm">ex btw</span>
-                      </span>
-                      {e.extra && <span className="w-full text-sm font-semibold text-primary">{e.extra}</span>}
-                    </div>
-                  ))}
+                <p className="mt-3 text-lg text-muted-foreground">ex btw per persoon</p>
+                <p className="mt-6 text-lg text-foreground leading-relaxed max-w-sm">
+                  Zet zoveel mensen in de training als je wil, nu of later. Iedereen kost hetzelfde.
+                </p>
+                <div className="mt-8 border-l-2 border-primary pl-5 max-w-sm">
+                  <p className="font-display font-bold text-foreground">Boek je 50 plekken of meer in één keer?</p>
+                  <p className="mt-1 text-muted-foreground leading-relaxed">
+                    Dan krijgt je directie en MT de live masterclass er gratis bij. Normaal €495 ex btw per persoon.{" "}
+                    <Link href="/masterclass" className="text-primary font-semibold hover:underline">Bekijk de masterclass</Link>
+                  </p>
                 </div>
               </div>
               <div>
@@ -168,14 +161,6 @@ export default function TrainingClient() {
                     </li>
                   ))}
                 </ul>
-                <div className="mt-6 border-l-2 border-primary pl-5">
-                  <p className="font-display font-bold text-foreground">Vanaf 50 deelnemers: de masterclass gratis</p>
-                  <p className="mt-1 text-muted-foreground leading-relaxed">
-                    Je directie en management krijgen de live masterclass van twee uur erbij. Normaal €495 ex btw per
-                    persoon.{" "}
-                    <Link href="/masterclass" className="text-primary font-semibold hover:underline">Bekijk de masterclass</Link>
-                  </p>
-                </div>
                 <p className="mt-6 text-sm text-muted-foreground leading-relaxed">
                   Handig meegenomen: het certificaat van deelname laat zien dat je AI-geletterdheid ondersteunt, precies
                   wat de AI Act vraagt.
@@ -195,7 +180,7 @@ export default function TrainingClient() {
       <FerryAuthority />
 
       {/* FAQ */}
-      <section className="py-20">
+      <section className="py-14 sm:py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-display font-bold text-foreground leading-[1.15] tracking-tight mb-8">
@@ -207,14 +192,14 @@ export default function TrainingClient() {
       </section>
 
       {/* Colleague package */}
-      <section className="pb-20">
+      <section className="pb-14 sm:pb-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <ShareWithColleague product="training" />
         </div>
       </section>
 
       {/* Offerte */}
-      <section id="offerte" className="py-20 block-peach border-t border-border scroll-mt-20">
+      <section id="offerte" className="py-14 sm:py-20 block-peach border-t border-border scroll-mt-20">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <div className="mb-8">
@@ -235,6 +220,8 @@ export default function TrainingClient() {
           </AnimatedSection>
         </div>
       </section>
+
+      <StickyCta target="offerte" label="Vraag een offerte aan" note="€249 ex btw p.p." />
     </div>
   );
 }

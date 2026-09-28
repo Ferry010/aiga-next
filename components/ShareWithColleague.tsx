@@ -20,8 +20,9 @@ Onze mensen gebruiken AI al, van ChatGPT tot Copilot. Maar we hebben geen gedeel
 Ik kwam AIGA tegen. Zij geven het hele team in één keer dezelfde basis:
 - 4 online modules, in eigen tempo
 - tussentijdse toetsen en een digitaal eindexamen, met certificaat van deelname
-- €249 ex btw per deelnemer, binnen 2 werkdagen live
-- vanaf 50 deelnemers een gratis masterclass voor het MT
+- €249 ex btw per persoon, en we kunnen zoveel mensen toevoegen als we willen
+- binnen 2 werkdagen live
+- boeken we 50 plekken of meer in één keer, dan krijgt het MT de masterclass gratis
 
 De one-pager met alles op een rij:
 ${pdf}
@@ -41,8 +42,8 @@ Onze mensen gebruiken AI al, maar als leiding hebben we nooit echt bepaald waar 
 
 AIGA geeft daar een live masterclass over voor directie en management:
 - 2 uur, op locatie of online
-- €495 ex btw per deelnemer, minimaal 5
-- gratis als 50 of meer collega's de teamtraining volgen
+- €495 ex btw per persoon, minimaal 5
+- gratis als we 50 plekken of meer in de teamtraining in één keer boeken
 
 De one-pager: ${pdf}
 Meer info: ${page}

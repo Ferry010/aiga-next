@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 import FerryAuthority from "@/components/FerryAuthority";
+import StickyCta from "@/components/StickyCta";
 
 const dinsdag = [
   {
@@ -48,10 +49,10 @@ export default function HomePageClient() {
   return (
     <div className="min-h-screen">
       {/* Sectie 0 - HERO */}
-      <section className="pt-20 pb-24">
+      <section className="pt-10 pb-16 sm:pt-20 sm:pb-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
-            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight max-w-3xl">
+            <h1 className="text-[2.15rem] sm:text-6xl font-display font-bold text-foreground leading-[1.06] tracking-tight max-w-3xl">
               Ergens in je team verdwijnt vandaag een contract in ChatGPT.
               <span className="neon-text block mt-2">En niemand weet waar het daarna blijft.</span>
             </h1>
@@ -69,7 +70,7 @@ export default function HomePageClient() {
       </section>
 
       {/* Sectie 1 - DE DINSDAG */}
-      <section className="py-24 bg-card border-y border-border">
+      <section className="py-16 sm:py-24 bg-card border-y border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-display font-semibold text-foreground leading-[1.15]">
@@ -98,11 +99,11 @@ export default function HomePageClient() {
       </section>
 
       {/* Sectie 2 - JE ZIET HET NIET */}
-      <section className="py-24 block-lilac border-b border-border">
+      <section className="py-16 sm:py-24 block-lilac border-b border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-display font-semibold text-foreground leading-[1.15] max-w-3xl">
-              En je bent niet de enige die dit niet in beeld heeft.
+              Bijna geen enkele organisatie heeft dit in beeld.
             </h2>
             <p className="mt-5 text-lg text-muted-foreground max-w-3xl leading-relaxed">
               Het meeste AI-gebruik loopt via privé-accounts, buiten alles om wat je hebt afgesproken.
@@ -132,7 +133,7 @@ export default function HomePageClient() {
       </section>
 
       {/* Sectie 3 - WAT JE NU WAARSCHIJNLIJK DENKT */}
-      <section className="py-24">
+      <section className="py-16 sm:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-display font-semibold text-foreground leading-[1.15]">
@@ -160,7 +161,7 @@ export default function HomePageClient() {
       </section>
 
       {/* Sectie 4 - ZO VOELT HET GEREGELD */}
-      <section className="py-24 block-sage border-y border-border">
+      <section className="py-16 sm:py-24 block-sage border-y border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-display font-semibold text-foreground leading-[1.15]">
@@ -189,7 +190,7 @@ export default function HomePageClient() {
       <FerryAuthority />
 
       {/* Sectie 5 - TWEE MANIEREN (fork) */}
-      <section id="oplossing" className="py-24 scroll-mt-20">
+      <section id="oplossing" className="py-16 sm:py-24 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-display font-semibold text-foreground leading-[1.15] max-w-3xl">
@@ -210,9 +211,9 @@ export default function HomePageClient() {
                   persoon. Uitrollen naar honderd of duizend mensen kost je evenveel moeite.
                 </p>
                 <p className="mt-6 text-3xl font-display font-bold text-foreground tracking-tight">
-                  &euro;249 <span className="text-base font-normal text-muted-foreground">ex btw per deelnemer</span>
+                  &euro;249 <span className="text-base font-normal text-muted-foreground">ex btw per persoon</span>
                 </p>
-                <p className="mt-2 text-sm font-semibold text-primary">Vanaf 50 deelnemers: de masterclass gratis</p>
+                <p className="mt-2 text-sm font-semibold text-primary">50+ plekken in één keer geboekt? De masterclass voor je MT is gratis.</p>
                 <Link href="/training" className="btn-neon self-start mt-6 px-7 py-3 rounded-lg text-sm">
                   Bekijk de teamtraining →
                 </Link>
@@ -228,7 +229,7 @@ export default function HomePageClient() {
                   governance en waar jouw aansprakelijkheid ligt.
                 </p>
                 <p className="mt-6 text-3xl font-display font-bold text-foreground tracking-tight">
-                  &euro;495 <span className="text-base font-normal text-muted-foreground">ex btw per deelnemer</span>
+                  &euro;495 <span className="text-base font-normal text-muted-foreground">ex btw per persoon</span>
                 </p>
                 <p className="mt-2 text-sm text-muted-foreground">Minimaal 5 deelnemers, op locatie of online</p>
                 <Link href="/masterclass" className="btn-neon-outline self-start mt-6 px-7 py-3 rounded-lg text-sm font-semibold">
@@ -241,7 +242,7 @@ export default function HomePageClient() {
       </section>
 
       {/* Sectie 7 - SLOT */}
-      <section className="py-24 statement-block">
+      <section className="py-16 sm:py-24 statement-block">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <h2 className="text-3xl sm:text-5xl font-display font-bold leading-[1.12] max-w-2xl mx-auto">
@@ -265,6 +266,7 @@ export default function HomePageClient() {
           </AnimatedSection>
         </div>
       </section>
+      <StickyCta target="oplossing" label="Bekijk de oplossing" />
     </div>
   );
 }

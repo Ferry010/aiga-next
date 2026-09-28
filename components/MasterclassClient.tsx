@@ -5,6 +5,7 @@ import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/Ani
 import FerryAuthority from "@/components/FerryAuthority";
 import FaqList from "@/components/FaqList";
 import ShareWithColleague from "@/components/ShareWithColleague";
+import StickyCta from "@/components/StickyCta";
 import { MASTERCLASS_FAQ } from "@/lib/faq";
 import { createClient } from "@/lib/supabase/client";
 import { trackLead, alertTeam } from "@/lib/track";
@@ -94,7 +95,7 @@ export default function MasterclassClient() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="pt-20 pb-20">
+      <section className="pt-10 pb-14 sm:pt-20 sm:pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight max-w-3xl">
@@ -113,15 +114,17 @@ export default function MasterclassClient() {
                 Bekijk wat het kost
               </a>
             </div>
-            <p className="mt-6 font-mono text-sm text-muted-foreground">
-              €495 ex btw per deelnemer · minimaal 5 · op locatie of online · gratis bij 50+ deelnemers aan de teamtraining
-            </p>
+            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-muted-foreground">
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />€495 ex btw per persoon, minimaal 5</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />Op locatie of online</li>
+              <li className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />Gratis bij 50+ plekken in de teamtraining</li>
+            </ul>
           </AnimatedSection>
         </div>
       </section>
 
       {/* Why leadership */}
-      <section className="py-20 bg-card border-y border-border">
+      <section className="py-14 sm:py-20 bg-card border-y border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-display font-bold text-foreground leading-[1.15] tracking-tight max-w-3xl">
@@ -141,7 +144,7 @@ export default function MasterclassClient() {
       </section>
 
       {/* Program */}
-      <section className="py-20">
+      <section className="py-14 sm:py-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-display font-bold text-foreground leading-[1.15] tracking-tight">
@@ -166,7 +169,7 @@ export default function MasterclassClient() {
       </section>
 
       {/* Takeaways */}
-      <section className="py-20 bg-card border-y border-border">
+      <section className="py-14 sm:py-20 bg-card border-y border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-display font-bold text-foreground leading-[1.15] tracking-tight">
@@ -187,7 +190,7 @@ export default function MasterclassClient() {
       </section>
 
       {/* Price */}
-      <section id="prijs" className="py-20 block-lilac border-b border-border scroll-mt-20">
+      <section id="prijs" className="py-14 sm:py-20 block-lilac border-b border-border scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-display font-bold text-foreground leading-[1.15] tracking-tight">
@@ -198,11 +201,11 @@ export default function MasterclassClient() {
             <div className="grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-10 md:gap-14">
               <div>
                 <p className="text-6xl sm:text-7xl font-display font-bold text-foreground leading-none tracking-tight">€495</p>
-                <p className="mt-3 text-lg text-muted-foreground">ex btw per deelnemer, minimaal 5</p>
+                <p className="mt-3 text-lg text-muted-foreground">ex btw per persoon, minimaal 5</p>
                 <div className="mt-8 border-l-2 border-primary pl-5">
-                  <p className="font-display font-bold text-foreground">Gratis bij 50+ deelnemers aan de teamtraining</p>
+                  <p className="font-display font-bold text-foreground">Gratis bij 50+ plekken in de teamtraining</p>
                   <p className="mt-1 text-muted-foreground leading-relaxed">
-                    Train je hele team, en de leiding krijgt de richting er gratis bij.{" "}
+                    Boek je 50 plekken of meer in de teamtraining in één keer? Dan is de masterclass gratis.{" "}
                     <Link href="/training" className="text-primary font-semibold hover:underline">Bekijk de teamtraining</Link>
                   </p>
                 </div>
@@ -232,7 +235,7 @@ export default function MasterclassClient() {
       <FerryAuthority />
 
       {/* FAQ */}
-      <section className="py-20">
+      <section className="py-14 sm:py-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-2xl sm:text-4xl font-display font-bold text-foreground leading-[1.15] tracking-tight mb-8">
@@ -244,14 +247,14 @@ export default function MasterclassClient() {
       </section>
 
       {/* Colleague package */}
-      <section className="pb-20">
+      <section className="pb-14 sm:pb-20">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <ShareWithColleague product="masterclass" />
         </div>
       </section>
 
       {/* Form */}
-      <section id="aanmelden" className="py-20 block-peach border-t border-border scroll-mt-20">
+      <section id="aanmelden" className="py-14 sm:py-20 block-peach border-t border-border scroll-mt-20">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.1] tracking-tight">
@@ -327,6 +330,7 @@ export default function MasterclassClient() {
           )}
         </div>
       </section>
+      <StickyCta target="aanmelden" label="Plan de masterclass" note="€495 ex btw p.p." />
     </div>
   );
 }

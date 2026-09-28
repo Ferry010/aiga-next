@@ -1,23 +1,22 @@
 import Link from "next/link";
 
 const footerLinks = [
-  { to: "/training", label: "Voor teams" },
-  { to: "/masterclass", label: "Voor leidinggevenden" },
+  { to: "/training", label: "Teamtraining" },
+  { to: "/masterclass", label: "Masterclass" },
   { to: "/kenniscentrum", label: "Kenniscentrum" },
   { to: "/over-aiga", label: "Over AIGA" },
   { to: "/contact", label: "Contact" },
   { to: "/faq", label: "FAQ" },
-  { to: "/gereedheidscan", label: "AI Gereedheidscan" },
+  { to: "/gereedheidscan", label: "Gratis AI-risicocheck" },
   { to: "/speakers-academy", label: "Speakers Academy" },
 ];
 
 const seoLinks = [
   { to: "/ai-geletterdheid-nederland", label: "AI-Geletterdheid Nederland" },
   { to: "/ai-training-voor-bedrijven", label: "AI Training voor Bedrijven" },
-  { to: "/ai-act-compliance-nederland", label: "AI Act Compliance" },
+  { to: "/ai-act-compliance-nederland", label: "Zicht op AI-gebruik" },
   { to: "/ai-cursus-medewerkers", label: "AI Cursus Medewerkers" },
   { to: "/shadow-ai", label: "Shadow AI" },
-  { to: "/ai-act-deadlines", label: "AI Act Deadlines" },
 ];
 
 const Footer = () => (

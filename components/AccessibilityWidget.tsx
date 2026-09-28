@@ -69,7 +69,7 @@ const AccessibilityWidget = () => {
   return (
     <div
       ref={ref}
-      className="fixed bottom-6 right-6 z-40"
+      className="fixed bottom-24 right-3 md:bottom-6 md:right-6 z-40"
       style={{ fontSize: "16px", filter: "none" }}
     >
       {open && (
@@ -91,7 +91,7 @@ const AccessibilityWidget = () => {
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label="Toegankelijkheidsinstellingen"
-        className="h-12 w-12 rounded-full border-2 border-primary bg-foreground text-primary flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
+        className="h-11 w-11 md:h-12 md:w-12 rounded-full border-2 border-primary bg-foreground text-primary flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
         style={{ fontSize: "16px", filter: "none" }}
       >
         <Accessibility size={22} />

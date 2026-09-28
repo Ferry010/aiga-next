@@ -6,7 +6,7 @@ import { MASTERCLASS_FAQ, faqJsonLd } from "@/lib/faq";
 export const metadata: Metadata = {
   title: "AI-masterclass voor directie en MT: wie bepaalt de grens? | AIGA",
   description:
-    "Live masterclass van twee uur voor directie en management over verantwoord AI-gebruik, governance en verantwoordelijkheid. €495 ex btw per deelnemer, gratis bij 50+ deelnemers aan de teamtraining.",
+    "Live masterclass van twee uur voor directie en management over verantwoord AI-gebruik, governance en verantwoordelijkheid. €495 ex btw per persoon, gratis als je 50+ plekken in de teamtraining in één keer boekt.",
   alternates: { canonical: "https://aigeletterdheid.academy/masterclass" },
 };
 

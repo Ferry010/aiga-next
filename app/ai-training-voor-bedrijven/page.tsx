@@ -67,7 +67,6 @@ export default function AiTrainingVoorBedrijvenPage() {
                 "Schaalbaar: van 1 tot 1000+ medewerkers tegelijk",
                 "Vier modules in eigen tempo, met tussentijdse toetsen",
                 "Digitaal eindexamen en certificaat van deelname",
-                "Voortgangsdashboard voor HR en L&D",
                 "Geen technische voorkennis vereist",
               ].map((item) => (
                 <StaggerItem key={item}>
@@ -101,7 +100,7 @@ export default function AiTrainingVoorBedrijvenPage() {
                 <h2 className="text-2xl font-display font-semibold text-foreground">
                   Haal meer uit de AI-tools die je al betaalt
                 </h2>
-                <p className="mt-3 text-muted-foreground">€249 ex btw per deelnemer. Binnen één werkdag belt een van ons je.</p>
+                <p className="mt-3 text-muted-foreground">€249 ex btw per persoon. Binnen één werkdag belt een van ons je.</p>
               </div>
               <LeadForm source="AI training voor bedrijven — offerte aanvraag" />
               <p className="mt-6 text-center text-sm text-muted-foreground">

@@ -91,10 +91,10 @@ export default function AiCursusMedewerkersPage() {
             </h2>
             <div className="text-muted-foreground leading-relaxed space-y-4">
               <p>
-                De cursus kost <strong className="text-foreground">€249 ex btw per medewerker</strong>. Er is geen minimum: begin met één collega of schrijf direct je hele organisatie in, en voeg later onbeperkt deelnemers toe. Binnen twee werkdagen na akkoord staat je team live.
+                De cursus kost <strong className="text-foreground">€249 ex btw per persoon</strong>. Er is geen minimum: begin met één collega of schrijf direct je hele organisatie in, en zet er later zoveel mensen bij als je wil. Binnen twee werkdagen na akkoord staat je team live.
               </p>
               <p>
-                Bij 50 of meer seats is een <Link href="/masterclass" className="text-primary hover:underline">live Masterclass voor leidinggevenden</Link> gratis inbegrepen.
+                Boek je 50 plekken of meer in één keer? Dan krijgen je directie en MT de <Link href="/masterclass" className="text-primary hover:underline">live masterclass</Link> gratis.
               </p>
             </div>
           </AnimatedSection>

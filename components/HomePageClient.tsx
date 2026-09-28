@@ -196,18 +196,15 @@ export default function HomePageClient() {
             <h2 className="text-3xl sm:text-[3.4rem] font-display font-bold leading-[1.05] tracking-tight max-w-3xl">
               Je team gebruikt AI. <span className="text-primary">Zorg dat ze weten hoe.</span>
             </h2>
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+            <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-x-6 gap-y-4">
               <Link
                 href="/training"
                 className="inline-flex justify-center px-7 py-3.5 rounded-full text-[15px] font-semibold bg-white text-[hsl(var(--deep))] transition-transform hover:-translate-y-0.5"
               >
                 Bekijk de teamtraining
               </Link>
-              <Link
-                href="/masterclass"
-                className="inline-flex justify-center px-7 py-3.5 rounded-full text-[15px] font-semibold border-2 border-white/50 text-white transition-colors hover:bg-white/10"
-              >
-                Bekijk de masterclass
+              <Link href="/masterclass" className="text-[15px] font-semibold text-primary hover:underline">
+                Alleen voor je directie? Bekijk de masterclass
               </Link>
             </div>
           </AnimatedSection>

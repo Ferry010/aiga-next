@@ -269,7 +269,7 @@ export default function AiBegrippenClient() {
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
             <Link href="/gereedheidscan" className="btn-neon px-6 py-3 rounded-lg font-semibold text-sm">
-              Doe de gratis AI Gereedheidscan
+              Doe de gratis AI-risicocheck
             </Link>
             <Link
               href="/training"

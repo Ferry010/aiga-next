@@ -175,7 +175,7 @@ export const MkbCtaBanner = () => (
     <div className="mt-12 p-8 bg-primary text-primary-foreground rounded-2xl text-center">
       <h2 className="text-2xl font-display font-bold mb-3">Weet je al hoe jouw organisatie ervoor staat?</h2>
       <p className="opacity-90 mb-6 max-w-xl mx-auto">
-        Doe de gratis AI Gereedheidscan: in 3 minuten je risicoprofiel. Geen registratie vereist.
+        Doe de gratis AI-risicocheck: in 3 minuten je risicoprofiel. Geen registratie vereist.
       </p>
       <Button asChild variant="secondary" size="lg">
         <Link href="/gereedheidscan">Start de scan →</Link>

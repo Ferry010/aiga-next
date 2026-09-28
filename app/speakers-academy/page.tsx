@@ -190,13 +190,13 @@ export default function SpeakersAcademyPage() {
               Jouw team AI-geletterd maken.
             </h2>
             <p className="mt-6 text-muted-foreground max-w-3xl leading-relaxed">
-              Organisaties die Ferry kennen via Speakers Academy weten wat hij brengt. AIGA vertaalt die kennis naar jouw hele team. Online, selfpaced, schaalbaar tot 1000+ medewerkers. Met een digitaal ondertekend certificaat per deelnemer.
+              Organisaties die Ferry kennen via Speakers Academy weten wat hij brengt. AIGA vertaalt die kennis naar jouw hele team. Online en in eigen tempo, voor zoveel mensen als je wil. Met een certificaat van deelname per medewerker.
             </p>
             <div className="flex flex-wrap gap-4 mt-8">
-              <Link href="/voor-teams" className="btn-neon inline-block px-6 py-3 rounded-lg text-[15px]">
+              <Link href="/training" className="btn-neon inline-block px-6 py-3 rounded-lg text-[15px]">
                 Bekijk de training
               </Link>
-              <Link href="/contact" className="btn-neon-outline inline-block text-sm font-semibold px-6 py-3">
+              <Link href="/training#offerte" className="btn-neon-outline inline-block text-sm font-semibold px-6 py-3">
                 Vraag een offerte aan
               </Link>
             </div>

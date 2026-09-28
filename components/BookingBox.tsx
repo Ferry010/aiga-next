@@ -1,6 +1,5 @@
 import { TOTAL_LESSONS } from "@/lib/curriculum";
 import { PHONE, PHONE_HREF } from "@/lib/contact";
-import ShareWithColleague from "@/components/ShareWithColleague";
 
 // Sticky booking box beside the course content on desktop (phones get the
 // sticky bottom bar instead). The facts a booker scans before deciding.
@@ -88,9 +87,6 @@ export default function BookingBox({ product = "training" }: { product?: Booking
         Vragen? Bel ons op{" "}
         <a href={PHONE_HREF} className="font-semibold text-primary hover:underline whitespace-nowrap">{PHONE}</a>
       </p>
-      <div className="mt-3 text-sm">
-        <ShareWithColleague product={b.product} inline />
-      </div>
     </div>
   );
 }

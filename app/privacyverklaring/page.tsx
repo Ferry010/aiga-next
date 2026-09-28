@@ -38,9 +38,9 @@ export default function PrivacyverklaringPage() {
 
         <h2>2. Welke gegevens verzamelen wij en waarom</h2>
 
-        <h3>Contactformulieren en de AI Gereedheidscan</h3>
+        <h3>Contactformulieren en de AI-risicocheck</h3>
         <p>
-          Wanneer je een formulier invult op onze website, zoals na het uitvoeren van de AI Gereedheidscan, vragen wij om de volgende gegevens:
+          Wanneer je een formulier invult op onze website, zoals na het uitvoeren van de AI-risicocheck, vragen wij om de volgende gegevens:
         </p>
         <ul>
           <li>Naam</li>

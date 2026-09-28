@@ -11,9 +11,18 @@ const navLinks = [
   { to: "/over-aiga", label: "Over AIGA" },
 ];
 
+// The header's one button follows the page: on a product page it jumps to that
+// page's own form, everywhere else it leads to the teamtraining offerte.
+function primaryAction(pathname: string) {
+  if (pathname === "/masterclass") return { href: "#aanmelden", label: "Plan de masterclass" };
+  if (pathname === "/training") return { href: "#offerte", label: "Vraag een offerte aan" };
+  return { href: "/training#offerte", label: "Vraag een offerte aan" };
+}
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const cta = primaryAction(pathname);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border">
@@ -42,13 +51,13 @@ const Navbar = () => {
               href="/gereedheidscan"
               className="text-sm font-body text-muted-foreground hover:text-primary transition-colors"
             >
-              Doe de scan
+              Gratis AI-risicocheck
             </Link>
             <Link
-              href="/contact"
+              href={cta.href}
               className="btn-neon text-sm px-5 py-2 rounded-lg"
             >
-              Offerte aanvragen
+              {cta.label}
             </Link>
           </div>
 
@@ -72,14 +81,14 @@ const Navbar = () => {
           ))}
           <hr className="border-border" />
           <Link href="/gereedheidscan" onClick={() => setOpen(false)} className="text-lg font-body neon-text font-semibold">
-            Doe de scan
+            Gratis AI-risicocheck
           </Link>
           <Link
-            href="/contact"
+            href={cta.href}
             onClick={() => setOpen(false)}
             className="btn-neon text-center px-5 py-3 rounded-lg"
           >
-            Offerte aanvragen
+            {cta.label}
           </Link>
         </div>
       )}

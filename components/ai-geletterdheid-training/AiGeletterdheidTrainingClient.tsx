@@ -286,12 +286,6 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
               >
                 Vraag een offerte aan
               </Link>
-              <Link
-                href="https://aigeletterdheid.academy/training#offerte"
-                className="btn-neon-outline px-8 py-4 rounded-lg text-[15px] font-semibold border-2"
-              >
-                Plan een gesprek
-              </Link>
             </div>
             <p className="mt-4 text-sm text-muted-foreground">Of bel direct: +31 (0)10 316 7827</p>
           </AnimatedSection>

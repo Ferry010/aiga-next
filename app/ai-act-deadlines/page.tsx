@@ -26,7 +26,7 @@ const faqItems = [
   { q: "Is de AI Act al van kracht?", a: "Ja. De EU AI Act (Verordening 2024/1689) is op 1 augustus 2024 in werking getreden. Sinds 2 februari 2025 gelden de eerste verplichtingen, waaronder de AI-geletterdheidsplicht en het verbod op onaanvaardbare AI-toepassingen. De wet geldt rechtstreeks in alle EU-lidstaten, inclusief Nederland." },
   { q: "Geldt de AI Act ook voor kleine bedrijven?", a: "Ja. De AI Act maakt geen uitzondering op basis van bedrijfsgrootte. Elke organisatie die AI-systemen aanbiedt of inzet valt onder de wet. Voor MKB en startups geldt wel een proportioneel boeteregime (Artikel 99 lid 6), waardoor de feitelijke boete lager uitvalt dan het nominale maximum." },
   { q: "Wat is de boete bij niet-naleving?", a: "De AI Act kent drie boetetiers op basis van de ernst van de overtreding. Verboden AI-toepassingen (Artikel 5, zoals social scoring): tot 35 miljoen euro of 7% van de wereldwijde jaaromzet. Niet-naleving van hoog-risico verplichtingen: tot 15 miljoen euro of 3%. Overige overtredingen: tot 7,5 miljoen euro of 1,5%. Belangrijk: Artikel 4 (AI-geletterdheid) kent geen eigen boete. Toezichthouders kunnen het wel meewegen als verzwarende omstandigheid bij andere overtredingen." },
-  { q: "Hoe weet ik of mijn organisatie AI-geletterd genoeg is?", a: "De AIGA AI Gereedheidscan meet in drie minuten hoe gereed jouw organisatie is op vijf dimensies: AI-gebruik, bewustzijn van wetgeving, risicobeheer, leiderschap en audit-readiness. Na afloop ontvang je een concreet scorerapport met verbeterpunten." },
+  { q: "Hoe weet ik of mijn organisatie AI-geletterd genoeg is?", a: "De AIGA AI-risicocheck meet in drie minuten hoe gereed jouw organisatie is op vijf dimensies: AI-gebruik, bewustzijn van wetgeving, risicobeheer, leiderschap en audit-readiness. Na afloop ontvang je een concreet scorerapport met verbeterpunten." },
 ];
 
 const faqJsonLd = {
@@ -165,11 +165,11 @@ export default function AiActDeadlinesPage() {
             <div className="bg-card border border-border rounded-2xl p-8 sm:p-10 text-center max-w-2xl mx-auto">
               <h2 className="text-2xl font-display font-bold text-foreground mb-3">Check hoe gereed jouw organisatie is</h2>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                De AIGA AI Gereedheidscan meet in drie minuten hoe jouw organisatie scoort op AI-gebruik, wetgeving, risicobeheer, leiderschap en audit-readiness.
+                De AIGA AI-risicocheck meet in drie minuten hoe jouw organisatie scoort op AI-gebruik, wetgeving, risicobeheer, leiderschap en audit-readiness.
               </p>
               <Button size="lg" asChild className="btn-neon">
                 <Link href="/gereedheidscan">
-                  Doe de gratis AI Gereedheidscan <ArrowRight size={16} />
+                  Doe de gratis AI-risicocheck <ArrowRight size={16} />
                 </Link>
               </Button>
             </div>

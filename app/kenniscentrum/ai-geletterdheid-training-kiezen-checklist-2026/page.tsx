@@ -217,7 +217,7 @@ export default function ChecklistPage() {
               <p className="mt-3 text-muted-foreground text-sm max-w-lg mx-auto">
                 Doe de gratis{" "}
                 <Link href="/gereedheidscan" className="text-primary font-medium hover:underline">
-                  AI Gereedheidscan
+                  AI-risicocheck
                 </Link>
                 . Tien vragen, drie minuten, direct inzicht in wat je nog mist voor augustus 2026.
               </p>

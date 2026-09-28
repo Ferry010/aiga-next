@@ -231,7 +231,7 @@ export default function LandschapPage() {
               <p className="mt-3 text-muted-foreground text-sm max-w-lg mx-auto">
                 Doe de gratis{" "}
                 <Link href="/gereedheidscan" className="text-primary font-medium hover:underline">
-                  AI Gereedheidscan
+                  AI-risicocheck
                 </Link>
                 . Drie minuten, tien vragen, direct inzicht in wat er nog mist.
               </p>

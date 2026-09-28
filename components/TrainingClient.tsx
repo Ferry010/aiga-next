@@ -226,10 +226,6 @@ export default function TrainingClient() {
               <div className="mt-6">
                 <ShareWithColleague product="training" inline />
               </div>
-              <p className="mt-4 text-muted-foreground">
-                Ook je directie meenemen?{" "}
-                <Link href="/masterclass" className="text-primary font-semibold hover:underline">Bekijk de masterclass</Link>
-              </p>
             </AnimatedSection>
             <AnimatedSection delay={0.05}>
               <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">

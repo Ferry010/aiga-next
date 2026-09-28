@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
+import { AnimatedSection } from "@/components/AnimatedSection";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
+import Panel from "@/components/Panel";
+import HeroChat from "@/components/HeroChat";
 import LeadForm from "@/components/LeadForm";
 
 export const metadata: Metadata = {
-  title: "Shadow AI in je organisatie | Grip zonder verbod | AIGA",
+  title: "Shadow AI: je team zet bedrijfsdata in ChatGPT | AIGA",
   description:
-    "Shadow AI: je mensen gebruiken AI-tools buiten het zicht van IT. Een verbod werkt niet. Maak medewerkers onderdeel van je AI-governance met een kant-en-klaar trainingsprogramma.",
+    "Iemand in je team zet een klantcontract in ChatGPT om tijd te besparen. Dat heet shadow AI: het kan in strijd zijn met de AVG en je eigen beleid, en je data raakt uit beeld. Zo krijg je er grip op.",
   alternates: { canonical: "/shadow-ai" },
 };
 
@@ -15,118 +17,241 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Shadow AI in je organisatie",
-  description: "Hoe je grip krijgt op shadow AI zonder een verbod, door medewerkers onderdeel te maken van je AI-governance.",
+  description:
+    "Wat shadow AI is, waarom het je AVG, je beleid en je bedrijfsdata raakt, en hoe je er grip op krijgt zonder verbod.",
   url: "https://aigeletterdheid.academy/shadow-ai",
   publisher: { "@type": "Organization", name: "AIGA | AI Geletterdheid Academy" },
 };
 
+const container = "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8";
+
+const risks = [
+  {
+    title: "Het kan in strijd zijn met de AVG",
+    body: "Staat er een naam, e-mailadres of klantnummer in? Dan deel je persoonsgegevens met een partij waar je organisatie geen afspraken mee heeft. Dat kan in strijd zijn met de AVG, en soms moet je het zelfs melden als datalek.",
+  },
+  {
+    title: "Het gaat tegen je eigen beleid in",
+    body: "Contracten, offertes en klantinformatie vallen vaak onder geheimhouding, of onder afspraken met je klant. Eén keer kopiëren en plakken en die afspraak is gebroken, zonder dat iemand het doorheeft.",
+  },
+  {
+    title: "Je data raakt uit beeld",
+    body: "Bij een gratis of privé-account kan wat je invoert worden gebruikt om het AI-model verder te trainen, afhankelijk van de instellingen. Wat eenmaal is verstuurd, haal je niet meer terug.",
+  },
+];
+
+const today = [
+  {
+    title: "Het gebeurt elke werkdag",
+    body: "Niet één keer, maar bij elke samenvatting, elke mail en elke offerte die sneller moet. Elke dag zonder afspraken is een dag extra data die je niet terugkrijgt.",
+  },
+  {
+    title: "Terughalen kan niet",
+    body: "Een verkeerd verstuurde mail kun je soms nog terugroepen. Een document in een AI-tool niet. Voorkomen is de enige optie.",
+  },
+  {
+    title: "Het groeit sneller dan je beleid",
+    body: "Er komen elke maand nieuwe AI-tools en AI-functies in software die je al gebruikt. Hoe langer je wacht, hoe meer eigen gewoontes er ontstaan.",
+  },
+  {
+    title: "Als het misgaat, is de vraag wat jij had geregeld",
+    body: "Niet wat de medewerker deed, maar of iemand hem ooit had verteld waar de grens ligt. Dat antwoord wil je vandaag al kunnen geven.",
+  },
+];
+
+const learns = [
+  "Welke bedrijfsdata wél en niet in een AI-tool mag",
+  "Hoe je herkent of een tool veilig is om te gebruiken",
+  "Hoe je AI-output controleert voordat hij de deur uitgaat",
+  "Wanneer je AI juist beter niet gebruikt",
+  "Eén gedeelde standaard, in plaats van ieder zijn eigen manier",
+];
+
+function H2({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">
+      {children}
+    </h2>
+  );
+}
+
 export default function ShadowAiPage() {
   return (
     <div className="min-h-screen">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <BreadcrumbNav items={[{ label: "Home", href: "/" }, { label: "Shadow AI" }]} />
 
-      <section className="pt-12 pb-24">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero: the moment first, the name second */}
+      <section className="pt-6 pb-14 sm:pt-10 sm:pb-20">
+        <div className={`${container} grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center`}>
           <AnimatedSection>
-            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
-              Shadow AI draait al in je organisatie.{" "}
-              <span className="text-primary">Een verbod maakt het alleen onzichtbaar.</span>
+            <h1 className="text-4xl sm:text-[3.4rem] font-display font-bold text-foreground leading-[1.05] tracking-tight">
+              Iemand in je team zet vandaag een klantcontract in ChatGPT.
+              <span className="neon-text block mt-3">Dat heet shadow AI.</span>
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Je mensen gebruiken AI-tools die niemand heeft goedgekeurd. Niet uit onwil, maar omdat het werkt. Verbieden drijft het alleen ondergronds, waar je er helemaal geen zicht meer op hebt. De echte oplossing is niet meer controle op de tools, maar mensen die weten waar de grenzen liggen en waarom. Zo wordt je grootste risico juist je eerste verdedigingslinie.
+            <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
+              Niet uit onwil: het scheelt een uur. Maar het kan in strijd zijn met de AVG, het gaat tegen je eigen
+              beleid in en je bedrijfsdata staat daarna op een plek waar jij niet bij kunt.
             </p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <Link
+                href="/gereedheidscan"
+                className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-[15px] font-semibold"
+              >
+                Check of het bij jou gebeurt
+              </Link>
+              <a href="#oplossing" className="text-[15px] font-semibold text-primary hover:underline">
+                Zo los je het op
+              </a>
+            </div>
           </AnimatedSection>
-
           <AnimatedSection delay={0.1}>
-            <h2 className="text-2xl font-display font-semibold text-foreground mt-16 mb-4">
-              Wat is shadow AI?
-            </h2>
-            <div className="text-muted-foreground leading-relaxed space-y-4">
-              <p>
-                Shadow AI is het gebruik van AI-tools binnen je organisatie zonder dat IT of Security er zicht op of grip op heeft. Denk aan een medewerker die een gratis ChatGPT-account gebruikt voor werk, een browser-extensie met AI installeert, of bedrijfsdata in een tool plakt die nooit is beoordeeld op veiligheid.
-              </p>
-              <p>
-                Het is de AI-variant van shadow IT, en het gaat harder dan welke tool je ook uitrolt. ChatGPT, Copilot, Gemini, Claude en AI-features in software die je al hebt: het zit overal, en het gebeurt nu al.
-              </p>
-            </div>
+            <HeroChat />
           </AnimatedSection>
+        </div>
+      </section>
 
-          <AnimatedSection delay={0.15}>
-            <h2 className="text-2xl font-display font-semibold text-foreground mt-16 mb-4">
-              Waarom een verbod niet werkt
-            </h2>
-            <div className="text-muted-foreground leading-relaxed space-y-4">
-              <p>
-                Je kunt AI-gebruik niet meer tegenhouden. Blokkeer je de ene tool, dan pakken mensen de volgende, op hun telefoon of privélaptop. Een verbod verplaatst het probleem naar een plek waar je helemaal niks meer ziet.
-              </p>
-              <p>
-                De zwakste schakel is niet de tool, het is de medewerker die niet weet welke data eruit moet blijven of wanneer output niet klopt. Daar valt het meeste te winnen, en het snelst.
-              </p>
-            </div>
+      {/* Definition, in plain words */}
+      <section className="pb-16 sm:pb-24">
+        <div className={`${container} grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-6 lg:gap-16`}>
+          <AnimatedSection>
+            <H2>Wat is shadow AI?</H2>
           </AnimatedSection>
-
-          <AnimatedSection delay={0.2}>
-            <h2 className="text-2xl font-display font-semibold text-foreground mt-16 mb-4">
-              Van zwakste schakel naar eerste verdedigingslinie
-            </h2>
-            <div className="text-muted-foreground leading-relaxed space-y-4">
+          <AnimatedSection delay={0.05}>
+            <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
-                Eén kant-en-klaar trainingsprogramma geeft je hele organisatie dezelfde basis, zodat verantwoord AI-gebruik een gewoonte wordt in plaats van een gok. Wat je team leert:
+                Shadow AI is AI-gebruik voor je werk dat buiten het zicht van de organisatie gebeurt. Een privé
+                ChatGPT-account voor een klantmail. Een gratis tool die een vergaderverslag uitwerkt. Een
+                browser-extensie die meeleest met wat je typt.
               </p>
-            </div>
-            <StaggerContainer className="mt-6 max-w-2xl border-b border-border">
-              {[
-                "Welke bedrijfsdata wél en niet in een AI-tool mag",
-                "Hoe je herkent of een tool veilig is om te gebruiken",
-                "Hoe je AI-output controleert en hallucinaties eruit haalt",
-                "Wanneer je AI juist beter niet gebruikt",
-                "Eén gedeelde standaard, in plaats van vijfhonderd eigen methodes",
-                "Aantoonbaar vastgelegd, zodat je kunt laten zien dat het op orde is",
-              ].map((item) => (
-                <StaggerItem key={item}>
-                  <div className="flex items-start gap-4 py-4 border-t border-border">
-                    <span className="mt-[0.55rem] h-1.5 w-1.5 rounded-full bg-primary shrink-0" aria-hidden />
-                    <span className="text-foreground">{item}</span>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </AnimatedSection>
-
-          {/* CTA */}
-          <AnimatedSection delay={0.25}>
-            <div className="mt-16 border-t-2 border-foreground pt-10">
-              <div className="mb-8">
-                <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground tracking-tight">
-                  Krijg grip op shadow AI
-                </h2>
-                <p className="mt-3 text-muted-foreground">Laat je gegevens achter. Binnen één werkdag belt een van ons je.</p>
-              </div>
-              <LeadForm source="Shadow AI pagina — offerte aanvraag" />
-              <p className="mt-6 text-sm text-muted-foreground">
-                Liever eerst de gratis check? <Link href="/gereedheidscan" className="text-primary hover:underline font-medium">In 3 minuten weet je waar je team staat.</Link>
+              <p className="text-foreground">
+                Bijna iedereen doet het, meestal met de beste bedoelingen. Het probleem is niet de tool, maar dat
+                niemand ooit heeft uitgelegd wat er wel en niet in mag.
               </p>
-            </div>
-          </AnimatedSection>
-
-          {/* Related pages */}
-          <AnimatedSection delay={0.3}>
-            <div className="mt-12">
-              <h3 className="text-lg font-display font-semibold text-foreground mb-4">Gerelateerd</h3>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/ai-act-compliance-nederland" className="text-primary hover:underline">AI Act Compliance Nederland</Link></li>
-                <li><Link href="/ai-training-voor-bedrijven" className="text-primary hover:underline">AI Training voor Bedrijven</Link></li>
-                <li><Link href="/ai-cursus-medewerkers" className="text-primary hover:underline">AI Cursus voor Medewerkers</Link></li>
-                <li><Link href="/kenniscentrum" className="text-primary hover:underline">Kenniscentrum</Link></li>
-              </ul>
             </div>
           </AnimatedSection>
         </div>
       </section>
+
+      {/* What's at stake */}
+      <Panel tone="tint">
+        <AnimatedSection>
+          <div className="max-w-3xl">
+            <H2>Wat er gebeurt als iemand op Versturen klikt.</H2>
+          </div>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-8">
+            {risks.map((r) => (
+              <div key={r.title} className="border-t-2 border-primary pt-5">
+                <h3 className="text-xl font-display font-bold text-foreground leading-snug">{r.title}</h3>
+                <p className="mt-3 text-muted-foreground leading-relaxed">{r.body}</p>
+              </div>
+            ))}
+          </div>
+        </AnimatedSection>
+      </Panel>
+
+      {/* Proof */}
+      <div className="pt-4 sm:pt-6">
+        <Panel tone="deep">
+          <AnimatedSection>
+            <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-6 lg:gap-16 items-center">
+              <p className="text-[6.5rem] sm:text-[11rem] font-display font-bold leading-[0.85] tracking-tighter text-primary">82%</p>
+              <div>
+                <h2 className="text-2xl sm:text-[2.2rem] font-display font-bold text-foreground leading-[1.15] tracking-tight">
+                  van de bedrijfsdata die in AI-tools belandt, komt uit privé-accounts.
+                </h2>
+                <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+                  Buiten het zicht van de organisatie. Dus ook buiten elke afspraak die je met een leverancier hebt
+                  gemaakt.
+                </p>
+                <p className="mt-2 text-sm text-muted-foreground">LayerX, 2025</p>
+              </div>
+            </div>
+          </AnimatedSection>
+        </Panel>
+      </div>
+
+      {/* Why today */}
+      <section className="py-16 sm:py-24">
+        <div className={container}>
+          <AnimatedSection>
+            <div className="max-w-3xl">
+              <H2>Waarom je dit niet naar volgend kwartaal schuift.</H2>
+            </div>
+          </AnimatedSection>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-8">
+            {today.map((t, i) => (
+              <AnimatedSection key={t.title} delay={i * 0.04}>
+                <div className="border-t border-border pt-5">
+                  <h3 className="text-xl font-display font-bold text-foreground leading-snug">{t.title}</h3>
+                  <p className="mt-2 text-lg text-muted-foreground leading-relaxed">{t.body}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Why a ban doesn't work */}
+      <section className="pb-16 sm:pb-24">
+        <div className={`${container} grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-6 lg:gap-16`}>
+          <AnimatedSection>
+            <H2>En nee, verbieden werkt niet.</H2>
+          </AnimatedSection>
+          <AnimatedSection delay={0.05}>
+            <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                Blokkeer je de ene tool, dan pakken mensen de volgende, op hun telefoon of privélaptop. Het werk moet
+                nog steeds af. Een verbod verplaatst het probleem naar een plek waar je helemaal niets meer ziet.
+              </p>
+              <p className="text-foreground">
+                Wat wel werkt: mensen die zelf weten waar de grens ligt. Dan herkennen ze een klantcontract als iets
+                wat er niet in hoort, ook als er niemand meekijkt.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Solution + offerte */}
+      <div className="pb-10">
+        <Panel tone="tint" id="oplossing">
+          <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-10 lg:gap-16">
+            <AnimatedSection>
+              <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.08] tracking-tight">
+                Zet de grens voordat het volgende contract erin gaat.
+              </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                Een online training geeft je hele team dezelfde basis. Een paar uur per persoon, in eigen tempo. Na
+                afloop weet iedereen:
+              </p>
+              <ul className="mt-5 border-b border-border">
+                {learns.map((l) => (
+                  <li key={l} className="flex items-start gap-3 border-t border-border py-3 text-foreground">
+                    <span className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
+                    {l}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 text-muted-foreground">
+                €249 ex btw per persoon, binnen 2 werkdagen live.{" "}
+                <Link href="/training" className="text-primary font-semibold hover:underline">Bekijk het programma</Link>
+              </p>
+            </AnimatedSection>
+            <AnimatedSection delay={0.05}>
+              <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">
+                <LeadForm source="Shadow AI pagina, offerte aanvraag" />
+              </div>
+              <p className="mt-5 text-muted-foreground">
+                Nog niet zeker of het bij jullie speelt?{" "}
+                <Link href="/gereedheidscan" className="text-primary font-semibold hover:underline">
+                  Doe eerst de gratis AI-risicocheck
+                </Link>
+              </p>
+            </AnimatedSection>
+          </div>
+        </Panel>
+      </div>
     </div>
   );
 }

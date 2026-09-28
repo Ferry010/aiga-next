@@ -2,9 +2,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import SplitSection from "@/components/SplitSection";
 import Panel from "@/components/Panel";
-import ProgramCard from "@/components/ProgramCard";
+import ProgramCard, { PROGRAM } from "@/components/ProgramCard";
+import SectionNav from "@/components/SectionNav";
+import BookingBox from "@/components/BookingBox";
+import AskUs from "@/components/AskUs";
 import FerryAuthority from "@/components/FerryAuthority";
 import FaqList from "@/components/FaqList";
 import ShareWithColleague from "@/components/ShareWithColleague";
@@ -22,7 +24,53 @@ const takeaways = [
   "Hoe je van AI-beleid naar AI-gedrag komt",
 ];
 
+const questions = [
+  "Wat mag AI wel en niet beslissen in ons proces?",
+  "Wie is verantwoordelijk als het misgaat?",
+  "Waar ligt de grens tussen snelheid en risico?",
+  "Hoe zorg je dat beleid ook echt gedrag wordt?",
+];
+
+const keyFacts = [
+  { value: "2 uur", note: "live, in vier blokken" },
+  { value: "€495", note: "ex btw per persoon, minimaal 5" },
+  { value: "Op locatie", note: "of online, op een datum die jullie past" },
+  { value: "Gratis", note: "bij 50+ plekken teamtraining in één keer" },
+];
+
+const steps = [
+  { title: "Je meldt je aan", body: "Binnen één werkdag belt een van ons je om een datum en de opzet te prikken." },
+  { title: "Open of besloten", body: "Schuif aan bij een open sessie, of kies een besloten sessie met alleen jullie eigen mensen." },
+  { title: "Twee uur live", body: "Op jullie locatie of online, met Ferry Hoes en ruimte voor jullie eigen vragen." },
+  { title: "Bewijs van deelname", body: "Iedere deelnemer krijgt na afloop een bewijs van deelname." },
+];
+
+const nav = [
+  { id: "overzicht", label: "Overzicht" },
+  { id: "programma", label: "Programma" },
+  { id: "meeneemt", label: "Wat je meeneemt" },
+  { id: "zo-werkt-het", label: "Zo werkt het" },
+  { id: "prijs", label: "Prijs" },
+  { id: "vragen", label: "Vragen" },
+];
+
+const minutes = (t: string) => parseInt(t, 10);
+const startTimes = PROGRAM.reduce<string[]>((acc, _p, i) => {
+  const m = PROGRAM.slice(0, i).reduce((sum, p) => sum + minutes(p.time), 0);
+  acc.push(`${Math.floor(m / 60)}:${String(m % 60).padStart(2, "0")}`);
+  return acc;
+}, []);
+
 const container = "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8";
+
+function SectionTitle({ children, intro }: { children: React.ReactNode; intro?: React.ReactNode }) {
+  return (
+    <>
+      <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">{children}</h2>
+      {intro && <p className="mt-4 text-lg text-muted-foreground leading-relaxed max-w-2xl">{intro}</p>}
+    </>
+  );
+}
 
 export default function MasterclassClient() {
   const [form, setForm] = useState({
@@ -84,7 +132,7 @@ export default function MasterclassClient() {
   return (
     <div className="min-h-screen">
       {/* Hero: the agenda beside the promise */}
-      <section className="pt-10 pb-14 sm:pt-20 sm:pb-24">
+      <section className="pt-10 pb-12 sm:pt-16 sm:pb-16">
         <div className={`${container} grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center`}>
           <AnimatedSection>
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight">
@@ -99,79 +147,129 @@ export default function MasterclassClient() {
               <a href="#aanmelden" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-[15px] font-semibold">
                 Plan de masterclass
               </a>
-              <a href="#prijs" className="text-[15px] font-semibold text-primary hover:underline">
-                Bekijk wat het kost
+              <a href="#programma" className="text-[15px] font-semibold text-primary hover:underline">
+                Bekijk het programma
               </a>
             </div>
-            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-[15px] text-muted-foreground">
-              {["€495 ex btw per persoon, minimaal 5", "Op locatie of online", "Gratis bij 50+ plekken in de teamtraining"].map((f) => (
-                <li key={f} className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden />
-                  {f}
-                </li>
-              ))}
-            </ul>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
             <ProgramCard />
           </AnimatedSection>
         </div>
+
+        {/* Key facts, like a course prospectus */}
+        <div className={`${container} mt-12`}>
+          <dl className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-6 border-t border-border pt-8">
+            {keyFacts.map((f) => (
+              <div key={f.value}>
+                <dt className="text-2xl sm:text-3xl font-display font-bold text-foreground tracking-tight">{f.value}</dt>
+                <dd className="mt-1 text-muted-foreground">{f.note}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </section>
 
-      {/* Why leadership: the questions only the leadership can answer */}
-      <Panel tone="tint">
-        <AnimatedSection>
-          <h2 className="text-[1.75rem] sm:text-[2.6rem] font-display font-bold text-foreground leading-[1.1] tracking-tight max-w-3xl">
-            De teamtraining lost het gedrag op. De masterclass lost de richting op.
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground leading-relaxed max-w-2xl">
-            Je mensen leren hoe ze AI veilig gebruiken. Maar op jouw niveau spelen andere vragen.
-          </p>
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-8">
-            {[
-              "Wat mag AI wel en niet beslissen in ons proces?",
-              "Wie is verantwoordelijk als het misgaat?",
-              "Waar ligt de grens tussen snelheid en risico?",
-              "Hoe zorg je dat beleid ook echt gedrag wordt?",
-            ].map((q) => (
-              <p key={q} className="border-t-2 border-primary pt-5 text-xl font-display font-bold text-foreground leading-snug">{q}</p>
-            ))}
-          </div>
-          <p className="mt-10 text-lg text-foreground leading-relaxed max-w-2xl">
-            Dat zijn geen vragen voor een e-learning. Die beantwoord je met de mensen die de knopen doorhakken, in één ruimte.
-          </p>
-        </AnimatedSection>
-      </Panel>
+      <SectionNav items={nav} />
 
-      {/* Takeaways */}
-      <SplitSection title="Wat je na deze sessie weet." intro="Je loopt naar buiten met een richting, niet met huiswerk.">
-        <div className="border-b border-border">
-          {takeaways.map((t) => (
-            <div key={t} className="flex gap-4 py-5 border-t border-border">
-              <span className="mt-[0.65rem] h-1.5 w-1.5 rounded-full bg-primary shrink-0" aria-hidden />
-              <p className="text-lg text-foreground leading-relaxed">{t}</p>
+      {/* Course body with the booking box beside it */}
+      <div className={`${container} grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_20rem] gap-12 xl:gap-16`}>
+        <div>
+          <section id="overzicht" className="scroll-mt-32 pt-14 sm:pt-20">
+            <SectionTitle intro="Je mensen leren in de teamtraining hoe ze AI veilig gebruiken. Maar op jouw niveau spelen andere vragen:">
+              De teamtraining lost het gedrag op. De masterclass lost de richting op.
+            </SectionTitle>
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-7">
+              {questions.map((q) => (
+                <p key={q} className="border-t-2 border-primary pt-4 text-xl font-display font-bold text-foreground leading-snug">{q}</p>
+              ))}
             </div>
-          ))}
-        </div>
-      </SplitSection>
+            <p className="mt-8 text-lg text-foreground leading-relaxed max-w-2xl">
+              Dat zijn geen vragen voor een e-learning. Die beantwoord je met de mensen die de knopen doorhakken, in
+              één ruimte. Daarom is deze masterclass voor directie, management en iedereen die beslist hoe jullie met
+              AI omgaan.
+            </p>
+          </section>
 
-      {/* Price: the deep-purple decision moment */}
-      <Panel tone="deep" id="prijs">
-        <AnimatedSection>
-          <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-16 items-center">
-            <div>
-              <p className="text-[5.5rem] sm:text-[8.5rem] font-display font-bold leading-[0.85] tracking-tighter text-foreground">€495</p>
-              <p className="mt-4 text-xl text-muted-foreground">ex btw per persoon, minimaal 5</p>
+          <section id="programma" className="scroll-mt-32 pt-16 sm:pt-24">
+            <SectionTitle intro="Twee uur, vier blokken. Ferry Hoes geeft de sessie zelf en sluit af met jullie eigen vragen.">
+              Het programma
+            </SectionTitle>
+            {/* The two hours to scale */}
+            <div className="mt-8 flex h-3 overflow-hidden rounded-full" aria-hidden>
+              {PROGRAM.map((p, i) => (
+                <span
+                  key={p.title}
+                  style={{ flexGrow: minutes(p.time) }}
+                  className={`${i % 2 ? "bg-primary/45" : "bg-primary"} ${i ? "ml-1" : ""}`}
+                />
+              ))}
             </div>
-            <div>
-              <h2 className="text-2xl sm:text-[2.1rem] font-display font-bold text-foreground leading-[1.15] tracking-tight">
-                Twee uur live, op een datum die jullie past.
-              </h2>
-              <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-                Inbegrepen: de sessie met Ferry Hoes, op locatie of online, een live Q&amp;A over jullie eigen situatie
-                en een bewijs van deelname. Geen technische kennis nodig.
-              </p>
-              <p className="mt-6 rounded-2xl bg-white/10 px-5 py-4 text-lg text-foreground leading-relaxed">
+            <ol className="mt-6 rounded-3xl bg-white border border-border">
+              {PROGRAM.map((p, i) => (
+                <li key={p.title} className={`grid grid-cols-[4.5rem_1fr] sm:grid-cols-[6rem_1fr] gap-4 px-5 py-5 sm:px-7 sm:py-6 ${i ? "border-t border-border" : ""}`}>
+                  <div>
+                    <p className="font-display font-bold text-primary tabular-nums">{startTimes[i]}</p>
+                    <p className="text-sm text-muted-foreground">{p.time}</p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-display font-bold text-foreground leading-snug">{p.title}</h3>
+                    <p className="mt-1 text-muted-foreground leading-relaxed">{p.body}</p>
+                  </div>
+                </li>
+              ))}
+              <li className="block-lilac rounded-b-3xl border-t border-border px-5 py-5 sm:px-7">
+                <p className="font-display font-bold text-foreground">Na afloop</p>
+                <p className="mt-1 text-muted-foreground">Elke deelnemer krijgt een bewijs van deelname.</p>
+              </li>
+            </ol>
+          </section>
+
+          <section id="meeneemt" className="scroll-mt-32 pt-16 sm:pt-24">
+            <SectionTitle intro="Je loopt naar buiten met een richting, niet met huiswerk.">Wat je na deze sessie weet</SectionTitle>
+            <div className="mt-6 border-b border-border">
+              {takeaways.map((t) => (
+                <div key={t} className="flex gap-4 py-4 border-t border-border">
+                  <span className="mt-[0.65rem] h-1.5 w-1.5 rounded-full bg-primary shrink-0" aria-hidden />
+                  <p className="text-lg text-foreground leading-relaxed">{t}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="zo-werkt-het" className="scroll-mt-32 pt-16 sm:pt-24">
+            <SectionTitle>Zo werkt het</SectionTitle>
+            <ol className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8">
+              {steps.map((st, i) => (
+                <li key={st.title} className="flex gap-4">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-[17px] font-bold text-white">{i + 1}</span>
+                  <div>
+                    <h3 className="text-lg font-display font-bold text-foreground">{st.title}</h3>
+                    <p className="mt-1 text-muted-foreground leading-relaxed">{st.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+
+          <section id="prijs" className="scroll-mt-32 pt-16 sm:pt-24">
+            <div className="statement-block rounded-[1.75rem] px-6 py-10 sm:px-10 sm:py-12">
+              <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-6 sm:gap-10 items-center">
+                <div>
+                  <p className="text-7xl sm:text-8xl font-display font-bold leading-[0.85] tracking-tighter text-foreground">€495</p>
+                  <p className="mt-3 text-lg text-muted-foreground">ex btw per persoon, minimaal 5</p>
+                </div>
+                <div>
+                  <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground leading-[1.15] tracking-tight">
+                    Twee uur live, op een datum die jullie past.
+                  </h2>
+                  <p className="mt-3 text-muted-foreground leading-relaxed">
+                    Inbegrepen: de sessie met Ferry Hoes, op locatie of online, een live Q&amp;A over jullie eigen
+                    situatie en een bewijs van deelname.
+                  </p>
+                </div>
+              </div>
+              <p className="mt-8 rounded-2xl bg-white/10 px-5 py-4 text-lg text-foreground leading-relaxed">
                 <strong>Gratis bij de teamtraining.</strong> Boek je 50 plekken of meer in de teamtraining in één keer?
                 Dan is de masterclass gratis.{" "}
                 <Link href="/training" className="text-primary font-semibold underline underline-offset-2">Bekijk de teamtraining</Link>
@@ -183,16 +281,25 @@ export default function MasterclassClient() {
                 Plan de masterclass
               </a>
             </div>
+          </section>
+
+          <section id="vragen" className="scroll-mt-32 pt-16 sm:pt-24 pb-6">
+            <SectionTitle>Wat je waarschijnlijk wil weten</SectionTitle>
+            <div className="mt-6">
+              <FaqList items={MASTERCLASS_FAQ} />
+            </div>
+          </section>
+        </div>
+
+        {/* Sticky booking box (desktop) */}
+        <aside className="hidden lg:block pt-20">
+          <div className="sticky top-36">
+            <BookingBox product="masterclass" />
           </div>
-        </AnimatedSection>
-      </Panel>
+        </aside>
+      </div>
 
       <FerryAuthority />
-
-      {/* FAQ */}
-      <SplitSection title="Wat je waarschijnlijk wil weten.">
-        <FaqList items={MASTERCLASS_FAQ} />
-      </SplitSection>
 
       {/* Form: reassurance beside it */}
       <div className="pb-28 sm:pb-10">
@@ -205,6 +312,7 @@ export default function MasterclassClient() {
               <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
                 Laat je gegevens achter. Binnen één werkdag belt Robbert, Tom of Ferry je om een datum te prikken.
               </p>
+              <AskUs className="mt-8" />
               <div className="mt-6">
                 <ShareWithColleague product="masterclass" inline />
               </div>

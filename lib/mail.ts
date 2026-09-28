@@ -50,8 +50,11 @@ export async function sendMail(mail: Mail): Promise<MailResult> {
   return { sent: false, via: "none", error: "No mail transport configured" };
 }
 
-/** Where lead alerts go. Comma-separated list allowed. */
-export const TEAM_INBOX = process.env.LEADS_NOTIFY_TO || "ferry@brandhumanizing.com";
+/**
+ * Optional email copy of lead alerts (comma-separated). Leads already reach the
+ * team in Slack via the notify-new-submission function, so this is off unless set.
+ */
+export const TEAM_INBOX = process.env.LEADS_NOTIFY_TO || "";
 
 export function escapeHtml(value: unknown): string {
   return String(value ?? "")

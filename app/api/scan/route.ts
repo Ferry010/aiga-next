@@ -142,14 +142,15 @@ export async function POST(req: NextRequest) {
   const resultUrl = `${SITE}/gereedheidscan/resultaat/${id}?${params.toString()}`;
   const tier = TIERS[score_category];
 
-  const [toLead] = await Promise.all([
-    sendMail({
-      to: String(email),
-      subject: `Je AI-risicocheck: ${tier.label.toLowerCase()} (${cleanScore}% grip)`,
-      html: buildEmail(String(name), cleanScore, score_category, dims, resultUrl),
-      replyTo: TEAM_INBOX.split(",")[0].trim(),
-    }),
-    sendMail({
+  const toLead = await sendMail({
+    to: String(email),
+    subject: `Je AI-risicocheck: ${tier.label.toLowerCase()} (${cleanScore}% grip)`,
+    html: buildEmail(String(name), cleanScore, score_category, dims, resultUrl),
+    replyTo: TEAM_INBOX ? TEAM_INBOX.split(",")[0].trim() : undefined,
+  });
+
+  if (TEAM_INBOX) {
+    await sendMail({
       to: TEAM_INBOX,
       subject: `Nieuwe AI-risicocheck: ${String(name).slice(0, 60)} (${tier.label})`,
       html: teamAlertHtml("Nieuwe AI-risicocheck", [
@@ -160,8 +161,24 @@ export async function POST(req: NextRequest) {
         ["Uitslag bekijken", resultUrl],
       ]),
       replyTo: String(email),
-    }),
-  ]);
+    });
+  }
+
+  // Same Slack notification the other forms use
+  try {
+    await createServerClient().functions.invoke("notify-new-submission", {
+      body: {
+        type: "contact",
+        naam: String(name).slice(0, 200),
+        organisatie: bedrijf ? String(bedrijf).slice(0, 200) : "Onbekend",
+        email: String(email).slice(0, 200),
+        telefoon: null,
+        extra: `AI-risicocheck ingevuld · ${tier.label}, ${cleanScore}% grip · ${resultUrl}`,
+      },
+    });
+  } catch (err) {
+    console.error("Slack notify failed (non-fatal):", err);
+  }
 
   return NextResponse.json({ id, score: cleanScore, score_category, dimension_scores: dims, emailSent: toLead.sent });
 }

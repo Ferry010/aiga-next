@@ -40,6 +40,16 @@ export default function ScanCallback({
       setState("error");
       return;
     }
+    supabase.functions.invoke("notify-new-submission", {
+      body: {
+        type: "contact",
+        naam,
+        organisatie: "Onbekend (AI-risicocheck)",
+        email: mail,
+        telefoon,
+        extra: `Terugbelverzoek na AI-risicocheck · ${summary}`,
+      },
+    }).catch(console.error);
     trackLead("lead_callback");
     alertTeam({ type: "callback", naam, email: mail, telefoon, extra: summary, source: "AI-risicocheck" });
     setState("done");

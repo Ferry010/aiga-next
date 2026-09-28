@@ -17,6 +17,7 @@ export async function POST(req: NextRequest) {
   if (!b || !TITLES[b.type] || !b.naam || !(b.email || b.telefoon)) {
     return NextResponse.json({ ok: false }, { status: 400 });
   }
+  if (!TEAM_INBOX) return NextResponse.json({ ok: false, reason: "no team inbox set; Slack covers alerts" });
 
   const result = await sendMail({
     to: TEAM_INBOX,

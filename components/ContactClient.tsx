@@ -1,7 +1,7 @@
 'use client';
 import { useState } from "react";
-import { Phone, Mail } from "lucide-react";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
+import AskUs from "@/components/AskUs";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -134,20 +134,7 @@ export default function ContactClient() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <div className="bg-card border border-border rounded-2xl p-10 neon-card-top">
-                <h3 className="text-lg font-semibold text-foreground mb-2">Direct contact</h3>
-                <p className="text-sm text-muted-foreground mb-6">Voor sales en offertes:</p>
-                <p className="text-foreground font-semibold">Robbert & Tom | Speakers Academy</p>
-                <div className="mt-4 space-y-3">
-                  <a href="tel:+31103167827" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-neon-purple transition-colors"><Phone size={16} /> +31 (0)10 316 7827</a>
-                  <a href="mailto:robbert@speakersacademy.nl" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-neon-purple transition-colors"><Mail size={16} /> robbert@speakersacademy.nl</a>
-                  <a href="mailto:tom@speakersacademy.nl" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-neon-purple transition-colors"><Mail size={16} /> tom@speakersacademy.nl</a>
-                </div>
-                <div className="flex gap-3 mt-6">
-                  <a href="tel:+31103167827" className="btn-neon-outline flex-1 text-center py-2.5 font-semibold text-sm">Bel direct</a>
-                  <a href="mailto:robbert@speakersacademy.nl" className="btn-neon flex-1 text-center py-2.5 rounded-lg text-sm">Stuur e-mail</a>
-                </div>
-              </div>
+              <AskUs />
             </AnimatedSection>
           </div>
         </div>

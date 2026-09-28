@@ -1,9 +1,10 @@
 'use client';
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
-import SectionLabel from "@/components/SectionLabel";
+import { AnimatedSection } from "@/components/AnimatedSection";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
+import Panel from "@/components/Panel";
+import AskUs from "@/components/AskUs";
 import { createClient } from "@/lib/supabase/client";
 import { toast } from "sonner";
 import { trackLead, alertTeam } from "@/lib/track";
@@ -16,6 +17,14 @@ interface ArticleLink {
 const STATIC_ARTICLES: ArticleLink[] = [
   { title: "Hoe kies je de juiste AI-geletterdheid training? Een checklist voor 2026.", slug: "ai-geletterdheid-training-kiezen-checklist-2026" },
   { title: "Het Nederlandse AI-geletterdheid training landschap: 6 categorieën, en wat ze waard zijn", slug: "ai-geletterdheid-training-landschap-nederland" },
+];
+
+const container = "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8";
+
+const principles = [
+  { title: "Praktijk boven theorie", body: "Elke les gaat over situaties die je mensen echt tegenkomen. Geen college over algoritmes." },
+  { title: "Mensen boven techniek", body: "Geen code en geen jargon. Het gaat om begrijpen wat je doet en weten wanneer je moet stoppen." },
+  { title: "Gedrag boven papier", body: "Een certificaat is mooi meegenomen. Het doel is dat je mensen morgen anders werken." },
 ];
 
 export default function OverAigaClient() {
@@ -86,234 +95,266 @@ export default function OverAigaClient() {
     setSubmitted(true);
   };
 
+  const inputClass =
+    "w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-[15px] focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300";
+
   return (
     <div className="min-h-screen">
       <BreadcrumbNav items={[{ label: "Home", href: "/" }, { label: "Over AIGA" }]} />
 
       {/* Hero */}
-      <section className="pt-12 pb-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="pt-6 pb-14 sm:pt-10 sm:pb-20">
+        <div className={`${container} grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center`}>
           <AnimatedSection>
-            <SectionLabel text="OVER AIGA" />
-            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
-              Iedereen gebruikt AI.{" "}
-              <span className="text-primary">Bijna niemand weet hoe het veilig moet.</span>
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight">
+              AI ging sneller dan de begeleiding.
+              <span className="neon-text block mt-2">Daarom bestaat AIGA.</span>
             </h1>
-            <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Daarom is AIGA er. Wij leren teams AI veilig en goed gebruiken, met een kant-en-klaar programma uit de praktijk. Geen buzzwords, wel gedrag dat verandert.
+            <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
+              Je mensen gebruiken AI al, elke dag. Alleen heeft niemand ze ooit uitgelegd wat er wel en niet in mag.
+              Dat is geen onwil, dat is een gat. Wij dichten het.
             </p>
-            <a href="#contact" className="btn-neon inline-block mt-8 px-7 py-3 rounded-lg text-sm font-semibold">
-              Neem contact op
-            </a>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Ons verhaal */}
-      <section className="py-24">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="ONS VERHAAL" />
-            <h2 className="text-3xl font-display font-semibold text-foreground mt-2">Waarom wij dit doen.</h2>
-            <div className="mt-6 space-y-4 text-muted-foreground leading-relaxed">
-              <p>De EU AI Act is niet het beginpunt. Al jaren zien wij dat organisaties AI inzetten zonder dat medewerkers begrijpen wat dat betekent. Kansen worden gemist. Risico's worden genegeerd. En wanneer er iets fout gaat, is niemand verantwoordelijk.</p>
-              <p>AIGA is de reactie op dat probleem. Een praktische, inhoudelijke training die medewerkers op elk niveau geeft wat ze nodig hebben. Niet meer, niet minder.</p>
-              <p>Wij geloven dat AI pas echt waarde toevoegt als mensen begrijpen wat het is, wat het kan en wat de grenzen zijn.</p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <Link href="/training" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-[15px] font-semibold">
+                Bekijk de teamtraining
+              </Link>
+              <a href="#contact" className="text-[15px] font-semibold text-primary hover:underline">
+                Of praat eerst met ons
+              </a>
             </div>
           </AnimatedSection>
+          <AnimatedSection delay={0.1}>
+            <img
+              src="/assets/ferry-session.jpg"
+              alt="Ferry Hoes tijdens een sessie met een groep deelnemers"
+              width={1500}
+              height={997}
+              className="w-full aspect-[1500/997] object-cover rounded-[1.75rem]"
+            />
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* Contact */}
-      <section id="contact" className="py-24 bg-card">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="CONTACT" />
-            <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-tight mt-4">
-              Je team gebruikt AI al.<br />
-              <span className="neon-text">Laten we zorgen dat het veilig gebeurt.</span>
+      {/* Story */}
+      <Panel tone="tint">
+        <AnimatedSection>
+          <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-8 lg:gap-16">
+            <h2 className="text-[1.75rem] sm:text-[2.6rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">
+              Waarom wij dit doen.
             </h2>
-            <p className="mt-4 text-muted-foreground">
-              Vul het formulier in. Binnen één werkdag belt een van ons je. Geen verplichtingen.
-            </p>
-          </AnimatedSection>
+            <div className="space-y-5 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                Sinds 2017 staat Ferry Hoes voor zalen vol mensen die met AI werken. Overal zien we hetzelfde: de
+                tools zijn er sneller dan de afspraken. Iemand plakt een klantmail, een offerte of een contract in een
+                chatbot om sneller klaar te zijn. Goed bedoeld. Alleen weet niemand waar die data daarna blijft.
+              </p>
+              <p>
+                Verbieden werkt niet: dan gebeurt het gewoon buiten beeld. Een dik beleidsstuk ook niet: dat leest
+                niemand. Wat wel werkt, is mensen in hun eigen werk laten zien waar de grens ligt. Dan herkennen ze het
+                zelf, ook als er niemand meekijkt.
+              </p>
+              <p className="text-foreground">
+                Daarom bouwden we AIGA. Een training die je mensen niet bang maakt voor AI, maar er beter in maakt.
+              </p>
+            </div>
+          </div>
+        </AnimatedSection>
+      </Panel>
 
-          <div className="mt-12">
-            <AnimatedSection delay={0.1}>
-              {submitted ? (
-                <div className="bg-background border border-neon-purple/30 rounded-2xl p-10 text-center">
-                  <h3 className="text-2xl font-display font-bold text-foreground tracking-tight mb-2">Gelukt. De telefoon gaat zo.</h3>
-                  <p className="text-muted-foreground">Binnen één werkdag belt een van ons je op. Robbert, Tom of Ferry: wie het wordt, hangt af van wie het eerst zijn koffie op heeft.</p>
+      {/* Principles */}
+      <section className="py-16 sm:py-24">
+        <div className={container}>
+          <AnimatedSection>
+            <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight max-w-2xl">
+              Waar je ons aan kunt houden.
+            </h2>
+          </AnimatedSection>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-8">
+            {principles.map((c, i) => (
+              <AnimatedSection key={c.title} delay={i * 0.05}>
+                <div className="border-t-2 border-primary pt-5">
+                  <h3 className="text-xl font-display font-bold text-foreground">{c.title}</h3>
+                  <p className="mt-2 text-muted-foreground leading-relaxed">{c.body}</p>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  {[
-                    { name: "naam", label: "Naam", required: true },
-                    { name: "organisatie", label: "Organisatie", required: true },
-                    { name: "functie", label: "Functie", required: false },
-                    { name: "email", label: "E-mailadres", required: true, type: "email" },
-                    { name: "telefoon", label: "Telefoonnummer", required: false, type: "tel" },
-                  ].map((f) => (
-                    <div key={f.name}>
-                      <label htmlFor={`over-${f.name}`} className="text-sm text-muted-foreground mb-1 block">
-                        {f.label} {f.required && <span className="text-neon-purple">*</span>}
-                      </label>
-                      <input
-                        id={`over-${f.name}`}
-                        name={f.name}
-                        type={f.type || "text"}
-                        required={f.required}
-                        value={form[f.name as keyof typeof form]}
-                        onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
-                        className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300"
-                      />
-                    </div>
-                  ))}
-                  <div>
-                    <label htmlFor="over-hulp" className="text-sm text-muted-foreground mb-1 block">
-                      Waarmee kan ik je helpen? <span className="text-neon-purple">*</span>
-                    </label>
-                    <select
-                      id="over-hulp"
-                      name="hulp"
-                      required
-                      value={form.hulp}
-                      onChange={(e) => setForm({ ...form, hulp: e.target.value })}
-                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300"
-                    >
-                      <option value="">Selecteer...</option>
-                      <option value="training">Online Training</option>
-                      <option value="masterclass">Masterclass</option>
-                      <option value="beide">Beide</option>
-                      <option value="anders">Anders</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label htmlFor="over-aantal" className="text-sm text-muted-foreground mb-1 block">Aantal seats</label>
-                    <select
-                      id="over-aantal"
-                      name="aantal"
-                      value={form.aantal}
-                      onChange={(e) => setForm({ ...form, aantal: e.target.value })}
-                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300"
-                    >
-                      <option value="">Selecteer...</option>
-                      <option value="1">1</option>
-                      <option value="2-49">2-49</option>
-                      <option value="50-99">50-99</option>
-                      <option value="100+">100+</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label htmlFor="over-opmerkingen" className="text-sm text-muted-foreground mb-1 block">Vragen of opmerkingen</label>
-                    <textarea
-                      id="over-opmerkingen"
-                      name="opmerkingen"
-                      value={form.opmerkingen}
-                      onChange={(e) => setForm({ ...form, opmerkingen: e.target.value })}
-                      rows={4}
-                      className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300 resize-none"
-                    />
-                  </div>
-                  <button type="submit" disabled={submitting} className="btn-neon w-full py-3 rounded-lg disabled:opacity-50">
-                    {submitting ? "Bezig met versturen..." : "Vraag een offerte aan"}
-                  </button>
-                </form>
-              )}
-            </AnimatedSection>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Oprichter */}
-      <section className="py-24">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Ferry */}
+      <section className="pb-16 sm:pb-24">
+        <div className={container}>
           <AnimatedSection>
-            <SectionLabel text="OPRICHTER & TRAINER" />
-            <div className="flex flex-col sm:flex-row gap-8 mt-8">
-              <div className="shrink-0">
-                <img
-                  src="/assets/ferry-hoes.gif"
-                  alt="Ferry Hoes, AI-expert en keynote spreker"
-                  className="w-48 h-48 rounded-2xl object-cover"
-                  loading="lazy"
-                  width={192}
-                  height={192}
-                />
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-[5fr_6fr] gap-8 md:gap-14 items-center">
+              <img
+                src="/assets/ferry-stage.jpg"
+                alt="Ferry Hoes op het podium voor een publiek"
+                width={959}
+                height={904}
+                loading="lazy"
+                className="w-full aspect-[959/904] object-cover rounded-[1.75rem]"
+              />
               <div>
-                <h2 className="text-2xl font-display font-bold text-foreground">Ferry Hoes</h2>
-                <p className="text-sm text-primary font-medium mt-1">AI-expert, Keynote Spreker & Mede-oprichter AIGA</p>
-                <a href="https://www.linkedin.com/in/ferryhoes" target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline inline-block mt-2">
-                  Bekijk LinkedIn-profiel →
+                <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">
+                  Gebouwd en gegeven door Ferry Hoes.
+                </h2>
+                <div className="mt-5 space-y-4 text-lg text-muted-foreground leading-relaxed">
+                  <p>
+                    Ferry is een veelgevraagd AI-spreker en mede-oprichter van Brand Humanizing. Sinds 2017 helpt hij
+                    organisaties met verantwoord AI-gebruik, van a.s.r. en VodafoneZiggo tot verschillende Ministeries,
+                    zorginstellingen, onderwijs en MKB.
+                  </p>
+                  <p>
+                    Hij staat meerdere keren per maand op het podium en ziet daar wat er op de werkvloer echt met AI
+                    gebeurt. Precies dat zit in de training. In 2020 won hij de Anti-Discriminatie AI-Hackathon van de
+                    Nederlandse overheid.
+                  </p>
+                </div>
+                <a
+                  href="https://www.linkedin.com/in/ferryhoes"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-block text-[15px] font-semibold text-primary hover:underline"
+                >
+                  Ferry op LinkedIn
                 </a>
               </div>
             </div>
-            <div className="mt-8 space-y-4 text-muted-foreground leading-relaxed">
-              <p>Ferry Hoes is een van de meest gevraagde sprekers en trainers op het gebied van kunstmatige intelligentie in Nederland. Als AI-expert en mede-oprichter van Brand Humanizing combineert hij diepgaande technische kennis met een uniek vermogen om complexe onderwerpen begrijpelijk te maken voor elk publiek.</p>
-              <p>Ferry staat meermaals per maand op het podium voor toonaangevende organisaties in heel Nederland. Zijn klanten omvatten a.s.r. Verzekeringen, VodafoneZiggo, meerdere Nederlandse ministeries, zorginstellingen, onderwijsorganisaties en MKB-bedrijven.</p>
-              <p>In 2020 won Ferry de prestigieuze Anti-Discriminatie AI-Hackathon, georganiseerd door de Nederlandse overheid.</p>
-            </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Drie principes */}
-      <section className="py-24 bg-card">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="WAT ONS ONDERSCHEIDT" />
-            <h2 className="text-3xl font-display font-semibold text-foreground mt-2">
-              Drie principes.<br /><span className="text-primary">Een richting.</span>
-            </h2>
-          </AnimatedSection>
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            {[
-              { title: "Praktisch boven theoretisch", body: "Elke les is gekoppeld aan situaties die medewerkers echt tegenkomen op de werkvloer." },
-              { title: "Menselijk boven technisch", body: "AI-geletterdheid gaat niet over code. Het gaat over begrip, verantwoordelijkheid en vertrouwen." },
-              { title: "Toepasbaar boven compliant", body: "We helpen organisaties niet alleen aan een certificaat. We helpen ze een cultuur bouwen waarin AI slim en verantwoord wordt ingezet." },
-            ].map((c) => (
-              <StaggerItem key={c.title}>
-                <div className="bg-background border border-border rounded-2xl p-10 hover:border-neon-purple/40 neon-glow transition-all duration-300 h-full neon-card-top">
-                  <p className="text-lg font-semibold text-foreground mb-3">{c.title}</p>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{c.body}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
-      </section>
-
-      {/* Kenniscentrum articles */}
+      {/* Articles */}
       {allArticles.length > 0 && (
-        <section className="py-24">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="pb-16 sm:pb-24">
+          <div className={container}>
             <AnimatedSection>
-              <SectionLabel text="GEPUBLICEERD DOOR FERRY HOES" />
-              <h2 className="text-2xl font-display font-semibold text-foreground mt-2 mb-6">
-                Artikelen in het Kenniscentrum
-              </h2>
-              <ul className="space-y-3">
-                {allArticles.filter(a => a.slug).map((a) => (
-                  <li key={a.slug} className="border-b border-border pb-3 last:border-0 last:pb-0">
-                    <Link href={`/kenniscentrum/${a.slug}`} className="text-sm text-primary hover:underline leading-snug" rel="author">
-                      {a.title}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <Link href="/kenniscentrum" className="text-sm font-semibold text-primary hover:underline">
-                  Bekijk alle artikelen →
-                </Link>
-                <a href="#contact" className="btn-neon-outline px-6 py-2.5 rounded-lg text-sm font-semibold">
-                  Neem contact op ↑
-                </a>
+              <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-6 lg:gap-16">
+                <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground leading-[1.15] tracking-tight">
+                  Liever eerst lezen?
+                </h2>
+                <div>
+                  <ul className="border-b border-border">
+                    {allArticles.filter((a) => a.slug).map((a) => (
+                      <li key={a.slug} className="border-t border-border py-4">
+                        <Link href={`/kenniscentrum/${a.slug}`} className="text-lg text-foreground hover:text-primary leading-snug" rel="author">
+                          {a.title}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/kenniscentrum" className="mt-5 inline-block text-[15px] font-semibold text-primary hover:underline">
+                    Alle artikelen in het kenniscentrum
+                  </Link>
+                </div>
               </div>
             </AnimatedSection>
           </div>
         </section>
       )}
+
+      {/* Contact */}
+      <div className="pb-10">
+        <Panel tone="tint" id="contact">
+          <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-10 lg:gap-16">
+            <AnimatedSection>
+              <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.08] tracking-tight">
+                Je team gebruikt AI al. Laten we zorgen dat het veilig gebeurt.
+              </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                Laat je gegevens achter. Binnen één werkdag nemen we contact met je op. Geen verplichtingen.
+              </p>
+              <AskUs className="mt-8" />
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.05}>
+              <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">
+                {submitted ? (
+                  <div>
+                    <h3 className="text-2xl font-display font-bold text-foreground tracking-tight">Gelukt. We nemen snel contact op.</h3>
+                    <p className="mt-3 text-muted-foreground leading-relaxed">
+                      Binnen één werkdag hoor je van een van ons. Robbert, Tom of Ferry: wie het wordt, hangt af van
+                      wie het eerst zijn koffie op heeft.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      {[
+                        { name: "naam", label: "Naam", required: true, auto: "name" },
+                        { name: "organisatie", label: "Organisatie", required: true, auto: "organization" },
+                      ].map((f) => (
+                        <div key={f.name}>
+                          <label htmlFor={`over-${f.name}`} className="text-sm text-muted-foreground mb-1 block">{f.label}</label>
+                          <input
+                            id={`over-${f.name}`}
+                            name={f.name}
+                            required={f.required}
+                            autoComplete={f.auto}
+                            value={form[f.name as keyof typeof form]}
+                            onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
+                            className={inputClass}
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    {[
+                      { name: "email", label: "E-mailadres", required: true, type: "email", auto: "email" },
+                      { name: "telefoon", label: "Telefoonnummer (optioneel)", required: false, type: "tel", auto: "tel" },
+                    ].map((f) => (
+                      <div key={f.name}>
+                        <label htmlFor={`over-${f.name}`} className="text-sm text-muted-foreground mb-1 block">{f.label}</label>
+                        <input
+                          id={`over-${f.name}`}
+                          name={f.name}
+                          type={f.type}
+                          required={f.required}
+                          autoComplete={f.auto}
+                          value={form[f.name as keyof typeof form]}
+                          onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
+                          className={inputClass}
+                        />
+                      </div>
+                    ))}
+                    <div>
+                      <label htmlFor="over-hulp" className="text-sm text-muted-foreground mb-1 block">Waar gaat het over?</label>
+                      <select
+                        id="over-hulp"
+                        name="hulp"
+                        required
+                        value={form.hulp}
+                        onChange={(e) => setForm({ ...form, hulp: e.target.value })}
+                        className={inputClass}
+                      >
+                        <option value="">Kies een optie</option>
+                        <option value="training">De teamtraining</option>
+                        <option value="masterclass">De masterclass</option>
+                        <option value="beide">Allebei</option>
+                        <option value="anders">Iets anders</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label htmlFor="over-opmerkingen" className="text-sm text-muted-foreground mb-1 block">Je vraag (optioneel)</label>
+                      <textarea
+                        id="over-opmerkingen"
+                        name="opmerkingen"
+                        value={form.opmerkingen}
+                        onChange={(e) => setForm({ ...form, opmerkingen: e.target.value })}
+                        rows={3}
+                        className={`${inputClass} resize-none`}
+                      />
+                    </div>
+                    <button type="submit" disabled={submitting} className="btn-neon w-full py-3.5 rounded-lg disabled:opacity-50">
+                      {submitting ? "Even versturen..." : "Stuur je vraag"}
+                    </button>
+                  </form>
+                )}
+              </div>
+            </AnimatedSection>
+          </div>
+        </Panel>
+      </div>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import CourseProgress from "@/components/CourseProgress";
 import SectionNav from "@/components/SectionNav";
 import ProgramAccordion from "@/components/ProgramAccordion";
 import BookingBox from "@/components/BookingBox";
+import AskUs from "@/components/AskUs";
 import FerryAuthority from "@/components/FerryAuthority";
 import LeadForm from "@/components/LeadForm";
 import FaqList from "@/components/FaqList";
@@ -221,6 +222,7 @@ export default function TrainingClient() {
               <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
                 Laat je gegevens achter. Binnen één werkdag belt Robbert, Tom of Ferry je. Geen verplichtingen.
               </p>
+              <AskUs className="mt-8" />
               <div className="mt-6">
                 <ShareWithColleague product="training" inline />
               </div>

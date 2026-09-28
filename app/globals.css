@@ -13,7 +13,7 @@
     --popover: 36 40% 99%;
     --popover-foreground: 24 14% 15%;
 
-    --primary: 189 42% 38%;
+    --primary: 263 62% 52%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 33 28% 93%;
@@ -30,7 +30,7 @@
 
     --border: 33 22% 88%;
     --input: 33 22% 88%;
-    --ring: 189 42% 38%;
+    --ring: 263 62% 52%;
 
     --radius: 0.9rem;
 
@@ -49,16 +49,17 @@
     --block-peach: 22 78% 93%;
     --block-butter: 44 78% 91%;
     --block-sage: 146 28% 91%;
-    --block-lilac: 268 46% 95%;
+    --block-lilac: 257 70% 95%;
+    --deep: 256 56% 33%;
 
     --sidebar-background: 36 34% 97%;
     --sidebar-foreground: 24 14% 15%;
-    --sidebar-primary: 189 42% 38%;
+    --sidebar-primary: 263 62% 52%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 33 28% 93%;
     --sidebar-accent-foreground: 24 14% 15%;
     --sidebar-border: 33 22% 88%;
-    --sidebar-ring: 189 42% 38%;
+    --sidebar-ring: 263 62% 52%;
   }
 }
 
@@ -93,11 +94,16 @@
 .block-lilac { background-color: hsl(var(--block-lilac)); }
 
 /* Bold solid statement section (one loud moment) */
-.statement-block { background-color: hsl(263 52% 40%); color: #fff; }
-.statement-block .neon-text,
-.statement-block .text-primary,
+.statement-block { background-color: hsl(var(--deep)); color: #fff; }
 .statement-block .text-foreground { color: #fff; }
-.statement-block .text-muted-foreground { color: hsl(263 30% 86%); }
+.statement-block .neon-text,
+.statement-block .text-primary { color: hsl(256 80% 87%); }
+.statement-block .text-muted-foreground { color: hsl(256 55% 88%); }
+.statement-block .border-border { border-color: hsl(256 40% 45%); }
+
+/* Soft lilac moments: text and rules adapt to the tint */
+.block-lilac .text-muted-foreground { color: hsl(252 18% 36%); }
+.block-lilac .border-border { border-color: hsl(256 50% 86%); }
 
 /* Soft layered shadow for real depth (not neon glow) */
 .shadow-soft { box-shadow: 0 1px 2px hsl(28 20% 20% / .05), 0 14px 30px -16px hsl(263 35% 30% / .22); }

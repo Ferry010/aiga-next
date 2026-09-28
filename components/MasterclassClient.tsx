@@ -3,6 +3,8 @@ import { useState } from "react";
 import Link from "next/link";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import SplitSection from "@/components/SplitSection";
+import Panel from "@/components/Panel";
+import ProgramCard from "@/components/ProgramCard";
 import FerryAuthority from "@/components/FerryAuthority";
 import FaqList from "@/components/FaqList";
 import ShareWithColleague from "@/components/ShareWithColleague";
@@ -11,13 +13,6 @@ import { MASTERCLASS_FAQ } from "@/lib/faq";
 import { createClient } from "@/lib/supabase/client";
 import { trackLead, alertTeam } from "@/lib/track";
 import { toast } from "sonner";
-
-const program = [
-  { time: "30 min", title: "Wat er nu al met AI gebeurt", body: "Je mensen gebruiken AI allang. Wat betekent dat voor je data, voor shadow AI en voor de output die de deur uitgaat?" },
-  { time: "45 min", title: "Wat dit betekent voor jou als leidinggevende", body: "Welke rollen, tools en processen het raakt, waar de gaten zitten en waar jij op stuurt." },
-  { time: "30 min", title: "Van risico naar richting", body: "Hoe je AI-gebruik in goede banen leidt en er voordeel uit haalt, zonder je mensen af te remmen." },
-  { time: "15 min", title: "Live Q&A met Ferry Hoes", body: "Jullie eigen vragen, over jullie eigen situatie." },
-];
 
 const takeaways = [
   "Waar in jouw organisatie AI risico oplevert, en waar rendement",
@@ -88,15 +83,15 @@ export default function MasterclassClient() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero */}
-      <section className="pt-10 pb-10 sm:pt-24 sm:pb-16">
-        <div className={container}>
+      {/* Hero: the agenda beside the promise */}
+      <section className="pt-10 pb-14 sm:pt-20 sm:pb-24">
+        <div className={`${container} grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center`}>
           <AnimatedSection>
-            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight max-w-4xl">
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight">
               Je mensen gebruiken AI.
               <span className="neon-text block mt-2">Wie bepaalt waar de grens ligt?</span>
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+            <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
               Een live masterclass van twee uur voor directie en management. Over wat AI wel en niet mag in jullie
               processen, wie verantwoordelijk is als het misgaat, en hoe beleid ook echt gedrag wordt.
             </p>
@@ -117,47 +112,39 @@ export default function MasterclassClient() {
               ))}
             </ul>
           </AnimatedSection>
+          <AnimatedSection delay={0.1}>
+            <ProgramCard />
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* Why leadership */}
-      <SplitSection title="De teamtraining lost het gedrag op. De masterclass lost de richting op.">
-        <p className="text-xl text-foreground leading-relaxed">
-          Je mensen leren hoe ze AI veilig gebruiken. Maar op jouw niveau spelen andere vragen.
-        </p>
-        <ul className="mt-6 border-b border-border">
-          {[
-            "Wat mag AI wel en niet beslissen in ons proces?",
-            "Wie is verantwoordelijk als het misgaat?",
-            "Waar ligt de grens tussen snelheid en risico?",
-            "Hoe zorg je dat beleid ook echt gedrag wordt?",
-          ].map((q) => (
-            <li key={q} className="py-4 border-t border-border text-lg font-display font-bold text-foreground">{q}</li>
-          ))}
-        </ul>
-        <p className="mt-8 text-lg text-muted-foreground leading-relaxed">
-          Dat zijn geen vragen voor een e-learning. Die beantwoord je met de mensen die de knopen doorhakken, in
-          één ruimte.
-        </p>
-      </SplitSection>
-
-      {/* Program */}
-      <SplitSection title="Twee uur. Vier blokken." intro="Je loopt naar buiten met een richting, niet met huiswerk.">
-        <ol className="border-b border-border">
-          {program.map((p) => (
-            <li key={p.title} className="grid grid-cols-[4.5rem_1fr] py-6 border-t border-border">
-              <span className="text-lg font-display font-bold neon-text">{p.time}</span>
-              <div>
-                <h3 className="text-xl font-display font-bold text-foreground tracking-tight">{p.title}</h3>
-                <p className="mt-2 text-lg text-muted-foreground leading-relaxed">{p.body}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </SplitSection>
+      {/* Why leadership: the questions only the leadership can answer */}
+      <Panel tone="tint">
+        <AnimatedSection>
+          <h2 className="text-[1.75rem] sm:text-[2.6rem] font-display font-bold text-foreground leading-[1.1] tracking-tight max-w-3xl">
+            De teamtraining lost het gedrag op. De masterclass lost de richting op.
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground leading-relaxed max-w-2xl">
+            Je mensen leren hoe ze AI veilig gebruiken. Maar op jouw niveau spelen andere vragen.
+          </p>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-8">
+            {[
+              "Wat mag AI wel en niet beslissen in ons proces?",
+              "Wie is verantwoordelijk als het misgaat?",
+              "Waar ligt de grens tussen snelheid en risico?",
+              "Hoe zorg je dat beleid ook echt gedrag wordt?",
+            ].map((q) => (
+              <p key={q} className="border-t-2 border-primary pt-5 text-xl font-display font-bold text-foreground leading-snug">{q}</p>
+            ))}
+          </div>
+          <p className="mt-10 text-lg text-foreground leading-relaxed max-w-2xl">
+            Dat zijn geen vragen voor een e-learning. Die beantwoord je met de mensen die de knopen doorhakken, in één ruimte.
+          </p>
+        </AnimatedSection>
+      </Panel>
 
       {/* Takeaways */}
-      <SplitSection title="Wat je na deze sessie weet.">
+      <SplitSection title="Wat je na deze sessie weet." intro="Je loopt naar buiten met een richting, niet met huiswerk.">
         <div className="border-b border-border">
           {takeaways.map((t) => (
             <div key={t} className="flex gap-4 py-5 border-t border-border">
@@ -168,23 +155,37 @@ export default function MasterclassClient() {
         </div>
       </SplitSection>
 
-      {/* Price */}
-      <SplitSection id="prijs" title="Wat het kost.">
-        <p className="text-7xl sm:text-8xl font-display font-bold text-foreground leading-none tracking-tight">€495</p>
-        <p className="mt-3 text-lg text-muted-foreground">ex btw per persoon, minimaal 5 deelnemers</p>
-        <p className="mt-8 text-lg text-muted-foreground leading-relaxed max-w-xl">
-          Inbegrepen: twee uur live met Ferry Hoes, op locatie of online, op een datum die jullie past. Met een live
-          Q&amp;A over jullie eigen situatie en een bewijs van deelname. Geen technische kennis nodig.
-        </p>
-        <p className="mt-8 border-l-2 border-primary pl-5 text-lg text-foreground leading-relaxed max-w-xl">
-          <strong>Gratis bij de teamtraining.</strong> Boek je 50 plekken of meer in de teamtraining in één keer? Dan
-          is de masterclass gratis.{" "}
-          <Link href="/training" className="text-primary font-semibold hover:underline">Bekijk de teamtraining</Link>
-        </p>
-        <a href="#aanmelden" className="btn-neon mt-10 inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-[15px] font-semibold">
-          Plan de masterclass
-        </a>
-      </SplitSection>
+      {/* Price: the deep-purple decision moment */}
+      <Panel tone="deep" id="prijs">
+        <AnimatedSection>
+          <div className="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-8 lg:gap-16 items-center">
+            <div>
+              <p className="text-[5.5rem] sm:text-[8.5rem] font-display font-bold leading-[0.85] tracking-tighter text-foreground">€495</p>
+              <p className="mt-4 text-xl text-muted-foreground">ex btw per persoon, minimaal 5</p>
+            </div>
+            <div>
+              <h2 className="text-2xl sm:text-[2.1rem] font-display font-bold text-foreground leading-[1.15] tracking-tight">
+                Twee uur live, op een datum die jullie past.
+              </h2>
+              <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+                Inbegrepen: de sessie met Ferry Hoes, op locatie of online, een live Q&amp;A over jullie eigen situatie
+                en een bewijs van deelname. Geen technische kennis nodig.
+              </p>
+              <p className="mt-6 rounded-2xl bg-white/10 px-5 py-4 text-lg text-foreground leading-relaxed">
+                <strong>Gratis bij de teamtraining.</strong> Boek je 50 plekken of meer in de teamtraining in één keer?
+                Dan is de masterclass gratis.{" "}
+                <Link href="/training" className="text-primary font-semibold underline underline-offset-2">Bekijk de teamtraining</Link>
+              </p>
+              <a
+                href="#aanmelden"
+                className="mt-8 inline-flex items-center justify-center px-7 py-3.5 rounded-full text-[15px] font-semibold bg-white text-[hsl(var(--deep))] transition-transform hover:-translate-y-0.5"
+              >
+                Plan de masterclass
+              </a>
+            </div>
+          </div>
+        </AnimatedSection>
+      </Panel>
 
       <FerryAuthority />
 
@@ -194,9 +195,9 @@ export default function MasterclassClient() {
       </SplitSection>
 
       {/* Form: reassurance beside it */}
-      <section id="aanmelden" className="pt-4 pb-28 sm:pb-24 scroll-mt-20">
-        <div className={container}>
-          <div className="border-t-2 border-foreground pt-12 sm:pt-16 grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-10 lg:gap-20">
+      <div className="pb-28 sm:pb-10">
+        <Panel tone="tint" id="aanmelden">
+          <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-10 lg:gap-16">
             <AnimatedSection>
               <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.08] tracking-tight">
                 Zet de richting voordat iedereen zijn eigen AI-regels verzint.
@@ -210,6 +211,7 @@ export default function MasterclassClient() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.05}>
+              <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">
               {submitted ? (
                 <div className="border-t border-border pt-6">
                   <h3 className="text-2xl font-display font-bold text-foreground tracking-tight">Gelukt. De telefoon gaat zo.</h3>
@@ -287,10 +289,11 @@ export default function MasterclassClient() {
                   </button>
                 </form>
               )}
+              </div>
             </AnimatedSection>
           </div>
-        </div>
-      </section>
+        </Panel>
+      </div>
 
       <StickyCta target="aanmelden" label="Plan de masterclass" note="€495 ex btw p.p." />
     </div>

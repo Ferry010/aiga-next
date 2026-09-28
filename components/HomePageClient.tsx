@@ -2,26 +2,16 @@
 import Link from "next/link";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import SplitSection from "@/components/SplitSection";
+import Panel from "@/components/Panel";
+import HeroChat from "@/components/HeroChat";
 import FerryAuthority from "@/components/FerryAuthority";
 import StickyCta from "@/components/StickyCta";
 
 const dinsdag = [
-  {
-    main: "Iemand plakt een klantenlijst in ChatGPT voor een snelle samenvatting.",
-    soft: "Slim bedoeld. Scheelt een uur.",
-  },
-  {
-    main: "Iemand stuurt een AI-antwoord door naar een klant zonder het te checken.",
-    soft: "Het klonk goed. Waarom zou je twijfelen.",
-  },
-  {
-    main: "Iemand neemt een cijfer over dat AI heeft verzonnen.",
-    soft: "Niemand die het narekent.",
-  },
-  {
-    main: "Iemand vraagt zich af of dit eigenlijk wel mag, en doet het toch.",
-    soft: "Want niemand heeft ooit gezegd waar de grens ligt.",
-  },
+  { main: "Iemand plakt een klantenlijst in ChatGPT voor een snelle samenvatting.", soft: "Slim bedoeld. Scheelt een uur." },
+  { main: "Iemand stuurt een AI-antwoord door naar een klant zonder het te checken.", soft: "Het klonk goed." },
+  { main: "Iemand neemt een cijfer over dat AI heeft verzonnen.", soft: "Niemand die het narekent." },
+  { main: "Iemand vraagt zich af of dit eigenlijk wel mag, en doet het toch.", soft: "Niemand heeft ooit gezegd waar de grens ligt." },
 ];
 
 const gedachten = [
@@ -40,8 +30,8 @@ const gedachten = [
 ];
 
 const geregeld = [
-  "Je mensen weten wat er wel en niet in een AI-tool mag. Zonder dat ze het hoeven te vragen.",
-  "Ze controleren output voordat het de deur uitgaat. Omdat ze weten waar het misgaat.",
+  "Je mensen weten wat er wel en niet in een AI-tool mag, zonder dat ze het hoeven te vragen.",
+  "Ze controleren output voordat het de deur uitgaat, omdat ze weten waar het misgaat.",
   "Iedereen werkt vanaf dezelfde basis. Niet vijfhonderd eigen manieren, maar één.",
   "En als iemand vraagt hoe jullie AI aanpakken, laat je het gewoon zien.",
 ];
@@ -51,63 +41,72 @@ const container = "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8";
 export default function HomePageClient() {
   return (
     <div className="min-h-screen">
-      {/* Hero */}
-      <section className="pt-10 pb-10 sm:pt-24 sm:pb-16">
-        <div className={container}>
+      {/* Hero: the story in words, and the moment itself */}
+      <section className="pt-10 pb-14 sm:pt-20 sm:pb-24">
+        <div className={`${container} grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-center`}>
           <AnimatedSection>
-            <h1 className="text-[2.15rem] sm:text-6xl font-display font-bold text-foreground leading-[1.06] tracking-tight max-w-4xl">
+            <h1 className="text-[2.15rem] sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight">
               Ergens in je team verdwijnt vandaag een contract in ChatGPT.
               <span className="neon-text block mt-2">En niemand weet waar het daarna blijft.</span>
             </h1>
-            <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-              {"“Even erin gooien, scheelt me een uur.”"} Onschuldig bedoeld, handig zelfs. Maar die data staat
-              nu in een tool die jij niet ziet. En morgen gebeurt het weer.
+            <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
+              Onschuldig bedoeld, handig zelfs. Maar die data staat nu in een tool die jij niet ziet. En morgen
+              gebeurt het weer.
             </p>
-            <div className="mt-8">
-              <a href="#oplossing" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-[15px] font-semibold">
-                Bekijk de oplossing
-              </a>
-            </div>
+            <a href="#oplossing" className="btn-neon mt-8 inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-[15px] font-semibold">
+              Bekijk de oplossing
+            </a>
+          </AnimatedSection>
+          <AnimatedSection delay={0.1}>
+            <HeroChat />
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Recognition */}
-      <SplitSection title="Het zijn nooit de grote beslissingen. Het zijn de kleine, de hele dag door.">
-        <div className="border-b border-border">
-          {dinsdag.map((d) => (
-            <p key={d.main} className="py-5 border-t border-border text-lg text-foreground leading-relaxed">
-              {d.main} <span className="italic text-muted-foreground">{d.soft}</span>
-            </p>
-          ))}
-        </div>
-        <p className="mt-8 text-xl font-display font-bold text-foreground leading-snug">
-          Niet omdat je mensen slordig zijn,{" "}
-          <span className="neon-text">maar omdat AI sneller ging dan de begeleiding.</span>
-        </p>
-      </SplitSection>
-
-      {/* Proof */}
-      <SplitSection
-        title="Bijna geen enkele organisatie heeft dit in beeld."
-        intro="Het meeste AI-gebruik loopt via privé-accounts, buiten alles om wat je hebt afgesproken. Dat maakt dit geen klein probleem. Maar wel een heel normaal probleem."
-      >
-        <div className="border-l-2 border-primary pl-6 sm:pl-8">
-          <p className="text-7xl sm:text-8xl font-display font-bold text-primary leading-none tracking-tight">82%</p>
-          <p className="mt-5 text-xl text-foreground leading-relaxed max-w-md">
-            van de bedrijfsdata die in AI-tools belandt, komt uit privé-accounts buiten het zicht van de organisatie.
+      {/* Recognition: the soft lilac moment */}
+      <Panel tone="tint">
+        <AnimatedSection>
+          <h2 className="text-[1.75rem] sm:text-[2.6rem] font-display font-bold text-foreground leading-[1.1] tracking-tight max-w-3xl">
+            Het zijn nooit de grote beslissingen. Het zijn de kleine, de hele dag door.
+          </h2>
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 md:gap-x-16">
+            {dinsdag.map((d) => (
+              <p key={d.main} className="py-5 border-t border-border text-lg text-foreground leading-relaxed">
+                {d.main} <span className="italic text-muted-foreground">{d.soft}</span>
+              </p>
+            ))}
+          </div>
+          <p className="mt-8 text-xl sm:text-2xl font-display font-bold text-foreground leading-snug max-w-3xl">
+            Niet omdat je mensen slordig zijn, <span className="text-primary">maar omdat AI sneller ging dan de begeleiding.</span>
           </p>
-          <p className="mt-2 text-sm text-muted-foreground">LayerX, 2025</p>
-          <Link href="/gereedheidscan" className="mt-6 inline-block font-semibold text-primary hover:underline">
-            Benieuwd hoe dat bij jou zit? Doe de gratis AI-risicocheck →
-          </Link>
-        </div>
-        <p className="mt-10 text-lg text-foreground leading-relaxed">
-          Je hebt dus niets verkeerd gedaan. Je hebt alleen nog geen manier om er grip op te krijgen.
-        </p>
-      </SplitSection>
+        </AnimatedSection>
+      </Panel>
 
-      {/* Objections */}
+      {/* Proof: the bold deep-purple moment */}
+      <div className="pt-4 sm:pt-6">
+        <Panel tone="deep">
+          <AnimatedSection>
+            <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-6 lg:gap-16 items-center">
+              <p className="text-[6.5rem] sm:text-[11rem] font-display font-bold leading-[0.85] tracking-tighter text-primary">82%</p>
+              <div>
+                <h2 className="text-2xl sm:text-[2.2rem] font-display font-bold text-foreground leading-[1.15] tracking-tight">
+                  van de bedrijfsdata die in AI-tools belandt, komt uit privé-accounts.
+                </h2>
+                <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+                  Buiten het zicht van de organisatie. Bijna niemand heeft dit in beeld, dus je hebt niets verkeerd
+                  gedaan. Je hebt alleen nog geen manier om er grip op te krijgen.
+                </p>
+                <p className="mt-2 text-sm text-muted-foreground">LayerX, 2025</p>
+                <Link href="/gereedheidscan" className="mt-6 inline-block font-semibold text-white border-b-2 border-[hsl(256_80%_87%)] pb-0.5 hover:border-white">
+                  Doe de gratis AI-risicocheck →
+                </Link>
+              </div>
+            </div>
+          </AnimatedSection>
+        </Panel>
+      </div>
+
+      {/* Objections: back to cream */}
       <SplitSection title="Misschien denk je nu een van deze dingen.">
         <div className="border-b border-border">
           {gedachten.map((g) => (
@@ -122,23 +121,31 @@ export default function HomePageClient() {
         </p>
       </SplitSection>
 
-      {/* The relief */}
-      <SplitSection title="Zo voelt het als het geregeld is.">
-        <div className="border-b border-border">
-          {geregeld.map((g) => (
-            <div key={g} className="flex gap-4 py-5 border-t border-border">
-              <span className="mt-[0.65rem] h-1.5 w-1.5 rounded-full bg-primary shrink-0" aria-hidden />
-              <p className="text-lg text-foreground leading-relaxed">{g}</p>
+      {/* The relief: a calm 2x2 */}
+      <section className="pb-14 sm:pb-20">
+        <div className={container}>
+          <AnimatedSection>
+            <h2 className="text-[1.75rem] sm:text-4xl font-display font-bold text-foreground leading-[1.12] tracking-tight">
+              Zo voelt het als het geregeld is.
+            </h2>
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
+              {geregeld.map((g) => (
+                <div key={g} className="border-t-2 border-primary pt-5">
+                  <p className="text-lg text-foreground leading-relaxed">{g}</p>
+                </div>
+              ))}
             </div>
-          ))}
+            <p className="mt-10 text-xl sm:text-2xl font-display font-bold text-foreground">
+              Geen onrust op de achtergrond. <span className="text-primary">Gewoon grip.</span>
+            </p>
+          </AnimatedSection>
         </div>
-        <p className="mt-8 text-xl font-display font-bold text-foreground">Geen onrust op de achtergrond. Gewoon grip.</p>
-      </SplitSection>
+      </section>
 
       <FerryAuthority />
 
-      {/* The choice */}
-      <section id="oplossing" className="py-14 sm:py-20 lg:py-24 scroll-mt-20">
+      {/* The choice: the recommended option carries the tint */}
+      <section id="oplossing" className="py-14 sm:py-20 scroll-mt-20">
         <div className={container}>
           <AnimatedSection>
             <h2 className="text-[1.75rem] sm:text-4xl font-display font-bold text-foreground leading-[1.12] tracking-tight max-w-2xl">
@@ -148,9 +155,9 @@ export default function HomePageClient() {
               Je mensen en je leiding hebben niet dezelfde vraag. De meeste organisaties doen allebei.
             </p>
           </AnimatedSection>
-          <AnimatedSection delay={0.05} className="mt-12">
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_1px_1fr] gap-12 md:gap-16">
-              <div className="flex flex-col">
+          <AnimatedSection delay={0.05} className="mt-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-7">
+              <div className="block-lilac rounded-[1.75rem] p-7 sm:p-10 flex flex-col">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-foreground tracking-tight">De teamtraining</h3>
                 <p className="mt-3 text-lg text-muted-foreground leading-relaxed flex-1">
                   Voor je hele team. Online, in eigen tempo, een paar uur per persoon.
@@ -163,10 +170,7 @@ export default function HomePageClient() {
                   Bekijk de teamtraining
                 </Link>
               </div>
-
-              <div className="hidden md:block bg-border" aria-hidden />
-
-              <div className="flex flex-col">
+              <div className="rounded-[1.75rem] border-[1.5px] border-border p-7 sm:p-10 flex flex-col">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-foreground tracking-tight">De masterclass</h3>
                 <p className="mt-3 text-lg text-muted-foreground leading-relaxed flex-1">
                   Voor directie en management. Twee uur live over verantwoord AI-gebruik, governance en waar jouw
@@ -185,33 +189,30 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* The one colored moment */}
-      <section className="pb-24 sm:pb-16 pt-4">
-        <div className={container}>
+      {/* Final ask */}
+      <div className="pb-24 sm:pb-10">
+        <Panel tone="deep">
           <AnimatedSection>
-            <div className="statement-block rounded-3xl px-6 py-14 sm:px-16 sm:py-20">
-              <h2 className="text-3xl sm:text-5xl font-display font-bold leading-[1.08] tracking-tight max-w-2xl">
-                Je team gebruikt AI. Zorg dat ze weten hoe.
-              </h2>
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <Link
-                  href="/training"
-                  className="inline-flex justify-center px-7 py-3.5 rounded-full text-[15px] font-semibold transition-transform hover:-translate-y-0.5"
-                  style={{ background: "#fff", color: "hsl(263 52% 40%)" }}
-                >
-                  Bekijk de teamtraining
-                </Link>
-                <Link
-                  href="/masterclass"
-                  className="inline-flex justify-center px-7 py-3.5 rounded-full text-[15px] font-semibold border-2 border-white/60 text-white transition-colors hover:bg-white/10"
-                >
-                  Bekijk de masterclass
-                </Link>
-              </div>
+            <h2 className="text-3xl sm:text-[3.4rem] font-display font-bold leading-[1.05] tracking-tight max-w-3xl">
+              Je team gebruikt AI. <span className="text-primary">Zorg dat ze weten hoe.</span>
+            </h2>
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/training"
+                className="inline-flex justify-center px-7 py-3.5 rounded-full text-[15px] font-semibold bg-white text-[hsl(var(--deep))] transition-transform hover:-translate-y-0.5"
+              >
+                Bekijk de teamtraining
+              </Link>
+              <Link
+                href="/masterclass"
+                className="inline-flex justify-center px-7 py-3.5 rounded-full text-[15px] font-semibold border-2 border-white/50 text-white transition-colors hover:bg-white/10"
+              >
+                Bekijk de masterclass
+              </Link>
             </div>
           </AnimatedSection>
-        </div>
-      </section>
+        </Panel>
+      </div>
 
       <StickyCta target="oplossing" label="Bekijk de oplossing" />
     </div>

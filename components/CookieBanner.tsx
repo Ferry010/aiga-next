@@ -16,6 +16,13 @@ const CookieBanner = () => {
 
   const accept = () => {
     localStorage.setItem(COOKIE_KEY, "accepted");
+    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+    gtag?.("consent", "update", {
+      ad_storage: "granted",
+      ad_user_data: "granted",
+      ad_personalization: "granted",
+      analytics_storage: "granted",
+    });
     setVisible(false);
   };
 

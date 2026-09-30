@@ -85,16 +85,16 @@ export default function ShadowAiPage() {
       <section className="pt-6 pb-14 sm:pt-10 sm:pb-20">
         <div className={`${container} grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center`}>
           <AnimatedSection>
-            <h1 className="text-4xl sm:text-[3.4rem] font-display font-bold text-foreground leading-[1.05] tracking-tight">
-              Iemand in je team zet klantgegevens in een privé ChatGPT-account.
-              <span className="neon-text block mt-3">Daar zit je risico.</span>
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight">
+              Je team zet klantdata in ChatGPT.
+              <span className="neon-text block mt-2">En jij weet van niks.</span>
             </h1>
             <p className="mt-6 text-xl sm:text-2xl font-display font-bold text-foreground max-w-xl leading-snug">
               Dat heet shadow AI: AI-gebruik binnen je organisatie waar de organisatie zelf niet van weet.
             </p>
             <p className="mt-4 text-lg text-muted-foreground max-w-xl leading-relaxed">
-              Niet uit onwil, het scheelt gewoon tijd. Maar niemand heeft er afspraken over gemaakt en niemand ziet
-              waar die gegevens daarna blijven. Dat kan in strijd zijn met de AVG, het gaat vaak tegen je eigen beleid
+              Via een privé-account, om tijd te besparen. Niet uit onwil. Maar niemand heeft er afspraken over gemaakt
+              en niemand ziet waar die gegevens daarna blijven. Dat kan in strijd zijn met de AVG, het gaat vaak tegen je eigen beleid
               in en je data is uit beeld.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">

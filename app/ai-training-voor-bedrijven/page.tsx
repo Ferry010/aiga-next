@@ -64,7 +64,7 @@ export default function AiTrainingVoorBedrijvenPage() {
             <StaggerContainer className="mt-6 max-w-2xl border-b border-border">
               {[
                 "Volledig Nederlandstalig en afgestemd op de Nederlandse praktijk",
-                "Schaalbaar: van 1 tot 1000+ medewerkers tegelijk",
+                "Zoveel mensen als je wil, nu of later",
                 "Vier modules in eigen tempo, met tussentijdse toetsen",
                 "Digitaal eindexamen en certificaat van deelname",
                 "Geen technische voorkennis vereist",

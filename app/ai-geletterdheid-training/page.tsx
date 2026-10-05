@@ -48,7 +48,7 @@ const faqs: FaqItem[] = [
   },
   {
     q: "Hoeveel kost de training?",
-    a: "€249 ex BTW per deelnemer. Vanaf 50 deelnemers ontvang je de leiderschapsmasterclass gratis. Neem contact op voor een offerte op maat.",
+    a: "€249 ex btw per deelnemer. Vanaf 50 deelnemers is het een enterprise-traject met een offerte op maat, inclusief de live masterclass voor je directie en MT.",
   },
   {
     q: "Krijg ik een certificaat?",

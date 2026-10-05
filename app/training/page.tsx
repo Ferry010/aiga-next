@@ -6,7 +6,7 @@ import { TRAINING_FAQ, faqJsonLd } from "@/lib/faq";
 export const metadata: Metadata = {
   title: "Teamtraining AI: weet iedereen wat er niet in ChatGPT mag? | AIGA",
   description:
-    "Online AI-training voor je hele team: vier modules, tussentijdse toetsen, digitaal eindexamen en certificaat van deelname. €249 ex btw per persoon, binnen 2 werkdagen live.",
+    "Online AI-training voor je hele team: vier modules, tussentijdse toetsen, digitaal eindexamen en certificaat van deelname. €249 ex btw per persoon, vanaf 50 plekken een offerte op maat.",
   alternates: { canonical: "https://aigeletterdheid.academy/training" },
 };
 

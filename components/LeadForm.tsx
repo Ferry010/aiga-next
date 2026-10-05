@@ -176,7 +176,7 @@ export default function LeadForm({ source }: { source: string }) {
           <option value="Alleen ikzelf">Alleen ikzelf</option>
           <option value="1-10">1-10 medewerkers</option>
           <option value="11-49">11-49 medewerkers</option>
-          <option value="50+">50 of meer (masterclass gratis)</option>
+          <option value="50+">50 of meer (enterprise)</option>
         </select>
       </div>
 

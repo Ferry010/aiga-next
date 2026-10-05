@@ -6,15 +6,15 @@ export type Faq = { q: string; a: string };
 export const TRAINING_FAQ: Faq[] = [
   {
     q: "Wat kost de teamtraining?",
-    a: "€249 ex btw per persoon. Boek je 50 plekken of meer in één keer, dan krijgen je directie en MT de live masterclass er gratis bij.",
+    a: "€249 ex btw per persoon. Vanaf 50 plekken is het een enterprise-traject: dan maken we een offerte op maat, inclusief de live masterclass voor je directie en MT.",
   },
   {
     q: "Kunnen we later nog mensen toevoegen?",
-    a: "Ja. Je zet zoveel mensen in de training als je wil, nu of later. Iedereen kost hetzelfde: €249 ex btw per persoon.",
+    a: "Ja. Je zet zoveel mensen in de training als je wil, nu of later. Kom je boven de 50 plekken, dan maken we een enterprise-offerte op maat.",
   },
   {
     q: "Hoe snel kunnen we starten?",
-    a: "Binnen twee werkdagen na akkoord staat je team live. Jij deelt de link, de rest loopt vanzelf.",
+    a: "Een klein team kan snel beginnen. Bij een grotere organisatie plannen we de start samen in, zodat het past bij jullie planning.",
   },
   {
     q: "Wat leren medewerkers precies?",
@@ -45,7 +45,7 @@ export const TRAINING_FAQ: Faq[] = [
 export const MASTERCLASS_FAQ: Faq[] = [
   {
     q: "Wat kost de masterclass?",
-    a: "€495 ex btw per persoon, met een minimum van 5 deelnemers. Boek je 50 plekken of meer in de teamtraining in één keer, dan is de masterclass gratis.",
+    a: "€495 ex btw per persoon, met een minimum van 5 deelnemers. Bij een enterprise-traject voor de teamtraining (vanaf 50 plekken) is de masterclass inbegrepen.",
   },
   {
     q: "Hoe lang duurt het?",

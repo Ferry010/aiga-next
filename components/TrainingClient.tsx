@@ -21,7 +21,7 @@ const keyFacts = [
   { value: `4 modules`, note: `${TOTAL_LESSONS} lessen, in eigen tempo` },
   { value: "€249", note: "ex btw per persoon" },
   { value: "Certificaat", note: "van deelname, na het eindexamen" },
-  { value: "2 werkdagen", note: "en je team staat live" },
+  { value: "50+ plekken", note: "enterprise, offerte op maat" },
 ];
 
 const outcomes = [
@@ -33,7 +33,7 @@ const outcomes = [
 
 const steps = [
   { title: "Je vraagt een offerte aan", body: "Binnen één werkdag belt een van ons je om het aantal deelnemers en de start door te nemen." },
-  { title: "Binnen 2 werkdagen live", body: "Jij deelt de link met je team. Je hoeft niets te bouwen of te beheren." },
+  { title: "Wij zetten alles klaar", body: "Jij deelt de link met je team. Je hoeft niets te bouwen of te beheren." },
   { title: "Iedereen in eigen tempo", body: "Korte lessen tussen het werk door, met na elke module een toets." },
   { title: "Examen en certificaat", body: "Een digitaal eindexamen. Wie slaagt, krijgt een certificaat van deelname." },
 ];
@@ -171,17 +171,17 @@ export default function TrainingClient() {
                 </div>
                 <div>
                   <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground leading-[1.15] tracking-tight">
-                    Zet zoveel mensen in de training als je wil. Iedereen kost hetzelfde.
+                    Eén vaste prijs, voor elk team tot 50 plekken.
                   </h2>
                   <p className="mt-3 text-muted-foreground leading-relaxed">
-                    Nu of later. Inbegrepen: alle vier modules, de toetsen, het eindexamen en een certificaat van
-                    deelname. Je data staat op Europese servers.
+                    Inbegrepen: alle vier modules, de toetsen, het eindexamen en een certificaat van deelname. Later
+                    mensen toevoegen kan altijd. Je data staat op Europese servers.
                   </p>
                 </div>
               </div>
               <p className="mt-8 rounded-2xl bg-white/10 px-5 py-4 text-lg text-foreground leading-relaxed">
-                <strong>50 plekken of meer in één keer?</strong> Dan krijgen je directie en MT de live masterclass er
-                gratis bij. Normaal €495 ex btw per persoon.{" "}
+                <strong>50 plekken of meer?</strong> Dan is het een enterprise-traject met een offerte op maat,
+                inclusief de live masterclass voor je directie en MT.{" "}
                 <Link href="/masterclass" className="text-primary font-semibold underline underline-offset-2">Bekijk de masterclass</Link>
               </p>
               <a

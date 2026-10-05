@@ -21,18 +21,17 @@ const BOOKINGS: Record<Booking["product"], Booking> = {
     product: "training",
     price: "€249",
     unit: "ex btw per persoon",
-    lead: "Zoveel mensen als je wil, nu of later. Iedereen kost hetzelfde.",
+    lead: "Voor teams tot 50 plekken. Later mensen toevoegen kan altijd.",
     facts: [
       `4 modules, ${TOTAL_LESSONS} lessen`,
       "Toets per module + digitaal eindexamen",
       "Certificaat van deelname",
       "Online, in eigen tempo",
-      "Binnen 2 werkdagen live",
       "Data op Europese servers",
     ],
     bonus: (
       <>
-        <strong>50+ plekken in één keer?</strong> Dan is de masterclass voor je MT gratis.
+        <strong>50+ plekken?</strong> Enterprise: een offerte op maat, inclusief de masterclass voor je MT.
       </>
     ),
     cta: "Vraag een offerte aan",
@@ -54,7 +53,7 @@ const BOOKINGS: Record<Booking["product"], Booking> = {
     ],
     bonus: (
       <>
-        <strong>Gratis</strong> als je 50+ plekken in de teamtraining in één keer boekt.
+        <strong>Inbegrepen</strong> bij een enterprise-traject voor de teamtraining (vanaf 50 plekken).
       </>
     ),
     cta: "Plan de masterclass",

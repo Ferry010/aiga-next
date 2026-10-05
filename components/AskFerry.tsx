@@ -21,16 +21,22 @@ const QAS: Qa[] = [
     q: "Wat kost het voor mijn team?",
     a: (
       <>
-        {eur(PRICE)} ex btw per persoon, en iedereen kost hetzelfde. Dus 10 mensen is {eur(PRICE * 10)}, 25 mensen
-        is {eur(PRICE * 25)}. Later mensen toevoegen kan altijd. Boek je 50 plekken of meer in één keer, dan krijgen je
-        directie en MT de live masterclass er gratis bij.
+        {eur(PRICE)} ex btw per persoon. Dus 10 mensen is {eur(PRICE * 10)}, 25 mensen is {eur(PRICE * 25)}. Later
+        mensen toevoegen kan altijd. Vanaf 50 plekken is het enterprise: dan maak ik een offerte op maat, inclusief de
+        live masterclass voor je directie en MT.
       </>
     ),
   },
   {
-    id: "start",
-    q: "Hoe snel kunnen we starten?",
-    a: <>Binnen twee werkdagen na akkoord staat je team live. Jij deelt de link, de rest loopt vanzelf.</>,
+    id: "enterprise",
+    q: "We zijn met meer dan 50 mensen",
+    a: (
+      <>
+        Dan maken we er een enterprise-traject van, met een offerte op maat. Daar hoort de live masterclass voor je
+        directie en MT bij, en we plannen de uitrol samen in zodat het past bij jullie organisatie. Het snelst gaat
+        dat in een kort gesprek.
+      </>
+    ),
   },
   {
     id: "inhoud",

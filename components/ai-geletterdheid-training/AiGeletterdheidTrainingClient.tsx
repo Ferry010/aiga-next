@@ -61,7 +61,7 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
                 <Check size={14} className="text-primary/60" /> Geschikt voor teams van elke omvang
               </span>
               <span className="flex items-center gap-1.5">
-                <Check size={14} className="text-primary/60" /> Vanaf 50 deelnemers: gratis leiderschapsmasterclass
+                <Check size={14} className="text-primary/60" /> Vanaf 50 deelnemers: enterprise, offerte op maat
               </span>
             </div>
           </AnimatedSection>
@@ -193,8 +193,8 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
                   value:
                     "AI Literacy Practitioner-certificaat na het adaptieve examen. Digitaal ondertekend, deelbaar via LinkedIn. Controleerbaar bewijs van deelname.",
                 },
-                { label: "Prijs", value: "€249 ex BTW per deelnemer" },
-                { label: "50+ deelnemers", value: "Gratis leiderschapsmasterclass inbegrepen" },
+                { label: "Prijs", value: "€249 ex btw per deelnemer" },
+                { label: "50+ deelnemers", value: "Enterprise: offerte op maat, inclusief de masterclass voor je MT" },
               ].map((row, i) => (
                 <div
                   key={row.label}

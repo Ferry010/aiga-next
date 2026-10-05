@@ -1,62 +1,48 @@
 import type { Metadata } from "next";
-import AiGeletterdheidTrainingClient, {
-  type FaqItem,
-} from "@/components/ai-geletterdheid-training/AiGeletterdheidTrainingClient";
+import Link from "next/link";
+import { PageHero, TextSection, PriceTiers, OfferteBlock, container } from "@/components/PageKit";
+import CourseProgress from "@/components/CourseProgress";
+import ProgramAccordion from "@/components/ProgramAccordion";
+import SplitSection from "@/components/SplitSection";
+import FaqList from "@/components/FaqList";
+import type { Faq } from "@/lib/faq";
 
 export const metadata: Metadata = {
-  title: "AI-geletterdheid training (Artikel 4 EU AI Act) | AIGA",
+  title: "AI-geletterdheid training voor je hele team | AIGA",
   description:
-    "AI zit al in je organisatie. Train je hele team op de risico's: data, shadow AI, output controleren, veilig én nuttig werken. Online, met certificaat. Meteen goed voor Artikel 4 EU AI Act. €249 ex BTW per deelnemer.",
-  alternates: {
-    canonical: "https://aigeletterdheid.academy/ai-geletterdheid-training",
-  },
+    "Je mensen gebruiken AI al. Deze online training leert ze wat er wel en niet in een AI-tool mag, hoe ze output controleren en wanneer ze AI beter niet gebruiken. Met toetsen, eindexamen en certificaat van deelname.",
+  alternates: { canonical: "https://aigeletterdheid.academy/ai-geletterdheid-training" },
   openGraph: {
-    title: "AI-geletterdheid training (Artikel 4 EU AI Act) | AIGA",
+    title: "AI-geletterdheid training voor je hele team | AIGA",
     description:
-      "Online training in AI-geletterdheid, in lijn met Artikel 4 EU AI Act. Certificaat op naam. Vanaf 2 augustus 2026 handhaving. €249 ex BTW per deelnemer.",
+      "Online training in AI-geletterdheid: veilig en slim werken met AI, met toetsen, eindexamen en certificaat van deelname.",
     url: "https://aigeletterdheid.academy/ai-geletterdheid-training",
     type: "website",
     locale: "nl_NL",
   },
 };
 
-// Single source of truth, used for both the visible FAQ accordion and FAQPage JSON-LD
-const faqs: FaqItem[] = [
+// One source for the visible FAQ and the FAQPage JSON-LD
+const faqs: Faq[] = [
   {
     q: "Is AI-geletterdheid wettelijk verplicht?",
-    a: "Ja. Artikel 4 van de EU AI Act verplicht organisaties die AI inzetten om de ontwikkeling van AI-geletterdheid te ondersteunen bij medewerkers die met AI werken. Na de Digital Omnibus (aangenomen juni 2026) is de verplichting verschoven van een resultaatverplichting naar een inspanningsverplichting. De plicht zelf geldt al sinds 2 februari 2025 en wordt handhavingsgereed op 2 augustus 2026.",
-  },
-  {
-    q: "Voor wie geldt Artikel 4 van de EU AI Act?",
-    a: "Voor elke organisatie die AI-systemen inzet of ontwikkelt. Dit geldt zowel voor aanbieders (providers) als gebruikers (deployers) van AI. Ook als je als organisatie alleen tools als ChatGPT of Microsoft Copilot gebruikt, val je onder de verplichting.",
+    a: "De EU AI Act vraagt organisaties die AI gebruiken om de AI-geletterdheid van hun medewerkers te ondersteunen. Na de Digital Omnibus is dat een inspanningsverplichting: je laat zien dat je er gestructureerd werk van maakt. Met de training en de certificaten van deelname kun je dat onderbouwen.",
   },
   {
     q: "Geldt dit ook als we alleen ChatGPT of Copilot gebruiken?",
-    a: "Ja. Organisaties die AI-tools inzetten worden beschouwd als deployers onder de EU AI Act. Dat betekent dat Artikel 4 van toepassing is en dat jouw medewerkers aantoonbaar AI-geletterd moeten zijn. De training van AIGA is daar specifiek op afgestemd.",
+    a: "Ja. Wie AI-tools inzet, valt onder de AI Act als gebruiker. Artikel 4 geldt dus ook als je team alleen met tools als ChatGPT, Copilot of Gemini werkt.",
   },
   {
-    q: "Wanneer start de handhaving?",
-    a: "De verplichting geldt al sinds 2 februari 2025. Vanaf 2 augustus 2026 krijgen nationale markttoezichthouders formele handhavingsbevoegdheden. Artikel 4 kent geen eigen boete. Toezichthouders kunnen het wel meewegen als verzwarende omstandigheid bij andere overtredingen.",
+    q: "Wat kost de training?",
+    a: "Je betaalt per persoon: €249 ex btw voor 1 tot 10 personen, €229 ex btw voor 11 tot 49 personen. Vanaf 50 personen is het een enterprise-traject met een offerte op maat, inclusief de live masterclass voor je directie en MT.",
   },
   {
-    q: "Is AI-geletterdheid nog steeds verplicht na de Digital Omnibus?",
-    a: "Ja. Artikel 4 is versoepeld, niet geschrapt. De plicht ging van 'zorgen voor een toereikend niveau' naar 'het ondersteunen van de ontwikkeling van AI-geletterdheid'. Vanaf 2 augustus 2026 kunnen toezichthouders erop handhaven.",
-  },
-  {
-    q: "Krijgen wij een boete van 35 miljoen als we niets doen?",
-    a: "Nee. Dat bedrag hoort bij verboden AI-toepassingen uit Artikel 5, niet bij Artikel 4. Artikel 4 kent geen eigen boete. Het risico zit erin dat toezichthouders het meewegen bij andere overtredingen, en in civiele aansprakelijkheid als er schade ontstaat.",
-  },
-  {
-    q: "Hoeveel kost de training?",
-    a: "€249 ex btw per deelnemer, €229 vanaf 11 deelnemers. Vanaf 50 deelnemers is het een enterprise-traject met een offerte op maat, inclusief de live masterclass voor je directie en MT.",
-  },
-  {
-    q: "Krijg ik een certificaat?",
-    a: "Ja. Elke deelnemer die slaagt voor het adaptieve examen ontvangt het AI Literacy Practitioner-certificaat. Digitaal ondertekend en deelbaar via LinkedIn. De AI Act schrijft geen verplicht certificaat voor, maar het certificaat is onderdeel van het dossier waarmee je aantoont dat er getraind is en waarom dat voldoende is.",
+    q: "Krijgen deelnemers een certificaat?",
+    a: "Ja. Na de modules volgen toetsen en een digitaal eindexamen. Wie voldoende scoort, krijgt een certificaat van deelname.",
   },
   {
     q: "Hoe lang duurt de training?",
-    a: "De training is volledig online en in eigen tempo te volgen. Gemiddeld zijn deelnemers 2,5 uur bezig. Er is geen limiet op het aantal sessies of de doorlooptijd.",
+    a: "Een paar uur per persoon, verdeeld over vier modules die mensen in eigen tempo volgen, tussen het werk door.",
   },
 ];
 
@@ -64,48 +50,68 @@ const courseJsonLd = {
   "@context": "https://schema.org",
   "@type": "Course",
   name: "AI-geletterdheid training",
-  description:
-    "Online AI-geletterdheid training in lijn met Artikel 4 van de EU AI Act. Met AI Literacy Practitioner-certificaat.",
-  provider: {
-    "@type": "Organization",
-    name: "AIGA - AI Geletterdheid Academy",
-    sameAs: "https://aigeletterdheid.academy",
-  },
-  offers: {
-    "@type": "Offer",
-    price: "249",
-    priceCurrency: "EUR",
-    category: "Professional Training",
-  },
-  hasCourseInstance: {
-    "@type": "CourseInstance",
-    courseMode: "online",
-    courseWorkload: "PT2H30M",
-  },
+  description: "Online training in AI-geletterdheid voor teams, met toetsen, een digitaal eindexamen en een certificaat van deelname.",
+  provider: { "@type": "Organization", name: "AIGA - AI Geletterdheid Academy", sameAs: "https://aigeletterdheid.academy" },
+  offers: { "@type": "Offer", price: "249", priceCurrency: "EUR", category: "Professional Training" },
+  hasCourseInstance: { "@type": "CourseInstance", courseMode: "online", courseWorkload: "PT3H" },
 };
 
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.q,
-    acceptedAnswer: { "@type": "Answer", text: f.a },
-  })),
+  mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
 };
 
 export default function AiGeletterdheidTrainingPage() {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+    <div className="min-h-screen">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <PageHero
+        crumb="AI-geletterdheid training"
+        title="AI-geletterdheid training."
+        accent="Voor iedereen die al met AI werkt."
+        intro="Je mensen gebruiken AI al. Deze online training leert ze wat er wel en niet in een AI-tool mag, hoe ze output controleren en wanneer ze AI beter niet gebruiken."
+        primary={{ href: "#offerte", label: "Vraag een offerte aan" }}
+        secondary={{ href: "#programma", label: "Bekijk het programma" }}
+        aside={<CourseProgress />}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <AiGeletterdheidTrainingClient faqs={faqs} />
-    </>
+
+      <section id="programma" className="pb-16 sm:pb-24 scroll-mt-24">
+        <div className={container}>
+          <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">Het programma</h2>
+          <p className="mt-3 text-lg text-muted-foreground max-w-2xl">
+            Vier modules met korte lessen, een toets per module en een digitaal eindexamen.{" "}
+            <Link href="/training" className="text-primary font-semibold hover:underline">Alles over de teamtraining</Link>
+          </p>
+          <div className="mt-8 max-w-3xl"><ProgramAccordion /></div>
+        </div>
+      </section>
+
+      <TextSection title="En de AI Act?">
+        <p>
+          Artikel 4 van de EU AI Act vraagt organisaties om AI-geletterdheid te ondersteunen. Dat is een mooie bijvangst:
+          met de certificaten van deelname laat je zien dat het geregeld is.
+        </p>
+        <p className="text-foreground">
+          Maar de echte reden om te trainen is dichterbij: data die buiten beeld raakt en output die ongecontroleerd de
+          deur uitgaat.
+        </p>
+      </TextSection>
+
+      <section className="pb-16 sm:pb-24">
+        <div className={container}>
+          <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">Wat het kost</h2>
+          <p className="mt-3 text-lg text-muted-foreground max-w-2xl">Je betaalt per persoon. Hoe groter je team, hoe lager de prijs per plek.</p>
+          <div className="mt-8"><PriceTiers /></div>
+        </div>
+      </section>
+
+      <SplitSection title="Wat je waarschijnlijk wil weten">
+        <FaqList items={faqs} />
+      </SplitSection>
+
+      <OfferteBlock title="Geef je hele team dezelfde AI-basis." source="AI-geletterdheid training pagina, offerte aanvraag" />
+    </div>
   );
 }

@@ -5,6 +5,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import ScanCallback from "@/components/ScanCallback";
 import { trackLead, trackEvent } from "@/lib/track";
 import { QUESTIONS as questions, DIMENSIONS as dimensions } from "@/lib/scan";
+import { useInlineValidation, FieldError } from "@/components/InlineValidation";
 
 interface TierData {
   minPct: number;
@@ -48,6 +49,7 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
   const [answers, setAnswers] = useState<number[]>([]);
   const [selected, setSelected] = useState<number | null>(null);
   const [formData, setFormData] = useState({ naam: "", email: "" });
+  const v = useInlineValidation();
   const [sendState, setSendState] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
   const handleAnswer = (idx: number) => {
@@ -121,7 +123,7 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
             <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <button
                 onClick={() => setPhase("quiz")}
-                className="btn-neon px-8 py-4 rounded-lg text-[15px] font-semibold"
+                className="btn-neon px-8 py-4 text-[0.9375rem] font-semibold"
               >
                 Start de gratis scan →
               </button>
@@ -192,7 +194,7 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
               </p>
               <button
                 onClick={() => setPhase("quiz")}
-                className="btn-neon px-8 py-4 rounded-lg text-[15px]"
+                className="btn-neon px-8 py-4 text-[0.9375rem]"
               >
                 Doe de scan nu, gratis →
               </button>
@@ -298,7 +300,7 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
             </p>
             <button
               onClick={() => setPhase("quiz")}
-              className="btn-neon px-10 py-4 rounded-lg text-base font-semibold"
+              className="btn-neon px-10 py-4 text-base font-semibold"
             >
               Start de gratis scan →
             </button>
@@ -350,7 +352,7 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
   }));
 
   const input =
-    "w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-[15px] focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20";
+    "w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-[0.9375rem] focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20";
 
   return (
     <div className="min-h-screen py-16 sm:py-20 px-4">
@@ -413,7 +415,7 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
                   </p>
                 </>
               ) : (
-                <form onSubmit={handleSend} aria-label="Uitslag mailen">
+                <form onSubmit={handleSend} {...v.formProps} aria-label="Uitslag mailen">
                   <h3 className="text-2xl font-display font-bold text-foreground tracking-tight">Uitslag bewaren of doorsturen?</h3>
                   <p className="mt-2 text-muted-foreground leading-relaxed">
                     We mailen je de uitslag met al je antwoorden. Handig om erbij te pakken, of door te sturen naar wie
@@ -424,6 +426,7 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
                       <label htmlFor="scan-email" className="text-sm text-muted-foreground mb-1 block">E-mailadres</label>
                       <input id="scan-email" type="email" required autoComplete="email" value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })} className={input} />
+                      <FieldError id="scan-email" errors={v.errors} />
                     </div>
                     <div>
                       <label htmlFor="scan-naam" className="text-sm text-muted-foreground mb-1 block">Voornaam (optioneel)</label>
@@ -436,7 +439,7 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
                       Versturen lukte niet. Probeer het nog eens, je uitslag hierboven blijft gewoon staan.
                     </p>
                   )}
-                  <button type="submit" disabled={sendState === "sending"} className="btn-neon mt-5 px-7 py-3.5 rounded-lg font-semibold disabled:opacity-50">
+                  <button type="submit" disabled={sendState === "sending"} className="btn-neon mt-5 px-7 py-3.5 font-semibold disabled:opacity-50">
                     {sendState === "sending" ? "Even versturen..." : "Mail mij de uitslag"}
                   </button>
                 </form>

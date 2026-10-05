@@ -56,7 +56,7 @@ export default function AskUs({ className = "" }: { className?: string }) {
       </ul>
       <a
         href={PHONE_HREF}
-        className="mt-5 inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-[15px] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
+        className="mt-5 inline-flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-[0.9375rem] font-semibold text-foreground transition-colors hover:border-primary hover:text-primary"
       >
         Bel {PHONE}
       </a>

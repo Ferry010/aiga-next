@@ -27,6 +27,12 @@ const AccessibilityWidget = () => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const onOpen = () => setOpen(true);
+    window.addEventListener("aiga:open-a11y", onOpen);
+    return () => window.removeEventListener("aiga:open-a11y", onOpen);
+  }, []);
+
+  useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
@@ -91,7 +97,7 @@ const AccessibilityWidget = () => {
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label="Toegankelijkheidsinstellingen"
-        className="h-11 w-11 md:h-12 md:w-12 rounded-full border-2 border-primary bg-foreground text-primary flex items-center justify-center shadow-lg hover:scale-105 transition-transform"
+        className="hidden md:flex h-12 w-12 rounded-full border-2 border-primary bg-foreground text-primary items-center justify-center shadow-lg hover:scale-105 transition-transform"
         style={{ fontSize: "16px", filter: "none" }}
       >
         <Accessibility size={22} />

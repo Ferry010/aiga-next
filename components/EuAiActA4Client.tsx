@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 
 const SectionLabel = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
-  <h3 className={`text-sm md:text-[11px] font-bold uppercase tracking-wider neon-text mb-2 ${className}`}>{children}</h3>
+  <h3 className={`text-sm md:text-[0.6875rem] font-bold uppercase tracking-wider neon-text mb-2 ${className}`}>{children}</h3>
 );
 
 const mailtoHref =
@@ -79,17 +79,17 @@ export default function EuAiActA4Client() {
           className="bg-white border border-border shadow-sm mx-auto print:border-none print:shadow-none print:mx-0 md:aspect-[1/1.414]"
           style={{ maxWidth: "794px" }}
         >
-          <div className="p-6 sm:p-8 flex flex-col h-full text-foreground text-base md:text-[12px] leading-relaxed md:leading-[1.5]">
+          <div className="p-6 sm:p-8 flex flex-col h-full text-foreground text-base md:text-[0.75rem] leading-relaxed md:leading-[1.5]">
             {/* Header */}
             <div className="flex justify-between items-start mb-4">
               <div>
-                <p className="text-xs md:text-[9px] text-muted-foreground tracking-wide">AI Geletterdheid Academy, aigeletterdheid.academy</p>
+                <p className="text-xs md:text-[0.5625rem] text-muted-foreground tracking-wide">AI Geletterdheid Academy, aigeletterdheid.academy</p>
                 <h1 className="text-2xl sm:text-3xl font-bold mt-1 leading-tight" style={{ fontFamily: "'Lato', sans-serif" }}>
                   EU AI Act in 1 A4
                 </h1>
-                <p className="text-muted-foreground text-sm md:text-[11px] mt-0.5">De Europese AI-verordening, wat je moet weten als organisatie</p>
+                <p className="text-muted-foreground text-sm md:text-[0.6875rem] mt-0.5">De Europese AI-verordening, wat je moet weten als organisatie</p>
               </div>
-              <span className="text-xs md:text-[9px] text-muted-foreground whitespace-nowrap mt-1">Versie maart 2026</span>
+              <span className="text-xs md:text-[0.5625rem] text-muted-foreground whitespace-nowrap mt-1">Versie maart 2026</span>
             </div>
 
             <hr className="border-border mb-3" />
@@ -112,18 +112,18 @@ export default function EuAiActA4Client() {
                   <div key={i} className="relative z-10 flex md:flex-col items-start md:items-center md:text-center gap-2 md:gap-0 px-0 md:px-1">
                     <div className={`w-[14px] h-[14px] rounded-full border-2 shrink-0 ${item.warn ? "border-amber-500 bg-amber-100" : item.active ? "border-primary bg-primary" : "border-border bg-background"}`} />
                     <div className="flex flex-col md:items-center">
-                      <span className="font-bold text-sm md:text-[10px] leading-tight md:mt-1">{item.date}</span>
+                      <span className="font-bold text-sm md:text-[0.625rem] leading-tight md:mt-1">{item.date}</span>
                       {item.badge && (
-                        <span className={`text-xs md:text-[8px] font-bold px-1 rounded mt-0.5 w-fit ${item.warn ? "bg-amber-100 text-amber-700" : "bg-primary/10 text-primary"}`}>
+                        <span className={`text-xs md:text-[0.5rem] font-bold px-1 rounded mt-0.5 w-fit ${item.warn ? "bg-amber-100 text-amber-700" : "bg-primary/10 text-primary"}`}>
                           {item.badge === "ACTIEF" ? "✓ " : "⚠ "}{item.badge}
                         </span>
                       )}
-                      <span className="text-sm md:text-[9px] text-muted-foreground leading-tight mt-0.5">{item.label}</span>
+                      <span className="text-sm md:text-[0.5625rem] text-muted-foreground leading-tight mt-0.5">{item.label}</span>
                     </div>
                   </div>
                 ))}
               </div>
-              <p className="text-sm md:text-[9px] text-muted-foreground italic mt-2 md:mt-1.5">
+              <p className="text-sm md:text-[0.5625rem] text-muted-foreground italic mt-2 md:mt-1.5">
                 De AI-geletterdheidsplicht geldt al, organisaties zijn nu al verplicht medewerkers te trainen.
               </p>
             </div>
@@ -136,9 +136,9 @@ export default function EuAiActA4Client() {
                   <div key={cat.label} className={`border rounded-lg p-2.5 md:p-2 ${cat.color}`}>
                     <div className="flex items-center gap-1 mb-1">
                       <div className={`w-2 h-2 rounded-full ${cat.dotColor} print:border print:border-current`} />
-                      <span className="font-bold text-sm md:text-[10px] leading-tight">{cat.label}</span>
+                      <span className="font-bold text-sm md:text-[0.625rem] leading-tight">{cat.label}</span>
                     </div>
-                    <p className="text-sm md:text-[9px] leading-snug">{cat.examples}</p>
+                    <p className="text-sm md:text-[0.5625rem] leading-snug">{cat.examples}</p>
                   </div>
                 ))}
               </div>
@@ -169,7 +169,7 @@ export default function EuAiActA4Client() {
               <SectionLabel>Hoog risico, extra verplichtingen</SectionLabel>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-3 mt-1">
                 <div>
-                  <p className="font-bold text-sm md:text-[10px] mb-1">Voor aanbieders (providers):</p>
+                  <p className="font-bold text-sm md:text-[0.625rem] mb-1">Voor aanbieders (providers):</p>
                   <ul className="space-y-1 md:space-y-0.5">
                     {["Conformiteitsbeoordeling uitvoeren", "Technische documentatie opstellen", "Registratie in EU-database", "CE-markering aanbrengen"].map((t) => (
                       <li key={t} className="flex items-start gap-1.5">
@@ -180,7 +180,7 @@ export default function EuAiActA4Client() {
                   </ul>
                 </div>
                 <div>
-                  <p className="font-bold text-sm md:text-[10px] mb-1">Voor gebruikers (deployers):</p>
+                  <p className="font-bold text-sm md:text-[0.625rem] mb-1">Voor gebruikers (deployers):</p>
                   <ul className="space-y-1 md:space-y-0.5">
                     {["Menselijk toezicht implementeren", "Medewerkers trainen op het specifieke systeem", "Logboek bijhouden van AI-beslissingen", "Incidenten melden aan toezichthouder"].map((t) => (
                       <li key={t} className="flex items-start gap-1.5">
@@ -203,19 +203,19 @@ export default function EuAiActA4Client() {
                   { amount: "Tot €7,5 miljoen", pct: "of 1,5% wereldwijde omzet", desc: "Transparantieverplichtingen (Artikel 52)" },
                 ].map((fine) => (
                   <div key={fine.amount} className="border border-border rounded-lg p-3 md:p-2 text-center">
-                    <p className="font-bold text-base md:text-[12px] leading-tight neon-text print:text-black">{fine.amount}</p>
-                    <p className="text-sm md:text-[9px] text-muted-foreground">{fine.pct}</p>
-                    <p className="text-sm md:text-[10px] mt-1 leading-tight">{fine.desc}</p>
+                    <p className="font-bold text-base md:text-[0.75rem] leading-tight neon-text print:text-black">{fine.amount}</p>
+                    <p className="text-sm md:text-[0.5625rem] text-muted-foreground">{fine.pct}</p>
+                    <p className="text-sm md:text-[0.625rem] mt-1 leading-tight">{fine.desc}</p>
                   </div>
                 ))}
               </div>
-              <p className="text-sm md:text-[9px] text-muted-foreground mt-1">
+              <p className="text-sm md:text-[0.5625rem] text-muted-foreground mt-1">
                 Deze tiers gelden voor Artikel 5, hoog-risico en Artikel 52. Artikel 4 (AI-geletterdheid) heeft geen eigen boete.
               </p>
             </div>
 
             {/* Document footer */}
-            <div className="mt-auto pt-2 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 text-sm md:text-[9px] text-muted-foreground">
+            <div className="mt-auto pt-2 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 text-sm md:text-[0.5625rem] text-muted-foreground">
               <span className="font-bold neon-text print:text-black">AIGA</span>
               <span>© 2026 AI Geletterdheid Academy, aigeletterdheid.academy</span>
               <span>Artikel 4 EU AI Act training: €249 per medewerker</span>

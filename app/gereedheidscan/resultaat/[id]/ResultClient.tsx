@@ -38,7 +38,7 @@ export default function ResultClient() {
           <p className="text-muted-foreground mb-6">
             Doe de scan om jouw persoonlijke rapport te bekijken.
           </p>
-          <Link href="/gereedheidscan" className="btn-neon px-8 py-3 rounded-lg">
+          <Link href="/gereedheidscan" className="btn-neon px-8 py-3">
             Doe de scan
           </Link>
         </div>

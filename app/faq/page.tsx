@@ -1,79 +1,77 @@
 import type { Metadata } from "next";
-import { ChevronDown } from "lucide-react";
-import { AnimatedSection } from "@/components/AnimatedSection";
-import SectionLabel from "@/components/SectionLabel";
-import BreadcrumbNav from "@/components/BreadcrumbNav";
+import { PageHero, OfferteBlock } from "@/components/PageKit";
+import SplitSection from "@/components/SplitSection";
+import FaqList from "@/components/FaqList";
+import { TRAINING_FAQ, type Faq } from "@/lib/faq";
 
 export const metadata: Metadata = {
-  title: "Veelgestelde Vragen over AI-Geletterdheid & AI Act | AIGA",
-  description: "Antwoorden op veelgestelde vragen over AI-training voor teams: shadow AI, data en privacy, het certificaat, de kosten, en hoe het zit met de EU AI Act.",
+  title: "Veelgestelde vragen over AI-geletterdheid en de AI-training | AIGA",
+  description:
+    "Antwoorden op de vragen die we het vaakst krijgen: shadow AI, data en privacy, wat de training kost, hoe het certificaat werkt en hoe het zit met de AI Act.",
   alternates: { canonical: "https://aigeletterdheid.academy/faq" },
 };
 
-const faqItems = [
-  { q: "Wat als onze mensen al AI gebruiken?", a: "Precies daarom. De training gaat niet over óf ze AI mogen gebruiken, maar of ze het veilig en goed doen: welke data eruit blijft, hoe je output controleert, en waar het misgaat." },
-  { q: "Wat is shadow AI en waarom is het een risico?", a: "Shadow AI is het gebruik van AI-tools buiten het zicht van IT. Handig, maar zo lekt bedrijfsdata weg en sluipen er fouten in. De training leert je mensen waar de grenzen liggen, zodat je er grip op houdt." },
-  { q: "Wat leren onze mensen over data en privacy?", a: "Welke informatie wél en niet in een AI-tool mag, waarom dat uitmaakt, en hoe je gevoelige of vertrouwelijke data herkent voordat je het deelt." },
-  { q: "Wat is AI-geletterdheid?", a: "AI-geletterdheid is het vermogen van medewerkers om AI-systemen te begrijpen, risico's te herkennen en AI veilig en verantwoord in te zetten op de werkvloer. Onder Artikel 4 van de EU AI Act geldt een inspanningsverplichting voor organisaties om de ontwikkeling van AI-geletterdheid te ondersteunen bij medewerkers die met AI werken." },
-  { q: "Is een AI-geletterdheid training verplicht in Nederland?", a: "Artikel 4 van de EU AI Act is van kracht sinds 2 februari 2025. Organisaties moeten de ontwikkeling van AI-geletterdheid ondersteunen bij medewerkers die met AI werken, en dat kunnen onderbouwen. Vanaf 2 augustus 2026 kunnen nationale toezichthouders hierop handhaven." },
-  { q: "Is AI-geletterdheid nog steeds verplicht na de Digital Omnibus?", a: "Ja. Artikel 4 is versoepeld, niet geschrapt. De plicht ging van 'zorgen voor een toereikend niveau' naar 'het ondersteunen van de ontwikkeling van AI-geletterdheid'. Vanaf 2 augustus 2026 kunnen toezichthouders erop handhaven." },
-  { q: "Krijgen wij een boete van 35 miljoen als we niets doen?", a: "Nee. Dat bedrag hoort bij verboden AI-toepassingen uit Artikel 5, niet bij Artikel 4. Artikel 4 kent geen eigen boete. Het risico zit erin dat toezichthouders het meewegen bij andere overtredingen, en in civiele aansprakelijkheid als er schade ontstaat." },
-  { q: "Hoe lang duurt de AI-geletterdheid training?", a: "De online AI-geletterdheid training voor teams duurt 2 tot 3 uur. De training is volledig selfpaced en kan door medewerkers in eigen tempo worden gevolgd." },
-  { q: "Wat is het AI Literacy Practitioner certificaat?", a: "Het AI Literacy Practitioner certificaat is een digitaal ondertekend certificaat dat elke deelnemer ontvangt na afronding van de AIGA training. Het is deelbaar via LinkedIn en dient als controleerbaar bewijs van deelname. De AI Act schrijft geen verplicht certificaat voor, maar vraagt dat je kunt onderbouwen wat er per functie geleerd is en waarom dat voldoende is." },
-  { q: "Hoe lang is het certificaat geldig?", a: "Het certificaat is één jaar geldig vanaf de dag van behalen. De inhoud van de training wordt elk kwartaal ge-update." },
-  { q: "Hoe verhoudt jullie training zich tot Google of Microsoft Learn?", a: "Onze training is wettelijk gericht, software-onafhankelijk en leidt tot een officieel certificaat, iets wat big tech trainingen niet bieden." },
+const RISK_FAQ: Faq[] = [
+  {
+    q: "Wat als onze mensen al AI gebruiken?",
+    a: "Precies daarom. De training gaat niet over óf ze AI mogen gebruiken, maar of ze het veilig en goed doen: welke data eruit blijft, hoe je output controleert en waar het misgaat.",
+  },
+  {
+    q: "Wat is shadow AI en waarom is het een risico?",
+    a: "Shadow AI is AI-gebruik voor je werk waar de organisatie niet van weet, zoals een privé ChatGPT-account voor een klantmail. Zo belandt bedrijfsdata buiten beeld en sluipen er fouten in. De training leert je mensen waar de grens ligt.",
+  },
+  {
+    q: "Wat leren onze mensen over data en privacy?",
+    a: "Welke informatie wel en niet in een AI-tool mag, waarom dat uitmaakt, en hoe je gevoelige of vertrouwelijke gegevens herkent voordat je ze deelt.",
+  },
+  {
+    q: "Hoe verhoudt dit zich tot gratis cursussen van Google of Microsoft?",
+    a: "Die leren vooral hoe hun eigen tools werken. Deze training is niet gebonden aan één tool en gaat over wat er wel en niet in een AI-tool mag in jullie eigen werk, met toetsen, een eindexamen en een certificaat van deelname.",
+  },
 ];
 
+const ACT_FAQ: Faq[] = [
+  {
+    q: "Wat is AI-geletterdheid?",
+    a: "Dat je begrijpt wat AI is, waar het misgaat en hoe je het veilig en verstandig inzet in je werk. Niet technisch, wel praktisch.",
+  },
+  {
+    q: "Is een AI-training verplicht?",
+    a: "De EU AI Act vraagt organisaties om de AI-geletterdheid van medewerkers die met AI werken te ondersteunen. Dat is een inspanningsverplichting, geen verplichte cursus. Met de training en de certificaten van deelname laat je zien dat je het gestructureerd hebt aangepakt.",
+  },
+  {
+    q: "Wat veranderde de Digital Omnibus?",
+    a: "Artikel 4 is versoepeld, niet geschrapt. In plaats van 'zorgen voor een toereikend niveau' vraagt de wet nu dat je de ontwikkeling van AI-geletterdheid ondersteunt. Het echte risico zit voor de meeste organisaties ook niet in de wet, maar in data die buiten beeld raakt.",
+  },
+];
+
+const all = [...TRAINING_FAQ, ...RISK_FAQ, ...ACT_FAQ];
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.q,
-    acceptedAnswer: { "@type": "Answer", text: item.a },
-  })),
+  mainEntity: all.map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: item.a } })),
 };
 
 export default function FaqPage() {
   return (
-    <>
+    <div className="min-h-screen">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-      <div className="min-h-screen">
-        <BreadcrumbNav items={[{ label: "Home", href: "/" }, { label: "FAQ" }]} />
-
-        <section className="pt-12 pb-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <AnimatedSection>
-              <SectionLabel text="FAQ" />
-              <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight mt-4">
-                Vragen over AI in je team?<br />
-                <span className="neon-text">Liever nu gesteld dan na een datalek.</span>
-              </h1>
-              <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-                Hier vind je de antwoorden op de meestgestelde vragen over AI-geletterdheid en de EU AI Act.
-              </p>
-            </AnimatedSection>
-          </div>
-        </section>
-
-        <section className="pb-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <AnimatedSection delay={0.1}>
-              <div className="space-y-3">
-                {faqItems.map((item, i) => (
-                  <details key={i} className="group bg-card border border-border rounded-xl px-6 open:neon-card-top">
-                    <summary className="flex items-center justify-between py-5 font-semibold text-foreground cursor-pointer list-none">
-                      <span>{item.q}</span>
-                      <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 group-open:rotate-180" />
-                    </summary>
-                    <p className="text-muted-foreground pb-5 leading-relaxed">{item.a}</p>
-                  </details>
-                ))}
-              </div>
-            </AnimatedSection>
-          </div>
-        </section>
-      </div>
-    </>
+      <PageHero
+        crumb="FAQ"
+        title="Vragen over AI in je team?"
+        accent="Liever nu gesteld dan na een datalek."
+        intro="De vragen die we het vaakst krijgen, kort beantwoord. Staat de jouwe er niet bij? Bel of mail ons."
+      />
+      <SplitSection title="Over de training" intro="Kosten, tijd, toetsen en certificaat.">
+        <FaqList items={TRAINING_FAQ} />
+      </SplitSection>
+      <SplitSection title="Shadow AI en data" intro="Wat er misgaat als niemand de grens uitlegt.">
+        <FaqList items={RISK_FAQ} />
+      </SplitSection>
+      <SplitSection title="AI-geletterdheid en de AI Act" intro="Wat de wet vraagt, zonder paniek.">
+        <FaqList items={ACT_FAQ} />
+      </SplitSection>
+      <OfferteBlock title="Staat je vraag er niet bij?" source="FAQ pagina, offerte aanvraag" />
+    </div>
   );
 }

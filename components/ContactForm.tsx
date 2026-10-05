@@ -126,7 +126,7 @@ const ContactForm = ({ product = "" }: ContactFormProps) => {
           className="w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300 resize-none"
         />
       </div>
-      <button type="submit" disabled={submitting} className="btn-neon w-full py-3 rounded-lg disabled:opacity-50">
+      <button type="submit" disabled={submitting} className="btn-neon w-full py-3 disabled:opacity-50">
         {submitting ? "Bezig met versturen..." : "Vraag een offerte aan"}
       </button>
     </form>

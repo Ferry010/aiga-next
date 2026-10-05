@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
-import SectionLabel from "@/components/SectionLabel";
-import BreadcrumbNav from "@/components/BreadcrumbNav";
-import LeadForm from "@/components/LeadForm";
+import { PageHero, TextSection, DotList, PriceTiers, OfferteBlock, container } from "@/components/PageKit";
+import CourseProgress from "@/components/CourseProgress";
 
 export const metadata: Metadata = {
   title: "AI-cursus voor medewerkers: weet je team wat er niet in ChatGPT mag? | AIGA",
@@ -29,106 +26,55 @@ const jsonLd = {
 export default function AiCursusMedewerkersPage() {
   return (
     <div className="min-h-screen">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <PageHero
+        crumb="AI-cursus medewerkers"
+        title="Je mensen leren AI nu van YouTube en van elkaar."
+        accent="Ondertussen weet niemand welke data er weglekt."
+        intro="Iedereen gebruikt AI, maar iedereen op een eigen manier. De één plakt bedrijfsdata in ChatGPT, de ander durft er niet aan. Deze cursus geeft je hele team dezelfde praktische basis."
+        primary={{ href: "#offerte", label: "Vraag een offerte aan" }}
+        secondary={{ href: "/training#programma", label: "Bekijk het programma" }}
+        aside={<CourseProgress />}
       />
-      <BreadcrumbNav items={[{ label: "Home", href: "/" }, { label: "AI Cursus Medewerkers" }]} />
 
-      <section className="pt-12 pb-24">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="AI CURSUS MEDEWERKERS" />
-            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
-              Je mensen leren AI nu van YouTube en van elkaar.{" "}
-              <span className="text-primary">Ondertussen weet niemand welke data er weglekt.</span>
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Iedereen gebruikt AI, maar iedereen op zijn eigen manier. De één plakt bedrijfsdata in ChatGPT, de ander durft er niet aan. Deze AI-cursus voor medewerkers geeft je hele team dezelfde praktische basis: welke data wél en niet in een tool mag, hoe je output controleert, en hoe je AI veilig én nuttig inzet. Geen technische voorkennis nodig, en direct inzetbaar bij onboarding.
-            </p>
-          </AnimatedSection>
+      <TextSection title="Wat medewerkers leren">
+        <DotList
+          items={[
+            "Welke bedrijfsdata wel en niet in een AI-tool mag",
+            "Hoe je AI-output controleert voordat je het gebruikt",
+            "Hoe je hallucinaties en verzonnen bronnen herkent",
+            "Wanneer je AI juist beter niet gebruikt",
+            "Hoe je AI veilig én nuttig inzet in je eigen werk",
+          ]}
+        />
+        <p>Geen technische voorkennis nodig, en direct inzetbaar bij onboarding van nieuwe collega&apos;s.</p>
+      </TextSection>
 
-          <AnimatedSection delay={0.1}>
-            <h2 className="text-2xl font-display font-semibold text-foreground mt-16 mb-4">
-              Wat leren medewerkers in deze cursus?
-            </h2>
-            <StaggerContainer className="mt-6 max-w-2xl border-b border-border">
-              {[
-                "Welke bedrijfsdata wél en niet in een AI-tool mag",
-                "Hoe je AI-output controleert voordat je het gebruikt",
-                "Hoe je hallucinaties en verzonnen bronnen herkent",
-                "Wanneer je AI juist beter niet gebruikt",
-                "Hoe je AI veilig én nuttig inzet in je eigen werk",
-                "Wat verantwoord AI-gebruik betekent in de praktijk",
-              ].map((item) => (
-                <StaggerItem key={item}>
-                  <div className="flex items-start gap-4 py-4 border-t border-border">
-                    <span className="mt-[0.55rem] h-1.5 w-1.5 rounded-full bg-primary shrink-0" aria-hidden />
-                    <span className="text-foreground">{item}</span>
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </AnimatedSection>
+      <TextSection title="Zo werkt het">
+        <p>
+          Volledig online en in eigen tempo. Vier modules: begrijpen wat AI is, veilig en verantwoord werken met AI,
+          slim werken met AI, en AI toepassen in je werk.
+        </p>
+        <p>
+          Na elke module een korte toets, aan het eind een digitaal eindexamen. Bij voldoende resultaat krijgt elke
+          medewerker een <strong className="text-foreground">certificaat van deelname</strong>. Handig meegenomen:
+          daarmee laat je ook zien dat je AI-geletterdheid ondersteunt, zoals de AI Act vraagt.
+        </p>
+      </TextSection>
 
-          <AnimatedSection delay={0.15}>
-            <h2 className="text-2xl font-display font-semibold text-foreground mt-16 mb-4">
-              Format en opzet
-            </h2>
-            <div className="text-muted-foreground leading-relaxed space-y-4">
-              <p>
-                De cursus is volledig online en in eigen tempo. Medewerkers volgen vier modules op een moment dat het hen uitkomt: begrijpen wat AI is, veilig en verantwoord werken met AI, slim werken met AI, en AI toepassen in je werk.
-              </p>
-              <p>
-                Na de modules volgen tussentijdse toetsen en een digitaal eindexamen. Bij voldoende resultaat ontvangt elke medewerker een <strong className="text-foreground">certificaat van deelname</strong>. Handig meegenomen: daarmee laat je ook zien dat je AI-geletterdheid ondersteunt, zoals de AI Act vraagt.
-              </p>
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.2}>
-            <h2 className="text-2xl font-display font-semibold text-foreground mt-16 mb-4">
-              Prijs en beschikbaarheid
-            </h2>
-            <div className="text-muted-foreground leading-relaxed space-y-4">
-              <p>
-                De cursus kost <strong className="text-foreground">€249 ex btw per persoon</strong>, en <strong className="text-foreground">€229</strong> per persoon vanaf 11 personen. Er is geen minimum: begin met één collega of een heel team, en zet er later mensen bij wanneer je wil.
-              </p>
-              <p>
-                Gaat het om 50 plekken of meer? Dan is het een enterprise-traject met een offerte op maat, inclusief de <Link href="/masterclass" className="text-primary hover:underline">live masterclass</Link> voor je directie en MT.
-              </p>
-            </div>
-          </AnimatedSection>
-
-          {/* CTA */}
-          <AnimatedSection delay={0.25}>
-            <div className="mt-16 border-t-2 border-foreground pt-10">
-              <div className="mb-8">
-                <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground tracking-tight">
-                  Zet je hele team op dezelfde AI-basis
-                </h2>
-                <p className="mt-3 text-muted-foreground">Laat je gegevens achter. Binnen één werkdag belt een van ons je.</p>
-              </div>
-              <LeadForm source="AI cursus medewerkers — offerte aanvraag" />
-              <p className="mt-6 text-sm text-muted-foreground">
-                Liever eerst de gratis check? <Link href="/gereedheidscan" className="text-primary hover:underline font-medium">In 3 minuten weet je waar je team staat.</Link>
-              </p>
-            </div>
-          </AnimatedSection>
-
-          {/* Related pages */}
-          <AnimatedSection delay={0.3}>
-            <div className="mt-12">
-              <h3 className="text-lg font-display font-semibold text-foreground mb-4">Gerelateerd</h3>
-              <ul className="space-y-2 text-sm">
-                <li><Link href="/ai-training-voor-bedrijven" className="text-primary hover:underline">AI Training voor Bedrijven</Link></li>
-                <li><Link href="/ai-act-compliance-nederland" className="text-primary hover:underline">AI Act Compliance Nederland</Link></li>
-                <li><Link href="/ai-geletterdheid-nederland" className="text-primary hover:underline">AI-Geletterdheid in Nederland</Link></li>
-                <li><Link href="/kenniscentrum" className="text-primary hover:underline">Kenniscentrum</Link></li>
-              </ul>
-            </div>
-          </AnimatedSection>
+      <section className="pb-16 sm:pb-24">
+        <div className={container}>
+          <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">
+            Wat het kost
+          </h2>
+          <p className="mt-3 text-lg text-muted-foreground max-w-2xl">
+            Je betaalt per persoon, zonder minimum. Begin met één collega of een heel team, en zet er later mensen bij.
+          </p>
+          <div className="mt-8"><PriceTiers /></div>
         </div>
       </section>
+
+      <OfferteBlock title="Zet je hele team op dezelfde AI-basis." source="AI cursus medewerkers, offerte aanvraag" />
     </div>
   );
 }

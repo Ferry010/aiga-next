@@ -101,10 +101,10 @@ export default function ShareWithColleague({
         mailprogramma. Jij drukt alleen nog op verzenden.
       </p>
       <div className="mt-5 flex flex-wrap items-center gap-3">
-        <a href={href} onClick={onMail} className="btn-neon px-6 py-3 rounded-lg text-sm font-semibold">
+        <a href={href} onClick={onMail} className="btn-neon px-6 py-3 text-sm font-semibold">
           Mail naar een collega
         </a>
-        <a href={m.onePager} target="_blank" rel="noopener" className="btn-neon-outline px-6 py-3 rounded-lg text-sm font-semibold">
+        <a href={m.onePager} target="_blank" rel="noopener" className="btn-neon-outline px-6 py-3 text-sm font-semibold">
           Bekijk de one-pager
         </a>
         <button type="button" onClick={copy} className="text-sm font-semibold text-primary hover:underline px-2 py-3">

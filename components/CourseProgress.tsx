@@ -29,8 +29,8 @@ export default function CourseProgress() {
     <div className="block-lilac rounded-[1.75rem] sm:rounded-[2rem] p-5 sm:p-9" aria-hidden="true">
       <div className="rounded-2xl bg-white p-5 sm:p-6 shadow-[0_20px_50px_-24px_hsl(256_56%_33%/0.35)]">
         <div className="flex items-baseline justify-between">
-          <span className="text-[17px] font-bold text-foreground">Jouw training</span>
-          <span className="text-[13px] text-muted-foreground">2 van 4 afgerond</span>
+          <span className="text-[1.0625rem] font-bold text-foreground">Jouw training</span>
+          <span className="text-[0.8125rem] text-muted-foreground">2 van 4 afgerond</span>
         </div>
         <div className="mt-3 h-2 rounded-full bg-[hsl(256_60%_94%)]">
           <div className="h-2 w-[52%] rounded-full bg-primary" />
@@ -40,20 +40,20 @@ export default function CourseProgress() {
             <li key={r.label} className="flex items-center gap-3 border-t border-[#F0EBE3] py-3">
               <Mark state={r.state} />
               <span
-                className={`flex-1 text-[15px] ${
+                className={`flex-1 text-[0.9375rem] ${
                   r.state === "active" ? "font-bold text-foreground" : r.state === "done" ? "text-foreground" : "text-muted-foreground"
                 }`}
               >
                 {r.label}
               </span>
-              <span className={`text-[13px] ${r.state === "active" ? "font-bold text-primary" : "text-muted-foreground"}`}>
+              <span className={`text-[0.8125rem] ${r.state === "active" ? "font-bold text-primary" : "text-muted-foreground"}`}>
                 {r.state === "done" ? "toets behaald" : r.state === "active" ? "bezig" : r.state === "exam" ? "daarna je certificaat" : ""}
               </span>
             </li>
           ))}
         </ul>
       </div>
-      <p className="mt-5 px-1 text-[15px] leading-relaxed text-[hsl(var(--deep))]">
+      <p className="mt-5 px-1 text-[0.9375rem] leading-relaxed text-[hsl(var(--deep))]">
         Zo ziet een deelnemer het. Kort, tussen het werk door, en je weet altijd waar je staat.
       </p>
     </div>

@@ -31,7 +31,7 @@ const BreadcrumbNav = ({ items, jsonLd }: BreadcrumbNavProps) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd || defaultJsonLd) }}
       />
-      <nav aria-label="Breadcrumb" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-2">
+      <nav aria-label="Breadcrumb" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
         <ol className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
           {items.map((item, i) => (
             <li key={i} className="flex items-center gap-1">

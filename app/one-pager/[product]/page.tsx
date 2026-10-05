@@ -118,19 +118,19 @@ export default async function OnePager({ params }: { params: Promise<{ product: 
 
       <article className="op-sheet">
         <header className="flex items-baseline justify-between border-b-2 border-[#23201D] pb-3">
-          <span className="text-[22px] font-black tracking-tight text-[#6E43D6]">AIGA</span>
-          <span className="text-[13px] font-bold text-[#23201D]">{s.eyebrow}</span>
+          <span className="text-[1.375rem] font-black tracking-tight text-[#6E43D6]">AIGA</span>
+          <span className="text-[0.8125rem] font-bold text-[#23201D]">{s.eyebrow}</span>
         </header>
 
         <div className="flex flex-col gap-3">
-          <h1 className="text-[30px] font-black leading-[1.08] tracking-tight">{s.h1}</h1>
-          <p className="text-[13.5px] leading-[1.6] text-[#4A443D]">{s.intro}</p>
+          <h1 className="text-[1.875rem] font-black leading-[1.08] tracking-tight">{s.h1}</h1>
+          <p className="text-[0.84375rem] leading-[1.6] text-[#4A443D]">{s.intro}</p>
         </div>
 
         {s.stat && (
           <div className="flex items-center gap-5 border-l-2 border-[#2F7E8B] pl-5">
-            <span className="text-[44px] font-black leading-none tracking-tight text-[#2F7E8B]">{s.stat.value}</span>
-            <p className="text-[12.5px] leading-[1.5]">
+            <span className="text-[2.75rem] font-black leading-none tracking-tight text-[#2F7E8B]">{s.stat.value}</span>
+            <p className="text-[0.78125rem] leading-[1.5]">
               {s.stat.text} <span className="text-[#8A8275]">{s.stat.source}</span>
             </p>
           </div>
@@ -138,10 +138,10 @@ export default async function OnePager({ params }: { params: Promise<{ product: 
 
         <div className="grid grid-cols-2 gap-8">
           <section>
-            <h2 className="mb-2 text-[14px] font-black text-[#23201D]">{s.listTitle}</h2>
+            <h2 className="mb-2 text-[0.875rem] font-black text-[#23201D]">{s.listTitle}</h2>
             <ul className="border-b border-[#E4DCCF]">
               {s.list.map((item) => (
-                <li key={item.text} className="flex gap-3 border-t border-[#E4DCCF] py-[7px] text-[13px] leading-[1.45]">
+                <li key={item.text} className="flex gap-3 border-t border-[#E4DCCF] py-[7px] text-[0.8125rem] leading-[1.45]">
                   {item.lead && <span className="w-12 shrink-0 font-bold text-[#6E43D6]">{item.lead}</span>}
                   <span>{item.text}</span>
                 </li>
@@ -149,10 +149,10 @@ export default async function OnePager({ params }: { params: Promise<{ product: 
             </ul>
           </section>
           <section>
-            <h2 className="mb-2 text-[14px] font-black text-[#23201D]">{s.howTitle}</h2>
+            <h2 className="mb-2 text-[0.875rem] font-black text-[#23201D]">{s.howTitle}</h2>
             <ul className="border-b border-[#E4DCCF]">
               {s.how.map((h) => (
-                <li key={h} className="flex gap-3 border-t border-[#E4DCCF] py-[7px] text-[13px] leading-[1.45]">
+                <li key={h} className="flex gap-3 border-t border-[#E4DCCF] py-[7px] text-[0.8125rem] leading-[1.45]">
                   <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#6E43D6]" />
                   <span>{h}</span>
                 </li>
@@ -163,12 +163,12 @@ export default async function OnePager({ params }: { params: Promise<{ product: 
 
         <section className="grid grid-cols-[auto_1fr] items-center gap-8 rounded-[10px] bg-[#F1EBE1] px-6 py-5">
           <div>
-            <p className="text-[40px] font-black leading-none tracking-tight">{s.price}</p>
-            <p className="mt-1 text-[12px] text-[#6B6459]">{s.priceNote}</p>
+            <p className="text-[2.5rem] font-black leading-none tracking-tight">{s.price}</p>
+            <p className="mt-1 text-[0.75rem] text-[#6B6459]">{s.priceNote}</p>
           </div>
           <ul className="flex flex-col gap-1.5">
             {s.priceBullets.map((b) => (
-              <li key={b} className="flex gap-2.5 text-[12.5px] leading-[1.45]">
+              <li key={b} className="flex gap-2.5 text-[0.78125rem] leading-[1.45]">
                 <span className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#2F7E8B]" />
                 <span>{b}</span>
               </li>
@@ -176,12 +176,12 @@ export default async function OnePager({ params }: { params: Promise<{ product: 
           </ul>
         </section>
 
-        <p className="text-[12.5px] leading-[1.6] text-[#4A443D]">
+        <p className="text-[0.78125rem] leading-[1.6] text-[#4A443D]">
           <strong className="text-[#23201D]">Gegeven door Ferry Hoes.</strong> Veelgevraagd AI-spreker die sinds 2017
           organisaties helpt met verantwoord AI-gebruik, van a.s.r. tot VodafoneZiggo en verschillende Ministeries.
         </p>
 
-        <div className="mt-auto flex items-end justify-between border-t border-[#E4DCCF] pt-4 text-[12px] leading-[1.6]">
+        <div className="mt-auto flex items-end justify-between border-t border-[#E4DCCF] pt-4 text-[0.75rem] leading-[1.6]">
           <div>
             <p className="font-bold text-[#6E43D6]">{s.pageUrl}</p>
             <p className="text-[#6B6459]">Reactie binnen één werkdag</p>

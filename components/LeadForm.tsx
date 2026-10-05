@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { trackLead, alertTeam, trackQuoteRequest } from "@/lib/track";
+import { useInlineValidation, FieldError, PHONE_PATTERN } from "@/components/InlineValidation";
 
 function readUtmsFromUrl() {
   const p = new URLSearchParams(window.location.search);
@@ -35,6 +36,7 @@ export default function LeadForm({ source }: { source: string }) {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const v = useInlineValidation();
 
   useEffect(() => {
     try {
@@ -120,7 +122,7 @@ export default function LeadForm({ source }: { source: string }) {
   const inputClass = "w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-sm focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4" aria-label="Offerte aanvraag">
+    <form onSubmit={handleSubmit} {...v.formProps} className="space-y-4" aria-label="Offerte aanvraag">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="lf-naam" className="text-sm text-muted-foreground mb-1 block">
@@ -131,6 +133,7 @@ export default function LeadForm({ source }: { source: string }) {
             value={form.naam} onChange={(e) => setForm({ ...form, naam: e.target.value })}
             className={inputClass}
           />
+          <FieldError id="lf-naam" errors={v.errors} />
         </div>
         <div>
           <label htmlFor="lf-bedrijf" className="text-sm text-muted-foreground mb-1 block">
@@ -141,6 +144,7 @@ export default function LeadForm({ source }: { source: string }) {
             value={form.bedrijf} onChange={(e) => setForm({ ...form, bedrijf: e.target.value })}
             className={inputClass}
           />
+          <FieldError id="lf-bedrijf" errors={v.errors} />
         </div>
       </div>
       <div>
@@ -152,16 +156,18 @@ export default function LeadForm({ source }: { source: string }) {
           value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })}
           className={inputClass}
         />
+          <FieldError id="lf-email" errors={v.errors} />
       </div>
       <div>
         <label htmlFor="lf-telefoon" className="text-sm text-muted-foreground mb-1 block">
           Telefoonnummer
         </label>
         <input
-          id="lf-telefoon" name="telefoon" type="tel" required autoComplete="tel"
+          id="lf-telefoon" name="telefoon" type="tel" required autoComplete="tel" pattern={PHONE_PATTERN}
           value={form.telefoon} onChange={(e) => setForm({ ...form, telefoon: e.target.value })}
           className={inputClass}
         />
+          <FieldError id="lf-telefoon" errors={v.errors} />
       </div>
       <div>
         <label htmlFor="lf-teamgrootte" className="text-sm text-muted-foreground mb-1 block">
@@ -178,11 +184,12 @@ export default function LeadForm({ source }: { source: string }) {
           <option value="11-49">11-49 medewerkers</option>
           <option value="50+">50 of meer (enterprise)</option>
         </select>
+        <FieldError id="lf-teamgrootte" errors={v.errors} />
       </div>
 
       {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
 
-      <button type="submit" disabled={submitting} className="btn-neon w-full py-3.5 rounded-lg disabled:opacity-50">
+      <button type="submit" disabled={submitting} className="btn-neon w-full py-3.5 disabled:opacity-50">
         {submitting ? "Bezig met versturen..." : "Vraag een offerte aan"}
       </button>
 

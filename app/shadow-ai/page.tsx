@@ -100,11 +100,11 @@ export default function ShadowAiPage() {
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <Link
                 href="/gereedheidscan"
-                className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-[15px] font-semibold"
+                className="btn-neon inline-flex items-center justify-center px-7 py-3.5 text-[0.9375rem] font-semibold"
               >
                 Check of het bij jou gebeurt
               </Link>
-              <a href="#oplossing" className="text-[15px] font-semibold text-primary hover:underline">
+              <a href="#oplossing" className="text-[0.9375rem] font-semibold text-primary hover:underline">
                 Zo los je het op
               </a>
             </div>

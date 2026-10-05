@@ -6,7 +6,7 @@ import BreadcrumbNav from "@/components/BreadcrumbNav";
 import Panel from "@/components/Panel";
 import AskUs from "@/components/AskUs";
 import { createClient } from "@/lib/supabase/client";
-import { toast } from "sonner";
+import { useInlineValidation, FieldError, PHONE_PATTERN } from "@/components/InlineValidation";
 import { trackLead, alertTeam } from "@/lib/track";
 
 interface ArticleLink {
@@ -32,6 +32,8 @@ export default function OverAigaClient() {
   const [form, setForm] = useState({ naam: "", organisatie: "", functie: "", email: "", telefoon: "", hulp: "", aantal: "", opmerkingen: "" });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [sendError, setSendError] = useState(false);
+  const v = useInlineValidation();
 
   useEffect(() => {
     const supabase = createClient();
@@ -50,6 +52,7 @@ export default function OverAigaClient() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSendError(false);
     setSubmitting(true);
     const supabase = createClient();
 
@@ -66,7 +69,7 @@ export default function OverAigaClient() {
 
     if (error) {
       setSubmitting(false);
-      toast.error("Er ging iets mis bij het versturen. Probeer het opnieuw.");
+      setSendError(true);
       return;
     }
 
@@ -96,7 +99,7 @@ export default function OverAigaClient() {
   };
 
   const inputClass =
-    "w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-[15px] focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300";
+    "w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-[0.9375rem] focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300";
 
   return (
     <div className="min-h-screen">
@@ -115,10 +118,10 @@ export default function OverAigaClient() {
               Dat is geen onwil, dat is een gat. Wij dichten het.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <Link href="/training" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-[15px] font-semibold">
+              <Link href="/training" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 text-[0.9375rem] font-semibold">
                 Bekijk de teamtraining
               </Link>
-              <a href="#contact" className="text-[15px] font-semibold text-primary hover:underline">
+              <a href="#contact" className="text-[0.9375rem] font-semibold text-primary hover:underline">
                 Of praat eerst met ons
               </a>
             </div>
@@ -215,7 +218,7 @@ export default function OverAigaClient() {
                   href="https://www.linkedin.com/in/ferryhoes"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-block text-[15px] font-semibold text-primary hover:underline"
+                  className="mt-6 inline-block text-[0.9375rem] font-semibold text-primary hover:underline"
                 >
                   Ferry op LinkedIn
                 </a>
@@ -244,7 +247,7 @@ export default function OverAigaClient() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="/kenniscentrum" className="mt-5 inline-block text-[15px] font-semibold text-primary hover:underline">
+                  <Link href="/kenniscentrum" className="mt-5 inline-block text-[0.9375rem] font-semibold text-primary hover:underline">
                     Alle artikelen in het kenniscentrum
                   </Link>
                 </div>
@@ -279,7 +282,7 @@ export default function OverAigaClient() {
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleSubmit} {...v.formProps} className="space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {[
                         { name: "naam", label: "Naam", required: true, auto: "name" },
@@ -296,6 +299,7 @@ export default function OverAigaClient() {
                             onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
                             className={inputClass}
                           />
+                          <FieldError id={`over-${f.name}`} errors={v.errors} />
                         </div>
                       ))}
                     </div>
@@ -309,12 +313,14 @@ export default function OverAigaClient() {
                           id={`over-${f.name}`}
                           name={f.name}
                           type={f.type}
+                          pattern={f.type === "tel" ? PHONE_PATTERN : undefined}
                           required={f.required}
                           autoComplete={f.auto}
                           value={form[f.name as keyof typeof form]}
                           onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
                           className={inputClass}
                         />
+                        <FieldError id={`over-${f.name}`} errors={v.errors} />
                       </div>
                     ))}
                     <div>
@@ -333,6 +339,7 @@ export default function OverAigaClient() {
                         <option value="beide">Allebei</option>
                         <option value="anders">Iets anders</option>
                       </select>
+                    <FieldError id="over-hulp" errors={v.errors} />
                     </div>
                     <div>
                       <label htmlFor="over-opmerkingen" className="text-sm text-muted-foreground mb-1 block">Je vraag (optioneel)</label>
@@ -345,7 +352,12 @@ export default function OverAigaClient() {
                         className={`${inputClass} resize-none`}
                       />
                     </div>
-                    <button type="submit" disabled={submitting} className="btn-neon w-full py-3.5 rounded-lg disabled:opacity-50">
+                    {sendError && (
+                    <p role="alert" className="rounded-lg bg-destructive/10 px-4 py-3 text-sm text-destructive">
+                      Versturen lukte niet. Probeer het nog eens, of bel ons op +31 (0)10 316 7827.
+                    </p>
+                  )}
+                  <button type="submit" disabled={submitting} className="btn-neon w-full py-3.5 disabled:opacity-50">
                       {submitting ? "Even versturen..." : "Stuur je vraag"}
                     </button>
                   </form>

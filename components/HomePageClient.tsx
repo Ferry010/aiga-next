@@ -53,7 +53,7 @@ export default function HomePageClient() {
               Onschuldig bedoeld, handig zelfs. Maar die data staat nu in een tool die jij niet ziet. En morgen
               gebeurt het weer.
             </p>
-            <a href="#oplossing" className="btn-neon mt-8 inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-[15px] font-semibold">
+            <a href="#oplossing" className="btn-neon mt-8 inline-flex items-center justify-center px-7 py-3.5 text-[0.9375rem] font-semibold">
               Bekijk de oplossing
             </a>
           </AnimatedSection>
@@ -166,7 +166,7 @@ export default function HomePageClient() {
                   &euro;249 <span className="text-base font-normal text-muted-foreground">ex btw per persoon</span>
                 </p>
                 <p className="mt-2 text-muted-foreground">€229 vanaf 11 personen. Vanaf 50: een enterprise-offerte op maat.</p>
-                <Link href="/training" className="btn-neon self-start mt-6 px-7 py-3.5 rounded-lg text-[15px] font-semibold">
+                <Link href="/training" className="btn-neon self-start mt-6 px-7 py-3.5 text-[0.9375rem] font-semibold">
                   Bekijk de teamtraining
                 </Link>
               </div>
@@ -180,7 +180,7 @@ export default function HomePageClient() {
                   &euro;495 <span className="text-base font-normal text-muted-foreground">ex btw per persoon</span>
                 </p>
                 <p className="mt-2 text-muted-foreground">Minimaal 5 deelnemers, op locatie of online.</p>
-                <Link href="/masterclass" className="btn-neon-outline self-start mt-6 px-7 py-3.5 rounded-lg text-[15px] font-semibold">
+                <Link href="/masterclass" className="btn-neon-outline self-start mt-6 px-7 py-3.5 text-[0.9375rem] font-semibold">
                   Bekijk de masterclass
                 </Link>
               </div>
@@ -199,11 +199,11 @@ export default function HomePageClient() {
             <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-x-6 gap-y-4">
               <Link
                 href="/training"
-                className="inline-flex justify-center px-7 py-3.5 rounded-full text-[15px] font-semibold bg-white text-[hsl(var(--deep))] transition-transform hover:-translate-y-0.5"
+                className="btn-white px-7 py-3.5 text-[0.9375rem]"
               >
                 Bekijk de teamtraining
               </Link>
-              <Link href="/masterclass" className="text-[15px] font-semibold text-primary hover:underline">
+              <Link href="/masterclass" className="text-[0.9375rem] font-semibold text-primary hover:underline">
                 Alleen voor je directie? Bekijk de masterclass
               </Link>
             </div>

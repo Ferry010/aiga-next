@@ -47,7 +47,7 @@ export default function NotFound() {
 
         <Link
           href="/"
-          className="btn-neon mt-10 inline-block rounded-lg px-8 py-3 text-sm font-semibold"
+          className="btn-neon mt-10 inline-block px-8 py-3 text-sm font-semibold"
         >
           Terug naar home
         </Link>

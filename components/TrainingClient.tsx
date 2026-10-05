@@ -73,10 +73,10 @@ export default function TrainingClient() {
               niemand heeft de grens ooit uitgelegd. Deze online training doet dat, voor je hele team.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <a href="#offerte" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-[15px] font-semibold">
+              <a href="#offerte" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 text-[0.9375rem] font-semibold">
                 Vraag een offerte aan
               </a>
-              <a href="#programma" className="text-[15px] font-semibold text-primary hover:underline">
+              <a href="#programma" className="text-[0.9375rem] font-semibold text-primary hover:underline">
                 Bekijk het programma
               </a>
             </div>
@@ -133,7 +133,7 @@ export default function TrainingClient() {
             <ol className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8">
               {steps.map((s, i) => (
                 <li key={s.title} className="flex gap-4">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-[17px] font-bold text-white">{i + 1}</span>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-[1.0625rem] font-bold text-white">{i + 1}</span>
                   <div>
                     <h3 className="text-lg font-display font-bold text-foreground">{s.title}</h3>
                     <p className="mt-1 text-muted-foreground leading-relaxed">{s.body}</p>
@@ -188,7 +188,7 @@ export default function TrainingClient() {
               </p>
               <a
                 href="#offerte"
-                className="mt-8 inline-flex items-center justify-center px-7 py-3.5 rounded-full text-[15px] font-semibold bg-white text-[hsl(var(--deep))] transition-transform hover:-translate-y-0.5"
+                className="mt-8 btn-white px-7 py-3.5 text-[0.9375rem]"
               >
                 Vraag een offerte aan
               </a>

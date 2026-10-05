@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { AnimatedSection } from "@/components/AnimatedSection";
-import SectionLabel from "@/components/SectionLabel";
-import BreadcrumbNav from "@/components/BreadcrumbNav";
-import LeadForm from "@/components/LeadForm";
+import { PageHero, TextSection, DotList, OfferteBlock } from "@/components/PageKit";
+import HeroChat from "@/components/HeroChat";
 
 export const metadata: Metadata = {
   title: "Weet jij wat je team met AI doet? AI-gebruik en de AI Act | AIGA",
   description:
-    "Je weet niet wat je mensen met AI doen. Maak verantwoord AI-gebruik dagelijkse gewoonte en leg aantoonbaar vast dat je voldoet aan Artikel 4 van de EU AI Act. Gids en training voor Nederlandse organisaties.",
+    "Je weet niet wat je mensen met AI doen. Maak verantwoord AI-gebruik een dagelijkse gewoonte en laat zien dat je AI-geletterdheid ondersteunt, zoals Artikel 4 van de EU AI Act vraagt. Gids en training voor Nederlandse organisaties.",
   alternates: { canonical: "/ai-act-compliance-nederland" },
 };
 
@@ -21,121 +18,68 @@ const jsonLd = {
   publisher: { "@type": "Organization", name: "AIGA | AI Geletterdheid Academy" },
 };
 
+const SOURCES = [
+  { href: "https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX:32024R1689", label: "EUR-Lex: Verordening (EU) 2024/1689 (AI Act)" },
+  { href: "https://www.rijksoverheid.nl/onderwerpen/kunstmatige-intelligentie-ai", label: "Rijksoverheid.nl: Kunstmatige intelligentie" },
+  { href: "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai", label: "Europese Commissie: AI Act" },
+];
+
 export default function AiActComplianceNederlandPage() {
   return (
     <div className="min-h-screen">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <PageHero
+        crumb="Zicht op AI-gebruik"
+        title="Je weet niet wat je mensen met AI doen."
+        accent="Elke dag zonder zicht is data die al weg is."
+        intro="AI is je organisatie binnengekomen zonder dat iemand het heeft aangezet. Mensen plakken vertrouwelijke informatie in ChatGPT, nemen output over zonder te checken en gebruiken tools die niemand heeft goedgekeurd."
+        primary={{ href: "#offerte", label: "Vraag een offerte aan" }}
+        secondary={{ href: "/gereedheidscan", label: "Check eerst waar je staat" }}
+        aside={<HeroChat />}
       />
-      <BreadcrumbNav items={[{ label: "Home", href: "/" }, { label: "AI Act Compliance Nederland" }]} />
 
-      <section className="pt-12 pb-24">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="AI ACT COMPLIANCE" />
-            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] mt-4">
-              Je weet niet wat je mensen met AI doen.{" "}
-              <span className="text-primary">Elke dag zonder zicht is data die al weg is.</span>
-            </h1>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              AI is je organisatie binnengekomen zonder dat iemand het heeft aangezet. Medewerkers plakken vertrouwelijke informatie in ChatGPT, nemen output klakkeloos over en gebruiken tools die niemand heeft goedgekeurd. Een AI-beleid op SharePoint verandert dat niet. Deze training maakt verantwoord AI-gebruik onderdeel van het dagelijks handelen: privacy, vertrouwelijke data, hallucinaties, human oversight, bias en verificatie. En je legt er meteen aantoonbaar mee vast dat je voldoet aan Artikel 4 van de EU AI Act.
-            </p>
-          </AnimatedSection>
+      <TextSection title="Een beleid op SharePoint verandert geen gedrag">
+        <p>
+          Afspraken die niemand leest, werken niet. Wat wel werkt: mensen die zelf weten waar de grens ligt. Deze training
+          maakt verantwoord AI-gebruik onderdeel van het dagelijks werk: privacy, vertrouwelijke data, hallucinaties,
+          menselijke controle, bias en het checken van output.
+        </p>
+      </TextSection>
 
-          <AnimatedSection delay={0.1}>
-            <h2 className="text-2xl font-display font-semibold text-foreground mt-16 mb-4">
-              Wat houdt AI Act compliance in?
-            </h2>
-            <div className="text-muted-foreground leading-relaxed space-y-4">
-              <p>
-                AI Act compliance betekent dat je organisatie voldoet aan alle relevante bepalingen van de EU Verordening inzake Kunstmatige Intelligentie. De wet classificeert AI-systemen in risicocategorieën en stelt voor elke categorie specifieke eisen.
-              </p>
-              <p>
-                Maar ongeacht welke AI-systemen je gebruikt: <strong className="text-foreground">Artikel 4 vereist dat alle organisaties investeren in AI-geletterdheid.</strong> Dit geldt ook voor organisaties die alleen generatieve AI-tools als ChatGPT, Copilot of Gemini gebruiken.
-              </p>
-            </div>
-          </AnimatedSection>
+      <TextSection title="Wat de AI Act vraagt">
+        <p>
+          Artikel 4 van de EU AI Act vraagt organisaties om de AI-geletterdheid te ondersteunen van iedereen die met AI
+          werkt. Dat geldt ook als je alleen tools als ChatGPT, Copilot of Gemini gebruikt.
+        </p>
+        <p>
+          Sinds de Digital Omnibus is dat een inspanningsverplichting: je moet kunnen laten zien dat je er gestructureerd
+          werk van maakt. In Nederland werken de Autoriteit Persoonsgegevens en de Rijksinspectie Digitale Infrastructuur
+          samen als toezichthouders.
+        </p>
+      </TextSection>
 
-          <AnimatedSection delay={0.15}>
-            <h2 className="text-2xl font-display font-semibold text-foreground mt-16 mb-4">
-              Belangrijke deadlines
-            </h2>
-            <div className="space-y-4">
-              {[
-                { date: "Februari 2025", text: "De AI-geletterdheidsplicht (Artikel 4) treedt in werking" },
-                { date: "Augustus 2025", text: "Regels voor algemene AI-modellen (GPAI) en governance treden in werking" },
-                { date: "Augustus 2026", text: "Actieve handhaving van onder meer de AI-geletterdheidsplicht (Artikel 4)" },
-              ].map((d) => (
-                <div key={d.date} className="flex gap-4 p-4 bg-card border border-border rounded-xl">
-                  <span className="text-sm font-mono font-bold neon-text shrink-0 w-36">{d.date}</span>
-                  <p className="text-sm text-muted-foreground">{d.text}</p>
-                </div>
-              ))}
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.2}>
-            <h2 className="text-2xl font-display font-semibold text-foreground mt-16 mb-4">
-              Boetes bij niet-naleving
-            </h2>
-            <div className="text-muted-foreground leading-relaxed space-y-4">
-              <p>De AI Act kent drie boetetiers, op basis van de ernst van de overtreding:</p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li><strong className="text-foreground">Verboden AI-praktijken (Artikel 5):</strong> tot €35 miljoen of 7% van de wereldwijde jaaromzet</li>
-                <li><strong className="text-foreground">Hoog-risico overtredingen:</strong> tot €15 miljoen of 3% van de jaaromzet</li>
-                <li><strong className="text-foreground">Overige overtredingen:</strong> tot €7,5 miljoen of 1,5% van de jaaromzet</li>
-              </ul>
-              <p>
-                Artikel 4 (AI-geletterdheid) valt niet onder een van deze boetetiers. Toezichthouders kunnen het wel meewegen als verzwarende omstandigheid bij andere overtredingen. In Nederland werken de Autoriteit Persoonsgegevens en de Rijksinspectie Digitale Infrastructuur samen als coördinerende toezichthouders.
-              </p>
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.25}>
-            <h2 className="text-2xl font-display font-semibold text-foreground mt-16 mb-4">
-              De rol van training bij compliance
-            </h2>
-            <div className="text-muted-foreground leading-relaxed space-y-4">
-              <p>AI-geletterdheid training is de meest directe manier om invulling te geven aan Artikel 4 van de AI Act. Een goede training levert:</p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>Aantoonbaar bewijs van investering in AI-kennis</li>
-                <li>Een certificaat van deelname per medewerker, na een digitaal eindexamen</li>
-                <li>Documentatie voor je eigen dossier en voor toezichthouders</li>
-                <li>Praktische kennis voor verantwoord AI-gebruik</li>
-              </ul>
-            </div>
-          </AnimatedSection>
-
-          {/* External sources */}
-          <AnimatedSection delay={0.3}>
-            <div className="mt-12 p-6 bg-card border border-border rounded-2xl">
-              <h3 className="text-sm font-semibold text-foreground mb-3">Officiële bronnen</h3>
-              <ul className="space-y-2 text-sm">
-                <li><a href="https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX:32024R1689" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">EUR-Lex: Verordening (EU) 2024/1689 (AI Act)</a></li>
-                <li><a href="https://www.rijksoverheid.nl/onderwerpen/kunstmatige-intelligentie-ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Rijksoverheid.nl: Kunstmatige Intelligentie</a></li>
-                <li><a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">European Commission: AI Act</a></li>
-              </ul>
-            </div>
-          </AnimatedSection>
-
-          {/* CTA */}
-          <AnimatedSection delay={0.35}>
-            <div className="mt-16 border-t-2 border-foreground pt-10">
-              <div className="mb-8">
-                <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground tracking-tight">
-                  Maak verantwoord AI-gebruik dagelijkse gewoonte
-                </h2>
-                <p className="mt-3 text-muted-foreground">Laat je gegevens achter. Binnen één werkdag belt een van ons je.</p>
-              </div>
-              <LeadForm source="AI Act compliance pagina — offerte aanvraag" />
-              <p className="mt-6 text-sm text-muted-foreground">
-                Liever eerst de gratis check? <Link href="/gereedheidscan" className="text-primary hover:underline font-medium">In 3 minuten weet je waar je team staat.</Link>
-              </p>
-            </div>
-          </AnimatedSection>
+      <TextSection title="Wat de training je oplevert">
+        <DotList
+          items={[
+            "Mensen die weten welke data wel en niet in een AI-tool mag",
+            "Output die gecontroleerd wordt voordat hij de deur uitgaat",
+            "Een certificaat van deelname per medewerker, na een digitaal eindexamen",
+            "Een helder overzicht voor je eigen dossier: wie heeft wat gevolgd",
+          ]}
+        />
+        <div className="pt-4">
+          <p className="text-sm font-semibold text-foreground">Officiële bronnen</p>
+          <ul className="mt-2 space-y-1 text-sm">
+            {SOURCES.map((x) => (
+              <li key={x.href}>
+                <a href={x.href} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{x.label}</a>
+              </li>
+            ))}
+          </ul>
         </div>
-      </section>
+      </TextSection>
+
+      <OfferteBlock title="Maak verantwoord AI-gebruik een gewoonte." source="Zicht op AI-gebruik pagina, offerte aanvraag" />
     </div>
   );
 }

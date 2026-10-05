@@ -23,7 +23,7 @@ export default function SectionNav({ items }: { items: NavItem[] }) {
   }, [items]);
 
   return (
-    <nav aria-label="Op deze pagina" className="sticky top-16 z-30 border-y border-border bg-background/95 backdrop-blur-md">
+    <nav aria-label="Op deze pagina" style={{ top: "var(--nav-h, 4rem)" }} className="surface-glass sticky z-30 border-y border-border bg-background/90 backdrop-blur-md transition-[top] duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <ul className="flex gap-1 overflow-x-auto py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {items.map((i) => (
@@ -31,7 +31,7 @@ export default function SectionNav({ items }: { items: NavItem[] }) {
               <a
                 href={`#${i.id}`}
                 aria-current={active === i.id ? "true" : undefined}
-                className={`inline-block rounded-full px-4 py-2 text-[15px] font-semibold transition-colors ${
+                className={`inline-block rounded-full px-4 py-2 text-[0.9375rem] font-semibold transition-colors ${
                   active === i.id ? "bg-primary text-white" : "text-muted-foreground hover:text-foreground"
                 }`}
               >

@@ -287,8 +287,8 @@ export default function ArticleDetailClient({ article, prevArticle, nextArticle 
           <h3 className="text-xl font-display font-semibold text-foreground mb-2">Zorg dat je team weet wat het met AI doet</h3>
           <p className="text-muted-foreground text-sm mb-6">Kant-en-klaar programma dat je hele team traint op de risico's: data, shadow AI, veilig én nuttig gebruik. Of doe eerst de gratis scan.</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/training" className="btn-neon px-6 py-3 rounded-lg text-sm">Bekijk de training</Link>
-            <Link href="/gereedheidscan" className="btn-neon-outline px-6 py-3 rounded-lg text-sm font-semibold">Doe de scan</Link>
+            <Link href="/training" className="btn-neon px-6 py-3 text-sm">Bekijk de training</Link>
+            <Link href="/gereedheidscan" className="btn-neon-outline px-6 py-3 text-sm font-semibold">Doe de scan</Link>
           </div>
         </div>
       </div>

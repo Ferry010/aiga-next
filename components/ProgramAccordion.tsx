@@ -10,7 +10,7 @@ export default function ProgramAccordion() {
       {CURRICULUM.map((m, idx) => (
         <details key={m.n} open={idx === 0} className="group border-b border-border">
           <summary className="flex cursor-pointer list-none items-center gap-4 sm:gap-5 px-5 sm:px-7 py-5 sm:py-6 hover:bg-[hsl(var(--block-lilac)/0.5)] [&::-webkit-details-marker]:hidden">
-            <span className="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-full bg-primary text-[17px] font-bold text-white">
+            <span className="flex h-10 w-10 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-full bg-primary text-[1.0625rem] font-bold text-white">
               {m.n}
             </span>
             <span className="flex-1 min-w-0">

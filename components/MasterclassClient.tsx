@@ -14,7 +14,7 @@ import StickyCta from "@/components/StickyCta";
 import { MASTERCLASS_FAQ } from "@/lib/faq";
 import { createClient } from "@/lib/supabase/client";
 import { trackLead, alertTeam } from "@/lib/track";
-import { toast } from "sonner";
+import { useInlineValidation, FieldError, PHONE_PATTERN } from "@/components/InlineValidation";
 
 const takeaways = [
   "Waar in jouw organisatie AI risico oplevert, en waar rendement",
@@ -78,9 +78,12 @@ export default function MasterclassClient() {
   });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [sendError, setSendError] = useState(false);
+  const v = useInlineValidation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSendError(false);
     setSubmitting(true);
     const supabase = createClient();
 
@@ -97,7 +100,7 @@ export default function MasterclassClient() {
     setSubmitting(false);
 
     if (error) {
-      toast.error("Er ging iets mis bij het versturen. Probeer het opnieuw.");
+      setSendError(true);
       return;
     }
 
@@ -127,7 +130,7 @@ export default function MasterclassClient() {
   };
 
   const inputClass =
-    "w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-[15px] focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300";
+    "w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-[0.9375rem] focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20 transition-all duration-300";
 
   return (
     <div className="min-h-screen">
@@ -144,10 +147,10 @@ export default function MasterclassClient() {
               processen, wie verantwoordelijk is als het misgaat, en hoe beleid ook echt gedrag wordt.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <a href="#aanmelden" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 rounded-lg text-[15px] font-semibold">
+              <a href="#aanmelden" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 text-[0.9375rem] font-semibold">
                 Plan de masterclass
               </a>
-              <a href="#programma" className="text-[15px] font-semibold text-primary hover:underline">
+              <a href="#programma" className="text-[0.9375rem] font-semibold text-primary hover:underline">
                 Bekijk het programma
               </a>
             </div>
@@ -242,7 +245,7 @@ export default function MasterclassClient() {
             <ol className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8">
               {steps.map((st, i) => (
                 <li key={st.title} className="flex gap-4">
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-[17px] font-bold text-white">{i + 1}</span>
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-[1.0625rem] font-bold text-white">{i + 1}</span>
                   <div>
                     <h3 className="text-lg font-display font-bold text-foreground">{st.title}</h3>
                     <p className="mt-1 text-muted-foreground leading-relaxed">{st.body}</p>
@@ -276,7 +279,7 @@ export default function MasterclassClient() {
               </p>
               <a
                 href="#aanmelden"
-                className="mt-8 inline-flex items-center justify-center px-7 py-3.5 rounded-full text-[15px] font-semibold bg-white text-[hsl(var(--deep))] transition-transform hover:-translate-y-0.5"
+                className="mt-8 btn-white px-7 py-3.5 text-[0.9375rem]"
               >
                 Plan de masterclass
               </a>
@@ -329,7 +332,7 @@ export default function MasterclassClient() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} {...v.formProps} className="space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {[
                       { name: "naam", label: "Naam", required: true, auto: "name" },
@@ -346,6 +349,7 @@ export default function MasterclassClient() {
                           onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
                           className={inputClass}
                         />
+                        <FieldError id={`mc-${f.name}`} errors={v.errors} />
                       </div>
                     ))}
                   </div>
@@ -360,12 +364,14 @@ export default function MasterclassClient() {
                         id={`mc-${f.name}`}
                         name={f.name}
                         type={f.type || "text"}
+                        pattern={f.type === "tel" ? PHONE_PATTERN : undefined}
                         required={f.required}
                         autoComplete={f.auto}
                         value={form[f.name as keyof typeof form]}
                         onChange={(e) => setForm({ ...form, [f.name]: e.target.value })}
                         className={inputClass}
                       />
+                      <FieldError id={`mc-${f.name}`} errors={v.errors} />
                     </div>
                   ))}
                   <div>
@@ -381,6 +387,7 @@ export default function MasterclassClient() {
                       <option value="open">Open sessie</option>
                       <option value="besloten">Besloten sessie</option>
                     </select>
+                    <FieldError id="mc-sessie" errors={v.errors} />
                   </div>
                   <div>
                     <label htmlFor="mc-vragen" className="text-sm text-muted-foreground mb-1 block">Vragen of opmerkingen (optioneel)</label>
@@ -392,7 +399,12 @@ export default function MasterclassClient() {
                       className={`${inputClass} resize-none`}
                     />
                   </div>
-                  <button type="submit" disabled={submitting} className="btn-neon w-full py-3.5 rounded-lg disabled:opacity-50">
+                  {sendError && (
+                    <p role="alert" className="rounded-lg bg-destructive/10 px-4 py-3 text-sm text-destructive">
+                      Versturen lukte niet. Probeer het nog eens, of bel ons op +31 (0)10 316 7827.
+                    </p>
+                  )}
+                  <button type="submit" disabled={submitting} className="btn-neon w-full py-3.5 disabled:opacity-50">
                     {submitting ? "Bezig met versturen..." : "Plan de masterclass"}
                   </button>
                 </form>

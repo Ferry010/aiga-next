@@ -258,7 +258,7 @@ export default function AiToolsOverzichtClient() {
               </p>
               <Link
                 href="/gereedheidscan"
-                className="btn-neon text-sm px-6 py-3 rounded-lg whitespace-nowrap shrink-0"
+                className="btn-neon text-sm px-6 py-3 whitespace-nowrap shrink-0"
               >
                 Doe de gratis AI-risicocheck →
               </Link>

@@ -28,20 +28,36 @@ export default function StickyCta({ target, label, note }: { target: string; lab
 
   const show = scrolled && !targetVisible;
 
+  // While this bar is up, the floating chat button hides on phones (CSS in globals)
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle("sticky-cta-on", show);
+    return () => root.classList.remove("sticky-cta-on");
+  }, [show]);
+
   return (
     <div
       aria-hidden={!show}
-      className={`md:hidden fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/95 backdrop-blur-md px-4 pt-3 transition-transform duration-300 ${
+      className={`surface-glass md:hidden fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/90 backdrop-blur-md px-4 pt-3 transition-transform duration-300 ${
         show ? "translate-y-0" : "translate-y-full"
       }`}
       style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom, 0px))" }}
     >
       <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new Event("aiga:open-chat"))}
+          tabIndex={show ? 0 : -1}
+          aria-label="Vraag het Ferry"
+          className="press shrink-0 rounded-full ring-2 ring-primary/30"
+        >
+          <img src="/assets/ferry-avatar.jpg" alt="" width={42} height={42} className="h-[42px] w-[42px] rounded-full object-cover" />
+        </button>
         {note && <span className="text-sm text-muted-foreground leading-tight shrink-0">{note}</span>}
         <a
           href={`#${target}`}
           tabIndex={show ? 0 : -1}
-          className="btn-neon flex-1 text-center py-3 rounded-lg text-[15px] font-semibold"
+          className="btn-neon flex-1 text-center py-3 text-[0.9375rem] font-semibold"
         >
           {label}
         </a>

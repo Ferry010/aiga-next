@@ -1,21 +1,17 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { AnimatedSection } from "@/components/AnimatedSection";
-import SectionLabel from "@/components/SectionLabel";
-
-const speakersLogo = "/assets/speakers-academy-logo.png";
-const ferryImg = "/assets/ferry-hoes.gif";
+import { PageHero, TextSection, PointGrid, OfferteBlock, container } from "@/components/PageKit";
 
 export const metadata: Metadata = {
   title: "Speakers Academy x AIGA | Van inspiratie naar actie",
   description:
-    "Speakers Academy en AIGA: van keynote inspiratie naar gecertificeerde AI-geletterdheid. Boek Ferry Hoes als spreker of certificeer je team via de AIGA training.",
+    "Speakers Academy en AIGA: van een keynote die ogen opent naar een team dat weet hoe het veilig met AI werkt. Online training, gebouwd en gegeven door Ferry Hoes.",
+  alternates: { canonical: "https://aigeletterdheid.academy/speakers-academy" },
 };
 
 const stats = [
-  { val: "40+", label: "Keynotes per jaar, internationale events en in-house sessies" },
-  { val: "15+", label: "Jaar ervaring van startups tot wereldwijde corporates in allerlei sectoren" },
-  { val: "2020", label: "Winnaar prestigieuze AI Hackathon van de Nederlandse overheid" },
+  { title: "40+ keynotes per jaar", body: "Internationale events en in-house sessies, voor zalen vol mensen die met AI werken." },
+  { title: "Sinds 2017", body: "Helpt Ferry organisaties met verantwoord AI-gebruik, van a.s.r. tot VodafoneZiggo en verschillende Ministeries." },
+  { title: "Winnaar in 2020", body: "Van de Anti-Discriminatie AI-Hackathon van de Nederlandse overheid." },
 ];
 
 const testimonials = [
@@ -36,189 +32,70 @@ const testimonials = [
 export default function SpeakersAcademyPage() {
   return (
     <div className="min-h-screen">
-      {/* 1. Hero */}
-      <section className="pt-24 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="EEN SAMENWERKING" />
-            <h1 className="text-4xl sm:text-6xl lg:text-6xl font-display font-semibold text-foreground mt-2">
-              Van inspiratie naar actie.
-            </h1>
-            <p className="text-xl sm:text-2xl font-display text-primary mt-4">
-              Gebouwd op 30 jaar sprekerservaring. Gericht op jouw team.
-            </p>
-            <p className="mt-6 text-muted-foreground max-w-2xl leading-relaxed">
-              Speakers Academy is het sprekersplatform van Nederland. AIGA is het AI-geletterdheidsplatform dat we samen bouwen, zodat organisaties niet alleen geïnspireerd worden, maar ook echt voorbereid zijn.
-            </p>
-            <div className="flex flex-wrap gap-4 mt-8">
-              <Link href="/training" className="btn-neon inline-block px-6 py-3 rounded-lg text-[15px]">
-                Bekijk de training
-              </Link>
-            </div>
-          </AnimatedSection>
+      <PageHero
+        crumb="Speakers Academy"
+        title="Van inspiratie naar actie."
+        accent="Een keynote opent ogen. De training verandert gedrag."
+        intro="Speakers Academy is het sprekersbureau waar Ferry Hoes een van de meest gevraagde AI-sprekers is. Samen bouwden we AIGA, zodat organisaties na de keynote ook echt weten hoe het moet."
+        primary={{ href: "/training", label: "Bekijk de teamtraining" }}
+        secondary={{ href: "#offerte", label: "Of praat eerst met Robbert of Tom" }}
+        aside={
+          <img
+            src="/assets/ferry-stage.jpg"
+            alt="Ferry Hoes op het podium"
+            width={959}
+            height={904}
+            className="w-full aspect-[959/904] object-cover rounded-[1.75rem]"
+          />
+        }
+      />
+
+      <TextSection title="De partner">
+        <p>
+          Speakers Academy koppelt organisaties al meer dan 30 jaar aan sprekers, van wetenschappers en CEO&apos;s tot
+          beleidsmakers. Ferry Hoes is een van hun meest gevraagde AI-sprekers. Dat vertrouwen is de basis van AIGA.
+        </p>
+        <img src="/assets/speakers-academy-logo.png" alt="Speakers Academy" className="h-14 w-auto rounded" />
+      </TextSection>
+
+      <TextSection title="Waarom een training na de keynote">
+        <p>
+          Na een keynote is iedereen enthousiast. Een week later plakt iemand toch weer een klantmail in een privé
+          ChatGPT-account. Bewustwording alleen verandert geen gedrag.
+        </p>
+        <p className="text-foreground">
+          Daarom ontwikkelde Ferry de AIGA-training: dezelfde inhoud als zijn sessies, maar als leertraject voor je hele
+          team. Vier modules, toetsen, een digitaal eindexamen en een certificaat van deelname.
+        </p>
+      </TextSection>
+
+      <section className="pb-16 sm:pb-24">
+        <div className={container}>
+          <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">De trainer</h2>
+          <div className="mt-8"><PointGrid cols={3} items={stats} /></div>
         </div>
       </section>
 
-      {/* 2. Partner */}
-      <section className="py-24 bg-card">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="DE PARTNER" />
-            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
-              30 jaar kennis aan het podium.
-            </h2>
-            <p className="mt-6 text-muted-foreground max-w-3xl leading-relaxed">
-              Speakers Academy koppelt organisaties al meer dan 30 jaar aan de beste sprekers van Nederland, van wetenschappers en CEO&apos;s tot beleidsmakers en thought leaders. Ferry Hoes is een van hun meest gevraagde AI-sprekers. Dat vertrouwen vormt de basis van AIGA.
-            </p>
-            <div className="mt-8">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={speakersLogo} alt="Speakers Academy" className="rounded" style={{ height: '65px' }} />
-            </div>
-          </AnimatedSection>
+      <section className="pb-16 sm:pb-24">
+        <div className={container}>
+          <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">
+            Wat organisaties over Ferry zeggen
+          </h2>
+          <p className="mt-3 text-muted-foreground">Ervaringen van organisaties die Ferry boekten als spreker of workshopbegeleider.</p>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {testimonials.map((t) => (
+              <figure key={t.name} className="rounded-3xl border border-border bg-white p-6 sm:p-8">
+                <blockquote className="text-lg text-foreground leading-relaxed">&ldquo;{t.quote}&rdquo;</blockquote>
+                <figcaption className="mt-4 text-sm text-muted-foreground">
+                  <span className="font-semibold text-foreground">{t.name}</span>, {t.company}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* 3. Waarom een training */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="DE LOGICA" />
-            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
-              Bewustwording is het begin.<br />
-              <span className="text-primary">Kennis is het fundament.</span>
-            </h2>
-          </AnimatedSection>
-          <AnimatedSection delay={0.2} className="mt-10 max-w-3xl space-y-6">
-            <p className="text-muted-foreground leading-relaxed">
-              Een keynote opent ogen. Maar bewustwording alleen is niet genoeg om te voldoen aan de AI Act. Artikel 4 vereist dat medewerkers aantoonbaar beschikken over AI-kennis, niet alleen dat ze er een keer over gehoord hebben.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Daarom heeft Ferry, naast zijn werk als spreker, de AIGA online training ontwikkeld. Dezelfde inhoudelijke diepgang als zijn keynotes, maar gestructureerd als een volwaardig leertraject: met modules, praktijkcases, een adaptief examen en een digitaal ondertekend certificaat op naam.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Het resultaat: organisaties die niet alleen geïnspireerd zijn, maar ook compliant, bekwaam en voorbereid.
-            </p>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* 4. Ferry */}
-      <section className="py-24 bg-card">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="DE TRAINER" />
-            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
-              Dezelfde expert.<br />
-              <span className="text-primary">Nu in jouw organisatie.</span>
-            </h2>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.2} className="mt-12">
-            <div className="flex flex-col md:flex-row gap-10 items-start">
-              <div className="w-full md:w-5/12 shrink-0">
-                <div className="neon-border-lg rounded-2xl" style={{ padding: '3px' }}>
-                  <div className="neon-inner bg-card rounded-2xl overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={ferryImg}
-                      alt="Ferry Hoes"
-                      className="w-full aspect-[4/3] object-cover rounded-2xl"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex-1 pt-2">
-                <h3 className="text-xl font-semibold text-foreground mb-4">Ferry Hoes</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Ferry Hoes staat meermaals per maand op het podium voor organisaties als a.s.r. Verzekeringen, VodafoneZiggo en verschillende Ministeries. In 2020 won hij de Anti-Discriminatie AI-Hackathon. Hij weet precies hoe je AI-geletterdheid vertaalt naar actie, compliance en voordeel.
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-                  {stats.map((s) => (
-                    <div key={s.val} className="bg-background border border-border rounded-xl p-4 hover:border-neon-purple/40 neon-glow transition-all duration-300">
-                      <span className="text-2xl font-mono font-bold neon-text">{s.val}</span>
-                      <p className="text-xs text-muted-foreground mt-1 leading-relaxed">{s.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </AnimatedSection>
-
-          {/* Testimonials */}
-          <AnimatedSection delay={0.3} className="mt-16">
-            <p className="text-sm italic text-muted-foreground mb-6">
-              Ervaringen van organisaties die Ferry boekten als spreker of workshopbegeleider
-            </p>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              {testimonials.map((t) => (
-                <div
-                  key={t.name}
-                  className="relative bg-background border border-border rounded-xl p-6 hover:border-neon-purple/40 neon-glow transition-all duration-300"
-                >
-                  <span
-                    className="absolute -top-2 left-4 text-6xl font-display leading-none neon-text select-none pointer-events-none opacity-30"
-                    aria-hidden="true"
-                  >
-                    &ldquo;
-                  </span>
-
-                  <p className="font-display font-semibold text-foreground text-base mb-3 relative z-10">
-                    {t.pull}
-                  </p>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                  <p className="text-xs text-muted-foreground font-medium">
-                    {t.name} · <span className="font-normal">{t.company}</span>
-                  </p>
-                </div>
-              ))}
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* 5. De volgende stap */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="DE VOLGENDE STAP" />
-            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground mt-2">
-              Jouw team AI-geletterd maken.
-            </h2>
-            <p className="mt-6 text-muted-foreground max-w-3xl leading-relaxed">
-              Organisaties die Ferry kennen via Speakers Academy weten wat hij brengt. AIGA vertaalt die kennis naar jouw hele team. Online en in eigen tempo, voor je hele team. Met een certificaat van deelname per medewerker.
-            </p>
-            <div className="flex flex-wrap gap-4 mt-8">
-              <Link href="/training" className="btn-neon inline-block px-6 py-3 rounded-lg text-[15px]">
-                Bekijk de training
-              </Link>
-              <Link href="/training#offerte" className="btn-neon-outline inline-block text-sm font-semibold px-6 py-3">
-                Vraag een offerte aan
-              </Link>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* 6. Footer CTA */}
-      <section className="py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <AnimatedSection>
-            <h2 className="text-3xl sm:text-5xl font-display font-semibold text-foreground">
-              Klaar om de volgende stap te zetten?
-            </h2>
-            <div className="flex flex-wrap justify-center gap-4 mt-8">
-              <Link href="/training" className="btn-neon inline-block px-8 py-4 rounded-lg text-[15px]">
-                Bekijk de AIGA training
-              </Link>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+      <OfferteBlock title="Na de inspiratie: je hele team getraind." source="Speakers Academy pagina, offerte aanvraag" />
     </div>
   );
 }

@@ -38,7 +38,7 @@ export default function DeadlineCountdown() {
           <span className="text-3xl sm:text-5xl font-display font-bold neon-text tabular-nums leading-none">
             {String(value).padStart(2, '0')}
           </span>
-          <span className="text-[10px] sm:text-xs text-muted-foreground mt-1 uppercase tracking-widest">
+          <span className="text-[0.625rem] sm:text-xs text-muted-foreground mt-1 uppercase tracking-widest">
             {label}
           </span>
         </div>

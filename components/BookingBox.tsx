@@ -71,14 +71,14 @@ export default function BookingBox({ product = "training" }: { product?: Booking
       <p className="mt-3 text-sm text-foreground leading-relaxed">{b.lead}</p>
       <ul className="mt-5 border-b border-border">
         {b.facts.map((f) => (
-          <li key={f} className="flex items-start gap-3 border-t border-border py-2.5 text-[15px] text-foreground">
+          <li key={f} className="flex items-start gap-3 border-t border-border py-2.5 text-[0.9375rem] text-foreground">
             <span className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
             {f}
           </li>
         ))}
       </ul>
       <p className="mt-4 rounded-xl block-lilac px-4 py-3 text-sm text-foreground leading-relaxed">{b.bonus}</p>
-      <a href={`#${b.target}`} className="btn-neon mt-5 flex w-full items-center justify-center py-3.5 rounded-lg text-[15px] font-semibold">
+      <a href={`#${b.target}`} className="btn-neon mt-5 flex w-full items-center justify-center py-3.5 text-[0.9375rem] font-semibold">
         {b.cta}
       </a>
       <p className="mt-3 text-center text-sm text-muted-foreground">{b.after}</p>

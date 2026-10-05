@@ -75,6 +75,9 @@ const Footer = () => (
         <div className="flex gap-4">
           <Link href="/privacyverklaring" className="hover:text-primary transition-colors">Privacyverklaring</Link>
           <Link href="/licentie" className="hover:text-primary transition-colors">Licentie &amp; Gebruik</Link>
+          <button type="button" onClick={() => window.dispatchEvent(new Event("aiga:open-a11y"))} className="hover:text-primary transition-colors">
+            Toegankelijkheid
+          </button>
         </div>
       </div>
     </div>

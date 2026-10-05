@@ -40,10 +40,10 @@ export function trackQuoteRequest(value = 249) {
 }
 
 /** A plain GA4 event, e.g. scan_complete. No personal data, no Meta "Lead". */
-export function trackEvent(event: string) {
+export function trackEvent(event: string, params?: Record<string, string | number>) {
   if (typeof window === "undefined") return;
   const w = window as Win;
-  if (typeof w.gtag === "function") w.gtag("event", event);
+  if (typeof w.gtag === "function") w.gtag("event", event, params ?? {});
 }
 
 export type LeadAlert = {

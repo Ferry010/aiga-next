@@ -69,12 +69,12 @@ const AccessibilityWidget = () => {
   return (
     <div
       ref={ref}
-      className="fixed bottom-24 right-3 md:bottom-6 md:right-6 z-40"
+      className="fixed bottom-24 left-3 md:bottom-6 md:left-6 z-40"
       style={{ fontSize: "16px", filter: "none" }}
     >
       {open && (
         <div
-          className="absolute bottom-14 right-0 w-[280px] rounded-xl border border-border bg-card shadow-lg p-4 mb-2"
+          className="absolute bottom-14 left-0 w-[280px] rounded-xl border border-border bg-card shadow-lg p-4 mb-2"
           style={{ fontSize: "16px", filter: "none" }}
         >
           <p className="text-sm font-semibold text-foreground mb-3">Toegankelijkheid</p>

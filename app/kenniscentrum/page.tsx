@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   },
 };
 
+// The cornerstone piece shown big at the top: the starting point that links to the rest
+const FEATURED_SLUG = "waarom-ai-kennis-essentieel-is-7-redenen-voor-elke-medewerker";
+
 const staticArticles = [
   {
     id: "static-checklist-2026",
@@ -48,16 +51,15 @@ export default async function KenniscentrumPage() {
   const supabase = createServerClient();
   const { data: articles } = await supabase
     .from("articles")
-    .select("id, title, category, url, image_url, content, slug, labels, published_date, read_time_minutes, updated_at")
+    .select("id, title, category, url, image_url, content, slug, labels, published_date, read_time_minutes, updated_at, meta_description")
     .eq("published", true)
     .order("updated_at", { ascending: false, nullsFirst: false });
 
+  // Static pages sit in the normal date order, not pinned to the top
   const articleList = [
     ...staticArticles,
-    ...(articles || []).filter(
-      (a) => !staticArticles.some((s) => s.slug === a.slug)
-    ),
-  ];
+    ...(articles || []).filter((a) => !staticArticles.some((s) => s.slug === a.slug)),
+  ].sort((a, b) => (b.updated_at || "").localeCompare(a.updated_at || ""));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -76,7 +78,7 @@ export default async function KenniscentrumPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <KenniscentrumClient articles={articleList} />
+      <KenniscentrumClient articles={articleList} featuredSlug={FEATURED_SLUG} />
     </>
   );
 }

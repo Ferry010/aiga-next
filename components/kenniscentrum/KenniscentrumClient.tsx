@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
-import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
+import { AnimatedSection } from "@/components/AnimatedSection";
 import SectionLabel from "@/components/SectionLabel";
 import { Badge } from "@/components/ui/badge";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
@@ -72,17 +72,20 @@ interface Article {
   published_date: string | null;
   read_time_minutes: number | null;
   updated_at: string | null;
+  meta_description?: string | null;
 }
 
 interface Props {
   articles: Article[];
+  featuredSlug?: string;
 }
 
-export default function KenniscentrumClient({ articles }: Props) {
+export default function KenniscentrumClient({ articles, featuredSlug }: Props) {
   const [activeTopic, setActiveTopic] = useState<string>("alle");
 
+  const featured = articles.find((a) => a.slug === featuredSlug && a.content);
   const activeFilter = topicFilters.find((f) => f.slug === activeTopic) || topicFilters[0];
-  const filteredArticles = articles.filter(activeFilter.match);
+  const filteredArticles = articles.filter((a) => a !== featured).filter(activeFilter.match);
 
   return (
     <div className="min-h-screen">
@@ -103,79 +106,46 @@ export default function KenniscentrumClient({ articles }: Props) {
 
           <DefinitionBlock
             term="Wat is AI-geletterdheid?"
-            definition="AI-geletterdheid is het vermogen van medewerkers om te begrijpen wat kunstmatige intelligentie is, hoe AI-systemen werken, welke risico's ze met zich meebrengen, en hoe ze AI op een veilige, verantwoorde en ethisch verantwoorde manier kunnen inzetten in hun dagelijks werk. Onder Artikel 4 van de EU AI Act (van kracht vanaf februari 2025) zijn organisaties in de EU verplicht om AI-geletterdheid te waarborgen voor alle medewerkers die met AI-systemen werken."
+            definition="AI-geletterdheid is dat medewerkers begrijpen wat AI is, waar het misgaat en hoe ze het veilig en verantwoord inzetten in hun eigen werk. Artikel 4 van de EU AI Act vraagt organisaties sinds februari 2025 om de AI-geletterdheid te ondersteunen van iedereen die met AI werkt."
           />
         </div>
       </section>
 
-      <section className="pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection>
-            <SectionLabel text="KENNISOVERZICHTEN" />
-          </AnimatedSection>
-          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-            <StaggerItem>
+      {featured && (
+        <section className="pb-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <AnimatedSection>
               <Link
-                href="/ai-tools-onder-de-ai-act"
-                className="group bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/40 neon-glow transition-all duration-300 flex flex-col h-full"
+                href={`/kenniscentrum/${featured.slug}`}
+                className="press group grid grid-cols-1 lg:grid-cols-[1.15fr_1fr] overflow-hidden rounded-[1.75rem] border border-border bg-white shadow-[0_20px_50px_-30px_hsl(256_56%_33%/0.35)] transition-shadow hover:shadow-[0_30px_60px_-30px_hsl(256_56%_33%/0.45)]"
               >
-                <div className="p-6 flex flex-col flex-1 gap-3">
-                  <Badge variant="default" className="w-fit text-xs">Kennisoverzicht</Badge>
-                  <h3 className="text-base font-semibold text-foreground leading-snug group-hover:text-primary transition-colors">
-                    Welke AI-tools vallen onder de EU AI Act?
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Overzicht van 49 veelgebruikte AI-tools, met risicocategorie, trainingsplicht en aandachtspunten per tool.
+                <div className="aspect-video overflow-hidden bg-muted lg:aspect-auto">
+                  <img
+                    src={featured.image_url}
+                    alt={featured.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
+                </div>
+                <div className="flex flex-col justify-center p-6 sm:p-10">
+                  <h2 className="text-2xl sm:text-4xl font-display font-bold text-foreground leading-[1.1] tracking-tight">
+                    {featured.title}
+                  </h2>
+                  {featured.meta_description && (
+                    <p className="mt-4 text-lg text-muted-foreground leading-relaxed">{featured.meta_description}</p>
+                  )}
+                  <p className="mt-4 text-muted-foreground">
+                    De basis die elke medewerker nodig heeft, met links naar alle verdiepende artikelen.
                   </p>
-                  <span className="mt-auto flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all pt-2">
-                    Bekijk overzicht <ArrowRight size={16} />
+                  <span className="mt-6 inline-flex items-center gap-2 text-[0.9375rem] font-semibold text-primary">
+                    Lees het artikel{featured.read_time_minutes ? `, ${featured.read_time_minutes} min` : ""}{" "}
+                    <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
                   </span>
                 </div>
               </Link>
-            </StaggerItem>
-
-            <StaggerItem>
-              <Link
-                href="/kenniscentrum/ai-begrippen"
-                className="group bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/40 neon-glow transition-all duration-300 flex flex-col h-full"
-              >
-                <div className="p-6 flex flex-col flex-1 gap-3">
-                  <Badge variant="default" className="w-fit text-xs">Begrippenlijst</Badge>
-                  <h3 className="text-base font-semibold text-foreground leading-snug group-hover:text-primary transition-colors">
-                    AI Begrippen: Glossarium EU AI Act
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Alle belangrijke begrippen uit de EU AI Act helder uitgelegd, van hoog-risico AI tot conformiteitsbeoordeling.
-                  </p>
-                  <span className="mt-auto flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all pt-2">
-                    Bekijk begrippenlijst <ArrowRight size={16} />
-                  </span>
-                </div>
-              </Link>
-            </StaggerItem>
-
-            <StaggerItem>
-              <Link
-                href="/kenniscentrum/eu-ai-act-in-1-a4"
-                className="group bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/40 neon-glow transition-all duration-300 flex flex-col h-full"
-              >
-                <div className="p-6 flex flex-col flex-1 gap-3">
-                  <Badge variant="default" className="w-fit text-xs">Samenvatting</Badge>
-                  <h3 className="text-base font-semibold text-foreground leading-snug group-hover:text-primary transition-colors">
-                    EU AI Act in 1 A4
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Tijdlijn, risicocategorieën, verplichtingen en handhavingsschema. Printbaar en deelbaar.
-                  </p>
-                  <span className="mt-auto flex items-center gap-1.5 text-sm font-semibold text-primary group-hover:gap-2.5 transition-all pt-2">
-                    Bekijk de samenvatting <ArrowRight size={16} />
-                  </span>
-                </div>
-              </Link>
-            </StaggerItem>
-          </StaggerContainer>
-        </div>
-      </section>
+            </AnimatedSection>
+          </div>
+        </section>
+      )}
 
       <section className="pb-8" id="artikelen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

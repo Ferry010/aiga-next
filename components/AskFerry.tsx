@@ -67,19 +67,18 @@ const QAS: Qa[] = [
   },
 ];
 
-// The answer once we know the team size: the right tier, with a worked example
+// The answer once we know the team size: just the tier, no totals
 const TIER_ANSWERS: Record<Tier["id"], React.ReactNode> = {
   small: (
     <>
-      Dan is het {eur(BASE_PRICE)} ex btw per persoon. 5 mensen is {eur(BASE_PRICE * 5)}, 10 mensen{" "}
-      {eur(BASE_PRICE * 10)}. Doen er 11 of meer mee, dan zakt de prijs naar {eur(MID_PRICE)} per persoon. Later mensen
-      toevoegen kan altijd.
+      Dan is het {eur(BASE_PRICE)} ex btw per persoon. Doen er 11 of meer mee, dan zakt de prijs naar{" "}
+      {eur(MID_PRICE)} per persoon. Later mensen toevoegen kan altijd.
     </>
   ),
   mid: (
     <>
-      Dan betaal je {eur(MID_PRICE)} ex btw per persoon. 20 mensen is {eur(MID_PRICE * 20)}, 40 mensen{" "}
-      {eur(MID_PRICE * 40)}. Later mensen toevoegen kan altijd.
+      Dan betaal je {eur(MID_PRICE)} ex btw per persoon. Later mensen toevoegen kan altijd, en vanaf 50 personen
+      maken we een offerte op maat.
     </>
   ),
   enterprise: (
@@ -191,7 +190,7 @@ export default function AskFerry() {
           </button>
           <button onClick={() => openChat("prijs")} className="text-left">
             <span className="block text-[15px] font-bold text-foreground">Wat kost dit voor jouw team?</span>
-            <span className="mt-1 block text-sm text-muted-foreground">Ik reken het even voor je uit.</span>
+            <span className="mt-1 block text-sm text-muted-foreground">Vertel hoe groot je team is, dan zie je meteen je prijs.</span>
           </button>
         </div>
       )}

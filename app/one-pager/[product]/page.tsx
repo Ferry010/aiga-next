@@ -49,7 +49,7 @@ const SHEETS: Record<string, Sheet> = {
     price: "€249",
     priceNote: "ex btw per persoon",
     priceBullets: [
-      "Voor teams tot 50 plekken, later mensen toevoegen kan altijd",
+      "€229 per persoon vanaf 11 personen, later mensen toevoegen kan altijd",
       "Vanaf 50 plekken: enterprise, met een offerte op maat inclusief de masterclass voor je MT",
       "Het certificaat helpt ook bij de AI Act: je laat zien dat je AI-geletterdheid ondersteunt",
     ],

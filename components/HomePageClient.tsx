@@ -165,7 +165,7 @@ export default function HomePageClient() {
                 <p className="mt-6 text-4xl font-display font-bold text-foreground tracking-tight">
                   &euro;249 <span className="text-base font-normal text-muted-foreground">ex btw per persoon</span>
                 </p>
-                <p className="mt-2 text-muted-foreground">Voor teams tot 50 plekken. Daarboven: enterprise, met een offerte op maat.</p>
+                <p className="mt-2 text-muted-foreground">€229 vanaf 11 personen. Vanaf 50: een enterprise-offerte op maat.</p>
                 <Link href="/training" className="btn-neon self-start mt-6 px-7 py-3.5 rounded-lg text-[15px] font-semibold">
                   Bekijk de teamtraining
                 </Link>

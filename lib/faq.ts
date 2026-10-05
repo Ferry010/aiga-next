@@ -6,11 +6,11 @@ export type Faq = { q: string; a: string };
 export const TRAINING_FAQ: Faq[] = [
   {
     q: "Wat kost de teamtraining?",
-    a: "€249 ex btw per persoon. Vanaf 50 plekken is het een enterprise-traject: dan maken we een offerte op maat, inclusief de live masterclass voor je directie en MT.",
+    a: "Je betaalt per persoon: €249 ex btw voor 1 tot 10 personen, €229 ex btw voor 11 tot 49 personen. Vanaf 50 personen is het een enterprise-traject met een offerte op maat, inclusief de live masterclass voor je directie en MT.",
   },
   {
     q: "Kunnen we later nog mensen toevoegen?",
-    a: "Ja. Je zet zoveel mensen in de training als je wil, nu of later. Kom je boven de 50 plekken, dan maken we een enterprise-offerte op maat.",
+    a: "Ja. Je zet zoveel mensen in de training als je wil, nu of later. Vanaf 11 personen betaal je €229 per persoon, vanaf 50 maken we een enterprise-offerte op maat.",
   },
   {
     q: "Hoe snel kunnen we starten?",

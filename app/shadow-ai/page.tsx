@@ -242,7 +242,7 @@ export default function ShadowAiPage() {
                 ))}
               </ul>
               <p className="mt-5 text-muted-foreground">
-                €249 ex btw per persoon. Vanaf 50 plekken een offerte op maat.{" "}
+                €249 ex btw per persoon, €229 vanaf 11 personen.{" "}
                 <Link href="/training" className="text-primary font-semibold hover:underline">Bekijk het programma</Link>
               </p>
             </AnimatedSection>

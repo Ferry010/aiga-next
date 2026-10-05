@@ -21,7 +21,7 @@ const BOOKINGS: Record<Booking["product"], Booking> = {
     product: "training",
     price: "€249",
     unit: "ex btw per persoon",
-    lead: "Voor teams tot 50 plekken. Later mensen toevoegen kan altijd.",
+    lead: "Voor 1 tot 10 personen. Vanaf 11 personen €229 per persoon.",
     facts: [
       `4 modules, ${TOTAL_LESSONS} lessen`,
       "Toets per module + digitaal eindexamen",

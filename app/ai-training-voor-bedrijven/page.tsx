@@ -100,7 +100,7 @@ export default function AiTrainingVoorBedrijvenPage() {
                 <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground tracking-tight">
                   Haal meer uit de AI-tools die je al betaalt
                 </h2>
-                <p className="mt-3 text-muted-foreground">€249 ex btw per persoon. Binnen één werkdag belt een van ons je.</p>
+                <p className="mt-3 text-muted-foreground">€249 ex btw per persoon, €229 vanaf 11 personen. Binnen één werkdag belt een van ons je.</p>
               </div>
               <LeadForm source="AI training voor bedrijven — offerte aanvraag" />
               <p className="mt-6 text-sm text-muted-foreground">

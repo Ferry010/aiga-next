@@ -193,7 +193,7 @@ export default function AiGeletterdheidTrainingClient({ faqs }: Props) {
                   value:
                     "AI Literacy Practitioner-certificaat na het adaptieve examen. Digitaal ondertekend, deelbaar via LinkedIn. Controleerbaar bewijs van deelname.",
                 },
-                { label: "Prijs", value: "€249 ex btw per deelnemer" },
+                { label: "Prijs", value: "€249 ex btw per deelnemer, €229 vanaf 11 deelnemers" },
                 { label: "50+ deelnemers", value: "Enterprise: offerte op maat, inclusief de masterclass voor je MT" },
               ].map((row, i) => (
                 <div

@@ -87,7 +87,7 @@ ${answerRows ? `<tr><td style="padding:26px 36px 0">
 <p style="margin:0 0 14px;font-size:17px;font-weight:bold;color:#23201D">Zo krijg je je hele team op dezelfde basis</p>
 <p style="margin:0 0 18px;font-size:15px;line-height:1.65;color:#23201D">Een online training in vier modules, in eigen tempo, met tussentijdse toetsen en een digitaal eindexamen. Wie slaagt, krijgt een certificaat van deelname.</p>
 <table cellpadding="0" cellspacing="0" border="0"><tr><td style="background:#6E43D6;border-radius:999px"><a href="${trainingUrl}" style="display:inline-block;padding:14px 28px;font-size:15px;font-weight:bold;color:#ffffff;text-decoration:none">Bekijk de teamtraining</a></td></tr></table>
-<p style="margin:14px 0 0;font-size:13px;line-height:1.6;color:#6B6459">&euro;249 ex btw per persoon &middot; later mensen toevoegen kan altijd &middot; vanaf 50 plekken een enterprise-offerte op maat</p>
+<p style="margin:14px 0 0;font-size:13px;line-height:1.6;color:#6B6459">&euro;249 ex btw per persoon &middot; &euro;229 vanaf 11 personen &middot; later mensen toevoegen kan altijd &middot; vanaf 50 plekken een enterprise-offerte op maat</p>
 </td></tr>
 
 <tr><td style="padding:28px 36px 0">

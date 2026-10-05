@@ -20,7 +20,7 @@ Onze mensen gebruiken AI al, van ChatGPT tot Copilot. Maar we hebben geen gedeel
 Ik kwam AIGA tegen. Zij geven het hele team in één keer dezelfde basis:
 - 4 online modules, in eigen tempo
 - tussentijdse toetsen en een digitaal eindexamen, met certificaat van deelname
-- €249 ex btw per persoon, en we kunnen later altijd mensen toevoegen
+- €249 ex btw per persoon, €229 vanaf 11 personen, en we kunnen later altijd mensen toevoegen
 - vanaf 50 plekken maken ze een enterprise-offerte op maat, inclusief een masterclass voor het MT
 
 De one-pager met alles op een rij:

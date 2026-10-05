@@ -4,14 +4,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { trackEvent } from "@/lib/track";
 import { PHONE, PHONE_HREF } from "@/lib/contact";
+import { TIERS, BASE_PRICE, MID_PRICE, eur, type Tier } from "@/lib/pricing";
 
 // "Vraag het Ferry": a chat bubble with the questions buyers ask most, answered
 // from fixed copy (no AI, so no made-up prices and no visitor data in a model).
 // Every answer ends in one next step: a call with Ferry via Calendly.
 
 const CALENDLY = "https://calendly.com/ferryhoes/meeting";
-const PRICE = 249;
-const eur = (n: number) => `€${n.toLocaleString("nl-NL")}`;
 
 type Qa = { id: string; q: string; a: React.ReactNode };
 
@@ -19,13 +18,7 @@ const QAS: Qa[] = [
   {
     id: "prijs",
     q: "Wat kost het voor mijn team?",
-    a: (
-      <>
-        {eur(PRICE)} ex btw per persoon. Dus 10 mensen is {eur(PRICE * 10)}, 25 mensen is {eur(PRICE * 25)}. Later
-        mensen toevoegen kan altijd. Vanaf 50 plekken is het enterprise: dan maak ik een offerte op maat, inclusief de
-        live masterclass voor je directie en MT.
-      </>
-    ),
+    a: <>Dat hangt af van hoeveel mensen er meedoen. Met hoeveel zijn jullie ongeveer?</>,
   },
   {
     id: "enterprise",
@@ -74,6 +67,29 @@ const QAS: Qa[] = [
   },
 ];
 
+// The answer once we know the team size: the right tier, with a worked example
+const TIER_ANSWERS: Record<Tier["id"], React.ReactNode> = {
+  small: (
+    <>
+      Dan is het {eur(BASE_PRICE)} ex btw per persoon. 5 mensen is {eur(BASE_PRICE * 5)}, 10 mensen{" "}
+      {eur(BASE_PRICE * 10)}. Doen er 11 of meer mee, dan zakt de prijs naar {eur(MID_PRICE)} per persoon. Later mensen
+      toevoegen kan altijd.
+    </>
+  ),
+  mid: (
+    <>
+      Dan betaal je {eur(MID_PRICE)} ex btw per persoon. 20 mensen is {eur(MID_PRICE * 20)}, 40 mensen{" "}
+      {eur(MID_PRICE * 40)}. Later mensen toevoegen kan altijd.
+    </>
+  ),
+  enterprise: (
+    <>
+      Dan wordt het een enterprise-traject met een offerte op maat. Daar hoort de live masterclass voor je directie en
+      MT bij, en we plannen de uitrol samen in. Dat bespreek ik graag even met je.
+    </>
+  ),
+};
+
 const HIDDEN_ON = ["/gereedheidscan"];
 const TEASER_KEY = "aiga_chat_teaser_seen";
 
@@ -95,6 +111,8 @@ export default function AskFerry() {
   const [open, setOpen] = useState(false);
   const [teaser, setTeaser] = useState(false);
   const [asked, setAsked] = useState<string[]>([]);
+  const [log, setLog] = useState<{ key: string; q: string; a: React.ReactNode }[]>([]);
+  const [awaitingSize, setAwaitingSize] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const hidden = HIDDEN_ON.some((p) => pathname === p || pathname.startsWith(p + "/"));
 
@@ -121,7 +139,7 @@ export default function AskFerry() {
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
-  }, [asked]);
+  }, [log, awaitingSize]);
 
   if (hidden) return null;
 
@@ -136,12 +154,23 @@ export default function AskFerry() {
     dismissTeaser();
     setOpen(true);
     trackEvent("chat_open", { page: pathname });
-    if (firstQuestion && !asked.includes(firstQuestion)) setAsked((a) => [...a, firstQuestion]);
+    if (firstQuestion && !asked.includes(firstQuestion)) ask(firstQuestion);
   };
 
   const ask = (id: string) => {
+    const qa = QAS.find((x) => x.id === id);
+    if (!qa) return;
     setAsked((a) => [...a, id]);
+    setLog((l) => [...l, { key: id, q: qa.q, a: qa.a }]);
+    if (id === "prijs") setAwaitingSize(true);
     trackEvent("chat_question", { question: id });
+  };
+
+  const pickSize = (t: Tier) => {
+    setAwaitingSize(false);
+    setLog((l) => [...l, { key: `size-${t.id}`, q: `${t.label} mensen`, a: TIER_ANSWERS[t.id] }]);
+    if (t.id === "enterprise") setAsked((a) => (a.includes("enterprise") ? a : [...a, "enterprise"]));
+    trackEvent("chat_team_size", { tier: t.id });
   };
 
   const book = () => trackEvent("book_call_click", { source: "chat", page: pathname });
@@ -181,6 +210,15 @@ export default function AskFerry() {
         </button>
       )}
 
+      {/* Soft backdrop: the page steps back while the conversation is open */}
+      {open && (
+        <div
+          aria-hidden
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 z-40 bg-[hsl(256_40%_12%/0.28)] backdrop-blur-[3px] motion-safe:animate-in motion-safe:fade-in"
+        />
+      )}
+
       {/* Panel */}
       {open && (
         <div
@@ -209,27 +247,38 @@ export default function AskFerry() {
               even een gesprek met me.
             </div>
 
-            {asked.map((id) => {
-              const qa = QAS.find((x) => x.id === id)!;
-              return (
-                <div key={id} className="space-y-3">
-                  <div className="ml-auto max-w-[80%] rounded-2xl rounded-tr-md bg-primary px-4 py-2.5 text-[15px] text-white">
-                    {qa.q}
-                  </div>
-                  <div className="max-w-[88%] rounded-2xl rounded-tl-md bg-white px-4 py-3 text-[15px] leading-relaxed text-foreground shadow-sm">
-                    {qa.a}
-                  </div>
+            {log.map((m) => (
+              <div key={m.key} className="space-y-3">
+                <div className="ml-auto w-fit max-w-[80%] rounded-2xl rounded-tr-md bg-primary px-4 py-2.5 text-[15px] text-white">
+                  {m.q}
                 </div>
-              );
-            })}
+                <div className="max-w-[88%] rounded-2xl rounded-tl-md bg-white px-4 py-3 text-[15px] leading-relaxed text-foreground shadow-sm">
+                  {m.a}
+                </div>
+              </div>
+            ))}
 
-            {asked.length > 0 && (
+            {awaitingSize && (
+              <div className="flex flex-wrap gap-2 pt-1" role="group" aria-label="Aantal mensen">
+                {TIERS.map((t) => (
+                  <button
+                    key={t.id}
+                    onClick={() => pickSize(t)}
+                    className="rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+                  >
+                    {t.label}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {log.length > 0 && !awaitingSize && (
               <div className="max-w-[88%] rounded-2xl rounded-tl-md bg-white px-4 py-3 text-[15px] leading-relaxed text-foreground shadow-sm">
                 Wil je weten wat dit voor jullie organisatie betekent? Plan een gesprek, dan kijken we er samen naar.
               </div>
             )}
 
-            {remaining.length > 0 && (
+            {remaining.length > 0 && !awaitingSize && (
               <div className="flex flex-wrap gap-2 pt-1">
                 {remaining.map((x) => (
                   <button

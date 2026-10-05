@@ -14,12 +14,13 @@ import ShareWithColleague from "@/components/ShareWithColleague";
 import StickyCta from "@/components/StickyCta";
 import { TRAINING_FAQ } from "@/lib/faq";
 import { TOTAL_LESSONS, TOTAL_QUIZ_QUESTIONS } from "@/lib/curriculum";
+import { TIERS, eur } from "@/lib/pricing";
 
 const container = "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8";
 
 const keyFacts = [
   { value: `4 modules`, note: `${TOTAL_LESSONS} lessen, in eigen tempo` },
-  { value: "€249", note: "ex btw per persoon" },
+  { value: "€249", note: "ex btw p.p., €229 vanaf 11 personen" },
   { value: "Certificaat", note: "van deelname, na het eindexamen" },
   { value: "50+ plekken", note: "enterprise, offerte op maat" },
 ];
@@ -164,25 +165,26 @@ export default function TrainingClient() {
 
           <section id="prijs" className="scroll-mt-32 pt-16 sm:pt-24">
             <div className="statement-block rounded-[1.75rem] px-6 py-10 sm:px-10 sm:py-12">
-              <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-6 sm:gap-10 items-center">
-                <div>
-                  <p className="text-7xl sm:text-8xl font-display font-bold leading-[0.85] tracking-tighter text-foreground">€249</p>
-                  <p className="mt-3 text-lg text-muted-foreground">ex btw per persoon</p>
-                </div>
-                <div>
-                  <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground leading-[1.15] tracking-tight">
-                    Eén vaste prijs, voor elk team tot 50 plekken.
-                  </h2>
-                  <p className="mt-3 text-muted-foreground leading-relaxed">
-                    Inbegrepen: alle vier modules, de toetsen, het eindexamen en een certificaat van deelname. Later
-                    mensen toevoegen kan altijd. Je data staat op Europese servers.
-                  </p>
-                </div>
+              <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground leading-[1.15] tracking-tight max-w-xl">
+                Je betaalt per persoon. Hoe groter je team, hoe lager de prijs per plek.
+              </h2>
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
+                {TIERS.map((t) => (
+                  <div key={t.id} className={`rounded-2xl px-5 py-5 ${t.id === "enterprise" ? "bg-white/15" : "bg-white/10"}`}>
+                    <p className="text-sm text-muted-foreground">{t.range}</p>
+                    <p className="mt-1 text-4xl font-display font-bold tracking-tight text-foreground">
+                      {t.price ? eur(t.price) : "Op maat"}
+                    </p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {t.price ? "ex btw per persoon" : "enterprise-offerte, inclusief masterclass voor je MT"}
+                    </p>
+                  </div>
+                ))}
               </div>
-              <p className="mt-8 rounded-2xl bg-white/10 px-5 py-4 text-lg text-foreground leading-relaxed">
-                <strong>50 plekken of meer?</strong> Dan is het een enterprise-traject met een offerte op maat,
-                inclusief de live masterclass voor je directie en MT.{" "}
-                <Link href="/masterclass" className="text-primary font-semibold underline underline-offset-2">Bekijk de masterclass</Link>
+              <p className="mt-6 text-muted-foreground leading-relaxed max-w-2xl">
+                Inbegrepen: alle vier modules, de toetsen, het eindexamen en een certificaat van deelname. Later mensen
+                toevoegen kan altijd. Je data staat op Europese servers.{" "}
+                <Link href="/masterclass" className="text-primary font-semibold underline underline-offset-2">Over de masterclass</Link>
               </p>
               <a
                 href="#offerte"

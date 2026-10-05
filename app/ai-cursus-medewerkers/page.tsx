@@ -91,7 +91,7 @@ export default function AiCursusMedewerkersPage() {
             </h2>
             <div className="text-muted-foreground leading-relaxed space-y-4">
               <p>
-                De cursus kost <strong className="text-foreground">€249 ex btw per persoon</strong>. Er is geen minimum: begin met één collega of een heel team, en zet er later mensen bij wanneer je wil.
+                De cursus kost <strong className="text-foreground">€249 ex btw per persoon</strong>, en <strong className="text-foreground">€229</strong> per persoon vanaf 11 personen. Er is geen minimum: begin met één collega of een heel team, en zet er later mensen bij wanneer je wil.
               </p>
               <p>
                 Gaat het om 50 plekken of meer? Dan is het een enterprise-traject met een offerte op maat, inclusief de <Link href="/masterclass" className="text-primary hover:underline">live masterclass</Link> voor je directie en MT.

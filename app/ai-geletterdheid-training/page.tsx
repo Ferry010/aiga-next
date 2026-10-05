@@ -48,7 +48,7 @@ const faqs: FaqItem[] = [
   },
   {
     q: "Hoeveel kost de training?",
-    a: "€249 ex btw per deelnemer. Vanaf 50 deelnemers is het een enterprise-traject met een offerte op maat, inclusief de live masterclass voor je directie en MT.",
+    a: "€249 ex btw per deelnemer, €229 vanaf 11 deelnemers. Vanaf 50 deelnemers is het een enterprise-traject met een offerte op maat, inclusief de live masterclass voor je directie en MT.",
   },
   {
     q: "Krijg ik een certificaat?",

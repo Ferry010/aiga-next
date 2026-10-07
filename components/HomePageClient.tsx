@@ -1,7 +1,6 @@
 'use client';
 import Link from "next/link";
-import { AnimatedSection, RevealItem, CountUp } from "@/components/AnimatedSection";
-import SplitSection from "@/components/SplitSection";
+import { AnimatedSection, RevealItem, CountUp, SettleIn } from "@/components/AnimatedSection";
 import Panel from "@/components/Panel";
 import HeroVideo from "@/components/HeroVideo";
 import FerryAuthority from "@/components/FerryAuthority";
@@ -97,23 +96,33 @@ export default function HomePageClient() {
         </div>
       </section>
 
-      {/* Recognition: the soft lilac moment */}
+      {/* Recognition: the soft lilac moment, one calm centered column */}
       <Panel tone="tint">
-        <AnimatedSection>
-          <h2 className="text-[1.75rem] sm:text-[2.6rem] font-display font-bold text-foreground leading-[1.1] tracking-tight max-w-3xl">
-            Het zijn nooit de grote beslissingen. Het zijn de kleine, de hele dag door.
-          </h2>
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 md:gap-x-16">
+        <div className="mx-auto max-w-3xl text-center">
+          <SettleIn>
+            <h2 className="text-[1.75rem] sm:text-[2.6rem] font-display font-bold text-foreground leading-[1.1] tracking-tight text-balance">
+              Het zijn nooit de grote beslissingen.
+            </h2>
+          </SettleIn>
+          <SettleIn delay={0.25}>
+            <p className="mt-2 text-[1.75rem] sm:text-[2.6rem] font-display font-bold text-primary leading-[1.1] tracking-tight text-balance">
+              Het zijn de kleine, de hele dag door.
+            </p>
+          </SettleIn>
+          <ul className="mx-auto mt-12 flex max-w-xl flex-col gap-8 sm:gap-9">
             {dinsdag.map((d, i) => (
-              <RevealItem key={d.main} index={i} className="py-5 border-t border-border text-lg text-foreground leading-relaxed">
-                {d.main} <span className="italic text-muted-foreground">{d.soft}</span>
+              <RevealItem as="li" key={d.main} index={i}>
+                <p className="text-lg sm:text-xl text-foreground leading-relaxed text-balance">{d.main}</p>
+                <p className="mt-1 italic text-muted-foreground text-balance">{d.soft}</p>
               </RevealItem>
             ))}
-          </div>
-          <p className="mt-8 text-xl sm:text-2xl font-display font-bold text-foreground leading-snug max-w-3xl">
-            Niet uit onwil, en niet omdat je mensen slordig zijn. <span className="text-primary">AI ging gewoon sneller dan de begeleiding.</span>
-          </p>
-        </AnimatedSection>
+          </ul>
+          <SettleIn>
+            <p className="mx-auto mt-12 max-w-2xl text-xl sm:text-2xl font-display font-bold text-foreground leading-snug text-balance">
+              Niet uit onwil, en niet omdat je mensen slordig zijn. <span className="text-primary">AI ging gewoon sneller dan de begeleiding.</span>
+            </p>
+          </SettleIn>
+        </div>
       </Panel>
 
       {/* Proof: the bold deep-purple moment */}
@@ -140,20 +149,36 @@ export default function HomePageClient() {
         </Panel>
       </div>
 
-      {/* Objections: back to cream */}
-      <SplitSection title="Misschien denk je nu een van deze dingen.">
-        <div className="border-b border-border">
-          {gedachten.map((g, i) => (
-            <RevealItem key={g.q} index={i} className="py-6 border-t border-border">
-              <p className="text-xl font-display font-bold text-foreground">{`“${g.q}”`}</p>
-              <p className="mt-2 text-lg text-muted-foreground leading-relaxed">{g.a}</p>
-            </RevealItem>
-          ))}
+      {/* Objections: the thought as a bubble, the answer right under it */}
+      <section className="py-14 sm:py-20 lg:py-24">
+        <div className={container}>
+          <SettleIn className="text-center">
+            <h2 className="mx-auto max-w-2xl text-[1.75rem] sm:text-4xl font-display font-bold text-foreground leading-[1.12] tracking-tight text-balance">
+              Misschien denk je nu een van deze dingen.
+            </h2>
+          </SettleIn>
+          <ul className="mx-auto mt-10 sm:mt-12 grid max-w-5xl grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
+            {gedachten.map((g, i) => (
+              <RevealItem
+                as="li"
+                key={g.q}
+                index={i}
+                className="flex flex-col rounded-[1.75rem] border border-border bg-white p-6 sm:p-7 shadow-[0_16px_40px_-28px_hsl(256_56%_33%/0.5)]"
+              >
+                <p className="self-start rounded-[1.25rem] rounded-bl-md bg-primary px-4 py-3 font-display text-lg font-bold leading-snug text-white text-balance">
+                  {g.q}
+                </p>
+                <p className="mt-5 text-[1.0625rem] leading-relaxed text-foreground/80">{g.a}</p>
+              </RevealItem>
+            ))}
+          </ul>
+          <SettleIn className="text-center">
+            <p className="mx-auto mt-12 max-w-2xl text-xl sm:text-2xl font-display font-bold text-foreground leading-snug text-balance">
+              De oplossing is dus geen nieuwe regel. <span className="text-primary">Het is je mensen leren hoe het wél moet.</span>
+            </p>
+          </SettleIn>
         </div>
-        <p className="mt-8 text-lg text-foreground leading-relaxed">
-          De oplossing is dus geen nieuwe regel. Het is je mensen leren hoe het wél moet.
-        </p>
-      </SplitSection>
+      </section>
 
       {/* The relief: four small cards, one after another as you scroll */}
       <section className="pb-14 sm:pb-20">

@@ -28,7 +28,24 @@ export const AnimatedSection = ({ children, className = "", delay = 0 }: Animate
   );
 };
 
-export const StaggerContainer = ({ children, className = "" }: { children: ReactNode; className?: string }) => {
+// A heading or line that settles into focus as it enters: a little rise, a soft
+// blur that clears. Starts visible enough to read, so nothing waits on the observer.
+export const SettleIn = ({ children, className = "", delay = 0 }: AnimatedSectionProps) => {
+  const calm = useReduceMotion() || !!useReducedMotion();
+  return (
+    <motion.div
+      initial={calm ? false : { y: 18, opacity: 0.3, filter: "blur(4px)" }}
+      whileInView={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+      viewport={{ once: true, margin: "0px 0px -80px 0px" }}
+      transition={calm ? { duration: 0 } : { type: "spring", bounce: 0, duration: 0.8, delay }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+export const StaggerContainer =({ children, className = "" }: { children: ReactNode; className?: string }) => {
   const reduced = useReduceMotion();
   return (
     <motion.div

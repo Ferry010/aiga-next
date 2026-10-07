@@ -6,6 +6,25 @@ import Panel from "@/components/Panel";
 import HeroVideo from "@/components/HeroVideo";
 import FerryAuthority from "@/components/FerryAuthority";
 import StickyCta from "@/components/StickyCta";
+import { motion, useReducedMotion } from "framer-motion";
+import { useReduceMotion } from "@/hooks/use-reduce-motion";
+
+// One card in the "geregeld" list. Each card rises into place as it enters the
+// viewport. It never starts invisible, so nothing looks broken mid-scroll.
+function ReliefCard({ children, index }: { children: React.ReactNode; index: number }) {
+  const calm = useReduceMotion() || !!useReducedMotion();
+  return (
+    <motion.li
+      initial={calm ? false : { y: 28, scale: 0.96, opacity: 0.5 }}
+      whileInView={{ y: 0, scale: 1, opacity: 1 }}
+      viewport={{ once: true, margin: "0px 0px -60px 0px" }}
+      transition={calm ? { duration: 0 } : { type: "spring", bounce: 0, duration: 0.55, delay: index * 0.06 }}
+      className="rounded-2xl border border-border bg-white px-5 py-4 text-[1.0625rem] leading-relaxed text-foreground shadow-[0_12px_30px_-22px_hsl(256_56%_33%/0.45)]"
+    >
+      {children}
+    </motion.li>
+  );
+}
 
 const dinsdag = [
   { main: "Iemand plakt een klantenlijst in ChatGPT voor een snelle samenvatting.", soft: "Slim bedoeld. Scheelt een uur." },
@@ -120,20 +139,20 @@ export default function HomePageClient() {
         </p>
       </SplitSection>
 
-      {/* The relief: a calm 2x2 */}
+      {/* The relief: four small cards, one after another as you scroll */}
       <section className="pb-14 sm:pb-20">
-        <div className={container}>
+        <div className={`${container} text-center`}>
           <AnimatedSection>
             <h2 className="text-[1.75rem] sm:text-4xl font-display font-bold text-foreground leading-[1.12] tracking-tight">
               Zo voelt het als het geregeld is.
             </h2>
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-8">
-              {geregeld.map((g) => (
-                <div key={g} className="border-t-2 border-primary pt-5">
-                  <p className="text-lg text-foreground leading-relaxed">{g}</p>
-                </div>
-              ))}
-            </div>
+          </AnimatedSection>
+          <ul className="mx-auto mt-10 flex max-w-xl flex-col gap-3">
+            {geregeld.map((g, i) => (
+              <ReliefCard key={g} index={i}>{g}</ReliefCard>
+            ))}
+          </ul>
+          <AnimatedSection>
             <p className="mt-10 text-xl sm:text-2xl font-display font-bold text-foreground">
               Geen onrust op de achtergrond. <span className="text-primary">Gewoon grip.</span>
             </p>

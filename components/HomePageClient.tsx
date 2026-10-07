@@ -3,7 +3,7 @@ import Link from "next/link";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import SplitSection from "@/components/SplitSection";
 import Panel from "@/components/Panel";
-import HeroChat from "@/components/HeroChat";
+import HeroVideo from "@/components/HeroVideo";
 import FerryAuthority from "@/components/FerryAuthority";
 import StickyCta from "@/components/StickyCta";
 
@@ -43,22 +43,21 @@ export default function HomePageClient() {
     <div className="min-h-screen">
       {/* Hero: the story in words, and the moment itself */}
       <section className="pt-10 pb-14 sm:pt-20 sm:pb-24">
-        <div className={`${container} grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-16 items-center`}>
+        <div className={`${container} grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-center`}>
           <AnimatedSection>
             <h1 className="text-[2.15rem] sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight">
-              Ergens in je team verdwijnt vandaag een contract in ChatGPT.
-              <span className="neon-text block mt-2">En niemand weet waar het daarna blijft.</span>
+              Vandaag gaat er klantdata in ChatGPT.
+              <span className="neon-text block mt-2">Weet jij wat je team met AI doet?</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              Onschuldig bedoeld, handig zelfs. Maar die data staat nu in een tool die jij niet ziet. En morgen
-              gebeurt het weer.
+              Niet uit onwil. Niemand heeft ooit uitgelegd wat er wel en niet mag.
             </p>
             <a href="#oplossing" className="btn-neon mt-8 inline-flex items-center justify-center px-7 py-3.5 text-[0.9375rem] font-semibold">
               Bekijk de oplossing
             </a>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
-            <HeroChat />
+            <HeroVideo />
           </AnimatedSection>
         </div>
       </section>

@@ -14,6 +14,7 @@ import AdminUsers from "@/components/AdminUsers";
 import AdminAccount from "@/components/AdminAccount";
 import BlogPdfImport, { type PdfArticleData } from "@/components/BlogPdfImport";
 import BlogJsonImport from "@/components/BlogJsonImport";
+import BlogBulkImport from "@/components/BlogBulkImport";
 import RichTextEditor from "@/components/RichTextEditor";
 
 const CATEGORIES = [
@@ -154,6 +155,7 @@ export default function AdminClient() {
   const [uploading, setUploading] = useState(false);
   const [labelInput, setLabelInput] = useState("");
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
+  const [showBulk, setShowBulk] = useState(false);
 
   const [inboxFilter, setInboxFilter] = useState<"alle" | "contact" | "masterclass" | "risicoscan">("alle");
   const [showOpgevolgd, setShowOpgevolgd] = useState(false);
@@ -619,9 +621,9 @@ export default function AdminClient() {
 
         {/* Artikelen Tab */}
         <TabsContent value="artikelen">
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
             <p className="text-sm text-muted-foreground">{articles.length} artikelen · {articles.filter(a => a.content).length} geïmporteerd</p>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <button onClick={reorderByDate} className="flex items-center gap-2 bg-card border border-border text-foreground rounded-lg px-4 py-2 text-sm font-medium hover:border-primary/40 transition-colors">
                 Herorden op datum
               </button>
@@ -630,11 +632,24 @@ export default function AdminClient() {
               </button>
               <BlogPdfImport onImport={handlePdfImport} />
               <BlogJsonImport onImport={handlePdfImport} />
+              <button onClick={() => setShowBulk((v) => !v)} className="flex items-center gap-2 bg-card border border-border text-foreground rounded-lg px-4 py-2 text-sm font-medium hover:border-primary/40 transition-colors">
+                <Upload size={16} /> Bulk upload
+              </button>
               <button onClick={openNewForm} className="flex items-center gap-2 bg-primary text-primary-foreground rounded-lg px-4 py-2 text-sm font-medium">
                 <Plus size={16} /> Nieuw artikel
               </button>
             </div>
           </div>
+
+          {showBulk && (
+            <BlogBulkImport
+              existingSlugs={articles.map((a) => a.slug).filter((x): x is string => !!x)}
+              categories={CATEGORIES}
+              slugify={generateSlug}
+              onDone={fetchArticles}
+              onClose={() => setShowBulk(false)}
+            />
+          )}
 
           {showForm && (
             <div className="bg-card border border-border rounded-xl p-6 mb-6 space-y-4">

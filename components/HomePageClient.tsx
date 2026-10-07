@@ -65,14 +65,15 @@ export default function HomePageClient() {
         <div className={`${container} grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-14 items-center`}>
           <AnimatedSection>
             <h1 className="text-[2.15rem] sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight">
-              Vandaag gaat er klantdata in ChatGPT.
-              <span className="neon-text block mt-2">Weet jij wat je team met AI doet?</span>
+              Er verdwijnt vandaag gevoelige data in AI.
+              <span className="neon-text block mt-2">Weet jij welke?</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              Niet uit onwil. Niemand heeft ooit uitgelegd wat er wel en niet mag.
+              Klantgegevens, contracten, cijfers. Ze belanden in tools die jij niet ziet. Eén online training, en je
+              hele team weet waar de grens ligt.
             </p>
             <a href="#oplossing" className="btn-neon mt-8 inline-flex items-center justify-center px-7 py-3.5 text-[0.9375rem] font-semibold">
-              Bekijk de oplossing
+              Zo regel je het
             </a>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
@@ -95,7 +96,7 @@ export default function HomePageClient() {
             ))}
           </div>
           <p className="mt-8 text-xl sm:text-2xl font-display font-bold text-foreground leading-snug max-w-3xl">
-            Niet omdat je mensen slordig zijn, <span className="text-primary">maar omdat AI sneller ging dan de begeleiding.</span>
+            Niet uit onwil, en niet omdat je mensen slordig zijn. <span className="text-primary">AI ging gewoon sneller dan de begeleiding.</span>
           </p>
         </AnimatedSection>
       </Panel>
@@ -229,7 +230,7 @@ export default function HomePageClient() {
         </Panel>
       </div>
 
-      <StickyCta target="oplossing" label="Bekijk de oplossing" />
+      <StickyCta target="oplossing" label="Zo regel je het" />
     </div>
   );
 }

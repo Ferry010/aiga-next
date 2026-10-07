@@ -304,3 +304,17 @@ textarea[aria-invalid="true"] {
   border-color: hsl(var(--destructive)) !important;
   box-shadow: 0 0 0 1px hsl(var(--destructive) / 0.25);
 }
+
+/* Accordions (FAQ, programme) open and close smoothly where the browser supports it;
+   elsewhere they simply open. */
+:root { interpolate-size: allow-keywords; }
+details::details-content {
+  block-size: 0;
+  overflow-y: clip;
+  transition: block-size 0.32s cubic-bezier(0.22, 1, 0.36, 1), content-visibility 0.32s allow-discrete;
+}
+details[open]::details-content { block-size: auto; }
+@media (prefers-reduced-motion: reduce) {
+  details::details-content { transition: none; }
+}
+html.a11y-reduce-motion details::details-content { transition: none; }

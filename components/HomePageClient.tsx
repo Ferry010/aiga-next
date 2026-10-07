@@ -1,6 +1,6 @@
 'use client';
 import Link from "next/link";
-import { AnimatedSection } from "@/components/AnimatedSection";
+import { AnimatedSection, RevealItem, CountUp } from "@/components/AnimatedSection";
 import SplitSection from "@/components/SplitSection";
 import Panel from "@/components/Panel";
 import HeroVideo from "@/components/HeroVideo";
@@ -8,6 +8,21 @@ import FerryAuthority from "@/components/FerryAuthority";
 import StickyCta from "@/components/StickyCta";
 import { motion, useReducedMotion } from "framer-motion";
 import { useReduceMotion } from "@/hooks/use-reduce-motion";
+
+// The second line of the hero lands a beat after the first: fact, then the question.
+function HeroBeat({ children }: { children: React.ReactNode }) {
+  const calm = useReduceMotion() || !!useReducedMotion();
+  return (
+    <motion.span
+      initial={calm ? false : { opacity: 0.15, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={calm ? { duration: 0 } : { type: "spring", bounce: 0, duration: 0.6, delay: 0.55 }}
+      className="neon-text block mt-2"
+    >
+      {children}
+    </motion.span>
+  );
+}
 
 // One card in the "geregeld" list. Each card rises into place as it enters the
 // viewport. It never starts invisible, so nothing looks broken mid-scroll.
@@ -66,7 +81,7 @@ export default function HomePageClient() {
           <AnimatedSection>
             <h1 className="text-[2.15rem] sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight">
               Er verdwijnt vandaag gevoelige data in AI.
-              <span className="neon-text block mt-2">Weet jij welke?</span>
+              <HeroBeat>Weet jij welke?</HeroBeat>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
               Klantgegevens, contracten, cijfers. Ze belanden in tools die jij niet ziet. Eén online training, en je
@@ -89,10 +104,10 @@ export default function HomePageClient() {
             Het zijn nooit de grote beslissingen. Het zijn de kleine, de hele dag door.
           </h2>
           <div className="mt-10 grid grid-cols-1 md:grid-cols-2 md:gap-x-16">
-            {dinsdag.map((d) => (
-              <p key={d.main} className="py-5 border-t border-border text-lg text-foreground leading-relaxed">
+            {dinsdag.map((d, i) => (
+              <RevealItem key={d.main} index={i} className="py-5 border-t border-border text-lg text-foreground leading-relaxed">
                 {d.main} <span className="italic text-muted-foreground">{d.soft}</span>
-              </p>
+              </RevealItem>
             ))}
           </div>
           <p className="mt-8 text-xl sm:text-2xl font-display font-bold text-foreground leading-snug max-w-3xl">
@@ -106,7 +121,7 @@ export default function HomePageClient() {
         <Panel tone="deep">
           <AnimatedSection>
             <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-6 lg:gap-16 items-center">
-              <p className="text-[6.5rem] sm:text-[11rem] font-display font-bold leading-[0.85] tracking-tighter text-primary">82%</p>
+              <p className="text-[6.5rem] sm:text-[11rem] font-display font-bold leading-[0.85] tracking-tighter text-primary"><CountUp to={82} suffix="%" /></p>
               <div>
                 <h2 className="text-2xl sm:text-[2.2rem] font-display font-bold text-foreground leading-[1.15] tracking-tight">
                   van de bedrijfsdata die in AI-tools belandt, komt uit privé-accounts.
@@ -128,11 +143,11 @@ export default function HomePageClient() {
       {/* Objections: back to cream */}
       <SplitSection title="Misschien denk je nu een van deze dingen.">
         <div className="border-b border-border">
-          {gedachten.map((g) => (
-            <div key={g.q} className="py-6 border-t border-border">
+          {gedachten.map((g, i) => (
+            <RevealItem key={g.q} index={i} className="py-6 border-t border-border">
               <p className="text-xl font-display font-bold text-foreground">{`“${g.q}”`}</p>
               <p className="mt-2 text-lg text-muted-foreground leading-relaxed">{g.a}</p>
-            </div>
+            </RevealItem>
           ))}
         </div>
         <p className="mt-8 text-lg text-foreground leading-relaxed">
@@ -166,17 +181,17 @@ export default function HomePageClient() {
       {/* The choice: the recommended option carries the tint */}
       <section id="oplossing" className="py-14 sm:py-20 scroll-mt-20">
         <div className={container}>
-          <AnimatedSection>
-            <h2 className="text-[1.75rem] sm:text-4xl font-display font-bold text-foreground leading-[1.12] tracking-tight max-w-2xl">
+          <AnimatedSection className="text-center">
+            <h2 className="mx-auto text-[1.75rem] sm:text-4xl font-display font-bold text-foreground leading-[1.12] tracking-tight max-w-2xl">
               Hoe je het regelt, hangt af van wie je wil bereiken.
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground max-w-2xl leading-relaxed">
+            <p className="mx-auto mt-4 text-lg text-muted-foreground max-w-2xl leading-relaxed">
               Je mensen en je leiding hebben niet dezelfde vraag. De meeste organisaties doen allebei.
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.05} className="mt-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-7">
-              <div className="block-lilac rounded-[1.75rem] p-7 sm:p-10 flex flex-col">
+              <RevealItem index={0} className="block-lilac rounded-[1.75rem] p-7 sm:p-10 flex flex-col">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-foreground tracking-tight">De teamtraining</h3>
                 <p className="mt-3 text-lg text-muted-foreground leading-relaxed flex-1">
                   Voor je hele team. Online, in eigen tempo, een paar uur per persoon.
@@ -188,8 +203,8 @@ export default function HomePageClient() {
                 <Link href="/training" className="btn-neon self-start mt-6 px-7 py-3.5 text-[0.9375rem] font-semibold">
                   Bekijk de teamtraining
                 </Link>
-              </div>
-              <div className="rounded-[1.75rem] border-[1.5px] border-border p-7 sm:p-10 flex flex-col">
+              </RevealItem>
+              <RevealItem index={1} className="rounded-[1.75rem] border-[1.5px] border-border p-7 sm:p-10 flex flex-col">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-foreground tracking-tight">De masterclass</h3>
                 <p className="mt-3 text-lg text-muted-foreground leading-relaxed flex-1">
                   Voor directie en management. Twee uur live over verantwoord AI-gebruik, governance en waar jouw
@@ -202,7 +217,7 @@ export default function HomePageClient() {
                 <Link href="/masterclass" className="btn-neon-outline self-start mt-6 px-7 py-3.5 text-[0.9375rem] font-semibold">
                   Bekijk de masterclass
                 </Link>
-              </div>
+              </RevealItem>
             </div>
           </AnimatedSection>
         </div>
@@ -211,11 +226,14 @@ export default function HomePageClient() {
       {/* Final ask */}
       <div className="pb-24 sm:pb-10">
         <Panel tone="deep">
-          <AnimatedSection>
-            <h2 className="text-3xl sm:text-[3.4rem] font-display font-bold leading-[1.05] tracking-tight max-w-3xl">
+          <AnimatedSection className="text-center">
+            <h2 className="mx-auto text-3xl sm:text-[3.4rem] font-display font-bold leading-[1.05] tracking-tight max-w-3xl">
               Je team gebruikt AI. <span className="text-primary">Zorg dat ze weten hoe.</span>
             </h2>
-            <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-x-6 gap-y-4">
+            <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground leading-relaxed">
+              Een paar uur per persoon, online en in eigen tempo. Daarna weet iedereen waar de grens ligt.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row sm:justify-center items-center gap-x-6 gap-y-4">
               <Link
                 href="/training"
                 className="btn-white px-7 py-3.5 text-[0.9375rem]"

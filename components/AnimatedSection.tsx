@@ -1,6 +1,6 @@
 'use client';
-import { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { ReactNode, useEffect, useRef, useState } from "react";
+import { animate, motion, useInView, useReducedMotion } from "framer-motion";
 import { useReduceMotion } from "@/hooks/use-reduce-motion";
 
 // Content is always fully visible. The only motion is a short upward slide as a
@@ -58,5 +58,74 @@ export const StaggerItem = ({ children, className = "" }: { children: ReactNode;
     >
       {children}
     </motion.div>
+  );
+};
+
+/**
+ * One item in a list that rises into place as it scrolls into view. Items further
+ * down a list start a beat later. Never starts invisible, so nothing looks broken.
+ */
+export const RevealItem = ({
+  children,
+  index = 0,
+  className = "",
+  as = "div",
+}: {
+  children: ReactNode;
+  index?: number;
+  className?: string;
+  as?: "div" | "li";
+}) => {
+  const calm = useReduceMotion() || !!useReducedMotion();
+  const Comp = as === "li" ? motion.li : motion.div;
+  return (
+    <Comp
+      initial={calm ? false : { y: 22, scale: 0.98, opacity: 0.55 }}
+      whileInView={{ y: 0, scale: 1, opacity: 1 }}
+      viewport={{ once: true, margin: "0px 0px -60px 0px" }}
+      transition={calm ? { duration: 0 } : { type: "spring", bounce: 0, duration: 0.55, delay: Math.min(index, 6) * 0.07 }}
+      className={className}
+    >
+      {children}
+    </Comp>
+  );
+};
+
+/**
+ * A number that counts up once when it scrolls into view. If it is already on screen
+ * when the page loads (or motion is reduced), it simply shows the final value.
+ */
+export const CountUp = ({ to, suffix = "", duration = 1.2 }: { to: number; suffix?: string; duration?: number }) => {
+  const calm = useReduceMotion() || !!useReducedMotion();
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true, margin: "0px 0px -80px 0px" });
+  const [value, setValue] = useState(to);
+  const armed = useRef(false);
+
+  // Below the fold on load: start from zero, so the count is there to see
+  useEffect(() => {
+    if (calm || !ref.current) return;
+    const r = ref.current.getBoundingClientRect();
+    if (r.top > window.innerHeight) {
+      armed.current = true;
+      setValue(0);
+    }
+  }, [calm]);
+
+  useEffect(() => {
+    if (!inView || !armed.current) return;
+    const controls = animate(0, to, {
+      duration,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (v) => setValue(Math.round(v)),
+    });
+    return () => controls.stop();
+  }, [inView, to, duration]);
+
+  return (
+    <span ref={ref} className="tabular-nums">
+      {value}
+      {suffix}
+    </span>
   );
 };

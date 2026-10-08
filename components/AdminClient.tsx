@@ -15,6 +15,7 @@ import AdminAccount from "@/components/AdminAccount";
 import BlogPdfImport, { type PdfArticleData } from "@/components/BlogPdfImport";
 import BlogJsonImport from "@/components/BlogJsonImport";
 import BlogBulkImport from "@/components/BlogBulkImport";
+import { mixOrder } from "@/lib/mixOrder";
 import RichTextEditor from "@/components/RichTextEditor";
 
 const CATEGORIES = [
@@ -156,6 +157,7 @@ export default function AdminClient() {
   const [labelInput, setLabelInput] = useState("");
   const [confirmDeleteId, setConfirmDeleteId] = useState<string | null>(null);
   const [showBulk, setShowBulk] = useState(false);
+  const [mixing, setMixing] = useState(false);
 
   const [inboxFilter, setInboxFilter] = useState<"alle" | "contact" | "masterclass" | "risicoscan">("alle");
   const [showOpgevolgd, setShowOpgevolgd] = useState(false);
@@ -378,6 +380,22 @@ export default function AdminClient() {
       supabase.from("articles").update({ sort_order: idx + 1 }).eq("id", a.id)
     ));
     await fetchArticles();
+  };
+
+  // Mix the order on the kenniscentrum: no two neighbours with the same format or category.
+  // The site lists articles by updated_at, so each gets a timestamp a second apart.
+  const mixArticles = async () => {
+    setMixing(true);
+    const mixed = mixOrder(articles);
+    const now = Date.now();
+    await Promise.all(mixed.map((a, idx) =>
+      supabase.from("articles").update({
+        sort_order: idx + 1,
+        updated_at: new Date(now - idx * 1000).toISOString(),
+      }).eq("id", a.id)
+    ));
+    await fetchArticles();
+    setMixing(false);
   };
 
   const importArticle = async (a: Article) => {
@@ -626,6 +644,9 @@ export default function AdminClient() {
             <div className="flex flex-wrap gap-2">
               <button onClick={reorderByDate} className="flex items-center gap-2 bg-card border border-border text-foreground rounded-lg px-4 py-2 text-sm font-medium hover:border-primary/40 transition-colors">
                 Herorden op datum
+              </button>
+              <button onClick={mixArticles} disabled={mixing || articles.length < 2} className="flex items-center gap-2 bg-card border border-border text-foreground rounded-lg px-4 py-2 text-sm font-medium hover:border-primary/40 transition-colors disabled:opacity-50">
+                {mixing ? "Bezig met mixen..." : "Mix volgorde"}
               </button>
               <button onClick={importAll} disabled={Object.values(importing).some(Boolean)} className="flex items-center gap-2 bg-card border border-border text-foreground rounded-lg px-4 py-2 text-sm font-medium hover:border-primary/40 transition-colors disabled:opacity-50">
                 {Object.values(importing).some(Boolean) ? "Bezig met importeren..." : "Importeer alles"}

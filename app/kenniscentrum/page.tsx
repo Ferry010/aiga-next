@@ -53,13 +53,13 @@ export default async function KenniscentrumPage() {
     .from("articles")
     .select("id, title, category, url, image_url, content, slug, labels, published_date, read_time_minutes, updated_at, meta_description")
     .eq("published", true)
-    .order("updated_at", { ascending: false, nullsFirst: false });
+    .order("sort_order", { ascending: true, nullsFirst: false });
 
-  // Static pages sit in the normal date order, not pinned to the top
+  // The order is set in the admin (drag and drop). The two static pages come after it.
   const articleList = [
-    ...staticArticles,
     ...(articles || []).filter((a) => !staticArticles.some((s) => s.slug === a.slug)),
-  ].sort((a, b) => (b.updated_at || "").localeCompare(a.updated_at || ""));
+    ...staticArticles,
+  ];
 
   const jsonLd = {
     "@context": "https://schema.org",

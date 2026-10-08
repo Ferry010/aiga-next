@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
+import { Reorder, useDragControls } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -8,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Switch } from "@/components/ui/switch";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Pencil, Plus, X, LogOut, ChevronDown, ChevronUp, Mail, Phone, Search, Upload, Trash2 } from "lucide-react";
+import { Pencil, Plus, X, LogOut, ChevronDown, ChevronUp, Mail, Phone, Search, Upload, Trash2, GripVertical } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import AdminUsers from "@/components/AdminUsers";
 import AdminAccount from "@/components/AdminAccount";
@@ -65,7 +66,7 @@ interface MasterclassSubmission {
   opgevolgd: boolean;
 }
 
-interface Article {
+export interface Article {
   id: string;
   created_at: string;
   updated_at: string;
@@ -137,6 +138,51 @@ const generateSlug = (title: string): string => {
   for (const [pattern, replacement] of SLUG_DIACRITICS) s = s.replace(pattern, replacement);
   return s.replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 };
+
+// One draggable article row. Only the grip starts a drag, so clicks on the switch and
+// buttons keep working. Arrow keys on the grip move the row too.
+export function SortableArticleRow({
+  article, position, onDrop, onKeyMove, children,
+}: {
+  article: Article;
+  position: number;
+  onDrop: () => void;
+  onKeyMove: (dir: -1 | 1) => void;
+  children: React.ReactNode;
+}) {
+  const controls = useDragControls();
+  return (
+    <Reorder.Item
+      as="tr"
+      value={article}
+      dragListener={false}
+      dragControls={controls}
+      onDragEnd={onDrop}
+      whileDrag={{ scale: 1.01, boxShadow: "0 16px 32px -16px rgba(40, 20, 90, 0.35)" }}
+      transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+      className="relative border-b border-border bg-card"
+    >
+      <td className="py-3 px-2">
+        <div className="flex items-center gap-1.5">
+          <button
+            type="button"
+            aria-label={`Verplaats ${article.title}. Sleep, of gebruik de pijltjestoetsen.`}
+            onPointerDown={(e) => { e.preventDefault(); controls.start(e); }}
+            onKeyDown={(e) => {
+              if (e.key === "ArrowUp") { e.preventDefault(); onKeyMove(-1); }
+              if (e.key === "ArrowDown") { e.preventDefault(); onKeyMove(1); }
+            }}
+            className="cursor-grab touch-none rounded p-1 text-muted-foreground hover:text-primary active:cursor-grabbing focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+          >
+            <GripVertical size={16} />
+          </button>
+          <span className="text-muted-foreground font-mono text-xs w-5 text-center tabular-nums">{position}</span>
+        </div>
+      </td>
+      {children}
+    </Reorder.Item>
+  );
+}
 
 export default function AdminClient() {
   const router = useRouter();
@@ -348,20 +394,29 @@ export default function AdminClient() {
     await supabase.from("articles").update({ published: !a.published, updated_at: new Date().toISOString() }).eq("id", a.id);
   };
 
-  const moveArticle = async (article: Article, direction: "up" | "down") => {
-    const idx = articles.findIndex((a) => a.id === article.id);
-    const swapIdx = direction === "up" ? idx - 1 : idx + 1;
-    if (swapIdx < 0 || swapIdx >= articles.length) return;
-    const other = articles[swapIdx];
-    const newArticles = [...articles];
-    newArticles[idx] = { ...article, sort_order: other.sort_order };
-    newArticles[swapIdx] = { ...other, sort_order: article.sort_order };
-    newArticles.sort((a, b) => a.sort_order - b.sort_order);
-    setArticles(newArticles);
-    await Promise.all([
-      supabase.from("articles").update({ sort_order: other.sort_order, updated_at: new Date().toISOString() }).eq("id", article.id),
-      supabase.from("articles").update({ sort_order: article.sort_order, updated_at: new Date().toISOString() }).eq("id", other.id),
-    ]);
+  // Drag and drop order. The list updates live while dragging; on drop, every row whose
+  // position changed gets its new sort_order. The kenniscentrum follows sort_order.
+  const articlesRef = useRef<Article[]>([]);
+  articlesRef.current = articles;
+
+  const saveOrder = async (list: Article[]) => {
+    const changed = list
+      .map((a, idx) => ({ a, order: idx + 1 }))
+      .filter(({ a, order }) => a.sort_order !== order);
+    if (!changed.length) return;
+    setArticles(list.map((a, idx) => ({ ...a, sort_order: idx + 1 })));
+    await Promise.all(changed.map(({ a, order }) =>
+      supabase.from("articles").update({ sort_order: order }).eq("id", a.id)
+    ));
+  };
+
+  const moveByKey = (article: Article, dir: -1 | 1) => {
+    const list = [...articlesRef.current];
+    const idx = list.findIndex((a) => a.id === article.id);
+    const to = idx + dir;
+    if (to < 0 || to >= list.length) return;
+    [list[idx], list[to]] = [list[to], list[idx]];
+    saveOrder(list);
   };
 
   const deleteArticle = async (id: string) => {
@@ -382,19 +437,10 @@ export default function AdminClient() {
     await fetchArticles();
   };
 
-  // Mix the order on the kenniscentrum: no two neighbours with the same format or category.
-  // The site lists articles by updated_at, so each gets a timestamp a second apart.
+  // Mix the order on the kenniscentrum: no two neighbours with the same format or category
   const mixArticles = async () => {
     setMixing(true);
-    const mixed = mixOrder(articles);
-    const now = Date.now();
-    await Promise.all(mixed.map((a, idx) =>
-      supabase.from("articles").update({
-        sort_order: idx + 1,
-        updated_at: new Date(now - idx * 1000).toISOString(),
-      }).eq("id", a.id)
-    ));
-    await fetchArticles();
+    await saveOrder(mixOrder(articles));
     setMixing(false);
   };
 
@@ -795,16 +841,15 @@ export default function AdminClient() {
                   <th className="py-3 px-2 text-muted-foreground font-medium"></th>
                 </tr>
               </thead>
-              <tbody>
+              <Reorder.Group as="tbody" axis="y" values={articles} onReorder={setArticles}>
                 {articles.map((a, idx) => (
-                  <tr key={a.id} className="border-b border-border">
-                    <td className="py-3 px-2">
-                      <div className="flex items-center gap-1">
-                        <button onClick={() => moveArticle(a, "up")} disabled={idx === 0} className="text-muted-foreground hover:text-primary disabled:opacity-30"><ChevronUp size={16} /></button>
-                        <span className="text-muted-foreground font-mono text-xs w-5 text-center">{a.sort_order}</span>
-                        <button onClick={() => moveArticle(a, "down")} disabled={idx === articles.length - 1} className="text-muted-foreground hover:text-primary disabled:opacity-30"><ChevronDown size={16} /></button>
-                      </div>
-                    </td>
+                  <SortableArticleRow
+                    key={a.id}
+                    article={a}
+                    position={idx + 1}
+                    onDrop={() => saveOrder(articlesRef.current)}
+                    onKeyMove={(dir) => moveByKey(a, dir)}
+                  >
                     <td className="py-3 px-2 text-foreground max-w-xs truncate">{a.title}</td>
                     <td className="py-3 px-2 text-foreground">{a.category}</td>
                     <td className="py-3 px-2">
@@ -830,9 +875,9 @@ export default function AdminClient() {
                         )}
                       </div>
                     </td>
-                  </tr>
+                  </SortableArticleRow>
                 ))}
-              </tbody>
+              </Reorder.Group>
             </table>
           </div>
         </TabsContent>

@@ -126,7 +126,11 @@ export default function BlogBulkImport({ existingSlugs, categories, slugify, onD
   };
 
   const addFiles = async (files: File[]) => {
-    const jsons = files.filter((f) => /\.json$/i.test(f.name));
+    // Sorted by filename (01, 02, ... 10), so the numbering decides the order on the site:
+    // the first file ends up at the top of the kenniscentrum
+    const jsons = files
+      .filter((f) => /\.json$/i.test(f.name))
+      .sort((a, b) => a.name.localeCompare(b.name, "nl", { numeric: true }));
     const images = files.filter((f) => IMAGE_TYPES.test(f.name));
     // The same article twice (for example a list JSON and its single files) becomes one row
     const seen = new Set(rows.filter((r) => r.data).map((r) => slugOf(r.data!)));

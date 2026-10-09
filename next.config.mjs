@@ -16,6 +16,21 @@ const nextConfig = {
         destination: "https://aigeletterdheid.academy/:path*",
         permanent: true,
       },
+      // Campaign short links to the free AI-risicocheck (temporary, so they can change later).
+      // /check without UTMs gets the campaign defaults; with UTMs they pass through as given.
+      // /check/<event> is for QR codes on stage: utm_content names the event.
+      {
+        source: "/check",
+        missing: [{ type: "query", key: "utm_source" }],
+        destination: "/gereedheidscan?utm_source=shortlink&utm_medium=direct&utm_campaign=weetjijwelke",
+        permanent: false,
+      },
+      { source: "/check", destination: "/gereedheidscan", permanent: false },
+      {
+        source: "/check/:event",
+        destination: "/gereedheidscan?utm_source=keynote&utm_medium=qr&utm_campaign=weetjijwelke&utm_content=:event",
+        permanent: false,
+      },
       // Retired campaign LP → outcome-led sales page
       {
         source: "/ai-act-training",

@@ -1,6 +1,8 @@
 'use client';
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { rememberLead } from "@/lib/nextSteps";
 import { createClient } from "@/lib/supabase/client";
 import { trackLead, alertTeam, trackQuoteRequest } from "@/lib/track";
 import { useInlineValidation, FieldError, PHONE_PATTERN } from "@/components/InlineValidation";
@@ -37,6 +39,7 @@ export default function LeadForm({ source }: { source: string }) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const v = useInlineValidation();
+  const router = useRouter();
 
   useEffect(() => {
     try {
@@ -103,18 +106,15 @@ export default function LeadForm({ source }: { source: string }) {
       extra: `Teamgrootte: ${form.teamgrootte || "onbekend"}`,
       source: [source, utmNote].filter(Boolean).join(" · "),
     });
-    setSubmitting(false);
+    rememberLead({ naam: form.naam, email: form.email, telefoon: form.telefoon, organisatie: form.bedrijf });
     setSubmitted(true);
+    router.push("/volgende-stappen?voor=training");
   };
 
   if (submitted) {
     return (
       <div className="bg-card border border-neon-purple/30 rounded-2xl p-8 sm:p-10 text-left">
-        <h3 className="text-2xl font-display font-bold text-foreground tracking-tight">Gelukt. De telefoon gaat zo.</h3>
-        <p className="mt-3 text-muted-foreground leading-relaxed">
-          Binnen één werkdag belt een van ons je op. Robbert, Tom of Ferry: wie het wordt, hangt af van wie het
-          eerst zijn koffie op heeft.
-        </p>
+        <p className="text-[1.0625rem] text-foreground" role="status">Gelukt. Je ziet zo wat er nu gebeurt.</p>
       </div>
     );
   }

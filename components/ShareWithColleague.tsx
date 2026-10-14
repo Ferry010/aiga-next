@@ -51,6 +51,15 @@ Zullen we dit plannen?`,
   },
 } as const;
 
+// The ready-made mail and one-pager for a product, for places with their own layout
+export function colleagueMail(product: keyof typeof MAILS) {
+  const m = MAILS[product];
+  return {
+    href: `mailto:?subject=${encodeURIComponent(m.subject)}&body=${encodeURIComponent(m.body(m.pdf, m.page))}`,
+    onePager: m.onePager,
+  };
+}
+
 export default function ShareWithColleague({
   product = "training",
   inline = false,

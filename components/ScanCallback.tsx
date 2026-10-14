@@ -4,6 +4,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { trackLead, alertTeam } from "@/lib/track";
 import ShareWithColleague from "@/components/ShareWithColleague";
+import NextSteps from "@/components/NextSteps";
 import { useInlineValidation, FieldError, PHONE_PATTERN } from "@/components/InlineValidation";
 
 // After the scan: one field (phone) and one click to get a call.
@@ -61,12 +62,13 @@ export default function ScanCallback({
     return (
       <div className="flex flex-col gap-10">
         <div className="border-t-2 border-foreground pt-6">
-          <h3 className="text-2xl font-display font-bold text-foreground tracking-tight">Staat genoteerd. We bellen je.</h3>
-          <p className="mt-3 text-muted-foreground leading-relaxed">
-            Binnen één werkdag belt een van ons je op {telefoon}. Robbert, Tom of Ferry: wie het wordt, hangt
-            af van wie het eerst zijn koffie op heeft.
-          </p>
-          <p className="mt-4 text-foreground">
+          <h3 className="text-2xl font-display font-bold text-foreground tracking-tight">
+            Staat genoteerd. <span className="text-primary">Dit gebeurt er nu.</span>
+          </h3>
+          <div className="mt-8">
+            <NextSteps kind="terugbellen" lead={{ naam, email: mail, telefoon }} />
+          </div>
+          <p className="mt-8 text-foreground">
             Alvast kijken wat je team leert?{" "}
             <Link href="/training" className="text-primary font-semibold hover:underline">
               Bekijk de teamtraining →

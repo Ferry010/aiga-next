@@ -1,6 +1,8 @@
 'use client';
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { rememberLead, kindFromHulp } from "@/lib/nextSteps";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import Panel from "@/components/Panel";
@@ -34,6 +36,7 @@ export default function OverAigaClient() {
   const [submitted, setSubmitted] = useState(false);
   const [sendError, setSendError] = useState(false);
   const v = useInlineValidation();
+  const router = useRouter();
 
   useEffect(() => {
     const supabase = createClient();
@@ -94,8 +97,9 @@ export default function OverAigaClient() {
       extra: [form.hulp && `Interesse: ${form.hulp}`, form.opmerkingen].filter(Boolean).join(" · "),
       source: "Over AIGA",
     });
-    setSubmitting(false);
+    rememberLead({ naam: form.naam, email: form.email, telefoon: form.telefoon, organisatie: form.organisatie });
     setSubmitted(true);
+    router.push(`/volgende-stappen?voor=${kindFromHulp(form.hulp)}`);
   };
 
   const inputClass =
@@ -275,11 +279,7 @@ export default function OverAigaClient() {
               <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">
                 {submitted ? (
                   <div>
-                    <h3 className="text-2xl font-display font-bold text-foreground tracking-tight">Gelukt. We nemen snel contact op.</h3>
-                    <p className="mt-3 text-muted-foreground leading-relaxed">
-                      Binnen één werkdag hoor je van een van ons. Robbert, Tom of Ferry: wie het wordt, hangt af van
-                      wie het eerst zijn koffie op heeft.
-                    </p>
+                    <p className="text-[1.0625rem] text-foreground" role="status">Gelukt. Je ziet zo wat er nu gebeurt.</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} {...v.formProps} className="space-y-4">

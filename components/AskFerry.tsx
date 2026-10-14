@@ -91,7 +91,8 @@ const TIER_ANSWERS: Record<Tier["id"], React.ReactNode> = {
   ),
 };
 
-const HIDDEN_ON = ["/gereedheidscan"];
+// Not on the check, and not right after a form: the next-steps page has its own question box
+const HIDDEN_ON = ["/gereedheidscan", "/volgende-stappen"];
 const TEASER_KEY = "aiga_chat_teaser_seen";
 
 function Avatar({ size = 40 }: { size?: number }) {

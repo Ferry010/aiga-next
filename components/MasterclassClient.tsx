@@ -1,6 +1,8 @@
 'use client';
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { rememberLead } from "@/lib/nextSteps";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import Panel from "@/components/Panel";
 import ProgramCard, { PROGRAM } from "@/components/ProgramCard";
@@ -80,6 +82,7 @@ export default function MasterclassClient() {
   const [submitted, setSubmitted] = useState(false);
   const [sendError, setSendError] = useState(false);
   const v = useInlineValidation();
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -126,7 +129,9 @@ export default function MasterclassClient() {
       source: "Masterclass pagina",
     });
 
+    rememberLead({ naam: form.naam, email: form.email, telefoon: form.telefoon, organisatie: form.organisatie });
     setSubmitted(true);
+    router.push("/volgende-stappen?voor=masterclass");
   };
 
   const inputClass =
@@ -325,11 +330,7 @@ export default function MasterclassClient() {
               <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">
               {submitted ? (
                 <div className="border-t border-border pt-6">
-                  <h3 className="text-2xl font-display font-bold text-foreground tracking-tight">Gelukt. De telefoon gaat zo.</h3>
-                  <p className="mt-3 text-muted-foreground leading-relaxed">
-                    Binnen één werkdag belt een van ons je om een datum te prikken. Robbert, Tom of Ferry: wie het
-                    wordt, hangt af van wie het eerst zijn koffie op heeft.
-                  </p>
+                  <p className="text-[1.0625rem] text-foreground" role="status">Gelukt. Je ziet zo wat er nu gebeurt.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} {...v.formProps} className="space-y-4">

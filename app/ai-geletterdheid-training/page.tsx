@@ -10,7 +10,7 @@ import type { Faq } from "@/lib/faq";
 export const metadata: Metadata = {
   title: "AI-geletterdheid training voor je hele team | AIGA",
   description:
-    "Je mensen gebruiken AI al. Deze online training leert ze wat er wel en niet in een AI-tool mag, hoe ze output controleren en wanneer ze AI beter niet gebruiken. Met toetsen, eindexamen en certificaat van deelname.",
+    "Je mensen gebruiken AI al. Deze online training leert ze wat AI is, hoe ze het slim inzetten in hun eigen werk, en hoe ze dat veilig doen. Met toetsen, eindexamen en certificaat van deelname.",
   alternates: { canonical: "https://aigeletterdheid.academy/ai-geletterdheid-training" },
   openGraph: {
     title: "AI-geletterdheid training voor je hele team | AIGA",
@@ -71,7 +71,7 @@ export default function AiGeletterdheidTrainingPage() {
         crumb="AI-geletterdheid training"
         title="AI-geletterdheid training."
         accent="Voor iedereen die al met AI werkt."
-        intro="Je mensen gebruiken AI al. Deze online training leert ze wat er wel en niet in een AI-tool mag, hoe ze output controleren en wanneer ze AI beter niet gebruiken."
+        intro="Je mensen gebruiken AI al. Deze online training leert ze wat AI is, hoe ze het slim inzetten in hun eigen werk, en hoe ze dat veilig doen."
         primary={{ href: "#offerte", label: "Vraag een offerte aan" }}
         secondary={{ href: "#programma", label: "Bekijk het programma" }}
         aside={<CourseProgress />}
@@ -101,7 +101,7 @@ export default function AiGeletterdheidTrainingPage() {
 
       <section className="pb-16 sm:pb-24">
         <div className={container}>
-          <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">Wat het kost</h2>
+          <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">€249 per persoon, €229 vanaf 11 mensen</h2>
           <p className="mt-3 text-lg text-muted-foreground max-w-2xl">Je betaalt per persoon. Hoe groter je team, hoe lager de prijs per plek.</p>
           <div className="mt-8"><PriceTiers /></div>
         </div>
@@ -111,7 +111,7 @@ export default function AiGeletterdheidTrainingPage() {
         <FaqList items={faqs} />
       </SplitSection>
 
-      <OfferteBlock title="Geef je hele team dezelfde AI-basis." source="AI-geletterdheid training pagina, offerte aanvraag" />
+      <OfferteBlock title="Wat kost de training voor jouw team? Je hoort het binnen één werkdag." source="AI-geletterdheid training pagina, offerte aanvraag" />
     </div>
   );
 }

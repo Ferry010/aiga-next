@@ -35,7 +35,7 @@ export default function AskUs({ className = "" }: { className?: string }) {
   return (
     <div className={`rounded-3xl border border-border bg-white p-6 sm:p-7 ${className}`}>
       <h3 className="text-xl sm:text-2xl font-display font-bold text-foreground tracking-tight">
-        Vragen? Bel of mail ons eerst.
+        Liever eerst even bellen?
       </h3>
       <p className="mt-2 text-muted-foreground leading-relaxed">
         Liever eerst even overleggen? Robbert en Tom weten alles over de training en de masterclass. Je zit nergens

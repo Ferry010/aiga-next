@@ -58,13 +58,13 @@ export default function AiTrainingVoorBedrijvenPage() {
 
       <section className="pb-16 sm:pb-24">
         <div className={container}>
-          <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">Wat het kost</h2>
+          <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">€249 per persoon, €229 vanaf 11 mensen</h2>
           <p className="mt-3 text-lg text-muted-foreground max-w-2xl">Je betaalt per persoon. Hoe groter je team, hoe lager de prijs per plek.</p>
           <div className="mt-8"><PriceTiers /></div>
         </div>
       </section>
 
-      <OfferteBlock title="Haal meer uit de AI-tools die je al betaalt." source="AI training voor bedrijven, offerte aanvraag" />
+      <OfferteBlock title="Je betaalt al voor AI‑tools. Wat kost het om je team ze goed te leren gebruiken?" source="AI training voor bedrijven, offerte aanvraag" />
     </div>
   );
 }

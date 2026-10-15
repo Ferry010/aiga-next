@@ -87,11 +87,11 @@ export default function ContactClient() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight max-w-4xl">
-              Hoe langer niemand afspraken maakt, hoe meer data er al weg is.
-              <span className="neon-text block mt-2">Laten we praten.</span>
+              Vraag je offerte aan,
+              <span className="neon-text block mt-2">of stel eerst je vraag.</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-              Laat je gegevens achter. Binnen één werkdag belt een van ons je. Geen verplichtingen.
+              Binnen één werkdag hoor je van Ferry, Robbert of Tom. Je zit nergens aan vast.
             </p>
           </AnimatedSection>
 

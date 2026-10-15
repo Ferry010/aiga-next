@@ -190,12 +190,12 @@ export default function LeadForm({ source }: { source: string }) {
       {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
 
       <button type="submit" disabled={submitting} className="btn-neon w-full py-3.5 disabled:opacity-50">
-        {submitting ? "Bezig met versturen..." : "Vraag een offerte aan"}
+        {submitting ? "Bezig met versturen..." : "Ontvang mijn offerte"}
       </button>
 
       <p className="text-xs text-muted-foreground leading-relaxed">
-        Geen verplichtingen. We nemen contact op om af te stemmen op jou of je team. Je gegevens
-        gebruiken we daar alleen voor. Zie de{" "}
+        Binnen één werkdag reactie, geen verplichtingen. Je gegevens gebruiken we alleen om contact op te
+        nemen. Zie de{" "}
         <Link href="/privacyverklaring" className="underline hover:text-foreground transition-colors" target="_blank" rel="noopener">
           privacyverklaring
         </Link>

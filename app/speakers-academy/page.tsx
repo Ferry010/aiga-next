@@ -34,8 +34,8 @@ export default function SpeakersAcademyPage() {
     <div className="min-h-screen">
       <PageHero
         crumb="Speakers Academy"
-        title="Van inspiratie naar actie."
-        accent="Een keynote opent ogen. De training verandert gedrag."
+        title="Na de keynote weet je team waarom."
+        accent="Met de training weet het ook hoe."
         intro="Speakers Academy is het sprekersbureau waar Ferry Hoes een van de meest gevraagde AI-sprekers is. Samen bouwden we AIGA, zodat organisaties na de keynote ook echt weten hoe het moet."
         primary={{ href: "/training", label: "Bekijk de teamtraining" }}
         secondary={{ href: "#offerte", label: "Of praat eerst met Robbert of Tom" }}

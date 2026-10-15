@@ -95,26 +95,59 @@ export function PointGrid({ items, cols = 2 }: { items: { title: string; body: R
 }
 
 /** The closing block: the offerte form, with the people to call beside it */
+/** The quote promise in one sentence, right under the heading */
+export function QuoteBody() {
+  return (
+    <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+      Vul vijf velden in, dat kost je een minuut. Ferry, Robbert of Tom belt je met de prijs voor jouw aantal
+      mensen en een start die past. Je zit nergens aan vast.
+    </p>
+  );
+}
+
+/** What you get for filling in the quote form: used on every page with a quote block */
+export function QuoteBenefits() {
+  return (
+    <>
+      <p className="font-display font-bold text-foreground">Wat je krijgt</p>
+      <ul className="mt-2 border-b border-border">
+        {[
+          "De prijs voor jouw aantal mensen: €249 per persoon, €229 vanaf 11. Vanaf 50 een offerte op maat, met een live masterclass voor je directie.",
+          "Een voorstel om te starten, met je hele team of eerst één groep.",
+          "Antwoord op je vragen, van iemand die de training kent.",
+        ].map((t) => (
+          <li key={t} className="flex items-start gap-3 border-t border-border py-3 text-foreground leading-relaxed">
+            <span className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
+            {t}
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+}
+
 export function OfferteBlock({ title, intro, source }: { title: ReactNode; intro?: ReactNode; source: string }) {
   return (
     <div className="pb-10">
       <Panel tone="tint" id="offerte">
-        <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-10 lg:gap-16">
-          <AnimatedSection>
-            <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.08] tracking-tight">{title}</h2>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              {intro ?? "Laat je gegevens achter. Binnen één werkdag belt een van ons je. Geen verplichtingen."}
-            </p>
+        {/* On phones the form comes right after the promise; on desktop it sits beside everything */}
+        <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] lg:grid-rows-[auto_1fr] gap-x-16 gap-y-8">
+          <AnimatedSection className="lg:col-start-1 lg:row-start-1">
+            <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.08] tracking-tight text-balance">{title}</h2>
+            {intro ? <p className="mt-6 text-lg text-muted-foreground leading-relaxed">{intro}</p> : <QuoteBody />}
+          </AnimatedSection>
+          <AnimatedSection delay={0.05} className="lg:col-start-2 lg:row-start-1 lg:row-span-2">
+            <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">
+              <LeadForm source={source} />
+            </div>
+          </AnimatedSection>
+          <AnimatedSection className="lg:col-start-1 lg:row-start-2">
+            {!intro && <QuoteBenefits />}
             <AskUs className="mt-8" />
             <p className="mt-6 text-muted-foreground">
               Nog niet zeker of het bij jullie speelt?{" "}
               <Link href="/gereedheidscan" className="text-primary font-semibold hover:underline">Doe de gratis AI-risicocheck</Link>
             </p>
-          </AnimatedSection>
-          <AnimatedSection delay={0.05}>
-            <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">
-              <LeadForm source={source} />
-            </div>
           </AnimatedSection>
         </div>
       </Panel>

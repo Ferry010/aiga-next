@@ -237,7 +237,7 @@ export default function LandschapPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
                 <Link href="/gereedheidscan" className="btn-neon px-8 py-3 text-sm font-semibold inline-flex items-center justify-center">
-                  Start de gereedheidscan
+                  Doe de gratis AI-risicocheck
                 </Link>
                 <Link href="/training" className="px-8 py-3 rounded-lg text-sm font-semibold border border-border text-foreground hover:border-primary/40 transition-colors inline-flex items-center justify-center">
                   Bekijk de AIGA training

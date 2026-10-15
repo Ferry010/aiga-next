@@ -68,7 +68,7 @@ export default function AiActDeadlinesPage() {
         <FaqList items={faqItems} />
       </SplitSection>
 
-      <OfferteBlock title="Regel AI-geletterdheid voor je hele team." source="AI Act deadlines pagina, offerte aanvraag" />
+      <OfferteBlock title="Regel AI-geletterdheid voor je hele team. Wat kost het voor jullie?" source="AI Act deadlines pagina, offerte aanvraag" />
     </div>
   );
 }

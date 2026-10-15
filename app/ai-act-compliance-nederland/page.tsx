@@ -79,7 +79,7 @@ export default function AiActComplianceNederlandPage() {
         </div>
       </TextSection>
 
-      <OfferteBlock title="Maak verantwoord AI-gebruik een gewoonte." source="Zicht op AI-gebruik pagina, offerte aanvraag" />
+      <OfferteBlock title="Weet jij hoe je team AI gebruikt? Zorg dat iedereen het goed leert." source="Zicht op AI-gebruik pagina, offerte aanvraag" />
     </div>
   );
 }

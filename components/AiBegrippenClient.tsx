@@ -265,7 +265,7 @@ export default function AiBegrippenClient() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <div className="bg-foreground text-background rounded-2xl p-8 sm:p-12 text-center">
           <h2 className="text-2xl sm:text-3xl font-display font-bold mb-4">
-            Wil je weten of jouw organisatie klaar is voor de AI Act?
+            Weet jij hoe je team AI gebruikt? Doe de check in 3 minuten.
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-6">
             <Link href="/gereedheidscan" className="btn-neon px-6 py-3 font-semibold text-sm">

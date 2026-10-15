@@ -40,6 +40,8 @@ export default function AiCursusMedewerkersPage() {
       <TextSection title="Wat medewerkers leren">
         <DotList
           items={[
+            "Wat AI is, wat het goed kan en waar het misgaat",
+            "Hoe je AI slim inzet in je eigen werk, met opdrachten die iets opleveren",
             "Welke bedrijfsdata wel en niet in een AI-tool mag",
             "Hoe je AI-output controleert voordat je het gebruikt",
             "Hoe je hallucinaties en verzonnen bronnen herkent",
@@ -65,7 +67,7 @@ export default function AiCursusMedewerkersPage() {
       <section className="pb-16 sm:pb-24">
         <div className={container}>
           <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">
-            Wat het kost
+            €249 per persoon, €229 vanaf 11 mensen
           </h2>
           <p className="mt-3 text-lg text-muted-foreground max-w-2xl">
             Je betaalt per persoon, zonder minimum. Begin met één collega of een heel team, en zet er later mensen bij.
@@ -74,7 +76,7 @@ export default function AiCursusMedewerkersPage() {
         </div>
       </section>
 
-      <OfferteBlock title="Zet je hele team op dezelfde AI-basis." source="AI cursus medewerkers, offerte aanvraag" />
+      <OfferteBlock title="Wat kost de AI-cursus voor jouw team? Je hoort het binnen één werkdag." source="AI cursus medewerkers, offerte aanvraag" />
     </div>
   );
 }

@@ -15,6 +15,7 @@ import StickyCta from "@/components/StickyCta";
 import { TRAINING_FAQ } from "@/lib/faq";
 import { TOTAL_LESSONS, TOTAL_QUIZ_QUESTIONS } from "@/lib/curriculum";
 import { TIERS, eur } from "@/lib/pricing";
+import { QuoteBody, QuoteBenefits } from "@/components/PageKit";
 
 const container = "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8";
 
@@ -26,10 +27,10 @@ const keyFacts = [
 ];
 
 const outcomes = [
-  "Iedereen weet wat er wel en niet in een AI-tool mag, zonder het te hoeven vragen.",
-  "Output wordt gecontroleerd voordat hij de deur uitgaat, omdat mensen weten waar AI misgaat.",
-  "Eén gedeelde basis in je hele organisatie, in plaats van vijfhonderd eigen manieren.",
-  "Aantoonbaar geregeld: een certificaat van deelname per medewerker.",
+  "Iedereen begrijpt wat AI is, wat het goed kan en waar het misgaat.",
+  "Je team zet AI slim in voor het eigen werk, met opdrachten die echt iets opleveren.",
+  "Iedereen weet wat wel en niet in een AI-tool mag, en controleert output voordat die de deur uitgaat.",
+  "Jij weet dat je hele organisatie dezelfde basis heeft. Aantoonbaar, met een certificaat per medewerker.",
 ];
 
 const steps = [
@@ -64,22 +65,23 @@ export default function TrainingClient() {
       <section className="pt-10 pb-12 sm:pt-16 sm:pb-16">
         <div className={`${container} grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-16 items-center`}>
           <AnimatedSection>
-            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight">
-              Je team gebruikt AI al.
-              <span className="neon-text block mt-2">Weet iedereen wat er níet in mag?</span>
+            <h1 className="text-4xl sm:text-5xl xl:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight text-balance">
+              Je team werkt al met AI.
+              <span className="neon-text block mt-2">Maar niemand heeft ze geleerd hoe het moet.</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              Zonder afspraken verdwijnt er elke dag bedrijfsdata in tools die jij niet ziet. Niet uit onwil:
-              niemand heeft de grens ooit uitgelegd. Deze online training doet dat, voor je hele team.
+              In een paar uur leert iedereen wat AI is, hoe je het slim inzet in je eigen werk, en wat er níet in
+              mag. Online, in eigen tempo, met examen en certificaat. €249 per persoon, €229 vanaf 11.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <a href="#offerte" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 text-[0.9375rem] font-semibold">
-                Vraag een offerte aan
+                Ontvang je offerte
               </a>
               <a href="#programma" className="text-[0.9375rem] font-semibold text-primary hover:underline">
                 Bekijk het programma
               </a>
             </div>
+            <p className="mt-3 text-sm text-muted-foreground">Reactie binnen één werkdag, geen verplichtingen.</p>
           </AnimatedSection>
           <AnimatedSection delay={0.1}>
             <CourseProgress />
@@ -106,7 +108,7 @@ export default function TrainingClient() {
         <div>
           <section id="overzicht" className="scroll-mt-32 pt-14 sm:pt-20">
             <SectionTitle intro="Je mensen gebruiken AI al, elk op hun eigen manier. Deze training geeft iedereen dezelfde praktische basis. Na afloop:">
-              Waarom je team deze training volgt
+              Na de training doet je team dit anders
             </SectionTitle>
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-7">
               {outcomes.map((o) => (
@@ -119,7 +121,7 @@ export default function TrainingClient() {
             <SectionTitle
               intro={`Vier modules, ${TOTAL_LESSONS} lessen, ${TOTAL_QUIZ_QUESTIONS} toetsvragen en een digitaal eindexamen. Elke module opent met een korte introductie en sluit af met een toets. Klik een module open voor alle lessen.`}
             >
-              Het programma
+              Vier modules: van wat AI is tot hoe je het slim en veilig inzet
             </SectionTitle>
             <div className="mt-8">
               <ProgramAccordion />
@@ -128,7 +130,7 @@ export default function TrainingClient() {
 
           <section id="zo-werkt-het" className="scroll-mt-32 pt-16 sm:pt-24">
             <SectionTitle intro="De grootste angst bij online training is dat niemand hem afmaakt. Daarom is deze kort en concreet, met toetsen tussendoor en een examen aan het eind.">
-              Zo werkt het
+              Jij deelt één link. Wij doen de rest.
             </SectionTitle>
             <ol className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8">
               {steps.map((s, i) => (
@@ -144,7 +146,7 @@ export default function TrainingClient() {
           </section>
 
           <section id="certificaat" className="scroll-mt-32 pt-16 sm:pt-24">
-            <SectionTitle>Toetsen en certificaat</SectionTitle>
+            <SectionTitle>Afsluiten met een examen. Wie slaagt, krijgt een certificaat op naam.</SectionTitle>
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
               {[
                 { t: "Na elke module", b: `Een korte toets. ${TOTAL_QUIZ_QUESTIONS} vragen in totaal, zodat iedereen weet waar hij staat.` },
@@ -158,15 +160,14 @@ export default function TrainingClient() {
               ))}
             </div>
             <p className="mt-6 text-muted-foreground leading-relaxed max-w-2xl">
-              Handig meegenomen: met de certificaten laat je zien dat je AI-geletterdheid ondersteunt, precies wat de
-              AI Act van organisaties vraagt.
+              Handig meegenomen: zo laat je ook zien dat je werk maakt van AI-geletterdheid.
             </p>
           </section>
 
           <section id="prijs" className="scroll-mt-32 pt-16 sm:pt-24">
             <div className="statement-block rounded-[1.75rem] px-6 py-10 sm:px-10 sm:py-12">
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground leading-[1.15] tracking-tight max-w-xl">
-                Je betaalt per persoon. Hoe groter je team, hoe lager de prijs per plek.
+                €249 per persoon. Hoe groter je team, hoe lager de prijs.
               </h2>
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {TIERS.map((t) => (
@@ -190,13 +191,13 @@ export default function TrainingClient() {
                 href="#offerte"
                 className="mt-8 btn-white px-7 py-3.5 text-[0.9375rem]"
               >
-                Vraag een offerte aan
+                Ontvang je offerte
               </a>
             </div>
           </section>
 
           <section id="vragen" className="scroll-mt-32 pt-16 sm:pt-24 pb-6">
-            <SectionTitle>Wat je waarschijnlijk wil weten</SectionTitle>
+            <SectionTitle>Nog vragen voordat je een offerte aanvraagt?</SectionTitle>
             <div className="mt-6">
               <FaqList items={TRAINING_FAQ} />
             </div>
@@ -216,29 +217,31 @@ export default function TrainingClient() {
       {/* Offerte */}
       <div className="pb-28 sm:pb-10">
         <Panel tone="tint" id="offerte">
-          <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-10 lg:gap-16">
-            <AnimatedSection>
-              <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.08] tracking-tight">
-                Elke week zonder afspraken is data die je niet terugkrijgt.
+          {/* On phones the form comes right after the promise; on desktop it sits beside everything */}
+          <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] lg:grid-rows-[auto_1fr] gap-x-16 gap-y-8">
+            <AnimatedSection className="lg:col-start-1 lg:row-start-1">
+              <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.08] tracking-tight text-balance">
+                Wat kost het voor jouw team? <span className="text-primary">Je hoort het binnen één werkdag.</span>
               </h2>
-              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-                Laat je gegevens achter. Binnen één werkdag belt Robbert, Tom of Ferry je. Geen verplichtingen.
-              </p>
+              <QuoteBody />
+            </AnimatedSection>
+            <AnimatedSection delay={0.05} className="lg:col-start-2 lg:row-start-1 lg:row-span-2">
+              <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">
+                <LeadForm source="Training pagina, offerte aanvraag" />
+              </div>
+            </AnimatedSection>
+            <AnimatedSection className="lg:col-start-1 lg:row-start-2">
+              <QuoteBenefits />
               <AskUs className="mt-8" />
               <div className="mt-6">
                 <ShareWithColleague product="training" inline />
-              </div>
-            </AnimatedSection>
-            <AnimatedSection delay={0.05}>
-              <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">
-                <LeadForm source="Training pagina, offerte aanvraag" />
               </div>
             </AnimatedSection>
           </div>
         </Panel>
       </div>
 
-      <StickyCta target="offerte" label="Vraag een offerte aan" note="€249 ex btw p.p." />
+      <StickyCta target="offerte" label="Ontvang je offerte" note="€249 ex btw p.p." />
     </div>
   );
 }

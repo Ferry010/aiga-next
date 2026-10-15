@@ -140,7 +140,15 @@ export default function AskFerry() {
       seen = sessionStorage.getItem(TEASER_KEY) === "1";
     } catch {}
     if (seen) return;
-    const t = setTimeout(() => setTeaser(true), 15000);
+    // Don't pop up over a form someone is looking at or filling in: that's the better next step
+    const formInView = () =>
+      [...document.querySelectorAll("form")].some((f) => {
+        const r = f.getBoundingClientRect();
+        return r.top < window.innerHeight && r.bottom > 0;
+      }) || !!document.activeElement?.closest("form");
+    const t = setTimeout(() => {
+      if (!formInView()) setTeaser(true);
+    }, 15000);
     return () => clearTimeout(t);
   }, [hidden]);
 

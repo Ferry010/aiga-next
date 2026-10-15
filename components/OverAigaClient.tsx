@@ -118,7 +118,7 @@ export default function OverAigaClient() {
               <span className="neon-text block mt-2">Daarom bestaat AIGA.</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              Je mensen gebruiken AI al, elke dag. Alleen heeft niemand ze ooit uitgelegd wat er wel en niet in mag.
+              Je mensen gebruiken AI al, elke dag. Alleen heeft niemand ze ooit uitgelegd hoe het werkt, hoe je het goed inzet en wat er niet in mag.
               Dat is geen onwil, dat is een gat. Wij dichten het.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">

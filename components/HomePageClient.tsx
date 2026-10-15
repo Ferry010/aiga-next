@@ -83,8 +83,8 @@ export default function HomePageClient() {
               <HeroBeat>Weet jij welke?</HeroBeat>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              Klantgegevens, contracten, cijfers. Ze belanden in tools die jij niet ziet. Eén online training, en je
-              hele team weet waar de grens ligt.
+              Klantgegevens, contracten, cijfers. Ze belanden in tools die jij niet ziet, bij mensen die nooit hebben
+              geleerd hoe AI werkt. Eén online training, en je hele team zet AI slim en veilig in.
             </p>
             <a href="#oplossing" className="btn-neon mt-8 inline-flex items-center justify-center px-7 py-3.5 text-[0.9375rem] font-semibold">
               Zo regel je het
@@ -208,7 +208,7 @@ export default function HomePageClient() {
         <div className={container}>
           <AnimatedSection className="text-center">
             <h2 className="mx-auto text-[1.75rem] sm:text-4xl font-display font-bold text-foreground leading-[1.12] tracking-tight max-w-2xl">
-              Hoe je het regelt, hangt af van wie je wil bereiken.
+              Begin bij je team, je directie, of allebei.
             </h2>
             <p className="mx-auto mt-4 text-lg text-muted-foreground max-w-2xl leading-relaxed">
               Je mensen en je leiding hebben niet dezelfde vraag. De meeste organisaties doen allebei.
@@ -256,14 +256,14 @@ export default function HomePageClient() {
               Je team gebruikt AI. <span className="text-primary">Zorg dat ze weten hoe.</span>
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground leading-relaxed">
-              Een paar uur per persoon, online en in eigen tempo. Daarna weet iedereen waar de grens ligt.
+              Een paar uur per persoon, online en in eigen tempo. Daarna weet iedereen wat AI is, hoe je het slim inzet en waar de grens ligt.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row sm:justify-center items-center gap-x-6 gap-y-4">
               <Link
-                href="/training"
+                href="/training#offerte"
                 className="btn-white px-7 py-3.5 text-[0.9375rem]"
               >
-                Bekijk de teamtraining
+                Vraag de prijs voor je team
               </Link>
               <Link href="/masterclass" className="text-[0.9375rem] font-semibold text-primary hover:underline">
                 Alleen voor je directie? Bekijk de masterclass

@@ -26,7 +26,7 @@ const RISK_FAQ: Faq[] = [
   },
   {
     q: "Hoe verhoudt dit zich tot gratis cursussen van Google of Microsoft?",
-    a: "Die leren vooral hoe hun eigen tools werken. Deze training is niet gebonden aan één tool en gaat over wat er wel en niet in een AI-tool mag in jullie eigen werk, met toetsen, een eindexamen en een certificaat van deelname.",
+    a: "Die leren vooral hoe hun eigen tools werken. Deze training is niet gebonden aan één tool. Je team leert wat AI is, hoe je het slim inzet en wat er wel en niet in mag, in jullie eigen werk, met toetsen, een eindexamen en een certificaat van deelname.",
   },
 ];
 
@@ -71,7 +71,7 @@ export default function FaqPage() {
       <SplitSection title="AI-geletterdheid en de AI Act" intro="Wat de wet vraagt, zonder paniek.">
         <FaqList items={ACT_FAQ} />
       </SplitSection>
-      <OfferteBlock title="Staat je vraag er niet bij?" source="FAQ pagina, offerte aanvraag" />
+      <OfferteBlock title="Staat je vraag er niet bij?" intro="Stel hem gerust via het formulier. Of vraag meteen de prijs voor je team aan: binnen één werkdag hoor je van Ferry, Robbert of Tom." source="FAQ pagina, offerte aanvraag" />
     </div>
   );
 }

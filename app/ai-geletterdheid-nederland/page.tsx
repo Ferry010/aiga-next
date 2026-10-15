@@ -69,7 +69,7 @@ export default function AiGeletterdheidNederlandPage() {
         </p>
       </TextSection>
 
-      <OfferteBlock title="Regel het voor je hele team in één keer." source="AI-geletterdheid Nederland, offerte aanvraag" />
+      <OfferteBlock title="Regel het voor je hele team in één keer. Wat kost het voor jullie?" source="AI-geletterdheid Nederland, offerte aanvraag" />
     </div>
   );
 }

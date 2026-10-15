@@ -147,7 +147,7 @@ export default function AskFerry() {
         return r.top < window.innerHeight && r.bottom > 0;
       }) || !!document.activeElement?.closest("form");
     const t = setTimeout(() => {
-      if (!formInView() && !document.querySelector("[data-nudge]")) setTeaser(true);
+      if (!formInView()) setTeaser(true);
     }, 15000);
     return () => clearTimeout(t);
   }, [hidden]);

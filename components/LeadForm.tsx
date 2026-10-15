@@ -190,7 +190,7 @@ export default function LeadForm({ source }: { source: string }) {
       {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
 
       <button type="submit" disabled={submitting} className="btn-neon w-full py-3.5 disabled:opacity-50">
-        {submitting ? "Bezig met versturen..." : "Ontvang mijn offerte"}
+        {submitting ? "Bezig met versturen..." : "Vraag een offerte aan"}
       </button>
 
       <p className="text-xs text-muted-foreground leading-relaxed">

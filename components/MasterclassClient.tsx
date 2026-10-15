@@ -20,7 +20,7 @@ import { useInlineValidation, FieldError, PHONE_PATTERN } from "@/components/Inl
 
 const takeaways = [
   "Waar in jouw organisatie AI risico oplevert, en waar rendement",
-  "Wat verantwoord AI-gebruik betekent op directieniveau",
+  "Wat slim en veilig AI-gebruik betekent op directieniveau",
   "Hoe je afspraken maakt die mensen ook echt volgen",
   "Waar jouw verantwoordelijkheid ligt, en hoe je die afbakent",
   "Hoe je van AI-beleid naar AI-gedrag komt",

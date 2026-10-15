@@ -209,7 +209,7 @@ export default function OverAigaClient() {
                 <div className="mt-5 space-y-4 text-lg text-muted-foreground leading-relaxed">
                   <p>
                     Ferry is een veelgevraagd AI-spreker en mede-oprichter van Brand Humanizing. Sinds 2017 helpt hij
-                    organisaties met verantwoord AI-gebruik, van a.s.r. en VodafoneZiggo tot verschillende Ministeries,
+                    organisaties met slim en veilig AI-gebruik, van a.s.r. en VodafoneZiggo tot verschillende Ministeries,
                     zorginstellingen, onderwijs en MKB.
                   </p>
                   <p>

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const stats = [
   { title: "40+ keynotes per jaar", body: "Internationale events en in-house sessies, voor zalen vol mensen die met AI werken." },
-  { title: "Sinds 2017", body: "Helpt Ferry organisaties met verantwoord AI-gebruik, van a.s.r. tot VodafoneZiggo en verschillende Ministeries." },
+  { title: "Sinds 2017", body: "Helpt Ferry organisaties met slim en veilig AI-gebruik, van a.s.r. tot VodafoneZiggo en verschillende Ministeries." },
   { title: "Winnaar in 2020", body: "Van de Anti-Discriminatie AI-Hackathon van de Nederlandse overheid." },
 ];
 

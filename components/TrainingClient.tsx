@@ -75,7 +75,7 @@ export default function TrainingClient() {
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               <a href="#offerte" className="btn-neon inline-flex items-center justify-center px-7 py-3.5 text-[0.9375rem] font-semibold">
-                Ontvang je offerte
+                Vraag een offerte aan
               </a>
               <a href="#programma" className="text-[0.9375rem] font-semibold text-primary hover:underline">
                 Bekijk het programma
@@ -191,7 +191,7 @@ export default function TrainingClient() {
                 href="#offerte"
                 className="mt-8 btn-white px-7 py-3.5 text-[0.9375rem]"
               >
-                Ontvang je offerte
+                Vraag een offerte aan
               </a>
             </div>
           </section>
@@ -241,7 +241,7 @@ export default function TrainingClient() {
         </Panel>
       </div>
 
-      <StickyCta target="offerte" label="Ontvang je offerte" note="€249 ex btw p.p." />
+      <StickyCta target="offerte" label="Vraag een offerte aan" note="€249 ex btw p.p." />
     </div>
   );
 }

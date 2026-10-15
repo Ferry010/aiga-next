@@ -20,7 +20,7 @@ export default function FerryAuthority() {
                 Gebouwd en gegeven door Ferry Hoes.
               </h2>
               <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-                Veelgevraagd AI-spreker die sinds 2017 organisaties helpt met verantwoord AI-gebruik, van a.s.r. tot
+                Veelgevraagd AI-spreker die sinds 2017 organisaties helpt met slim en veilig AI-gebruik, van a.s.r. tot
                 VodafoneZiggo en verschillende Ministeries.
               </p>
               <p className="mt-4 text-lg text-foreground leading-relaxed">

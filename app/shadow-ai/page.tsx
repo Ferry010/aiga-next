@@ -87,7 +87,7 @@ export default function ShadowAiPage() {
           <AnimatedSection>
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight">
               Je team zet klantdata in ChatGPT.
-              <span className="neon-text block mt-2">En jij weet van niks.</span>
+              <span className="neon-text block mt-2">En niemand die het ziet.</span>
             </h1>
             <p className="mt-6 text-xl sm:text-2xl font-display font-bold text-foreground max-w-xl leading-snug">
               Dat heet shadow AI: AI-gebruik binnen je organisatie waar de organisatie zelf niet van weet.

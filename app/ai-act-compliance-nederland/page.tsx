@@ -41,7 +41,7 @@ export default function AiActComplianceNederlandPage() {
       <TextSection title="Een beleid op SharePoint verandert geen gedrag">
         <p>
           Afspraken die niemand leest, werken niet. Wat wel werkt: mensen die zelf weten waar de grens ligt. Deze training
-          maakt verantwoord AI-gebruik onderdeel van het dagelijks werk: privacy, vertrouwelijke data, hallucinaties,
+          maakt slim en veilig AI-gebruik onderdeel van het dagelijks werk: privacy, vertrouwelijke data, hallucinaties,
           menselijke controle, bias en het checken van output.
         </p>
       </TextSection>

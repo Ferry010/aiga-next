@@ -178,7 +178,7 @@ export default async function OnePager({ params }: { params: Promise<{ product: 
 
         <p className="text-[0.78125rem] leading-[1.6] text-[#4A443D]">
           <strong className="text-[#23201D]">Gegeven door Ferry Hoes.</strong> Veelgevraagd AI-spreker die sinds 2017
-          organisaties helpt met verantwoord AI-gebruik, van a.s.r. tot VodafoneZiggo en verschillende Ministeries.
+          organisaties helpt met slim en veilig AI-gebruik, van a.s.r. tot VodafoneZiggo en verschillende Ministeries.
         </p>
 
         <div className="mt-auto flex items-end justify-between border-t border-[#E4DCCF] pt-4 text-[0.75rem] leading-[1.6]">

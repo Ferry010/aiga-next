@@ -153,12 +153,12 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
           <AnimatedSection>
 
             <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-tight">
-              Welke bedrijfsdata verdwijnt er bij jou in AI-tools?<br />
-              <span className="neon-text">Ontdek in 3 minuten waar je risico loopt.</span>
+              Weet jij hoe je team AI gebruikt?<br />
+              <span className="neon-text">In 3 minuten weet je waar je staat.</span>
             </h1>
 
             <p className="mt-6 text-xl text-muted-foreground leading-relaxed max-w-2xl">
-              Je mensen gebruiken AI al. Deze gratis scan laat zien wáár je risico loopt: shadow AI, bedrijfsdata die weglekt, en waar de kennis in je team te ver uiteenloopt. Je ziet je uitslag direct, zonder iets in te vullen.
+              Je mensen gebruiken AI al. Deze gratis check laat zien waar het goed gaat en waar nog niet: zicht op AI-gebruik, omgaan met bedrijfsdata, gedeelde kennis, controle op output en sturing. Je ziet je uitslag direct, zonder iets in te vullen.
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -166,17 +166,9 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
                 onClick={() => setPhase("quiz")}
                 className="btn-neon px-8 py-4 text-[0.9375rem] font-semibold"
               >
-                Start de gratis scan →
+                Start de gratis check
               </button>
-              <p className="text-sm text-muted-foreground">10 vragen · 3 minuten · direct resultaat</p>
-            </div>
-
-            <div className="mt-8 flex flex-wrap gap-6 border-t border-border pt-8">
-              {["Gratis, altijd", "Geen account nodig", "Direct je uitslag"].map((t) => (
-                <span key={t} className="flex items-center gap-1.5 text-sm text-muted-foreground">
-                  <span className="text-primary font-bold">✓</span> {t}
-                </span>
-              ))}
+              <p className="text-sm text-muted-foreground">10 vragen · 3 minuten · gratis, zonder account</p>
             </div>
           </AnimatedSection>
         </div>
@@ -186,26 +178,26 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
           <div className="max-w-3xl mx-auto px-4">
             <AnimatedSection>
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-2">
-                Dit weet je na de scan
+                Dit weet je na de check
               </h2>
-              <p className="text-muted-foreground mb-8">Geen vage rapporten. Concrete inzichten voor jóuw organisatie.</p>
+              <p className="text-muted-foreground mb-8">Een score op vijf onderdelen, met wat je als eerste aanpakt.</p>
               <div className="grid sm:grid-cols-2 gap-4">
                 {[
                   {
-                    title: "Hoeveel zicht je écht hebt",
-                    body: "Welke AI-tools je mensen gebruiken, en hoeveel er buiten je zicht gebeurt (shadow AI).",
+                    title: "Zicht op AI-gebruik",
+                    body: "Hoe goed je weet welke AI-tools je mensen gebruiken, en hoeveel er buiten beeld gebeurt.",
                   },
                   {
-                    title: "Waar je data-risico zit",
-                    body: "Op welke plekken bedrijfsdata via AI-tools je organisatie uit kan lekken.",
+                    title: "Omgaan met bedrijfsdata",
+                    body: "Of er afspraken zijn over wat wel en niet in een AI-tool mag, en of mensen gevoelige data herkennen.",
                   },
                   {
-                    title: "Hoe groot het kennisverschil is",
-                    body: "Hoe ver de AI-vaardigheid in je team uiteenloopt, en waar dat risico oplevert.",
+                    title: "Gedeelde basiskennis",
+                    body: "Hoe ver de AI-kennis in je team uiteenloopt, en of iedereen vanuit dezelfde afspraken werkt.",
                   },
                   {
                     title: "Wat je als eerste aanpakt",
-                    body: "Een heldere prioriteit zodat je vandaag kunt beginnen, zonder te gokken.",
+                    body: "Waar je grootste gat zit, zodat je weet waar je begint.",
                   },
                 ].map((item, i) => (
                   <RevealItem key={item.title} index={i} className="rounded-2xl border border-border bg-white p-5 shadow-[0_12px_30px_-24px_hsl(256_56%_33%/0.45)]">
@@ -223,18 +215,17 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
           <AnimatedSection>
             <div className="block-lilac rounded-[1.75rem] p-8 sm:p-10 text-center">
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4">
-                De meeste organisaties denken dat het wel meevalt.
+                Benieuwd waar je staat?
               </h2>
               <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
-                Tot ze de scan doen. Ontdek in 3 minuten waar jij staat, en wat je moet doen om jezelf te beschermen.
+                Tien eerlijke vragen, drie minuten. Daarna weet je waar het al goed gaat, en waar je team nog hulp kan gebruiken.
               </p>
               <button
                 onClick={() => setPhase("quiz")}
                 className="btn-neon px-8 py-4 text-[0.9375rem]"
               >
-                Doe de scan nu, gratis →
+                Doe de check
               </button>
-              <p className="mt-3 text-xs text-muted-foreground">Geen creditcard. Geen account. Wel direct inzicht.</p>
             </div>
           </AnimatedSection>
         </div>
@@ -251,12 +242,12 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
                   {
                     step: "01",
                     title: "Beantwoord 10 vragen",
-                    body: "Eerlijke vragen over hoe jouw organisatie omgaat met AI, beleid en risico's. Duurt minder dan 3 minuten.",
+                    body: "Eerlijke vragen over hoe jouw organisatie omgaat met AI, afspraken en kennis. Duurt minder dan 3 minuten.",
                   },
                   {
                     step: "02",
                     title: "Zie direct je score",
-                    body: "Direct na de laatste vraag zie je jouw resultaat: een score op 5 onderdelen en hoeveel risico je loopt.",
+                    body: "Direct na de laatste vraag zie je jouw resultaat: een score op 5 onderdelen.",
                   },
                   {
                     step: "03",
@@ -284,28 +275,28 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
             <div className="divide-y divide-border">
               {[
                 {
-                  q: "Voor wie is deze scan bedoeld?",
-                  a: "Voor iedereen die verantwoordelijk is voor mensen of werkprocessen: managers, HR, IT, directie en ondernemers die willen weten welke data er via AI hun organisatie verlaat.",
+                  q: "Voor wie is deze check bedoeld?",
+                  a: "Voor iedereen die verantwoordelijk is voor mensen of werkprocessen: managers, HR, IT, directie en ondernemers die willen weten hoe hun team met AI omgaat.",
                 },
                 {
-                  q: "Hoe lang duurt de scan?",
+                  q: "Hoe lang duurt de check?",
                   a: "Minder dan 3 minuten. Je beantwoordt 10 vragen en ziet daarna direct je resultaat, zonder wachten of aanmelden.",
                 },
                 {
-                  q: "Is de scan echt gratis?",
-                  a: "Ja. Geen creditcard, geen proefperiode, geen verborgen kosten. De scan is een service van AIGA om organisaties te helpen begrijpen waar ze staan.",
+                  q: "Is de check echt gratis?",
+                  a: "Ja. Geen proefperiode, geen verborgen kosten. De check is een service van AIGA om organisaties te helpen zien waar ze staan.",
                 },
                 {
-                  q: "Wat ontvang ik na de scan?",
+                  q: "Wat krijg ik na de check?",
                   a: "Direct na de laatste vraag zie je je score op 5 onderdelen, waar je grootste gat zit en een overzicht van je antwoorden. Je hoeft daarvoor niets in te vullen.",
                 },
                 {
-                  q: "Wat voor risico's meet de scan?",
-                  a: "Denk aan bedrijfsdata die weglekt via AI-tools, shadow AI (tools die mensen gebruiken buiten het zicht van IT), ongecontroleerde output die de deur uit gaat, en grote verschillen in kennis binnen je team. Precies de dingen die pas opvallen als het misgaat.",
+                  q: "Wat meet de check?",
+                  a: "Vijf onderdelen: zicht op AI-gebruik, bescherming van data, gedeelde basiskennis, controle op output, en sturing en onboarding.",
                 },
                 {
-                  q: "Wat als ik hoog risico scoor?",
-                  a: "Dan ben je in goed gezelschap, de meeste organisaties staan er niet zo goed voor als ze denken. Wat je wél hebt na de scan: inzicht. Je uitslag laat zien waar je grootste gat zit, dus waar je als eerste begint.",
+                  q: "Wat als mijn score laag is?",
+                  a: "Dan weet je in elk geval waar je begint. Je uitslag laat zien waar het grootste gat zit, en daar pak je het eerst aan.",
                 },
                 {
                   q: "Worden mijn gegevens gedeeld met derden?",
@@ -328,19 +319,19 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
         <div className="max-w-3xl mx-auto px-4 py-20 text-center">
           <AnimatedSection>
             <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground mb-4">
-              Vandaag weten is beter dan<br />
-              <span className="neon-text">morgen verrast worden</span>
+              Eerst weten,<br />
+              <span className="neon-text">dan regelen.</span>
             </h2>
             <p className="text-muted-foreground mb-8 max-w-lg mx-auto leading-relaxed">
-              Elke dag zonder inzicht is een dag dat je risico loopt zonder het te weten. De scan is gratis en duurt 3 minuten.
+              Gratis, zonder account, en je ziet je uitslag direct.
             </p>
             <button
               onClick={() => setPhase("quiz")}
               className="btn-neon px-10 py-4 text-base font-semibold"
             >
-              Start de gratis scan →
+              Start de gratis check
             </button>
-            <p className="mt-4 text-sm text-muted-foreground">10 vragen · 3 minuten · 0 euro</p>
+            <p className="mt-4 text-sm text-muted-foreground">10 vragen · 3 minuten</p>
           </AnimatedSection>
         </div>
 

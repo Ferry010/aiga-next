@@ -8,7 +8,7 @@ export const QUESTIONS = [
   { q: "Wordt AI-output gecontroleerd voordat het naar buiten gaat?", options: ["Nee, gaat vaak één op één de deur uit", "Soms, hangt van de persoon af", "Meestal wel bij belangrijk werk", "Ja, dat is een vaste stap"] },
   { q: "Gebruiken mensen AI-tools buiten het zicht van IT (shadow AI)?", options: ["Vast wel, maar we weten het niet", "Waarschijnlijk, deels", "Een beetje, we houden het redelijk bij", "Nauwelijks, we hebben het in beeld"] },
   { q: "Weten je mensen hoe ze gevoelige of vertrouwelijke data herkennen voordat ze het delen?", options: ["Nee", "Sommigen wel", "De meesten wel", "Ja, dat is aangeleerd"] },
-  { q: "Werkt iedereen vanuit dezelfde afspraken over verantwoord AI-gebruik?", options: ["Nee, iedereen doet het anders", "Deels, informeel", "Grotendeels wel", "Ja, één gedeelde basis"] },
+  { q: "Werkt iedereen vanuit dezelfde afspraken over AI-gebruik?", options: ["Nee, iedereen doet het anders", "Deels, informeel", "Grotendeels wel", "Ja, één gedeelde basis"] },
   { q: "Kunnen leidinggevenden het AI-gebruik van hun team beoordelen en bijsturen?", options: ["Nee, ze weten zelf te weinig van AI", "Beperkt", "De meesten wel", "Ja, ze hebben de kennis en de kaders"] },
   { q: "Als er iets misgaat met AI (datalek, foute output), zou je het merken?", options: ["Nee, pas als het echt fout is", "Misschien, met geluk", "Waarschijnlijk wel", "Ja, we zouden het snel zien"] },
   { q: "Krijgen nieuwe medewerkers uitleg over veilig AI-gebruik?", options: ["Nee", "Informeel, van collega's", "Er is iets, maar niet up-to-date", "Ja, vast onderdeel van de onboarding"] },

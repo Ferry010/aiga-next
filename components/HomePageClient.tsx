@@ -65,6 +65,7 @@ const gedachten = [
 const geregeld = [
   "Je mensen weten wat er wel en niet in een AI-tool mag, zonder dat ze het hoeven te vragen.",
   "Ze controleren output voordat het de deur uitgaat, omdat ze weten waar het misgaat.",
+  "Ze halen meer uit AI, omdat ze weten hoe je het goed inzet.",
   "Iedereen werkt vanaf dezelfde basis. Niet vijfhonderd eigen manieren, maar één.",
   "En als iemand vraagt hoe jullie AI aanpakken, laat je het gewoon zien.",
 ];
@@ -232,7 +233,7 @@ export default function HomePageClient() {
               <RevealItem index={1} className="rounded-[1.75rem] border-[1.5px] border-border p-7 sm:p-10 flex flex-col">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-foreground tracking-tight">De masterclass</h3>
                 <p className="mt-3 text-lg text-muted-foreground leading-relaxed flex-1">
-                  Voor directie en management. Twee uur live over verantwoord AI-gebruik, governance en waar jouw
+                  Voor directie en management. Twee uur live over slim en veilig AI-gebruik, governance en waar jouw
                   verantwoordelijkheid ligt.
                 </p>
                 <p className="mt-6 text-4xl font-display font-bold text-foreground tracking-tight">
@@ -263,7 +264,7 @@ export default function HomePageClient() {
                 href="/training#offerte"
                 className="btn-white px-7 py-3.5 text-[0.9375rem]"
               >
-                Vraag de prijs voor je team
+                Vraag een offerte aan
               </Link>
               <Link href="/masterclass" className="text-[0.9375rem] font-semibold text-primary hover:underline">
                 Alleen voor je directie? Bekijk de masterclass

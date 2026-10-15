@@ -99,23 +99,22 @@ export function PointGrid({ items, cols = 2 }: { items: { title: string; body: R
 export function QuoteBody() {
   return (
     <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-      Je mensen werken elke dag met AI: in mails, offertes en klantgegevens. Hoe langer niemand ze leert hoe het
-      goed en veilig moet, hoe meer er buiten je zicht gebeurt. Vul vijf velden in, en je weet binnen één werkdag
-      wat het kost om dat te regelen.
+      Een paar uur training per persoon, en dat verandert. Vul vijf velden in, en je weet binnen één werkdag wat
+      het kost voor jouw team.
     </p>
   );
 }
 
-/** What keeps happening while nobody trains the team: the cost of waiting, next to the form */
+/** What changes after the training: the relief right after the pain in the heading */
 export function QuoteBenefits() {
   return (
     <>
-      <p className="font-display font-bold text-foreground">Zolang niemand het je team leert:</p>
+      <p className="font-display font-bold text-foreground">Na de training:</p>
       <ul className="mt-2 border-b border-border">
         {[
-          "weet jij niet welke AI-tools je mensen gebruiken, en wat erin gaat.",
-          "bepaalt iedereen voor zichzelf wat er in ChatGPT mag.",
-          "gaan er AI-teksten naar klanten die niemand heeft gecheckt.",
+          "weet iedereen wat AI is, en waar het misgaat.",
+          "zet je team AI slim in, met opdrachten die echt iets opleveren.",
+          "weet iedereen wat er wel en niet in een AI-tool mag. En jij weet dat ze het weten.",
         ].map((t) => (
           <li key={t} className="flex items-start gap-3 border-t border-border py-3 text-foreground leading-relaxed">
             <span className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />

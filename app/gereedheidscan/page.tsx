@@ -3,12 +3,12 @@ import QuizClient from "@/components/QuizClient";
 import { mailConfigured } from "@/lib/mail";
 
 export const metadata: Metadata = {
-  title: "Gratis AI-risicocheck: hoeveel risico loop je met AI? | AIGA",
+  title: "Gratis AI-risicocheck: hoe staat jouw team ervoor? | AIGA",
   description:
     "Doe de gratis AI-risicocheck en ontdek in 3 minuten waar je organisatie risico loopt met AI: shadow AI, bedrijfsdata en kennisverschil in je team. 10 vragen, direct je score, zonder dat je iets hoeft in te vullen.",
   alternates: { canonical: "https://aigeletterdheid.academy/gereedheidscan" },
   openGraph: {
-    title: "Gratis AI-risicocheck: hoeveel risico loop je met AI?",
+    title: "Gratis AI-risicocheck: hoe staat jouw team ervoor?",
     description:
       "Ontdek in 3 minuten waar je organisatie risico loopt met AI: shadow AI, data en kennisverschil. Direct je score.",
     url: "https://aigeletterdheid.academy/gereedheidscan",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gratis AI-risicocheck: welke data verdwijnt er in AI-tools?",
+    title: "Gratis AI-risicocheck: hoe staat jouw team ervoor?",
     description:
       "Ontdek in 3 minuten waar je organisatie risico loopt met AI: shadow AI, bedrijfsdata en kennisverschil in je team.",
   },
@@ -49,7 +49,7 @@ const faqSchema = {
       name: "Is de AI-risicocheck echt gratis?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Ja. Geen creditcard, geen proefperiode, geen verborgen kosten. De scan is een service van AIGA om organisaties te helpen begrijpen waar ze staan.",
+        text: "Ja. Geen proefperiode, geen verborgen kosten. De check is een service van AIGA om organisaties te helpen zien waar ze staan.",
       },
     },
     {

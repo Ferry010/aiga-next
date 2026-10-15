@@ -100,7 +100,7 @@ export default function KenniscentrumClient({ articles, featuredSlug }: Props) {
               <span className="text-primary">Voordat er iets misgaat.</span>
             </h1>
             <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-              Artikelen, uitleg en achtergronden over de AI Act, AI op de werkvloer en verantwoord AI-gebruik. Geschreven door Ferry Hoes.
+              Artikelen, uitleg en achtergronden over de AI Act, AI op de werkvloer en slim en veilig AI-gebruik. Geschreven door Ferry Hoes.
             </p>
           </AnimatedSection>
 

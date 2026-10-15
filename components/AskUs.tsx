@@ -38,8 +38,7 @@ export default function AskUs({ className = "" }: { className?: string }) {
         Liever eerst even bellen?
       </h3>
       <p className="mt-2 text-muted-foreground leading-relaxed">
-        Liever eerst even overleggen? Robbert en Tom weten alles over de training en de masterclass. Je zit nergens
-        aan vast.
+        Robbert en Tom weten alles over de training en de masterclass. Je zit nergens aan vast.
       </p>
       <ul className="mt-5 flex flex-col gap-4">
         {PEOPLE.map((p) => (

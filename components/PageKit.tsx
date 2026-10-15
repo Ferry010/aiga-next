@@ -99,22 +99,23 @@ export function PointGrid({ items, cols = 2 }: { items: { title: string; body: R
 export function QuoteBody() {
   return (
     <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-      Vul vijf velden in, dat kost je een minuut. Ferry, Robbert of Tom belt je met de prijs voor jouw aantal
-      mensen en een start die past. Je zit nergens aan vast.
+      Je mensen werken elke dag met AI: in mails, offertes en klantgegevens. Hoe langer niemand ze leert hoe het
+      goed en veilig moet, hoe meer er buiten je zicht gebeurt. Vul vijf velden in, en je weet binnen één werkdag
+      wat het kost om dat te regelen.
     </p>
   );
 }
 
-/** What you get for filling in the quote form: used on every page with a quote block */
+/** What keeps happening while nobody trains the team: the cost of waiting, next to the form */
 export function QuoteBenefits() {
   return (
     <>
-      <p className="font-display font-bold text-foreground">Wat je krijgt</p>
+      <p className="font-display font-bold text-foreground">Zolang niemand het je team leert:</p>
       <ul className="mt-2 border-b border-border">
         {[
-          "De prijs voor jouw aantal mensen: €249 per persoon, €229 vanaf 11. Vanaf 50 een offerte op maat, met een live masterclass voor je directie.",
-          "Een voorstel om te starten, met je hele team of eerst één groep.",
-          "Antwoord op je vragen, van iemand die de training kent.",
+          "weet jij niet welke AI-tools je mensen gebruiken, en wat erin gaat.",
+          "bepaalt iedereen voor zichzelf wat er in ChatGPT mag.",
+          "gaan er AI-teksten naar klanten die niemand heeft gecheckt.",
         ].map((t) => (
           <li key={t} className="flex items-start gap-3 border-t border-border py-3 text-foreground leading-relaxed">
             <span className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />

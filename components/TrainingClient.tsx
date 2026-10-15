@@ -221,7 +221,7 @@ export default function TrainingClient() {
           <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] lg:grid-rows-[auto_1fr] gap-x-16 gap-y-8">
             <AnimatedSection className="lg:col-start-1 lg:row-start-1">
               <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.08] tracking-tight text-balance">
-                Wat kost het voor jouw team? <span className="text-primary">Je hoort het binnen één werkdag.</span>
+                Je weet niet wat je team vandaag in AI heeft gezet. <span className="text-primary">Morgen ook niet, tenzij je nu begint.</span>
               </h2>
               <QuoteBody />
             </AnimatedSection>

@@ -235,11 +235,15 @@
 }
 
 /* Accessibility overrides */
+/* Contrast mode: darker text and borders, underlined links. No page-wide filter:
+   that would break everything that is fixed on screen (menu, buttons). */
 html.a11y-contrast {
-  filter: contrast(1.5);
-  background: #000 !important;
-  color: #fff !important;
+  --foreground: 0 0% 0%;
+  --muted-foreground: 0 0% 15%;
+  --border: 0 0% 35%;
+  --primary: 263 75% 38%;
 }
+html.a11y-contrast a { text-decoration: underline; text-underline-offset: 2px; }
 html.a11y-large-text {
   font-size: 120% !important;
 }

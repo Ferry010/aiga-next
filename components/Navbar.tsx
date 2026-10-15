@@ -2,9 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { useReduceMotion } from "@/hooks/use-reduce-motion";
+import { Accessibility, Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useCalmMotion } from "@/hooks/use-reduce-motion";
 
 const navLinks = [
   { to: "/training", label: "Teamtraining" },
@@ -28,7 +28,7 @@ const Navbar = () => {
   const lastY = useRef(0);
   const pathname = usePathname();
   const cta = primaryAction(pathname);
-  const calm = useReduceMotion() || !!useReducedMotion();
+  const calm = useCalmMotion();
 
   // Translucent header that gains a soft edge once content scrolls under it.
   // On phones it slides away while reading down and returns on the way up.
@@ -92,6 +92,16 @@ const Navbar = () => {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
+            <button
+              type="button"
+              data-a11y-trigger
+              onClick={() => window.dispatchEvent(new Event("aiga:toggle-a11y"))}
+              aria-label="Toegankelijkheid"
+              title="Toegankelijkheid"
+              className="press flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-primary"
+            >
+              <Accessibility size={18} />
+            </button>
             <Link href="/gereedheidscan" className="text-sm font-body text-muted-foreground hover:text-primary transition-colors">
               Gratis AI-risicocheck
             </Link>
@@ -141,6 +151,14 @@ const Navbar = () => {
             <Link href={cta.href} onClick={() => setOpen(false)} className="btn-neon text-center px-5 py-3">
               {cta.label}
             </Link>
+            <button
+              type="button"
+              data-a11y-trigger
+              onClick={() => { setOpen(false); window.dispatchEvent(new Event("aiga:toggle-a11y")); }}
+              className="flex items-center gap-2 text-[0.9375rem] text-muted-foreground"
+            >
+              <Accessibility size={18} /> Toegankelijkheid
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

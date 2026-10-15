@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
 import AskFerry from "@/components/AskFerry";
+import RealityCheck from "@/components/RealityCheck";
 
 const STANDALONE_PATHS = ["/admin", "/admin/login", "/one-pager"];
 
@@ -25,6 +26,7 @@ export default function LayoutShell({ children }: { children: React.ReactNode })
       <CookieBanner />
       <AccessibilityWidget />
       <AskFerry />
+      <RealityCheck />
     </>
   );
 }

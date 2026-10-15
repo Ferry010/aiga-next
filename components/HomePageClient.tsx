@@ -5,12 +5,12 @@ import Panel from "@/components/Panel";
 import HeroVideo from "@/components/HeroVideo";
 import FerryAuthority from "@/components/FerryAuthority";
 import StickyCta from "@/components/StickyCta";
-import { motion, useReducedMotion } from "framer-motion";
-import { useReduceMotion } from "@/hooks/use-reduce-motion";
+import { motion } from "framer-motion";
+import { useCalmMotion } from "@/hooks/use-reduce-motion";
 
 // The second line of the hero lands a beat after the first: fact, then the question.
 function HeroBeat({ children }: { children: React.ReactNode }) {
-  const calm = useReduceMotion() || !!useReducedMotion();
+  const calm = useCalmMotion();
   return (
     <motion.span
       initial={calm ? false : { opacity: 0.15, y: 10 }}
@@ -26,7 +26,7 @@ function HeroBeat({ children }: { children: React.ReactNode }) {
 // One card in the "geregeld" list. Each card rises into place as it enters the
 // viewport. It never starts invisible, so nothing looks broken mid-scroll.
 function ReliefCard({ children, index }: { children: React.ReactNode; index: number }) {
-  const calm = useReduceMotion() || !!useReducedMotion();
+  const calm = useCalmMotion();
   return (
     <motion.li
       initial={calm ? false : { y: 28, scale: 0.96, opacity: 0.5 }}

@@ -1,6 +1,5 @@
 'use client';
 import { useState, useEffect, useRef } from "react";
-import { Accessibility } from "lucide-react";
 import { Switch } from "@/components/ui/switch";
 
 const STORAGE_KEY = "aiga-accessibility";
@@ -28,8 +27,13 @@ const AccessibilityWidget = () => {
 
   useEffect(() => {
     const onOpen = () => setOpen(true);
+    const onToggle = () => setOpen((o) => !o);
     window.addEventListener("aiga:open-a11y", onOpen);
-    return () => window.removeEventListener("aiga:open-a11y", onOpen);
+    window.addEventListener("aiga:toggle-a11y", onToggle);
+    return () => {
+      window.removeEventListener("aiga:open-a11y", onOpen);
+      window.removeEventListener("aiga:toggle-a11y", onToggle);
+    };
   }, []);
 
   useEffect(() => {
@@ -44,11 +48,19 @@ const AccessibilityWidget = () => {
   }, []);
 
   useEffect(() => {
+    // Close on a click elsewhere (the menu button toggles it itself) and on Escape
     const handler = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+      const t = e.target as HTMLElement;
+      if (t.closest?.("[data-a11y-trigger]")) return;
+      if (ref.current && !ref.current.contains(t)) setOpen(false);
     };
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+      document.removeEventListener("keydown", onKey);
+    };
   }, []);
 
   const applyClasses = (s: A11yState) => {
@@ -66,42 +78,32 @@ const AccessibilityWidget = () => {
   };
 
   const options: { key: keyof A11yState; label: string }[] = [
-    { key: "contrast", label: "High Contrast" },
-    { key: "largeText", label: "Large Text" },
-    { key: "colorblind", label: "Colorblind Mode" },
-    { key: "reduceMotion", label: "Reduce Motion" },
+    { key: "contrast", label: "Meer contrast" },
+    { key: "largeText", label: "Grotere tekst" },
+    { key: "colorblind", label: "Kleurenblindmodus" },
+    { key: "reduceMotion", label: "Minder beweging" },
   ];
 
+  if (!open) return null;
+
+  // Opens as a small panel under the menu bar, where the button now lives
   return (
     <div
       ref={ref}
-      className="fixed bottom-24 left-3 md:bottom-6 md:left-6 z-40"
+      role="dialog"
+      aria-label="Toegankelijkheid"
+      className="fixed right-3 top-[4.5rem] z-[60] w-[280px] rounded-2xl border border-border bg-card p-4 shadow-lg sm:right-6"
       style={{ fontSize: "16px", filter: "none" }}
     >
-      {open && (
-        <div
-          className="absolute bottom-14 left-0 w-[280px] rounded-xl border border-border bg-card shadow-lg p-4 mb-2"
-          style={{ fontSize: "16px", filter: "none" }}
-        >
-          <p className="text-sm font-semibold text-foreground mb-3">Toegankelijkheid</p>
-          <div className="space-y-3">
-            {options.map(({ key, label }) => (
-              <div key={key} className="flex items-center justify-between">
-                <span className="text-sm text-foreground">{label}</span>
-                <Switch checked={state[key]} onCheckedChange={() => toggle(key)} />
-              </div>
-            ))}
+      <p className="text-sm font-semibold text-foreground mb-3">Toegankelijkheid</p>
+      <div className="space-y-3">
+        {options.map(({ key, label }) => (
+          <div key={key} className="flex items-center justify-between">
+            <span className="text-sm text-foreground">{label}</span>
+            <Switch checked={state[key]} onCheckedChange={() => toggle(key)} aria-label={label} />
           </div>
-        </div>
-      )}
-      <button
-        onClick={() => setOpen((o) => !o)}
-        aria-label="Toegankelijkheidsinstellingen"
-        className="hidden md:flex h-12 w-12 rounded-full border-2 border-primary bg-foreground text-primary items-center justify-center shadow-lg hover:scale-105 transition-transform"
-        style={{ fontSize: "16px", filter: "none" }}
-      >
-        <Accessibility size={22} />
-      </button>
+        ))}
+      </div>
     </div>
   );
 };

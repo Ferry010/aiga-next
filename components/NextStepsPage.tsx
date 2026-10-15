@@ -1,11 +1,11 @@
 'use client';
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import NextSteps from "@/components/NextSteps";
 import { colleagueMail } from "@/components/ShareWithColleague";
 import { trackEvent } from "@/lib/track";
-import { useReduceMotion } from "@/hooks/use-reduce-motion";
+import { useCalmMotion } from "@/hooks/use-reduce-motion";
 import { NEXT_STEPS, firstName, readLead, type NextStepsKind, type RememberedLead } from "@/lib/nextSteps";
 
 // The page every form lands on: not a thank-you, but the route from here.
@@ -28,7 +28,7 @@ function Received({ calm }: { calm: boolean }) {
 }
 
 export default function NextStepsPage({ kind }: { kind: NextStepsKind }) {
-  const calm = useReduceMotion() || !!useReducedMotion();
+  const calm = useCalmMotion();
   const [lead, setLead] = useState<RememberedLead>({});
   useEffect(() => setLead(readLead()), []);
   const name = firstName(lead.naam);

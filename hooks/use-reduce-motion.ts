@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from "react";
+import { useReducedMotion } from "framer-motion";
 
 export const useReduceMotion = (): boolean => {
   const [reduced, setReduced] = useState(false);
@@ -14,4 +15,12 @@ export const useReduceMotion = (): boolean => {
   }, []);
 
   return reduced;
+};
+
+// Calm motion when either the site setting or the system setting asks for it.
+// Both hooks are always called, in the same order, on every render (rules of hooks).
+export const useCalmMotion = (): boolean => {
+  const site = useReduceMotion();
+  const system = useReducedMotion();
+  return site || !!system;
 };

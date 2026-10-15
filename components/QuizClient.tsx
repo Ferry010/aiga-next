@@ -1,9 +1,9 @@
 'use client';
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { AnimatePresence, animate, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, animate, motion } from "framer-motion";
 import { AnimatedSection, RevealItem } from "@/components/AnimatedSection";
-import { useReduceMotion } from "@/hooks/use-reduce-motion";
+import { useCalmMotion } from "@/hooks/use-reduce-motion";
 import ScanCallback from "@/components/ScanCallback";
 import { trackLead, trackEvent } from "@/lib/track";
 import { QUESTIONS as questions, DIMENSIONS as dimensions } from "@/lib/scan";
@@ -51,7 +51,7 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
   const [answers, setAnswers] = useState<number[]>([]);
   const [selected, setSelected] = useState<number | null>(null);
   const [dir, setDir] = useState(1);
-  const calm = useReduceMotion() || !!useReducedMotion();
+  const calm = useCalmMotion();
   const [shownPct, setShownPct] = useState(0);
   const [formData, setFormData] = useState({ naam: "", email: "" });
   const v = useInlineValidation();

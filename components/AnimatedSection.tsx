@@ -1,7 +1,7 @@
 'use client';
 import { ReactNode, useEffect, useRef, useState } from "react";
-import { animate, motion, useInView, useReducedMotion } from "framer-motion";
-import { useReduceMotion } from "@/hooks/use-reduce-motion";
+import { animate, motion, useInView } from "framer-motion";
+import { useCalmMotion, useReduceMotion } from "@/hooks/use-reduce-motion";
 
 // Content is always fully visible. The only motion is a short upward slide as a
 // section enters the viewport, so nothing ever sits faded out waiting for a
@@ -31,7 +31,7 @@ export const AnimatedSection = ({ children, className = "", delay = 0 }: Animate
 // A heading or line that settles into focus as it enters: a little rise, a soft
 // blur that clears. Starts visible enough to read, so nothing waits on the observer.
 export const SettleIn = ({ children, className = "", delay = 0 }: AnimatedSectionProps) => {
-  const calm = useReduceMotion() || !!useReducedMotion();
+  const calm = useCalmMotion();
   return (
     <motion.div
       initial={calm ? false : { y: 18, opacity: 0.3, filter: "blur(4px)" }}
@@ -93,7 +93,7 @@ export const RevealItem = ({
   className?: string;
   as?: "div" | "li";
 }) => {
-  const calm = useReduceMotion() || !!useReducedMotion();
+  const calm = useCalmMotion();
   const Comp = as === "li" ? motion.li : motion.div;
   return (
     <Comp
@@ -113,7 +113,7 @@ export const RevealItem = ({
  * when the page loads (or motion is reduced), it simply shows the final value.
  */
 export const CountUp = ({ to, suffix = "", duration = 1.2 }: { to: number; suffix?: string; duration?: number }) => {
-  const calm = useReduceMotion() || !!useReducedMotion();
+  const calm = useCalmMotion();
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "0px 0px -80px 0px" });
   const [value, setValue] = useState(to);

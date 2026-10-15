@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from "react";
-import { useReducedMotion } from "framer-motion";
-import { useReduceMotion } from "@/hooks/use-reduce-motion";
+import { useCalmMotion } from "@/hooks/use-reduce-motion";
 import { trackEvent } from "@/lib/track";
 
 // The 60-second story in the hero: plays muted and on loop (all text is on screen),
@@ -10,7 +9,7 @@ import { trackEvent } from "@/lib/track";
 
 export default function HeroVideo() {
   const ref = useRef<HTMLVideoElement>(null);
-  const calm = useReduceMotion() || !!useReducedMotion();
+  const calm = useCalmMotion();
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
 

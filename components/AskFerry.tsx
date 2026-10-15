@@ -147,7 +147,7 @@ export default function AskFerry() {
         return r.top < window.innerHeight && r.bottom > 0;
       }) || !!document.activeElement?.closest("form");
     const t = setTimeout(() => {
-      if (!formInView()) setTeaser(true);
+      if (!formInView() && !document.querySelector("[data-nudge]")) setTeaser(true);
     }, 15000);
     return () => clearTimeout(t);
   }, [hidden]);
@@ -234,16 +234,23 @@ export default function AskFerry() {
 
       {/* Launcher */}
       {!open && (
+        // Ferry's photo in a speech bubble (sharp corner towards the screen edge, like a chat
+        // message). On hover or keyboard focus a label slides out: you get a person, not a bot.
         <button
           onClick={() => openChat()}
-          aria-label="Vraag het Ferry"
+          aria-label="Praat met een mens"
           aria-expanded={false}
-          className="askferry-launcher press fixed bottom-24 right-3 md:bottom-6 md:right-6 z-40 flex items-center gap-2 rounded-full bg-primary p-1 sm:pr-4 text-white shadow-[0_14px_34px_-12px_hsl(256_56%_33%/0.6)]"
+          className="askferry-launcher group press fixed bottom-24 right-3 md:bottom-6 md:right-6 z-40"
         >
-          <span className="rounded-full ring-2 ring-white">
-            <Avatar size={40} />
+          <span
+            className="pointer-events-none absolute right-full top-1/2 mr-3 -translate-y-1/2 translate-x-2 whitespace-nowrap rounded-full bg-foreground px-3.5 py-1.5 text-sm font-semibold text-white opacity-0 shadow-lg transition-[opacity,transform] duration-200 group-hover:translate-x-0 group-hover:opacity-100 group-focus-visible:translate-x-0 group-focus-visible:opacity-100"
+            aria-hidden
+          >
+            Praat met een mens
           </span>
-          <span className="hidden sm:inline text-[0.9375rem] font-semibold">Vraag het Ferry</span>
+          <span className="block overflow-hidden rounded-[1.6rem] rounded-br-[0.35rem] border-[3px] border-white bg-primary shadow-[0_14px_34px_-12px_hsl(256_56%_33%/0.6)] transition-transform duration-200 group-hover:-translate-y-0.5">
+            <img src="/assets/ferry-avatar.jpg" alt="" width={56} height={56} className="block h-14 w-14 object-cover" />
+          </span>
         </button>
       )}
 

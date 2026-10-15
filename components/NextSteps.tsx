@@ -1,9 +1,9 @@
 'use client';
 import { useEffect, useId, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { createClient } from "@/lib/supabase/client";
 import { trackEvent } from "@/lib/track";
-import { useReduceMotion } from "@/hooks/use-reduce-motion";
+import { useCalmMotion } from "@/hooks/use-reduce-motion";
 import { NEXT_STEPS, readLead, type NextStepsKind, type RememberedLead } from "@/lib/nextSteps";
 
 // The route after a form, as a vertical timeline. Step 1 is where the visitor is now.
@@ -13,7 +13,7 @@ import { NEXT_STEPS, readLead, type NextStepsKind, type RememberedLead } from "@
 const spring = { type: "spring" as const, bounce: 0, duration: 0.55 };
 
 export default function NextSteps({ kind, lead: leadProp }: { kind: NextStepsKind; lead?: RememberedLead }) {
-  const calm = useReduceMotion() || !!useReducedMotion();
+  const calm = useCalmMotion();
   // Details come from the form that was just sent; without them, read what this visit remembered
   const [stored, setStored] = useState<RememberedLead>({});
   useEffect(() => {

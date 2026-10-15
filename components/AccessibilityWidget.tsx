@@ -97,10 +97,10 @@ const AccessibilityWidget = () => {
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label="Toegankelijkheidsinstellingen"
-        className="hidden md:flex h-12 w-12 rounded-full border-2 border-primary bg-foreground text-primary items-center justify-center shadow-lg hover:scale-105 transition-transform"
+        className="press hidden md:flex h-10 w-10 rounded-full border border-border bg-white/90 text-muted-foreground items-center justify-center shadow-sm backdrop-blur hover:text-primary hover:border-primary/40 transition-colors"
         style={{ fontSize: "16px", filter: "none" }}
       >
-        <Accessibility size={22} />
+        <Accessibility size={18} />
       </button>
     </div>
   );

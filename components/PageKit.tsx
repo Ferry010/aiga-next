@@ -64,16 +64,14 @@ export function PageHero({
   );
 }
 
-/** Body copy block in the left-title / right-text rhythm */
+/** Body copy block: title above the text, in one reading column */
 export function TextSection({ title, children }: { title: ReactNode; children: ReactNode }) {
   return (
     <section className="pb-16 sm:pb-24">
-      <div className={`${container} grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-6 lg:gap-16`}>
+      <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <AnimatedSection>
-          <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">{title}</h2>
-        </AnimatedSection>
-        <AnimatedSection delay={0.05}>
-          <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">{children}</div>
+          <h2 className="text-[1.75rem] sm:text-[2.4rem] font-display font-bold text-foreground leading-[1.1] tracking-tight text-balance">{title}</h2>
+          <div className="mt-6 space-y-4 text-lg text-muted-foreground leading-relaxed">{children}</div>
         </AnimatedSection>
       </div>
     </section>
@@ -95,63 +93,64 @@ export function PointGrid({ items, cols = 2 }: { items: { title: string; body: R
 }
 
 /** The closing block: the offerte form, with the people to call beside it */
-/** The quote promise in one sentence, right under the heading */
-export function QuoteBody() {
+export const QUOTE_BODY =
+  "Vul vijf velden in, dat kost je een minuut. Ferry, Robbert of Tom belt je met de prijs voor jouw aantal mensen en een start die past. Je zit nergens aan vast.";
+
+/** What you get for filling in the quote form: short enough to read on the way to the form */
+export function QuoteBenefits() {
   return (
-    <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-      Vul vijf velden in, dat kost je een minuut. Ferry, Robbert of Tom belt je met de prijs voor jouw aantal
-      mensen en een start die past. Je zit nergens aan vast.
-    </p>
+    <ul className="space-y-2 text-[0.9375rem] text-foreground">
+      {[
+        <><strong>Je prijs:</strong> €249 per persoon, €229 vanaf 11, vanaf 50 op maat met een masterclass voor je directie.</>,
+        <><strong>Een startvoorstel,</strong> met je hele team of eerst één groep.</>,
+        <><strong>Antwoord op je vragen,</strong> van iemand die de training kent.</>,
+      ].map((t, i) => (
+        <li key={i} className="flex items-start gap-3 leading-relaxed">
+          <span className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
+          <span>{t}</span>
+        </li>
+      ))}
+    </ul>
   );
 }
 
-/** What you get for filling in the quote form: used on every page with a quote block */
-export function QuoteBenefits() {
+/**
+ * A form section with one line of sight: heading, one sentence, the form, and a quiet way to call instead.
+ * Everything sits in a single centred column, so the eye only has to go down.
+ */
+export function FocusFormSection({
+  id, title, intro, lead, children,
+}: {
+  id: string;
+  title: ReactNode;
+  intro: ReactNode;
+  lead?: ReactNode;
+  children: ReactNode;
+}) {
   return (
-    <>
-      <p className="font-display font-bold text-foreground">Wat je krijgt</p>
-      <ul className="mt-2 border-b border-border">
-        {[
-          "De prijs voor jouw aantal mensen: €249 per persoon, €229 vanaf 11. Vanaf 50 een offerte op maat, met een live masterclass voor je directie.",
-          "Een voorstel om te starten, met je hele team of eerst één groep.",
-          "Antwoord op je vragen, van iemand die de training kent.",
-        ].map((t) => (
-          <li key={t} className="flex items-start gap-3 border-t border-border py-3 text-foreground leading-relaxed">
-            <span className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
-            {t}
-          </li>
-        ))}
-      </ul>
-    </>
+    <div className="pb-28 sm:pb-10">
+      <Panel tone="tint" id={id}>
+        <div className="mx-auto max-w-2xl">
+          <AnimatedSection className="text-center">
+            <h2 className="text-3xl sm:text-[2.6rem] font-display font-bold text-foreground leading-[1.1] tracking-tight text-balance">{title}</h2>
+            <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground leading-relaxed text-balance">{intro}</p>
+          </AnimatedSection>
+          {lead && <div className="mx-auto mt-7 max-w-xl">{lead}</div>}
+          <AnimatedSection delay={0.05} className="mx-auto mt-8 max-w-xl">
+            <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">{children}</div>
+          </AnimatedSection>
+          <AskUs compact className="mt-6 text-center" />
+        </div>
+      </Panel>
+    </div>
   );
 }
 
 export function OfferteBlock({ title, intro, source }: { title: ReactNode; intro?: ReactNode; source: string }) {
   return (
-    <div className="pb-10">
-      <Panel tone="tint" id="offerte">
-        {/* On phones the form comes right after the promise; on desktop it sits beside everything */}
-        <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] lg:grid-rows-[auto_1fr] gap-x-16 gap-y-8">
-          <AnimatedSection className="lg:col-start-1 lg:row-start-1">
-            <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.08] tracking-tight text-balance">{title}</h2>
-            {intro ? <p className="mt-6 text-lg text-muted-foreground leading-relaxed">{intro}</p> : <QuoteBody />}
-          </AnimatedSection>
-          <AnimatedSection delay={0.05} className="lg:col-start-2 lg:row-start-1 lg:row-span-2">
-            <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">
-              <LeadForm source={source} />
-            </div>
-          </AnimatedSection>
-          <AnimatedSection className="lg:col-start-1 lg:row-start-2">
-            {!intro && <QuoteBenefits />}
-            <AskUs className="mt-8" />
-            <p className="mt-6 text-muted-foreground">
-              Nog niet zeker of het bij jullie speelt?{" "}
-              <Link href="/gereedheidscan" className="text-primary font-semibold hover:underline">Doe de gratis AI-risicocheck</Link>
-            </p>
-          </AnimatedSection>
-        </div>
-      </Panel>
-    </div>
+    <FocusFormSection id="offerte" title={title} intro={intro ?? QUOTE_BODY} lead={intro ? undefined : <QuoteBenefits />}>
+      <LeadForm source={source} />
+    </FocusFormSection>
   );
 }
 

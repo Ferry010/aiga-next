@@ -31,7 +31,24 @@ function Face({ name, photo }: { name: string; photo: string }) {
   );
 }
 
-export default function AskUs({ className = "" }: { className?: string }) {
+export default function AskUs({ className = "", compact = false }: { className?: string; compact?: boolean }) {
+  // One quiet line under a form: the alternative is there, but it doesn't compete with the form
+  if (compact) {
+    return (
+      <p className={`text-[0.9375rem] text-muted-foreground leading-relaxed ${className}`}>
+        Liever eerst even bellen?{" "}
+        <a href={PHONE_HREF} className="font-semibold text-primary hover:underline">{PHONE}</a>
+        , of mail{" "}
+        {PEOPLE.map((p, i) => (
+          <span key={p.name}>
+            {i > 0 && " of "}
+            <a href={`mailto:${p.email}`} className="font-semibold text-primary hover:underline">{p.name}</a>
+          </span>
+        ))}
+        .
+      </p>
+    );
+  }
   return (
     <div className={`rounded-3xl border border-border bg-white p-6 sm:p-7 ${className}`}>
       <h3 className="text-xl sm:text-2xl font-display font-bold text-foreground tracking-tight">

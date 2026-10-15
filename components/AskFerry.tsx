@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from "react";
+import { isFormInView, useFormInView } from "@/hooks/use-form-in-view";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -129,6 +130,8 @@ export default function AskFerry() {
         exit: { opacity: 0, scale: 0.6, y: 24 },
       };
   const hidden = HIDDEN_ON.some((p) => pathname === p || pathname.startsWith(p + "/"));
+  // Step aside while a form is on screen: one thing asking for attention at a time
+  const formNear = useFormInView();
 
   const calendly = `${CALENDLY}?utm_source=aigeletterdheid&utm_medium=chat&utm_campaign=${encodeURIComponent(pathname || "/")}`;
 
@@ -141,13 +144,8 @@ export default function AskFerry() {
     } catch {}
     if (seen) return;
     // Don't pop up over a form someone is looking at or filling in: that's the better next step
-    const formInView = () =>
-      [...document.querySelectorAll("form")].some((f) => {
-        const r = f.getBoundingClientRect();
-        return r.top < window.innerHeight && r.bottom > 0;
-      }) || !!document.activeElement?.closest("form");
     const t = setTimeout(() => {
-      if (!formInView()) setTeaser(true);
+      if (!isFormInView()) setTeaser(true);
     }, 15000);
     return () => clearTimeout(t);
   }, [hidden]);
@@ -238,12 +236,15 @@ export default function AskFerry() {
           onClick={() => openChat()}
           aria-label="Vraag het Ferry"
           aria-expanded={false}
-          className="askferry-launcher press fixed bottom-24 right-3 md:bottom-6 md:right-6 z-40 flex items-center gap-2 rounded-full bg-primary p-1 sm:pr-4 text-white shadow-[0_14px_34px_-12px_hsl(256_56%_33%/0.6)]"
+          title="Vraag het Ferry"
+          tabIndex={formNear ? -1 : 0}
+          className={`askferry-launcher press fixed bottom-24 right-3 md:bottom-6 md:right-6 z-40 rounded-full bg-primary p-1 text-white shadow-[0_14px_34px_-12px_hsl(256_56%_33%/0.6)] transition-[opacity,transform] duration-300 ${
+            formNear ? "pointer-events-none translate-y-2 opacity-0" : "opacity-100"
+          }`}
         >
-          <span className="rounded-full ring-2 ring-white">
-            <Avatar size={40} />
+          <span className="block rounded-full ring-2 ring-white">
+            <Avatar size={44} />
           </span>
-          <span className="hidden sm:inline text-[0.9375rem] font-semibold">Vraag het Ferry</span>
         </button>
       )}
 

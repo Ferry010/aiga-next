@@ -5,6 +5,7 @@ import BreadcrumbNav from "@/components/BreadcrumbNav";
 import Panel from "@/components/Panel";
 import HeroChat from "@/components/HeroChat";
 import LeadForm from "@/components/LeadForm";
+import { FocusFormSection } from "@/components/PageKit";
 
 export const metadata: Metadata = {
   title: "Shadow AI: je team zet bedrijfsdata in ChatGPT | AIGA",
@@ -117,7 +118,7 @@ export default function ShadowAiPage() {
 
       {/* Definition, in plain words */}
       <section className="pb-16 sm:pb-24">
-        <div className={`${container} grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-6 lg:gap-16`}>
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 flex flex-col gap-6">
           <AnimatedSection>
             <H2>Wat is shadow AI?</H2>
           </AnimatedSection>
@@ -202,7 +203,7 @@ export default function ShadowAiPage() {
 
       {/* Why a ban doesn't work */}
       <section className="pb-16 sm:pb-24">
-        <div className={`${container} grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-6 lg:gap-16`}>
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 flex flex-col gap-6">
           <AnimatedSection>
             <H2>En nee, verbieden werkt niet.</H2>
           </AnimatedSection>
@@ -221,45 +222,27 @@ export default function ShadowAiPage() {
         </div>
       </section>
 
-      {/* Solution + offerte */}
-      <div className="pb-10">
-        <Panel tone="tint" id="oplossing">
-          <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-10 lg:gap-16">
-            <AnimatedSection>
-              <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.08] tracking-tight">
-                Zet de grens voordat het volgende contract erin gaat.
-              </h2>
-              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-                Een online training geeft je hele team dezelfde basis. Een paar uur per persoon, in eigen tempo. Na
-                afloop weet iedereen:
-              </p>
-              <ul className="mt-5 border-b border-border">
-                {learns.map((l) => (
-                  <li key={l} className="flex items-start gap-3 border-t border-border py-3 text-foreground">
-                    <span className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
-                    {l}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-5 text-muted-foreground">
-                €249 ex btw per persoon, €229 vanaf 11 personen.{" "}
-                <Link href="/training" className="text-primary font-semibold hover:underline">Bekijk het programma</Link>
-              </p>
-            </AnimatedSection>
-            <AnimatedSection delay={0.05}>
-              <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">
-                <LeadForm source="Shadow AI pagina, offerte aanvraag" />
-              </div>
-              <p className="mt-5 text-muted-foreground">
-                Nog niet zeker of het bij jullie speelt?{" "}
-                <Link href="/gereedheidscan" className="text-primary font-semibold hover:underline">
-                  Doe eerst de gratis AI-risicocheck
-                </Link>
-              </p>
-            </AnimatedSection>
-          </div>
-        </Panel>
-      </div>
+      {/* Solution + offerte: one line of sight to the form */}
+      <FocusFormSection
+        id="oplossing"
+        title="Zet de grens voordat het volgende contract erin gaat."
+        intro="Een online training geeft je hele team dezelfde basis. Een paar uur per persoon, in eigen tempo. €249 per persoon, €229 vanaf 11."
+        lead={
+          <>
+            <p className="font-display font-bold text-foreground">Na afloop weet iedereen:</p>
+            <ul className="mt-2 space-y-2 text-[0.9375rem] text-foreground">
+              {learns.map((l) => (
+                <li key={l} className="flex items-start gap-3 leading-relaxed">
+                  <span className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden />
+                  {l}
+                </li>
+              ))}
+            </ul>
+          </>
+        }
+      >
+        <LeadForm source="Shadow AI pagina, offerte aanvraag" />
+      </FocusFormSection>
     </div>
   );
 }

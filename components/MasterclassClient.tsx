@@ -4,14 +4,11 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { rememberLead } from "@/lib/nextSteps";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import Panel from "@/components/Panel";
 import ProgramCard, { PROGRAM } from "@/components/ProgramCard";
 import SectionNav from "@/components/SectionNav";
-import BookingBox from "@/components/BookingBox";
-import AskUs from "@/components/AskUs";
+import { FocusFormSection } from "@/components/PageKit";
 import FerryAuthority from "@/components/FerryAuthority";
 import FaqList from "@/components/FaqList";
-import ShareWithColleague from "@/components/ShareWithColleague";
 import StickyCta from "@/components/StickyCta";
 import { MASTERCLASS_FAQ } from "@/lib/faq";
 import { createClient } from "@/lib/supabase/client";
@@ -180,11 +177,11 @@ export default function MasterclassClient() {
 
       <SectionNav items={nav} />
 
-      {/* Course body with the booking box beside it */}
-      <div className={`${container} grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_20rem] gap-12 xl:gap-16`}>
+      {/* Course body: one reading column, nothing competing beside it */}
+      <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <div>
           <section id="overzicht" className="scroll-mt-32 pt-14 sm:pt-20">
-            <SectionTitle intro="Je mensen leren in de teamtraining hoe ze AI veilig gebruiken. Maar op jouw niveau spelen andere vragen:">
+            <SectionTitle intro="Je mensen leren in de teamtraining wat AI is en hoe ze het slim en veilig gebruiken. Maar op jouw niveau spelen andere vragen:">
               De teamtraining lost het gedrag op. De masterclass lost de richting op.
             </SectionTitle>
             <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-7">
@@ -299,35 +296,16 @@ export default function MasterclassClient() {
           </section>
         </div>
 
-        {/* Sticky booking box (desktop) */}
-        <aside className="hidden lg:block pt-20">
-          <div className="sticky top-36">
-            <BookingBox product="masterclass" />
-          </div>
-        </aside>
       </div>
 
       <FerryAuthority />
 
-      {/* Form: reassurance beside it */}
-      <div className="pb-28 sm:pb-10">
-        <Panel tone="tint" id="aanmelden">
-          <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-10 lg:gap-16">
-            <AnimatedSection>
-              <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.08] tracking-tight">
-                Zet de richting voordat iedereen zijn eigen AI-regels verzint.
-              </h2>
-              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-                Laat je gegevens achter. Binnen één werkdag belt Robbert, Tom of Ferry je om een datum te prikken.
-              </p>
-              <AskUs className="mt-8" />
-              <div className="mt-6">
-                <ShareWithColleague product="masterclass" inline />
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.05}>
-              <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">
+      {/* Form: one line of sight to it */}
+      <FocusFormSection
+        id="aanmelden"
+        title="Zet de richting voordat iedereen zijn eigen AI-regels verzint."
+        intro="Vul je gegevens in. Binnen één werkdag belt Ferry, Robbert of Tom je om een datum en de opzet te prikken. Je zit nergens aan vast."
+      >
               {submitted ? (
                 <div className="border-t border-border pt-6">
                   <p className="text-[1.0625rem] text-foreground" role="status">Gelukt. Je ziet zo wat er nu gebeurt.</p>
@@ -410,11 +388,7 @@ export default function MasterclassClient() {
                   </button>
                 </form>
               )}
-              </div>
-            </AnimatedSection>
-          </div>
-        </Panel>
-      </div>
+      </FocusFormSection>
 
       <StickyCta target="aanmelden" label="Plan de masterclass" note="€495 ex btw p.p." />
     </div>

@@ -358,7 +358,7 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
           exit: { opacity: 0, x: -28 * dir },
         };
     return (
-      <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center px-4 py-14 sm:py-20">
+      <div data-crucial className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center px-4 py-14 sm:py-20">
         <div className="max-w-2xl w-full">
           <div className="flex items-center gap-4 text-sm text-muted-foreground">
             <button
@@ -425,7 +425,7 @@ export default function QuizClient({ canEmail = false }: { canEmail?: boolean })
     "w-full bg-background border border-border rounded-lg px-4 py-3 text-foreground text-[0.9375rem] focus:outline-none focus:border-neon-purple focus:ring-1 focus:ring-neon-purple/20";
 
   return (
-    <div className="min-h-screen py-16 sm:py-20 px-4">
+    <div data-crucial className="min-h-screen py-16 sm:py-20 px-4">
       <div className="max-w-2xl mx-auto">
         <AnimatedSection>
           <div className="text-center mb-10">

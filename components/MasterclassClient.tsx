@@ -260,7 +260,7 @@ export default function MasterclassClient() {
             </ol>
           </section>
 
-          <section id="prijs" className="scroll-mt-32 pt-16 sm:pt-24">
+          <section id="prijs" data-crucial className="scroll-mt-32 pt-16 sm:pt-24">
             <div className="statement-block rounded-[1.75rem] px-6 py-10 sm:px-10 sm:py-12">
               <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-6 sm:gap-10 items-center">
                 <div>

@@ -164,7 +164,7 @@ export default function TrainingClient() {
             </p>
           </section>
 
-          <section id="prijs" className="scroll-mt-32 pt-16 sm:pt-24">
+          <section id="prijs" data-crucial className="scroll-mt-32 pt-16 sm:pt-24">
             <div className="statement-block rounded-[1.75rem] px-6 py-10 sm:px-10 sm:py-12">
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground leading-[1.15] tracking-tight max-w-xl">
                 €249 per persoon. Hoe groter je team, hoe lager de prijs.

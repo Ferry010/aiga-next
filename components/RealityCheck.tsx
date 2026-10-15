@@ -10,7 +10,8 @@ import { trackEvent } from "@/lib/track";
 // A Booking.com-style nudge ("only 1 room left"), but about AI in your team. It never claims
 // to see what happens at the visitor's company: every line says "grote kans" or "statistisch
 // gezien" and names its source, so it stays funny and true. It appears when someone stops or
-// slows down scrolling, never over a form, at most twice per visit.
+// slows down scrolling in a non-crucial part of the page: past the hero, away from forms,
+// prices, the quiz and quote sections. At most three per visit.
 
 const NUDGES = [
   {
@@ -31,11 +32,23 @@ const NUDGES = [
   },
 ];
 
-const HIDDEN_ON = ["/gereedheidscan", "/volgende-stappen", "/admin", "/podcast", "/privacyverklaring", "/licentie", "/unsubscribe", "/one-pager"];
+const HIDDEN_ON = ["/volgende-stappen", "/admin", "/podcast", "/privacyverklaring", "/licentie", "/unsubscribe", "/one-pager"];
 const COUNT_KEY = "aiga_nudge_count";
-const MAX_PER_VISIT = 2;
-const FIRST_AFTER_MS = 20000;
-const GAP_MS = 45000;
+const MAX_PER_VISIT = 3;
+const FIRST_AFTER_MS = 6000; // per page
+const GAP_MS = 30000;
+// Parts of a page where the visitor is deciding or acting: never interrupt there
+const CRUCIAL = "form, [data-crucial], #offerte, #aanmelden, #contact, #oplossing";
+
+// True while the visitor is in the hero or a crucial part sits in the middle of the screen
+function inCrucialZone() {
+  const h = window.innerHeight;
+  if (window.scrollY < h * 0.6) return true;
+  return [...document.querySelectorAll(CRUCIAL)].some((el) => {
+    const r = el.getBoundingClientRect();
+    return r.top < h * 0.85 && r.bottom > h * 0.15;
+  });
+}
 const VISIBLE_MS = 60000; // stays until closed, or a minute
 
 function canShowNow() {
@@ -46,11 +59,7 @@ function canShowNow() {
   if (!document.querySelector(".askferry-launcher")) return false;
   if (document.querySelector(".askferry-teaser")) return false; // one nudge on screen at a time
   if (document.activeElement?.closest("form, input, textarea, select")) return false;
-  const h = window.innerHeight;
-  return ![...document.querySelectorAll("form")].some((f) => {
-    const r = f.getBoundingClientRect();
-    return r.top < h && r.bottom > 0;
-  });
+  return !inCrucialZone();
 }
 
 export default function RealityCheck() {
@@ -59,7 +68,11 @@ export default function RealityCheck() {
   const [nudge, setNudge] = useState<(typeof NUDGES)[number] | null>(null);
   const [revealed, setRevealed] = useState(false);
   const lastShown = useRef(0);
+  const showing = useRef(false);
+  const opened = useRef(false);
   const used = useRef<Set<number>>(new Set());
+  showing.current = !!nudge;
+  opened.current = revealed;
   const hidden = HIDDEN_ON.some((p) => pathname === p || pathname.startsWith(p + "/"));
 
   useEffect(() => {
@@ -72,7 +85,7 @@ export default function RealityCheck() {
     let stopTimer: ReturnType<typeof setTimeout> | undefined;
 
     const tryShow = () => {
-      if (Date.now() - start < FIRST_AFTER_MS || scrolled < 500) return;
+      if (Date.now() - start < FIRST_AFTER_MS || scrolled < 250) return;
       if (Date.now() - lastShown.current < GAP_MS) return;
       let count = 0;
       try { count = Number(sessionStorage.getItem(COUNT_KEY) || 0); } catch {}
@@ -98,8 +111,10 @@ export default function RealityCheck() {
       if (speed > 1) fast = true;
       lastY = y;
       lastT = now;
+      // Scrolled into a crucial part with an unopened nudge: get out of the way
+      if (showing.current && !opened.current && inCrucialZone()) setNudge(null);
       clearTimeout(stopTimer);
-      stopTimer = setTimeout(tryShow, 1200); // stopped scrolling
+      stopTimer = setTimeout(tryShow, 900); // stopped scrolling
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });

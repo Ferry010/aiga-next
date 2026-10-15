@@ -14,24 +14,20 @@ import { trackEvent } from "@/lib/track";
 
 const NUDGES = [
   {
-    label: "Grote kans",
-    text: "Iemand bij jou heeft vandaag bedrijfsdata in ChatGPT geplakt.",
-    source: "77% van de medewerkers plakt gegevens in AI-tools. LayerX, 2025",
+    text: "Iemand bij jou plakte net gevoelige data in ChatGPT.",
+    reveal: "Maar 77% van de medewerkers plakt gegevens in AI-tools (LayerX, 2025). De kans is dus groot.",
   },
   {
-    label: "Ondertussen",
-    text: "Leert een gratis AI-tool waarschijnlijk net van jullie bedrijfsdata.",
-    source: "Gratis ChatGPT mag standaard leren van wat je typt.",
+    text: "Een gratis AI-tool leert net van jullie bedrijfsdata.",
+    reveal: "Maar gratis ChatGPT mag standaard leren van wat je typt. Wie dat niet weet, zet het niet uit.",
   },
   {
-    label: "Statistisch gezien",
-    text: "Gebruikt iemand in je team op dit moment AI met een privé-account.",
-    source: "82% van de data in AI-tools komt via privé-accounts. LayerX, 2025",
+    text: "Iemand in je team gebruikt nu AI met een privé-account.",
+    reveal: "Maar 82% van de data in AI-tools komt via privé-accounts (LayerX, 2025). De kans is dus groot.",
   },
   {
-    label: "Net als in de meeste teams",
-    text: "Heeft iemand bij jou een eigen AI-tool mee naar het werk genomen.",
-    source: "78% van de AI-gebruikers neemt eigen tools mee. Microsoft en LinkedIn, 2024",
+    text: "Iemand bij jou nam net een eigen AI-tool mee naar het werk.",
+    reveal: "Maar 78% van de AI-gebruikers neemt eigen tools mee (Microsoft en LinkedIn, 2024). De kans is dus groot.",
   },
 ];
 
@@ -40,7 +36,7 @@ const COUNT_KEY = "aiga_nudge_count";
 const MAX_PER_VISIT = 2;
 const FIRST_AFTER_MS = 20000;
 const GAP_MS = 45000;
-const VISIBLE_MS = 9000;
+const VISIBLE_MS = 60000; // stays until closed, or a minute
 
 function canShowNow() {
   // Not while the cookie choice is still open, the chat is open, or a form is on screen
@@ -61,6 +57,7 @@ export default function RealityCheck() {
   const pathname = usePathname();
   const calm = useCalmMotion();
   const [nudge, setNudge] = useState<(typeof NUDGES)[number] | null>(null);
+  const [revealed, setRevealed] = useState(false);
   const lastShown = useRef(0);
   const used = useRef<Set<number>>(new Set());
   const hidden = HIDDEN_ON.some((p) => pathname === p || pathname.startsWith(p + "/"));
@@ -86,8 +83,9 @@ export default function RealityCheck() {
       used.current.add(pick);
       lastShown.current = Date.now();
       try { sessionStorage.setItem(COUNT_KEY, String(count + 1)); } catch {}
+      setRevealed(false);
       setNudge(NUDGES[pick]);
-      trackEvent("nudge_show", { label: NUDGES[pick].label });
+      trackEvent("nudge_show", { text: NUDGES[pick].text });
     };
 
     const onScroll = () => {
@@ -116,7 +114,7 @@ export default function RealityCheck() {
     if (!nudge) return;
     const t = setTimeout(() => setNudge(null), VISIBLE_MS);
     return () => clearTimeout(t);
-  }, [nudge]);
+  }, [nudge, revealed]);
 
   useEffect(() => setNudge(null), [pathname]);
 
@@ -144,22 +142,42 @@ export default function RealityCheck() {
           >
             <X size={16} />
           </button>
-          <div className="flex items-center gap-2">
-            <span className="relative flex h-2.5 w-2.5" aria-hidden>
+          <div className="flex items-start gap-2.5">
+            <span className="relative mt-[0.45rem] flex h-2.5 w-2.5 shrink-0" aria-hidden>
               {!calm && <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[hsl(330_78%_60%)] opacity-60" style={{ animationIterationCount: 3 }} />}
               <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[hsl(330_78%_55%)]" />
             </span>
-            <span className="text-xs font-bold uppercase tracking-wide text-[hsl(330_70%_42%)]">{nudge.label}</span>
+            <p className="font-display text-[1.0625rem] font-bold leading-snug text-foreground">{nudge.text}</p>
           </div>
-          <p className="mt-1.5 font-display text-[1.0625rem] font-bold leading-snug text-foreground">{nudge.text}</p>
-          <p className="mt-1 text-xs text-muted-foreground">{nudge.source}</p>
-          <Link
-            href={href}
-            onClick={() => { trackEvent("nudge_click", { label: nudge.label }); setNudge(null); }}
-            className="mt-2.5 inline-block text-sm font-semibold text-primary hover:underline"
-          >
-            Zo regel je het →
-          </Link>
+          {!revealed ? (
+            <button
+              type="button"
+              onClick={() => { setRevealed(true); trackEvent("nudge_open", { text: nudge.text }); }}
+              aria-expanded={false}
+              className="press mt-2 ml-5 rounded-full bg-[hsl(330_78%_95%)] px-3 py-1 text-sm font-bold text-[hsl(330_70%_40%)] hover:bg-[hsl(330_78%_91%)]"
+            >
+              Echt?
+            </button>
+          ) : (
+            <motion.div
+              initial={calm ? false : { opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={calm ? { duration: 0 } : { type: "spring", bounce: 0, duration: 0.35 }}
+              className="mt-2 ml-5"
+            >
+              <p className="text-[0.9375rem] leading-relaxed text-foreground">
+                <strong>Grapje. Waarschijnlijk.</strong> Wij kunnen niet zien wat er bij jou gebeurt. {nudge.reveal} Daarom is
+                training zo belangrijk.
+              </p>
+              <Link
+                href={href}
+                onClick={() => { trackEvent("nudge_click", { text: nudge.text }); setNudge(null); }}
+                className="mt-2 inline-block text-sm font-semibold text-primary hover:underline"
+              >
+                Zo regel je het →
+              </Link>
+            </motion.div>
+          )}
         </motion.div>
       )}
     </AnimatePresence>

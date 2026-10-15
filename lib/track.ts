@@ -47,7 +47,7 @@ export function trackEvent(event: string, params?: Record<string, string | numbe
 }
 
 export type LeadAlert = {
-  type: "offerte" | "masterclass" | "contact" | "callback";
+  type: "offerte" | "masterclass" | "contact" | "callback" | "vraag";
   naam: string;
   email?: string;
   telefoon?: string;

@@ -2,7 +2,7 @@
 import { useEffect, useId, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { createClient } from "@/lib/supabase/client";
-import { trackEvent } from "@/lib/track";
+import { alertTeam, trackEvent } from "@/lib/track";
 import { useCalmMotion } from "@/hooks/use-reduce-motion";
 import { NEXT_STEPS, readLead, type NextStepsKind, type RememberedLead } from "@/lib/nextSteps";
 
@@ -129,6 +129,15 @@ function StepQuestion({
     supabase.functions.invoke("notify-new-submission", {
       body: { type: "contact", naam: who.naam, organisatie: who.organisatie, email: who.email, telefoon: who.telefoon, extra: note },
     }).catch(console.error);
+    alertTeam({
+      type: "vraag",
+      naam: who.naam,
+      email: who.email,
+      telefoon: who.telefoon || undefined,
+      organisatie: who.organisatie,
+      extra: note,
+      source: `Pagina 'Dit gebeurt er nu', route ${kind}`,
+    });
     trackEvent("next_steps_question", { stap: stepNumber, route: kind });
     setState("sent");
   };

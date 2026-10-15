@@ -92,6 +92,7 @@ export default function PrivacyverklaringPage() {
         <ul>
           <li><strong>Google LLC</strong>: voor Google Analytics (gegevensverwerking in de VS op basis van de standaard contractbepalingen van de Europese Commissie).</li>
           <li><strong>Supabase</strong>: voor de opslag van formulierinzendingen (gegevens worden opgeslagen binnen de EU).</li>
+          <li><strong>HubSpot</strong>: voor het beheren van contactgegevens en aanvragen in ons klantsysteem (gegevensverwerking in de VS op basis van de standaard contractbepalingen van de Europese Commissie).</li>
         </ul>
         <p>Met alle verwerkers hebben wij de vereiste verwerkersovereenkomsten afgesloten.</p>
 

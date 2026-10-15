@@ -112,7 +112,7 @@ export default function ArticleDetailClient({ article, prevArticle, nextArticle 
 
       {/* Hero image */}
       {article.image_url && (
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 mt-4">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
           <div className="rounded-2xl overflow-hidden aspect-video">
             <img
               src={article.image_url}
@@ -123,7 +123,7 @@ export default function ArticleDetailClient({ article, prevArticle, nextArticle 
         </div>
       )}
 
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <AnimatedSection>
           <div className="flex flex-wrap gap-2 mb-4">
             <Badge variant="secondary">{article.category}</Badge>
@@ -159,28 +159,30 @@ export default function ArticleDetailClient({ article, prevArticle, nextArticle 
           </div>
         </AnimatedSection>
 
-        <div className="mx-auto max-w-3xl">
-          {/* Contents: folded above the article, so nothing sits beside the text */}
+        <div className="flex flex-col lg:flex-row gap-10">
+          {/* TOC sidebar */}
           {showToc && (
-            <details className="group mb-10 rounded-2xl border border-border bg-card">
-              <summary className="press flex cursor-pointer list-none items-center justify-between px-5 py-4 text-[0.9375rem] font-semibold text-foreground">
-                In dit artikel
-                <span className="text-primary transition-transform duration-200 group-open:rotate-45" aria-hidden>+</span>
-              </summary>
-              <ul className="space-y-2 px-5 pb-5">
-                {headings.map((h) => (
-                  <li key={h.id}>
-                    <a href={`#${h.id}`} className="text-[0.9375rem] text-muted-foreground hover:text-primary transition-colors">
-                      {h.text}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </details>
+            <aside className="lg:w-64 shrink-0">
+              <div className="sticky top-24 bg-card border border-border rounded-xl p-5">
+                <p className="text-sm font-semibold text-foreground mb-3">In dit artikel</p>
+                <ul className="space-y-2">
+                  {headings.map((h) => (
+                    <li key={h.id}>
+                      <a
+                        href={`#${h.id}`}
+                        className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {h.text}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </aside>
           )}
 
           {/* Article content */}
-          <article className="min-w-0">
+          <article className="flex-1 min-w-0">
             <div
               className="prose prose-neutral max-w-none"
               onClick={handleInternalLinkClick}

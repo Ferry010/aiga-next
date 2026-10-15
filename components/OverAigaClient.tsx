@@ -6,7 +6,7 @@ import { rememberLead, kindFromHulp } from "@/lib/nextSteps";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import BreadcrumbNav from "@/components/BreadcrumbNav";
 import Panel from "@/components/Panel";
-import { FocusFormSection } from "@/components/PageKit";
+import AskUs from "@/components/AskUs";
 import { createClient } from "@/lib/supabase/client";
 import { useInlineValidation, FieldError, PHONE_PATTERN } from "@/components/InlineValidation";
 import { trackLead, alertTeam } from "@/lib/track";
@@ -145,7 +145,7 @@ export default function OverAigaClient() {
       {/* Story */}
       <Panel tone="tint">
         <AnimatedSection>
-          <div className="mx-auto max-w-3xl flex flex-col gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-8 lg:gap-16">
             <h2 className="text-[1.75rem] sm:text-[2.6rem] font-display font-bold text-foreground leading-[1.1] tracking-tight">
               Waarom wij dit doen.
             </h2>
@@ -237,7 +237,7 @@ export default function OverAigaClient() {
         <section className="pb-16 sm:pb-24">
           <div className={container}>
             <AnimatedSection>
-              <div className="mx-auto max-w-3xl flex flex-col gap-4">
+              <div className="grid grid-cols-1 lg:grid-cols-[5fr_7fr] gap-6 lg:gap-16">
                 <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground leading-[1.15] tracking-tight">
                   Liever eerst lezen?
                 </h2>
@@ -261,12 +261,22 @@ export default function OverAigaClient() {
         </section>
       )}
 
-      {/* Contact: one line of sight to the form */}
-      <FocusFormSection
-        id="contact"
-        title="Je team gebruikt AI al. Laten we zorgen dat ze het goed en veilig doen."
-        intro="Vul je gegevens in. Binnen één werkdag hoor je van Ferry, Robbert of Tom. Je zit nergens aan vast."
-      >
+      {/* Contact */}
+      <div className="pb-10">
+        <Panel tone="tint" id="contact">
+          <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] gap-10 lg:gap-16">
+            <AnimatedSection>
+              <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.08] tracking-tight">
+                Je team gebruikt AI al. Laten we zorgen dat het veilig gebeurt.
+              </h2>
+              <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+                Laat je gegevens achter. Binnen één werkdag nemen we contact met je op. Geen verplichtingen.
+              </p>
+              <AskUs className="mt-8" />
+            </AnimatedSection>
+
+            <AnimatedSection delay={0.05}>
+              <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">
                 {submitted ? (
                   <div>
                     <p className="text-[1.0625rem] text-foreground" role="status">Gelukt. Je ziet zo wat er nu gebeurt.</p>
@@ -352,7 +362,11 @@ export default function OverAigaClient() {
                     </button>
                   </form>
                 )}
-      </FocusFormSection>
+              </div>
+            </AnimatedSection>
+          </div>
+        </Panel>
+      </div>
     </div>
   );
 }

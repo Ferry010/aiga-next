@@ -84,10 +84,9 @@ export default function ContactClient() {
       <BreadcrumbNav items={[{ label: "Home", href: "/" }, { label: "Contact" }]} />
 
       <section className="pt-6 pb-16 sm:pt-10 sm:pb-24">
-        {/* One column: the promise, the form, then the alternatives */}
-        <div className="max-w-2xl mx-auto px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
-            <h1 className="text-4xl sm:text-5xl font-display font-bold text-foreground leading-[1.05] tracking-tight text-balance">
+            <h1 className="text-4xl sm:text-6xl font-display font-bold text-foreground leading-[1.05] tracking-tight max-w-4xl">
               Vraag je offerte aan,
               <span className="neon-text block mt-2">of stel eerst je vraag.</span>
             </h1>
@@ -96,7 +95,7 @@ export default function ContactClient() {
             </p>
           </AnimatedSection>
 
-          <div className="mt-10 flex flex-col gap-6">
+          <div className="mt-12 grid grid-cols-1 lg:grid-cols-[6fr_5fr] gap-10 lg:gap-16">
             <AnimatedSection delay={0.05}>
               <div className="rounded-3xl bg-white border border-border p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">
                 {submitted ? (
@@ -167,9 +166,9 @@ export default function ContactClient() {
               </div>
             </AnimatedSection>
 
-            <AskUs compact className="text-center" />
-            <AnimatedSection delay={0.1} className="mt-8">
-              <h2 className="text-2xl font-display font-bold text-foreground tracking-tight">Vaak gevraagd</h2>
+            <AnimatedSection delay={0.1}>
+              <AskUs />
+              <h2 className="mt-12 text-2xl font-display font-bold text-foreground tracking-tight">Vaak gevraagd</h2>
               <div className="mt-4">
                 <FaqList items={contactFaqs} />
               </div>

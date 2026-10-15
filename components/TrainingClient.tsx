@@ -1,17 +1,21 @@
 'use client';
 import Link from "next/link";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import Panel from "@/components/Panel";
 import CourseProgress from "@/components/CourseProgress";
 import SectionNav from "@/components/SectionNav";
 import ProgramAccordion from "@/components/ProgramAccordion";
+import BookingBox from "@/components/BookingBox";
+import AskUs from "@/components/AskUs";
 import FerryAuthority from "@/components/FerryAuthority";
 import LeadForm from "@/components/LeadForm";
 import FaqList from "@/components/FaqList";
+import ShareWithColleague from "@/components/ShareWithColleague";
 import StickyCta from "@/components/StickyCta";
 import { TRAINING_FAQ } from "@/lib/faq";
 import { TOTAL_LESSONS, TOTAL_QUIZ_QUESTIONS } from "@/lib/curriculum";
 import { TIERS, eur } from "@/lib/pricing";
-import { FocusFormSection, QUOTE_BODY, QuoteBenefits } from "@/components/PageKit";
+import { QuoteBody, QuoteBenefits } from "@/components/PageKit";
 
 const container = "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8";
 
@@ -99,8 +103,8 @@ export default function TrainingClient() {
 
       <SectionNav items={nav} />
 
-      {/* Course body: one reading column, nothing competing beside it */}
-      <div className="mx-auto max-w-3xl px-4 sm:px-6">
+      {/* Course body with the booking box beside it */}
+      <div className={`${container} grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_20rem] gap-12 xl:gap-16`}>
         <div>
           <section id="overzicht" className="scroll-mt-32 pt-14 sm:pt-20">
             <SectionTitle intro="Je mensen gebruiken AI al, elk op hun eigen manier. Deze training geeft iedereen dezelfde praktische basis. Na afloop:">
@@ -200,19 +204,42 @@ export default function TrainingClient() {
           </section>
         </div>
 
+        {/* Sticky booking box (desktop) */}
+        <aside className="hidden lg:block pt-20">
+          <div className="sticky top-36">
+            <BookingBox />
+          </div>
+        </aside>
       </div>
 
       <FerryAuthority />
 
-      {/* Offerte: one line of sight to the form */}
-      <FocusFormSection
-        id="offerte"
-        title={<>Wat kost het voor jouw team? <span className="text-primary">Je hoort het binnen één werkdag.</span></>}
-        intro={QUOTE_BODY}
-        lead={<QuoteBenefits />}
-      >
-        <LeadForm source="Training pagina, offerte aanvraag" />
-      </FocusFormSection>
+      {/* Offerte */}
+      <div className="pb-28 sm:pb-10">
+        <Panel tone="tint" id="offerte">
+          {/* On phones the form comes right after the promise; on desktop it sits beside everything */}
+          <div className="grid grid-cols-1 lg:grid-cols-[5fr_6fr] lg:grid-rows-[auto_1fr] gap-x-16 gap-y-8">
+            <AnimatedSection className="lg:col-start-1 lg:row-start-1">
+              <h2 className="text-3xl sm:text-5xl font-display font-bold text-foreground leading-[1.08] tracking-tight text-balance">
+                Wat kost het voor jouw team? <span className="text-primary">Je hoort het binnen één werkdag.</span>
+              </h2>
+              <QuoteBody />
+            </AnimatedSection>
+            <AnimatedSection delay={0.05} className="lg:col-start-2 lg:row-start-1 lg:row-span-2">
+              <div className="rounded-3xl bg-white p-6 sm:p-8 shadow-[0_20px_50px_-28px_hsl(256_56%_33%/0.35)]">
+                <LeadForm source="Training pagina, offerte aanvraag" />
+              </div>
+            </AnimatedSection>
+            <AnimatedSection className="lg:col-start-1 lg:row-start-2">
+              <QuoteBenefits />
+              <AskUs className="mt-8" />
+              <div className="mt-6">
+                <ShareWithColleague product="training" inline />
+              </div>
+            </AnimatedSection>
+          </div>
+        </Panel>
+      </div>
 
       <StickyCta target="offerte" label="Ontvang je offerte" note="€249 ex btw p.p." />
     </div>

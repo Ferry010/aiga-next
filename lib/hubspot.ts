@@ -8,11 +8,18 @@
 //     Sales pipeline at the first stage, linked to the contact.
 //  3. A note with all details is added to the contact (and the deal).
 //
-// Needs HUBSPOT_ACCESS_TOKEN (a HubSpot private app with the scopes crm.objects.contacts.read/write
-// and crm.objects.deals.read/write). Without it, this does nothing and the site works as before.
+// Needs HUBSPOT_SERVICE_KEY: a HubSpot service key (Development > Keys > Service keys) with the
+// scopes crm.objects.contacts.read/write and crm.objects.deals.read/write. Each website has its own
+// key, and every lead is labelled with the site it came from (SITE_LABEL). Without a key this does
+// nothing and the site works as before.
 
 const API = "https://api.hubapi.com";
-const TOKEN = process.env.HUBSPOT_ACCESS_TOKEN;
+const TOKEN = process.env.HUBSPOT_SERVICE_KEY || process.env.HUBSPOT_ACCESS_TOKEN;
+
+// Which website this lead came in on. Shown in deal names and notes, and stored in the contact
+// property "Bron website" (internal name bron_website) when that property exists in HubSpot.
+const SITE_LABEL = "AIGA";
+const SITE_PROPERTY = "bron_website";
 
 export type HubspotLeadKind = "offerte" | "masterclass" | "contact" | "callback" | "vraag" | "scan";
 
@@ -42,9 +49,9 @@ const DEAL_KINDS: HubspotLeadKind[] = ["offerte", "masterclass", "callback"];
 function dealName(l: HubspotLead): string {
   const who = l.organisatie && !l.organisatie.startsWith("Onbekend") ? l.organisatie : l.naam;
   const size = l.details?.match(/Teamgrootte: ([^·]+)/)?.[1]?.trim();
-  if (l.kind === "masterclass") return `Masterclass · ${who}`;
-  if (l.kind === "callback") return `Terugbellen na AI-risicocheck · ${who}`;
-  return `Teamtraining · ${who}${size && size !== "onbekend" ? ` (${size})` : ""}`;
+  if (l.kind === "masterclass") return `${SITE_LABEL} · Masterclass · ${who}`;
+  if (l.kind === "callback") return `${SITE_LABEL} · Terugbellen na AI-risicocheck · ${who}`;
+  return `${SITE_LABEL} · Teamtraining · ${who}${size && size !== "onbekend" ? ` (${size})` : ""}`;
 }
 
 const TITLES: Record<HubspotLeadKind, string> = {
@@ -68,6 +75,16 @@ async function hs<T = any>(path: string, init: RequestInit = {}): Promise<{ stat
   return { status: res.status, data };
 }
 
+// Write contact properties; if "Bron website" doesn't exist (yet) in HubSpot, write the rest anyway
+async function writeContact(path: string, method: "POST" | "PATCH", props: Record<string, string>) {
+  const first = await hs(path, { method, body: JSON.stringify({ properties: props }) });
+  const missingProperty = first.status === 400 && JSON.stringify(first.data || "").includes(SITE_PROPERTY);
+  if (!missingProperty) return first;
+  const rest = { ...props };
+  delete rest[SITE_PROPERTY];
+  return hs(path, { method, body: JSON.stringify({ properties: rest }) });
+}
+
 const assoc = (id: string, typeId: number) => ({
   to: { id },
   types: [{ associationCategory: "HUBSPOT_DEFINED", associationTypeId: typeId }],
@@ -80,7 +97,7 @@ export async function pushLeadToHubspot(l: HubspotLead): Promise<{ ok: boolean; 
 
   try {
     // 1. Contact: find by e-mail, then update or create
-    const found = await hs(`/crm/v3/objects/contacts/${encodeURIComponent(email)}?idProperty=email&properties=lead_source`);
+    const found = await hs(`/crm/v3/objects/contacts/${encodeURIComponent(email)}?idProperty=email&properties=lead_source,${SITE_PROPERTY}`);
     const [firstname, ...rest] = l.naam.trim().split(/\s+/);
     const props: Record<string, string> = { email };
     if (l.telefoon) props.phone = l.telefoon;
@@ -90,14 +107,16 @@ export async function pushLeadToHubspot(l: HubspotLead): Promise<{ ok: boolean; 
     if (found.status === 200 && found.data?.id) {
       contactId = found.data.id;
       if (!found.data.properties?.lead_source) props.lead_source = leadSource(l.kind, l.source);
-      await hs(`/crm/v3/objects/contacts/${contactId}`, { method: "PATCH", body: JSON.stringify({ properties: props }) });
+      if (!found.data.properties?.[SITE_PROPERTY]) props[SITE_PROPERTY] = SITE_LABEL;
+      await writeContact(`/crm/v3/objects/contacts/${contactId}`, "PATCH", props);
     } else {
       // Names only on create: an existing contact keeps how it was entered in HubSpot
       props.firstname = firstname || "";
       props.lastname = rest.join(" ");
       props.lead_source = leadSource(l.kind, l.source);
       props.hs_lead_status = "NEW";
-      const created = await hs(`/crm/v3/objects/contacts`, { method: "POST", body: JSON.stringify({ properties: props }) });
+      props[SITE_PROPERTY] = SITE_LABEL;
+      const created = await writeContact(`/crm/v3/objects/contacts`, "POST", props);
       if (!created.data?.id) return { ok: false, reason: `contact create failed (${created.status})` };
       contactId = created.data.id;
     }
@@ -117,7 +136,7 @@ export async function pushLeadToHubspot(l: HubspotLead): Promise<{ ok: boolean; 
 
     // 3. Note with everything we know (note → contact: 202, note → deal: 214)
     const lines = [
-      `<strong>${esc(TITLES[l.kind])}</strong>`,
+      `<strong>${esc(SITE_LABEL)} website · ${esc(TITLES[l.kind])}</strong>`,
       l.organisatie ? `Organisatie: ${esc(l.organisatie)}` : "",
       l.telefoon ? `Telefoon: ${esc(l.telefoon)}` : "",
       l.details ? `Details: ${esc(l.details)}` : "",

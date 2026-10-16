@@ -21,7 +21,7 @@ async function probe(path: string, key: string) {
 }
 
 export async function GET() {
-  const key = process.env.HUBSPOT_SERVICE_KEY || process.env.HUBSPOT_ACCESS_TOKEN;
+  const key = process.env.HUBSPOT_SERVICE_KEY || process.env.hubspot_service_key || process.env.HUBSPOT_ACCESS_TOKEN;
   if (!key) {
     return NextResponse.json({ keyConfigured: false, hint: "HUBSPOT_SERVICE_KEY is not set on this deployment (or it was added without redeploying)." });
   }
@@ -31,7 +31,7 @@ export async function GET() {
   ]);
   return NextResponse.json({
     keyConfigured: true,
-    keyVariable: process.env.HUBSPOT_SERVICE_KEY ? "HUBSPOT_SERVICE_KEY" : "HUBSPOT_ACCESS_TOKEN",
+    keyVariable: process.env.HUBSPOT_SERVICE_KEY ? "HUBSPOT_SERVICE_KEY" : process.env.hubspot_service_key ? "hubspot_service_key" : "HUBSPOT_ACCESS_TOKEN",
     contactsRead: contacts,
     dealsRead: deals,
   });

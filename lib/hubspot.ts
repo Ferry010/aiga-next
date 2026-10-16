@@ -14,7 +14,8 @@
 // nothing and the site works as before.
 
 const API = "https://api.hubapi.com";
-const TOKEN = process.env.HUBSPOT_SERVICE_KEY || process.env.HUBSPOT_ACCESS_TOKEN;
+// Names in Vercel are case-sensitive; accept the lowercase spelling too
+const TOKEN = process.env.HUBSPOT_SERVICE_KEY || process.env.hubspot_service_key || process.env.HUBSPOT_ACCESS_TOKEN;
 
 // Which website this lead came in on. Shown in deal names and notes, and stored in the contact
 // property "Bron website" (internal name bron_website) when that property exists in HubSpot.

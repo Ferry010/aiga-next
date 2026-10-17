@@ -50,7 +50,7 @@ const QAS: Qa[] = [
   {
     id: "tijd",
     q: "Hoeveel tijd kost het per persoon?",
-    a: <>Een paar uur, verdeeld over vier modules die mensen tussen het werk door volgen. Volledig in eigen tempo.</>,
+    a: <>2 à 3 uur inclusief het examen, verdeeld over vier modules die mensen tussen het werk door volgen. Volledig in eigen tempo.</>,
   },
   {
     id: "certificaat",

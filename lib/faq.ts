@@ -9,6 +9,10 @@ export const TRAINING_FAQ: Faq[] = [
     a: "Je betaalt per persoon: €249 ex btw voor 1 tot 10 personen, €229 ex btw voor 11 tot 49 personen. Vanaf 50 personen is het een enterprise-traject met een offerte op maat, inclusief de live masterclass voor je directie en MT.",
   },
   {
+    q: "Wat als een medewerker vertrekt?",
+    a: "Je koopt plekken, geen namen. Zolang een plek nog niet geactiveerd is, geef je hem aan iemand anders of bewaar je hem voor later. Een geactiveerde plek hoort bij die ene persoon.",
+  },
+  {
     q: "Kunnen we later nog mensen toevoegen?",
     a: "Ja. Je zet zoveel mensen in de training als je wil, nu of later. Vanaf 11 personen betaal je €229 per persoon, vanaf 50 maken we een enterprise-offerte op maat.",
   },
@@ -22,11 +26,19 @@ export const TRAINING_FAQ: Faq[] = [
   },
   {
     q: "Hoeveel tijd kost het per medewerker?",
-    a: "Een paar uur, verdeeld over vier modules die mensen tussen het werk door volgen. Volledig in eigen tempo, dus zonder roostergedoe.",
+    a: "Gemiddeld 2 à 3 uur, inclusief het eindexamen, verdeeld over vier modules die mensen tussen het werk door volgen. Volledig in eigen tempo, dus zonder roostergedoe.",
+  },
+  {
+    q: "Hoe lang heeft iedereen toegang?",
+    a: "12 maanden, gerekend vanaf het moment dat iemand zijn account activeert. Geen abonnement: je betaalt één keer per plek. Heeft iemand meer tijd nodig, dan kun je die plek verlengen.",
+  },
+  {
+    q: "Zie ik wie de training heeft afgerond?",
+    a: "Ja. Je krijgt regelmatig een voortgangsupdate. Wil je dat we iemand een herinnering of activatiemail sturen, dan doen we dat. Dat zit bij de prijs inbegrepen.",
   },
   {
     q: "Hoe wordt er getoetst?",
-    a: "Na de modules volgen tussentijdse toetsen, aan het eind een digitaal eindexamen. Wie voldoende scoort, krijgt een certificaat van deelname.",
+    a: "Na de modules volgen tussentijdse toetsen, aan het eind een digitaal eindexamen. Wie voldoende scoort, krijgt een certificaat van deelname. Niet gehaald? Herkansen kan zo vaak als nodig.",
   },
   {
     q: "Is er technische kennis nodig?",

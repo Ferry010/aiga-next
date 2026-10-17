@@ -42,7 +42,7 @@ const faqs: Faq[] = [
   },
   {
     q: "Hoe lang duurt de training?",
-    a: "Een paar uur per persoon, verdeeld over vier modules die mensen in eigen tempo volgen, tussen het werk door.",
+    a: "2 à 3 uur per persoon inclusief het examen, verdeeld over vier modules die mensen in eigen tempo volgen, tussen het werk door.",
   },
 ];
 

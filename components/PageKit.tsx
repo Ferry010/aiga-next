@@ -99,7 +99,7 @@ export function PointGrid({ items, cols = 2 }: { items: { title: string; body: R
 export function QuoteBody() {
   return (
     <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-      Een paar uur training per persoon, en dat verandert. Vul vijf velden in, en je weet binnen één werkdag wat
+      2 à 3 uur training per persoon, en dat verandert. Vul vijf velden in, en je weet binnen één werkdag wat
       het kost voor jouw team.
     </p>
   );

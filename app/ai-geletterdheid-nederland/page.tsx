@@ -65,7 +65,7 @@ export default function AiGeletterdheidNederlandPage() {
         />
         <p>
           Wachten op het perfecte beleid heeft weinig zin: een document verandert geen gedrag. Een training die iedereen
-          in een paar uur volgt, wel.
+          in 2 à 3 uur volgt, wel.
         </p>
       </TextSection>
 

@@ -58,16 +58,17 @@ const gedachten = [
   },
   {
     q: "Moet mijn hele team dan AI-expert worden?",
-    a: "Nee. Ze hoeven alleen te weten hoe AI werkt, waar het misgaat, en hoe je het verstandig inzet. Dat is een paar uur, geen opleiding.",
+    a: "Nee. Ze hoeven alleen te weten hoe AI werkt, waar het misgaat, en hoe je het verstandig inzet. Dat is 2 à 3 uur, geen opleiding.",
   },
 ];
 
+// The same Tuesday as above, after the training. The last one is the buyer's own moment.
 const geregeld = [
-  "Je mensen weten wat er wel en niet in een AI-tool mag, zonder dat ze het hoeven te vragen.",
-  "Ze controleren output voordat het de deur uitgaat, omdat ze weten waar het misgaat.",
-  "Ze halen meer uit AI, omdat ze weten hoe je het goed inzet.",
-  "Iedereen werkt vanaf dezelfde basis. Niet vijfhonderd eigen manieren, maar één.",
-  "En als iemand vraagt hoe jullie AI aanpakken, laat je het gewoon zien.",
+  "Iemand wil een klantenlijst in ChatGPT plakken, en haalt eerst de namen eruit.",
+  "Iemand leest een AI-antwoord na voordat het naar een klant gaat.",
+  "Iemand ziet een cijfer dat te mooi klinkt, en rekent het na.",
+  "Iemand laat AI het eerste concept schrijven, en houdt tijd over voor het echte werk.",
+  "En als een klant vraagt hoe jullie met AI omgaan, stuur jij het overzicht van certificaten.",
 ];
 
 const container = "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8";
@@ -186,7 +187,7 @@ export default function HomePageClient() {
         <div className={`${container} text-center`}>
           <AnimatedSection>
             <h2 className="text-[1.75rem] sm:text-4xl font-display font-bold text-foreground leading-[1.12] tracking-tight">
-              Zo voelt het als het geregeld is.
+              Dezelfde dinsdag, na de training.
             </h2>
           </AnimatedSection>
           <ul className="mx-auto mt-10 flex max-w-xl flex-col gap-3">
@@ -220,7 +221,7 @@ export default function HomePageClient() {
               <RevealItem index={0} className="block-lilac rounded-[1.75rem] p-7 sm:p-10 flex flex-col">
                 <h3 className="text-2xl sm:text-3xl font-display font-bold text-foreground tracking-tight">De teamtraining</h3>
                 <p className="mt-3 text-lg text-muted-foreground leading-relaxed flex-1">
-                  Voor je hele team. Online, in eigen tempo, een paar uur per persoon.
+                  Voor je hele team. Online, in eigen tempo, 2 à 3 uur per persoon inclusief examen.
                 </p>
                 <p className="mt-6 text-4xl font-display font-bold text-foreground tracking-tight">
                   &euro;249 <span className="text-base font-normal text-muted-foreground">ex btw per persoon</span>
@@ -257,7 +258,7 @@ export default function HomePageClient() {
               Je team gebruikt AI. <span className="text-primary">Zorg dat ze weten hoe.</span>
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-lg text-muted-foreground leading-relaxed">
-              Een paar uur per persoon, online en in eigen tempo. Daarna weet iedereen wat AI is, hoe je het slim inzet en waar de grens ligt.
+              2 à 3 uur per persoon, online en in eigen tempo. Daarna weet iedereen wat AI is, hoe je het slim inzet en waar de grens ligt.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row sm:justify-center items-center gap-x-6 gap-y-4">
               <Link

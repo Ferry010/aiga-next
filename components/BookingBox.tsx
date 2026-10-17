@@ -26,8 +26,9 @@ const BOOKINGS: Record<Booking["product"], Booking> = {
       `4 modules, ${TOTAL_LESSONS} lessen`,
       "Toets per module + digitaal eindexamen",
       "Certificaat van deelname",
-      "Online, in eigen tempo",
-      "Data op Europese servers",
+      "2 à 3 uur p.p., online, in eigen tempo",
+      "12 maanden toegang, geen abonnement",
+      "Voortgangsupdates inbegrepen",
     ],
     bonus: (
       <>

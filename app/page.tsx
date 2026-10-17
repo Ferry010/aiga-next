@@ -45,7 +45,7 @@ const faqItems = [
   },
   {
     q: "Moet mijn hele team dan AI-expert worden?",
-    a: "Nee. Ze hoeven alleen te weten hoe AI werkt, waar het misgaat, en hoe je het verstandig inzet. Dat is een paar uur, geen opleiding.",
+    a: "Nee. Ze hoeven alleen te weten hoe AI werkt, waar het misgaat, en hoe je het verstandig inzet. Dat is 2 à 3 uur, geen opleiding.",
   },
 ];
 

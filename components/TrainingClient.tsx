@@ -20,9 +20,9 @@ import { QuoteBody, QuoteBenefits } from "@/components/PageKit";
 const container = "max-w-6xl mx-auto px-4 sm:px-6 lg:px-8";
 
 const keyFacts = [
-  { value: `4 modules`, note: `${TOTAL_LESSONS} lessen, in eigen tempo` },
+  { value: "2 à 3 uur", note: `per persoon, inclusief examen. ${TOTAL_LESSONS} lessen in eigen tempo` },
   { value: "€249", note: "ex btw p.p., €229 vanaf 11 personen" },
-  { value: "Certificaat", note: "van deelname, na het eindexamen" },
+  { value: "Certificaat", note: "van deelname, examen onbeperkt te herkansen" },
   { value: "50+ plekken", note: "enterprise, offerte op maat" },
 ];
 
@@ -33,11 +33,26 @@ const outcomes = [
   "Jij weet dat je hele organisatie dezelfde basis heeft. Aantoonbaar, met een certificaat per medewerker.",
 ];
 
+// Will this work for us? Size, level and who already trains with it
+const fit = [
+  { title: "Voor elke omvang", body: "Van een team van zes tot een organisatie met honderden mensen. Dezelfde training, en hoe meer mensen, hoe lager de prijs per persoon." },
+  { title: "Voor elk niveau", body: "Van de collega die alles al met ChatGPT doet tot wie het nog niet durft aan te raken. Technische kennis is niet nodig." },
+  { title: "Al gekozen door", body: "Onder meer een keten van kinderdagverblijven en een groot ziekenhuis. Organisaties waar zorgvuldig omgaan met gegevens geen keuze is." },
+];
+
+// What a buyer would otherwise find out later: said up front
+const goedOmTeWeten = [
+  { title: "Een plek is van één persoon, zodra die hem activeert.", body: "Je koopt plekken, geen namen. Zolang een plek niet geactiveerd is, geef je hem aan iemand anders of bewaar je hem voor later." },
+  { title: "Iedereen heeft 12 maanden toegang.", body: "Gerekend vanaf de activatie. Geen abonnement. Heeft iemand meer tijd nodig, dan kun je die plek verlengen." },
+  { title: "Je krijgt een certificaat van deelname, geen wettelijk diploma.", body: "Het laat zien dat iemand de training heeft gevolgd en het examen heeft gehaald. We maken het niet mooier dan het is." },
+  { title: "Dit is geen AI-beleid.", body: "De training geeft je mensen de basis. Welke regels je kiest, bepaal je zelf. Maar een beleid werkt pas als mensen snappen waar het over gaat." },
+];
+
 const steps = [
   { title: "Je vraagt een offerte aan", body: "Binnen één werkdag belt een van ons je om het aantal deelnemers en de start door te nemen." },
   { title: "Wij zetten alles klaar", body: "Jij deelt de link met je team. Je hoeft niets te bouwen of te beheren." },
-  { title: "Iedereen in eigen tempo", body: "Korte lessen tussen het werk door, met na elke module een toets." },
-  { title: "Examen en certificaat", body: "Een digitaal eindexamen. Wie slaagt, krijgt een certificaat van deelname." },
+  { title: "Iedereen in eigen tempo", body: "Korte lessen tussen het werk door. Jij krijgt voortgangsupdates, en wij sturen herinneringen aan wie nog niet is begonnen." },
+  { title: "Examen en certificaat", body: "Een digitaal eindexamen, zo vaak herkansen als nodig. Wie slaagt, krijgt een certificaat van deelname." },
 ];
 
 const nav = [
@@ -70,7 +85,7 @@ export default function TrainingClient() {
               <span className="neon-text block mt-2">Maar niemand heeft ze geleerd hoe het moet.</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              In een paar uur leert iedereen wat AI is, hoe je het slim inzet in je eigen werk, en wat er níet in
+              In 2 à 3 uur leert iedereen wat AI is, hoe je het slim inzet in je eigen werk, en wat er níet in
               mag. Online, in eigen tempo, met examen en certificaat. €249 per persoon, €229 vanaf 11.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -117,6 +132,18 @@ export default function TrainingClient() {
             </div>
           </section>
 
+          <section className="pt-16 sm:pt-24">
+            <SectionTitle>Werkt dit ook voor jullie? Waarschijnlijk wel.</SectionTitle>
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-x-8 gap-y-7">
+              {fit.map((p) => (
+                <div key={p.title} className="border-t-2 border-primary pt-4">
+                  <h3 className="text-lg font-display font-bold text-foreground">{p.title}</h3>
+                  <p className="mt-2 text-muted-foreground leading-relaxed">{p.body}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
           <section id="programma" className="scroll-mt-32 pt-16 sm:pt-24">
             <SectionTitle
               intro={`Vier modules, ${TOTAL_LESSONS} lessen, ${TOTAL_QUIZ_QUESTIONS} toetsvragen en een digitaal eindexamen. Elke module opent met een korte introductie en sluit af met een toets. Klik een module open voor alle lessen.`}
@@ -129,7 +156,7 @@ export default function TrainingClient() {
           </section>
 
           <section id="zo-werkt-het" className="scroll-mt-32 pt-16 sm:pt-24">
-            <SectionTitle intro="De grootste angst bij online training is dat niemand hem afmaakt. Daarom is deze kort en concreet, met toetsen tussendoor en een examen aan het eind.">
+            <SectionTitle intro="De grootste angst bij online training is dat niemand hem afmaakt. Daarom duurt deze 2 à 3 uur, zie jij wie klaar is, en sturen wij de herinneringen. Dat zit bij de prijs inbegrepen.">
               Jij deelt één link. Wij doen de rest.
             </SectionTitle>
             <ol className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-8">
@@ -150,7 +177,7 @@ export default function TrainingClient() {
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-6">
               {[
                 { t: "Na elke module", b: `Een korte toets. ${TOTAL_QUIZ_QUESTIONS} vragen in totaal, zodat iedereen weet waar hij staat.` },
-                { t: "Aan het eind", b: "Een digitaal eindexamen over wat je hebt geleerd." },
+                { t: "Aan het eind", b: "Een digitaal eindexamen over wat je hebt geleerd. Niet gehaald? Herkansen kan zo vaak als nodig." },
                 { t: "Bij voldoende resultaat", b: "Een certificaat van deelname op naam van de medewerker." },
               ].map((c) => (
                 <div key={c.t} className="block-lilac rounded-2xl p-5">
@@ -164,10 +191,22 @@ export default function TrainingClient() {
             </p>
           </section>
 
+          <section className="pt-16 sm:pt-24">
+            <SectionTitle intro="Liever nu dan in de kleine lettertjes.">Wat je moet weten voordat je begint</SectionTitle>
+            <dl className="mt-8 border-b border-border">
+              {goedOmTeWeten.map((g) => (
+                <div key={g.title} className="grid grid-cols-1 sm:grid-cols-[2fr_3fr] gap-x-8 gap-y-1 border-t border-border py-5">
+                  <dt className="font-display font-bold text-foreground leading-snug">{g.title}</dt>
+                  <dd className="text-muted-foreground leading-relaxed">{g.body}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+
           <section id="prijs" className="scroll-mt-32 pt-16 sm:pt-24">
             <div className="statement-block rounded-[1.75rem] px-6 py-10 sm:px-10 sm:py-12">
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground leading-[1.15] tracking-tight max-w-xl">
-                €249 per persoon. Hoe groter je team, hoe lager de prijs.
+                €249 per persoon, eenmalig. Hoe groter je team, hoe lager de prijs.
               </h2>
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {TIERS.map((t) => (
@@ -183,9 +222,13 @@ export default function TrainingClient() {
                 ))}
               </div>
               <p className="mt-6 text-muted-foreground leading-relaxed max-w-2xl">
-                Inbegrepen: alle vier modules, de toetsen, het eindexamen en een certificaat van deelname. Later mensen
-                toevoegen kan altijd. Je data staat op Europese servers.{" "}
+                Inbegrepen: alle vier modules, de toetsen, het eindexamen, een certificaat van deelname, 12 maanden
+                toegang, voortgangsupdates en herinneringsmails. Geen abonnement. Later mensen toevoegen kan altijd.
+                Je data staat op Europese servers.{" "}
                 <Link href="/masterclass" className="text-primary font-semibold underline underline-offset-2">Over de masterclass</Link>
+              </p>
+              <p className="mt-4 font-display font-bold text-foreground leading-snug max-w-2xl">
+                Betaal je al voor Copilot of ChatGPT? Dan zorgt dit ervoor dat die licenties ook iets opleveren.
               </p>
               <a
                 href="#offerte"

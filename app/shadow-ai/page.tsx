@@ -230,7 +230,7 @@ export default function ShadowAiPage() {
                 Zet de grens voordat het volgende contract erin gaat.
               </h2>
               <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-                Een online training geeft je hele team dezelfde basis. Een paar uur per persoon, in eigen tempo. Na
+                Een online training geeft je hele team dezelfde basis. 2 à 3 uur per persoon, in eigen tempo. Na
                 afloop weet iedereen:
               </p>
               <ul className="mt-5 border-b border-border">

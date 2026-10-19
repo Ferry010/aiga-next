@@ -37,7 +37,7 @@ const keyFacts = [
   { value: "2 uur", note: "live, in vier blokken" },
   { value: "€495", note: "ex btw per persoon, minimaal 5" },
   { value: "Op locatie", note: "of online, op een datum die jullie past" },
-  { value: "Inbegrepen", note: "bij enterprise teamtraining (50+ plekken)" },
+  { value: "Gratis", note: "bij de teamtraining vanaf 50 personen" },
 ];
 
 const steps = [
@@ -278,9 +278,9 @@ export default function MasterclassClient() {
                 </div>
               </div>
               <p className="mt-8 rounded-2xl bg-white/10 px-5 py-4 text-lg text-foreground leading-relaxed">
-                <strong>Inbegrepen bij enterprise.</strong> Neem je de teamtraining af voor 50 plekken of meer, dan
-                zit de masterclass in je offerte op maat.{" "}
-                <Link href="/training" className="text-primary font-semibold underline underline-offset-2">Bekijk de teamtraining</Link>
+                <strong>Gratis bij de teamtraining vanaf 50 personen.</strong> Train je hele team en je directie krijgt
+                de masterclass erbij.{" "}
+                <Link href="/training#offerte" className="text-primary font-semibold underline underline-offset-2">Vraag een enterprise-offerte aan</Link>
               </p>
               <a
                 href="#aanmelden"

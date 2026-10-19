@@ -32,7 +32,7 @@ const BOOKINGS: Record<Booking["product"], Booking> = {
     ],
     bonus: (
       <>
-        <strong>50+ plekken?</strong> Enterprise: een offerte op maat, inclusief de masterclass voor je MT.
+        <strong>Vanaf 50 personen?</strong> Een enterprise-licentie met gratis MT-masterclass (t.w.v. vanaf €2.475).
       </>
     ),
     cta: "Vraag een offerte aan",
@@ -54,7 +54,7 @@ const BOOKINGS: Record<Booking["product"], Booking> = {
     ],
     bonus: (
       <>
-        <strong>Inbegrepen</strong> bij een enterprise-traject voor de teamtraining (vanaf 50 plekken).
+        <strong>Gratis</strong> bij de teamtraining vanaf 50 personen.
       </>
     ),
     cta: "Plan de masterclass",

@@ -174,7 +174,7 @@ export default function LeadForm({ source }: { source: string }) {
           Voor hoeveel mensen?
         </label>
         <select
-          id="lf-teamgrootte" name="teamgrootte" required
+          id="lf-teamgrootte" name="teamgrootte" required aria-describedby="lf-teamgrootte-hint"
           value={form.teamgrootte} onChange={(e) => setForm({ ...form, teamgrootte: e.target.value })}
           className={inputClass}
         >
@@ -184,6 +184,9 @@ export default function LeadForm({ source }: { source: string }) {
           <option value="11-49">11-49 medewerkers</option>
           <option value="50+">50 of meer (enterprise)</option>
         </select>
+        <p id="lf-teamgrootte-hint" className="mt-1 text-xs text-muted-foreground">
+          Vanaf 50 personen krijg je de MT-masterclass er gratis bij.
+        </p>
         <FieldError id="lf-teamgrootte" errors={v.errors} />
       </div>
 

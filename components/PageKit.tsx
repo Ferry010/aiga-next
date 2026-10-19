@@ -164,7 +164,7 @@ export function PriceTiers() {
           <p className="text-sm text-muted-foreground">{t.range}</p>
           <p className="mt-1 text-3xl font-display font-bold tracking-tight text-foreground">{t.price ? eur(t.price) : "Op maat"}</p>
           <p className="mt-1 text-sm text-muted-foreground">
-            {t.price ? "ex btw per persoon" : "enterprise-offerte, inclusief masterclass voor je MT"}
+            {t.price ? "ex btw per persoon" : "enterprise-licentie met gratis MT-masterclass (t.w.v. vanaf €2.475)"}
           </p>
         </div>
       ))}

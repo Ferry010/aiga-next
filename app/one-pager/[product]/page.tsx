@@ -50,7 +50,7 @@ const SHEETS: Record<string, Sheet> = {
     priceNote: "ex btw per persoon",
     priceBullets: [
       "€229 per persoon vanaf 11 personen, later mensen toevoegen kan altijd",
-      "Vanaf 50 plekken: enterprise, met een offerte op maat inclusief de masterclass voor je MT",
+      "Vanaf 50 personen: een enterprise-licentie met gratis MT-masterclass (t.w.v. vanaf €2.475)",
       "Het certificaat helpt ook bij de AI Act: je laat zien dat je AI-geletterdheid ondersteunt",
     ],
     pageUrl: "aigeletterdheid.academy/training",
@@ -76,7 +76,7 @@ const SHEETS: Record<string, Sheet> = {
     ],
     price: "€495",
     priceNote: "ex btw per persoon, minimaal 5",
-    priceBullets: ["Inbegrepen bij een enterprise-traject voor de teamtraining (vanaf 50 plekken)"],
+    priceBullets: ["Gratis bij de teamtraining vanaf 50 personen"],
     pageUrl: "aigeletterdheid.academy/masterclass",
   },
 };

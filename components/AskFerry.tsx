@@ -27,8 +27,8 @@ const QAS: Qa[] = [
     q: "We zijn met meer dan 50 mensen",
     a: (
       <>
-        Dan maken we er een enterprise-traject van, met een offerte op maat. Daar hoort de live masterclass voor je
-        directie en MT bij, en we plannen de uitrol samen in zodat het past bij jullie organisatie. Het snelst gaat
+        Dan werk je met één enterprise-licentie, met een offerte op maat. Je directie en management krijgen er een
+        MT-masterclass gratis bij (t.w.v. vanaf €2.475), en we plannen de uitrol samen in zodat het past bij jullie organisatie. Het snelst gaat
         dat in een kort gesprek.
       </>
     ),
@@ -80,13 +80,13 @@ const TIER_ANSWERS: Record<Tier["id"], React.ReactNode> = {
   mid: (
     <>
       Dan betaal je {eur(MID_PRICE)} ex btw per persoon. Later mensen toevoegen kan altijd, en vanaf 50 personen
-      maken we een offerte op maat.
+      krijg je een enterprise-licentie met gratis MT-masterclass.
     </>
   ),
   enterprise: (
     <>
-      Dan wordt het een enterprise-traject met een offerte op maat. Daar hoort de live masterclass voor je directie en
-      MT bij, en we plannen de uitrol samen in. Dat bespreek ik graag even met je.
+      Dan wordt het een enterprise-licentie met een offerte op maat. Je directie en management krijgen er een
+      MT-masterclass gratis bij (t.w.v. vanaf €2.475), en we plannen de uitrol samen in. Dat bespreek ik graag even met je.
     </>
   ),
 };

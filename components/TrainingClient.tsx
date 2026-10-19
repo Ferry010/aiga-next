@@ -23,7 +23,7 @@ const keyFacts = [
   { value: "2 à 3 uur", note: `per persoon, inclusief examen. ${TOTAL_LESSONS} lessen in eigen tempo` },
   { value: "€249", note: "ex btw p.p., €229 vanaf 11 personen" },
   { value: "Certificaat", note: "van deelname, examen onbeperkt te herkansen" },
-  { value: "50+ plekken", note: "enterprise, offerte op maat" },
+  { value: "50+ plekken", note: "enterprise-licentie met gratis MT-masterclass" },
 ];
 
 const outcomes = [
@@ -208,18 +208,25 @@ export default function TrainingClient() {
               <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground leading-[1.15] tracking-tight max-w-xl">
                 €249 per persoon, eenmalig. Hoe groter je team, hoe lager de prijs.
               </h2>
-              <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {TIERS.map((t) => (
-                  <div key={t.id} className={`rounded-2xl px-5 py-5 ${t.id === "enterprise" ? "bg-white/15" : "bg-white/10"}`}>
+              <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {TIERS.filter((t) => t.price).map((t) => (
+                  <div key={t.id} className="rounded-2xl bg-white/10 px-5 py-5">
                     <p className="text-sm text-muted-foreground">{t.range}</p>
-                    <p className="mt-1 text-4xl font-display font-bold tracking-tight text-foreground">
-                      {t.price ? eur(t.price) : "Op maat"}
-                    </p>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                      {t.price ? "ex btw per persoon" : "enterprise-offerte, inclusief masterclass voor je MT"}
-                    </p>
+                    <p className="mt-1 text-4xl font-display font-bold tracking-tight text-foreground">{eur(t.price!)}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">ex btw per persoon</p>
                   </div>
                 ))}
+                {/* 50+: the enterprise licence and the free MT-masterclass, full width so the offer can be read */}
+                <div className="sm:col-span-2 rounded-2xl bg-white/15 px-5 py-5">
+                  <h3 className="text-xl font-display font-bold tracking-tight text-foreground">Vanaf 50 personen: enterprise-licentie</h3>
+                  <p className="mt-2 text-muted-foreground leading-relaxed">
+                    Eén licentie voor je hele organisatie, met een offerte op maat. Inclusief een gratis MT-masterclass voor
+                    je directie en management: twee uur live, op locatie of online (t.w.v. vanaf €2.475).
+                  </p>
+                  <a href="#offerte" className="mt-3 inline-block font-semibold text-primary underline underline-offset-2">
+                    Vraag een enterprise-offerte aan
+                  </a>
+                </div>
               </div>
               <p className="mt-6 text-muted-foreground leading-relaxed max-w-2xl">
                 Inbegrepen: alle vier modules, de toetsen, het eindexamen, een certificaat van deelname, 12 maanden

@@ -6,7 +6,7 @@ import { TRAINING_FAQ, faqJsonLd } from "@/lib/faq";
 export const metadata: Metadata = {
   title: "Teamtraining AI: leer je team AI slim en veilig gebruiken | AIGA",
   description:
-    "Online AI-training voor je hele team: vier modules, tussentijdse toetsen, digitaal eindexamen en certificaat van deelname. €249 ex btw per persoon, €229 vanaf 11 personen, vanaf 50 een offerte op maat.",
+    "Online AI-training voor je hele team: vier modules, tussentijdse toetsen, digitaal eindexamen en certificaat van deelname. €249 ex btw per persoon, €229 vanaf 11 personen, vanaf 50 een enterprise-licentie met gratis MT-masterclass.",
   alternates: { canonical: "https://aigeletterdheid.academy/training" },
 };
 

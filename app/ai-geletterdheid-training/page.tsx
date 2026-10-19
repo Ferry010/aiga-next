@@ -34,7 +34,11 @@ const faqs: Faq[] = [
   },
   {
     q: "Wat kost de training?",
-    a: "Je betaalt per persoon: €249 ex btw voor 1 tot 10 personen, €229 ex btw voor 11 tot 49 personen. Vanaf 50 personen is het een enterprise-traject met een offerte op maat, inclusief de live masterclass voor je directie en MT.",
+    a: "Je betaalt per persoon: €249 ex btw voor 1 tot 10 personen, €229 ex btw voor 11 tot 49 personen. Vanaf 50 personen werk je met een enterprise-licentie en een offerte op maat, met een gratis MT-masterclass voor je directie en management (t.w.v. vanaf €2.475).",
+  },
+  {
+    q: "Wat krijg ik als we met 50 of meer mensen starten?",
+    a: "Dan werk je met één enterprise-licentie voor je hele organisatie, met een offerte op maat. Je directie en management krijgen er een MT-masterclass van twee uur gratis bij, op locatie of online. Die heeft een waarde van minimaal €2.475.",
   },
   {
     q: "Krijgen deelnemers een certificaat?",

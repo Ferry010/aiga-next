@@ -6,7 +6,11 @@ export type Faq = { q: string; a: string };
 export const TRAINING_FAQ: Faq[] = [
   {
     q: "Wat kost de teamtraining?",
-    a: "Je betaalt per persoon: €249 ex btw voor 1 tot 10 personen, €229 ex btw voor 11 tot 49 personen. Vanaf 50 personen is het een enterprise-traject met een offerte op maat, inclusief de live masterclass voor je directie en MT.",
+    a: "Je betaalt per persoon: €249 ex btw voor 1 tot 10 personen, €229 ex btw voor 11 tot 49 personen. Vanaf 50 personen werk je met een enterprise-licentie en een offerte op maat, met een gratis MT-masterclass voor je directie en management (t.w.v. vanaf €2.475).",
+  },
+  {
+    q: "Wat krijg ik als we met 50 of meer mensen starten?",
+    a: "Dan werk je met één enterprise-licentie voor je hele organisatie, met een offerte op maat. Je directie en management krijgen er een MT-masterclass van twee uur gratis bij, op locatie of online. Die heeft een waarde van minimaal €2.475.",
   },
   {
     q: "Wat als een medewerker vertrekt?",
@@ -14,7 +18,7 @@ export const TRAINING_FAQ: Faq[] = [
   },
   {
     q: "Kunnen we later nog mensen toevoegen?",
-    a: "Ja. Je zet zoveel mensen in de training als je wil, nu of later. Vanaf 11 personen betaal je €229 per persoon, vanaf 50 maken we een enterprise-offerte op maat.",
+    a: "Ja. Je zet zoveel mensen in de training als je wil, nu of later. Vanaf 11 personen betaal je €229 per persoon, vanaf 50 werk je met een enterprise-licentie met gratis MT-masterclass.",
   },
   {
     q: "Hoe snel kunnen we starten?",
@@ -57,7 +61,7 @@ export const TRAINING_FAQ: Faq[] = [
 export const MASTERCLASS_FAQ: Faq[] = [
   {
     q: "Wat kost de masterclass?",
-    a: "€495 ex btw per persoon, met een minimum van 5 deelnemers. Bij een enterprise-traject voor de teamtraining (vanaf 50 plekken) is de masterclass inbegrepen.",
+    a: "€495 ex btw per persoon, met een minimum van 5 deelnemers. Bij de teamtraining vanaf 50 personen krijg je de masterclass gratis.",
   },
   {
     q: "Hoe lang duurt het?",

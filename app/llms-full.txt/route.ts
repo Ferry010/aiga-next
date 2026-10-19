@@ -26,9 +26,9 @@ export async function GET() {
     .limit(20);
 
   const lines: string[] = [
-    "# AI Geletterdheid Academy (AIGA) — Volledige kennisbasis",
+    "# AI Geletterdheid Academy (AIGA): volledige kennisbasis",
     "",
-    "> AIGA helpt Nederlandse organisaties voldoen aan de EU AI Act via gecertificeerde online AI-geletterdheid training voor teams en in-company masterclasses voor directie en management.",
+    "> AIGA leert teams wat AI is, hoe je het slim inzet en hoe je dat veilig doet: met een online teamtraining voor iedereen en een live masterclass voor directie en management.",
     "",
     "Opgericht door Ferry Hoes (AI-expert, winnaar Anti-Discriminatie AI-Hackathon Nederlandse Overheid 2020), onderdeel van Brand Humanizing Institute.",
     "",

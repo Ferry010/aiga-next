@@ -10,7 +10,8 @@ type Field = HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 function messageFor(el: Field): string {
   const v = el.validity;
   if (v.valueMissing) {
-    if (el instanceof HTMLSelectElement) return "Kies een optie.";
+    if (el instanceof HTMLSelectElement || (el instanceof HTMLInputElement && el.type === "radio")) return "Kies een optie.";
+    if (el instanceof HTMLInputElement && el.type === "checkbox") return "Vink dit aan om verder te gaan.";
     if (el.type === "email") return "Vul je e-mailadres in.";
     if (el.type === "tel") return "Vul je telefoonnummer in, dan kunnen we je bellen.";
     return "Vul dit veld in.";

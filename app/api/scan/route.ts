@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@/lib/supabase/server";
 import { sendMail, escapeHtml, teamAlertHtml, TEAM_INBOX } from "@/lib/mail";
 import { QUESTIONS } from "@/lib/scan";
-import { pushLeadToHubspot } from "@/lib/hubspot";
+import { pushLeadToHubspot, NO_KEY } from "@/lib/hubspot";
 
 const SITE = "https://aigeletterdheid.academy";
 
@@ -193,7 +193,7 @@ export async function POST(req: NextRequest) {
     details: `${tier.label}, ${cleanScore}% grip · zwakst: ${Object.entries(dims).sort((a, b) => a[1] - b[1]).slice(0, 2).map(([l, v]) => `${l} ${v}%`).join(", ")} · ${resultUrl}`,
     source: "AI-risicocheck, uitslag naar zichzelf gemaild",
   });
-  if (!crm.ok && crm.reason !== "HUBSPOT_ACCESS_TOKEN not set") console.error("HubSpot:", crm.reason);
+  if (!crm.ok && crm.reason !== NO_KEY) console.error("HubSpot:", crm.reason);
 
   // Same Slack notification the other forms use
   try {

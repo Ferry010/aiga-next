@@ -54,6 +54,8 @@ export type LeadAlert = {
   organisatie?: string;
   extra?: string;
   source?: string;
+  /** Referral code or the name of whoever sent this lead */
+  referral?: string;
 };
 
 /** Fire-and-forget: a failed alert must never block the visitor. */

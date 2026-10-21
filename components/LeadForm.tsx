@@ -6,6 +6,7 @@ import { rememberLead } from "@/lib/nextSteps";
 import { createClient } from "@/lib/supabase/client";
 import { trackLead, alertTeam, trackQuoteRequest } from "@/lib/track";
 import { useInlineValidation, FieldError, PHONE_PATTERN } from "@/components/InlineValidation";
+import { readRef, WEBINAR_FROM, WORKSHOP_FROM } from "@/lib/referral";
 
 function readUtmsFromUrl() {
   const p = new URLSearchParams(window.location.search);
@@ -34,7 +35,7 @@ function getStoredUtms(): Record<string, string | undefined> {
  * `source` is written to the CRM note so we can tell which page the lead came from.
  */
 export default function LeadForm({ source }: { source: string }) {
-  const [form, setForm] = useState({ naam: "", bedrijf: "", email: "", telefoon: "", teamgrootte: "" });
+  const [form, setForm] = useState({ naam: "", bedrijf: "", email: "", telefoon: "", teamgrootte: "", aanbeveler: "" });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
@@ -48,6 +49,9 @@ export default function LeadForm({ source }: { source: string }) {
         sessionStorage.setItem("aiga_utm", JSON.stringify(utms));
       }
     } catch { /* sessionStorage unavailable */ }
+    // Arrived through someone's referral link: fill in their code
+    const ref = readRef();
+    if (ref) setForm((f) => (f.aanbeveler ? f : { ...f, aanbeveler: ref }));
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -62,6 +66,7 @@ export default function LeadForm({ source }: { source: string }) {
       utms.gclid && `gclid: ${utms.gclid}`,
     ].filter(Boolean).join(" · ");
 
+    const aanbeveler = form.aanbeveler.trim();
     const supabase = createClient();
     const { error: dbError } = await supabase.from("contact_submissions").insert({
       naam: form.naam,
@@ -74,6 +79,7 @@ export default function LeadForm({ source }: { source: string }) {
       opmerkingen: [
         `Bron: ${source}`,
         form.teamgrootte && `Teamgrootte: ${form.teamgrootte}`,
+        aanbeveler && `Doorverwezen door: ${aanbeveler}`,
         utmNote,
       ].filter(Boolean).join(" · ") || null,
     });
@@ -91,7 +97,7 @@ export default function LeadForm({ source }: { source: string }) {
         organisatie: form.bedrijf,
         email: form.email,
         telefoon: form.telefoon,
-        extra: `${source} · Teamgrootte: ${form.teamgrootte || "onbekend"}${utmNote ? ` · ${utmNote}` : ""}`,
+        extra: `${source} · Teamgrootte: ${form.teamgrootte || "onbekend"}${aanbeveler ? ` · Doorverwezen door: ${aanbeveler}` : ""}${utmNote ? ` · ${utmNote}` : ""}`,
       },
     }).catch(console.error);
 
@@ -105,6 +111,7 @@ export default function LeadForm({ source }: { source: string }) {
       organisatie: form.bedrijf,
       extra: `Teamgrootte: ${form.teamgrootte || "onbekend"}`,
       source: [source, utmNote].filter(Boolean).join(" · "),
+      referral: aanbeveler || undefined,
     });
     rememberLead({ naam: form.naam, email: form.email, telefoon: form.telefoon, organisatie: form.bedrijf });
     setSubmitted(true);
@@ -188,6 +195,23 @@ export default function LeadForm({ source }: { source: string }) {
           Vanaf 50 personen krijg je de MT-masterclass er gratis bij.
         </p>
         <FieldError id="lf-teamgrootte" errors={v.errors} />
+      </div>
+      <div>
+        <label htmlFor="lf-aanbeveler" className="text-sm text-muted-foreground mb-1 block">
+          Heeft iemand je naar ons doorverwezen? <span className="text-muted-foreground/70">(optioneel)</span>
+        </label>
+        <input
+          id="lf-aanbeveler" name="aanbeveler" type="text" maxLength={120} autoComplete="off"
+          placeholder="Naam of code"
+          value={form.aanbeveler} onChange={(e) => setForm({ ...form, aanbeveler: e.target.value })}
+          className={inputClass}
+        />
+        {form.aanbeveler.trim() && (
+          <p className="mt-1 text-xs text-muted-foreground">
+            Fijn dat je via een aanbeveling komt. Vanaf {WEBINAR_FROM} plekken krijgen jullie er een gratis webinar voor je team bij,
+            vanaf {WORKSHOP_FROM} plekken komt Ferry langs voor een gratis workshop.
+          </p>
+        )}
       </div>
 
       {error && <p role="alert" className="text-sm text-destructive">{error}</p>}

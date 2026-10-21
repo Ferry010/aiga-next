@@ -19,6 +19,7 @@ const staticRoutes: Array<{ url: string; changeFrequency: MetadataRoute.Sitemap[
   { url: `${BASE_URL}/shadow-ai`,                                          changeFrequency: "monthly", priority: 0.7 },
   { url: `${BASE_URL}/ai-tools-onder-de-ai-act`,                          changeFrequency: "monthly", priority: 0.7 },
   { url: `${BASE_URL}/contact`,                                            changeFrequency: "yearly",  priority: 0.7 },
+  { url: `${BASE_URL}/aanbevelen`,                                         changeFrequency: "monthly", priority: 0.6 },
   { url: `${BASE_URL}/over-aiga`,                                          changeFrequency: "yearly",  priority: 0.6 },
   { url: `${BASE_URL}/speakers-academy`,                                   changeFrequency: "yearly",  priority: 0.5 },
   { url: `${BASE_URL}/kenniscentrum/ai-begrippen`,                                         changeFrequency: "monthly", priority: 0.6 },

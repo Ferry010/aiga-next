@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendMail, teamAlertHtml, TEAM_INBOX } from "@/lib/mail";
-import { pushLeadToHubspot, type HubspotLeadKind } from "@/lib/hubspot";
+import { pushLeadToHubspot, NO_KEY, type HubspotLeadKind } from "@/lib/hubspot";
 
 // Every form on the site calls this. It puts the lead in HubSpot and, when a team inbox is set,
 // emails the team so the "we bellen binnen één werkdag" promise can be kept. The recipients are
@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
     organisatie: clip(b.organisatie, 160),
     extra: clip(b.extra, 2000),
     source: clip(b.source, 500),
+    referral: clip(b.referral, 120)?.trim() || undefined,
   };
 
   const [crm, mail] = await Promise.all([
@@ -39,6 +40,7 @@ export async function POST(req: NextRequest) {
       organisatie: lead.organisatie,
       details: lead.extra,
       source: lead.source,
+      referral: lead.referral,
     }),
     TEAM_INBOX
       ? sendMail({
@@ -51,12 +53,13 @@ export async function POST(req: NextRequest) {
             ["E-mail", lead.email],
             ["Details", lead.extra],
             ["Bron", lead.source],
+            ["Doorverwezen door", lead.referral],
           ]),
           replyTo: lead.email,
         }).then((r) => r.sent)
       : Promise.resolve(false),
   ]);
 
-  if (!crm.ok && crm.reason !== "HUBSPOT_ACCESS_TOKEN not set") console.error("HubSpot:", crm.reason);
+  if (!crm.ok && crm.reason !== NO_KEY) console.error("HubSpot:", crm.reason);
   return NextResponse.json({ ok: crm.ok || mail, hubspot: crm.ok, mail });
 }

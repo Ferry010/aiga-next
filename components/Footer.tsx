@@ -9,6 +9,7 @@ const footerLinks = [
   { to: "/faq", label: "FAQ" },
   { to: "/gereedheidscan", label: "Gratis AI-risicocheck" },
   { to: "/speakers-academy", label: "Speakers Academy" },
+  { to: "/aanbevelen", label: "Aanbevelen: €25 per plek" },
 ];
 
 const seoLinks = [

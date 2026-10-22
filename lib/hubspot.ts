@@ -21,11 +21,9 @@ const TOKEN = process.env.HUBSPOT_SERVICE_KEY || process.env.hubspot_service_key
 // property "Bron website" (internal name bron_website) when that property exists in HubSpot.
 const SITE_LABEL = "AIGA";
 const SITE_PROPERTY = "bron_website";
-// Referral programme properties (create them in HubSpot to fill them). Writes skip any that don't exist.
+// Who referred this lead (create the property in HubSpot to fill it). Writes skip it if it doesn't exist.
 const REFERRED_BY = "referred_by";
-const REFERRAL_CODE = "referral_code";
-const REFERRAL_PAYOUT = "referral_payout";
-const OPTIONAL = [SITE_PROPERTY, REFERRED_BY, REFERRAL_CODE, REFERRAL_PAYOUT];
+const OPTIONAL = [SITE_PROPERTY, REFERRED_BY];
 
 export type HubspotLeadKind = "offerte" | "masterclass" | "contact" | "callback" | "vraag" | "scan";
 
@@ -171,55 +169,5 @@ export async function pushLeadToHubspot(l: HubspotLead): Promise<{ ok: boolean; 
     return { ok: true };
   } catch (e) {
     return { ok: false, reason: e instanceof Error ? e.message : "unknown error" };
-  }
-}
-
-export type Referrer = { naam: string; email: string; organisatie?: string; uitbetaling: string; code: string };
-
-/**
- * Someone signs up for the referral programme. Saves them as a contact with their code and payout
- * choice, plus a note. Signing up again with the same e-mail keeps the code they already have.
- */
-export async function registerReferrer(r: Referrer): Promise<{ ok: boolean; code: string; reason?: string }> {
-  if (!TOKEN) return { ok: false, code: r.code, reason: NO_KEY };
-  const email = r.email.trim().toLowerCase();
-  try {
-    const found = await hs(`/crm/v3/objects/contacts/${encodeURIComponent(email)}?idProperty=email&properties=lead_source,${SITE_PROPERTY},${REFERRAL_CODE}`);
-    const code = (found.status === 200 && found.data?.properties?.[REFERRAL_CODE]) || r.code;
-    const props: Record<string, string> = { email, [REFERRAL_CODE]: code, [REFERRAL_PAYOUT]: r.uitbetaling };
-    if (r.organisatie) props.company = r.organisatie;
-
-    let contactId: string;
-    if (found.status === 200 && found.data?.id) {
-      contactId = found.data.id;
-      if (!found.data.properties?.lead_source) props.lead_source = "Website";
-      if (!found.data.properties?.[SITE_PROPERTY]) props[SITE_PROPERTY] = SITE_LABEL;
-      await writeContact(`/crm/v3/objects/contacts/${contactId}`, "PATCH", props);
-    } else {
-      const [firstname, ...rest] = r.naam.trim().split(/\s+/);
-      Object.assign(props, { firstname: firstname || "", lastname: rest.join(" "), lead_source: "Website", [SITE_PROPERTY]: SITE_LABEL });
-      const created = await writeContact(`/crm/v3/objects/contacts`, "POST", props);
-      if (!created.data?.id) return { ok: false, code, reason: `contact create failed (${created.status})` };
-      contactId = created.data.id;
-    }
-
-    await hs(`/crm/v3/objects/notes`, {
-      method: "POST",
-      body: JSON.stringify({
-        properties: {
-          hs_timestamp: new Date().toISOString(),
-          hs_note_body: [
-            `<strong>${esc(SITE_LABEL)} website · Aangemeld voor het aanbevelingsprogramma</strong>`,
-            `Code: ${esc(code)}`,
-            `Ontvangen als: ${esc(r.uitbetaling)}`,
-            r.organisatie ? `Organisatie: ${esc(r.organisatie)}` : "",
-          ].filter(Boolean).join("<br>"),
-        },
-        associations: [assoc(contactId, 202)],
-      }),
-    });
-    return { ok: true, code };
-  } catch (e) {
-    return { ok: false, code: r.code, reason: e instanceof Error ? e.message : "unknown error" };
   }
 }

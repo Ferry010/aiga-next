@@ -55,15 +55,14 @@ export default function PrivacyverklaringPage() {
           <em>Grondslag: uitvoering van een overeenkomst of gerechtvaardigd belang (art. 6 lid 1 sub b en f AVG).</em>
         </p>
 
-        <h3>Het aanbevelingsprogramma</h3>
+        <h3>Aanbevelingen</h3>
         <p>
-          Meld je je aan als aanbeveler, dan bewaren wij je naam, e-mailadres, organisatie, je persoonlijke code en hoe je
-          je beloning wilt ontvangen. Kom je via iemands aanbevelingslink op de site, dan onthoudt je browser die code
-          tot je hem sluit, zodat we bij een offerteaanvraag weten wie je heeft aanbevolen. Wij gebruiken dit alleen om
-          aanbevelingen bij te houden en beloningen uit te betalen.
+          Kom je via iemands persoonlijke link op de site, dan onthoudt je browser die code tot je hem sluit, zodat we bij
+          een offerteaanvraag weten wie je heeft aanbevolen. Vul je in het formulier zelf in wie je naar ons heeft
+          doorverwezen, dan bewaren we dat bij je aanvraag. Wij gebruiken dit alleen om aanbevelingen bij te houden.
         </p>
         <p>
-          <em>Grondslag: uitvoering van een overeenkomst (art. 6 lid 1 sub b AVG).</em>
+          <em>Grondslag: gerechtvaardigd belang (art. 6 lid 1 sub f AVG).</em>
         </p>
 
         <h3>Google Analytics</h3>

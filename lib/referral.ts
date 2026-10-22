@@ -1,26 +1,11 @@
-// The referral programme ("Aanbevelen"): one place for the rules, so the page, the form and
-// HubSpot always say the same thing.
-//
-// Anyone can sign up at /aanbevelen and gets a personal link: aigeletterdheid.academy/?ref=CODE.
-// A visitor who arrives through that link keeps the code for the rest of the visit (sessionStorage,
-// nothing after the browser closes), and the quote form sends it along. Leads can also type the
-// name of whoever sent them. Payouts are done by hand once the client has paid.
+// Referrals, without a public programme page. A personal link (aigeletterdheid.academy/?ref=CODE)
+// is remembered for the rest of the visit (sessionStorage, nothing after the browser closes), and
+// the quote form sends it along. Leads can also type the name of whoever sent them. In HubSpot a
+// referred deal is named "... · via CODE".
 
-/** Reward per paid seat for a client of 1 to 49 seats */
-export const PER_SEAT = 25;
-/** From this many seats it is an enterprise deal, rewarded as a share of the invoice */
-export const ENTERPRISE_FROM = 50;
-export const ENTERPRISE_PCT = 10;
-/** Bonuses for the referred client */
+/** Bonuses for a referred client */
 export const WEBINAR_FROM = 10;
 export const WORKSHOP_FROM = 100;
-
-export const PAYOUTS = [
-  { id: "uitbetaling", label: "Uitbetaling", body: "Op factuur, voor zzp'ers, adviseurs en partners." },
-  { id: "tegoed", label: "Tegoed", body: "Voor je eigen organisatie, bijvoorbeeld extra plekken." },
-  { id: "goed-doel", label: "Goed doel", body: "Wij maken het over naar een goed doel dat jij kiest." },
-] as const;
-export type PayoutId = (typeof PAYOUTS)[number]["id"];
 
 const KEY = "aiga_ref";
 const CODE = /^[A-Z0-9-]{3,24}$/;
@@ -45,5 +30,3 @@ export function readRef(): string {
     return "";
   }
 }
-
-export const referralLink = (code: string) => `https://aigeletterdheid.academy/?ref=${encodeURIComponent(code)}`;

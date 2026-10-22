@@ -41,6 +41,8 @@ const nextConfig = {
       // downloads, use-case checker) → the free AI-risicocheck
       { source: "/tools", destination: "/gereedheidscan", permanent: true },
       { source: "/tools/:path*", destination: "/gereedheidscan", permanent: true },
+      // The public referral page is gone; links that were shared land on the homepage
+      { source: "/aanbevelen", destination: "/", permanent: true },
       { source: "/ai-use-case-checker", destination: "/gereedheidscan", permanent: true },
       // Broken kenniscentrum slugs → corrected canonical slugs
       {

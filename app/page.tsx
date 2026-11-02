@@ -11,7 +11,6 @@ export const metadata: Metadata = {
     description:
       "Je mensen gebruiken AI al, vaak buiten je zicht. Breng je team op dezelfde basis en geef je directie de richting.",
     url: "https://aigeletterdheid.academy",
-    images: [{ url: "/og/home.jpg", width: 1200, height: 630, alt: "AIGA, AI-training voor teams en directies" }],
   },
 };
 
